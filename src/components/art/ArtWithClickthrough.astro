@@ -1,0 +1,14 @@
+---
+interface Props {
+  src: string;
+}
+
+const { src } = Astro.props;
+const url = `https://static.wolfgirl.dev/art/${src}`;
+---
+
+<p>
+  <slot name="by" />
+  <a href={url}>Click Through to see</a>
+  <slot />
+</p>

@@ -1,0 +1,49 @@
+name: Build and deploy GH Pages
+# Trigger this on every push to main
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/main.yml"
+      - "package-lock.json"
+      - "public/**"
+      - "src/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install node_modules
+        run: npm ci
+
+      - name: Restore Astro Cache
+        uses: actions/cache@v4
+        with:
+          path: .astro-cache
+          key: website-astro-cache-${{ hashFiles('src/**/*.png', 'src/**/*.jpg') }}
+          restore-keys: |
+            website-astro-cache-
+
+      - name: Build Astro
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./dist

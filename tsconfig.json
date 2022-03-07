@@ -1,0 +1,8 @@
+// Example: starter tsconfig.json for Astro projects
+{
+  "extends": "astro/tsconfigs/strictest",
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "exactOptionalPropertyTypes": false
+  }
+}

@@ -1,0 +1,27 @@
+---
+import ArtWithDesc from "../components/art/ArtWithDesc.astro";
+import type { ImageProps } from "../components/art/ArtWithDesc.astro";
+
+export interface LandingPfpProps extends ImageProps {
+  desc: string;
+}
+
+type Props = LandingPfpProps;
+
+const { src, dims, alt, title, desc } = Astro.props;
+---
+
+<ArtWithDesc
+  flipped={true}
+  images={[
+    {
+      src,
+      dims,
+      alt,
+      title,
+      eager: true,
+    },
+  ]}
+>
+  <Fragment set:html={desc} />
+</ArtWithDesc>

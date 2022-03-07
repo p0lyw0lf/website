@@ -1,0 +1,27 @@
+---
+import type { GetStaticPaths } from "astro";
+import CybersecPage from "../../templates/Cybersec.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"cybersec">;
+}
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("cybersec");
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<CybersecPage frontmatter={post.data}>
+  <Content />
+</CybersecPage>

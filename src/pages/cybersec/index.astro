@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import Page from "../../templates/Default.astro";
+import NavLink from "../../components/cybersec/NavLink.astro";
+
+const posts = await getCollection("cybersec");
+posts.sort((post1, post2) => (post1.slug < post2.slug ? 1 : -1));
+
+// Hack: get Astro to escape this properly on its own
+const description =
+  'A list of links that PolyWolf has curated to be "cool" and under the vauge collection of having to do with computer security';
+---
+
+<Page title="Cybersecurity" description={description}>
+  <link
+    slot="head"
+    rel="alternate"
+    type="application/rss+xml"
+    title="PolyWolf On Security"
+    href="https://wolfgirl.dev/cybersec/rss.xml"
+  />
+  <p>NONE OF THIS CONTENT IS MY OWN</p>
+  <p>
+    This is a list of links that I've been posting to a random Discord channel
+    for a cybersecurity class I was in. The server is fairly inactive (but ppl
+    still read the channel!) and keeping things exclusively on Discord is bad,
+    so I wrote a <a href="https://github.com/p0lyw0lf/crossposter"
+      >Discord bot</a
+    > that mirrors activity in the channel to this page and a <a
+      href="https://infosec.exchange/@PolyWolf">Mastodon account</a
+    >.
+  </p>
+  <nav class="cybersecnav">
+    {posts.map((post) => <NavLink post={post} />)}
+  </nav>
+</Page>

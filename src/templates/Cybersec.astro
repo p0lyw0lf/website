@@ -1,0 +1,18 @@
+---
+import Page from "./Default.astro";
+
+interface Props {
+  frontmatter: {
+    title: string;
+    direct_link: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Page title={frontmatter.title}>
+  <h1 slot="header"><a href="/cybersec">{frontmatter.title}</a></h1>
+  <a href={frontmatter.direct_link}>{frontmatter.direct_link}</a>
+  <slot />
+</Page>
