@@ -1,0 +1,17 @@
+base_url = "https://wolfgirl.dev"
+compile_sass = true
+build_search_index = false
+minify_html = true
+
+
+[markdown]
+highlight_code = true
+highlight_theme = "base16-solarflare"
+extra_syntaxes_and_themes = ["highlight_themes"]
+# Use emoji shortcodes in markdown
+render_emoji = true
+# Open external links in new tabs
+external_links_target_blank = true
+
+[extra]
+# Put all your custom variables here
