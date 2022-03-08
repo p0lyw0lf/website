@@ -1,36 +1,30 @@
-<!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Landing page for PolyWolf's personal website. I'm a wolfgirl developer" />
-    <title>wolfgirl.dev - PolyWolf</title>
-    <link rel="icon" type="image/png" href="favicon.png" />
-    {% set favicon32 = resize_image(path="static/favicon.png", width=32, height=32, op="scale") %}
-    <link rel="icon" type="image/png" href="{{ favicon32.url }}" sizes="32x32" />
-    {% set favicon16 = resize_image(path="static/favicon.png", width=16, height=16, op="scale") %}
-    <link rel="icon" type="image/png" href="{{ favicon16.url }}" sizes="16x16" />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="fira_code.css" />
-  </head>
-  <body>
-    <header>
-      <h1><a href="about.html">HI I'M POLYWOLF</a></h1>
-    </header>
-    <main>
-      <figure>
-        {% set small_pfp = resize_image(path="art/2022-01-pfp.png", width=256, height=256, op="fit") %}
-        <img src="{{ small_pfp.url }}" alt="My profile picture" title="it's me!" />
-        <figcaption>Art by <a href="https://twitter.com/jknor719">@jknor</a></figcaption>
-      </figure>
-      <nav class="bignav">
-        <a href="art/">Art</a>
-        <a href="cybersec/">Cybersec</a>
-        <a href="links/">Links</a>
-        <a href="projects/">Projects</a>
-      </nav>
-    </main>
-    <footer><em>Thank you for visiting!</em></footer>
-  </body>
-</html>
+{% extends "page.html" %}
+
+{% block description %}Landing page for PolyWolf's personal website. I'm a wolfgirl developer{% endblock description %}
+{% block title %}wolfgirl.dev - PolyWolf{% endblock title %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="index.css" />
+{% endblock extra_css %}
+
+{% block header %}
+  <h1><a href="about/">HI I'M POLYWOLF</a></h1>
+{% endblock header %}
+
+{% block content %}
+  <figure class="pfp">
+    {% set small_pfp = resize_image(path="art/2022-01-pfp.png", width=256, height=256, op="fit") %}
+    <img src="{{ small_pfp.url }}" alt="My profile picture" title="it's me!" />
+    <figcaption>Art by <a href="https://twitter.com/jknor719" rel="noopener" target="_blank">@jknor719</a></figcaption>
+  </figure>
+  <nav class="bignav">
+    <a href="art/">Art</a>
+    <a href="cybersec/">Cybersec</a>
+    <a href="links/">Links</a>
+    <a href="projects/">Projects</a>
+  </nav>
+{% endblock content %}
+
+{% block footer %}
+  <em>Thank you for visiting!</em>
+{% endblock footer %}

@@ -1,0 +1,15 @@
+{% extends "page.html" %}
+
+
+{% block content %}
+
+  {{ section.content | safe }}
+
+  <nav class="cybersecnav">
+  {% for post in section.pages %}
+  <div class="cybersecnav-item">
+    {{ post.date }}: <a href="{{ post.permalink }}">{{ post.title }}</a> (<a href="{{ post.extra.direct_link }}" rel="noopener" target="_blank">source</a>)
+  </div>
+  {% endfor %}
+  </nav>
+{% endblock content %}

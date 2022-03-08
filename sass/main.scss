@@ -1,6 +1,4 @@
-$blue-bg: rgb(38, 51, 85);
-$tan-fg: rgb(202, 186, 180);
-$brown-fg: rgb(140, 99, 71);
+@import 'colors';
 
 body {
   width: 35em;
@@ -10,13 +8,27 @@ body {
   color: $tan-fg;
 }
 
+code {
+  font-family: 'Fira Code', Consolas, monospace;
+  background-color: $solarflare-bg;
+  color: $solarflare-fg;
+}
+
+
 a {
   color: $brown-fg;
 }
 
-h1 a {
-  color: $tan-fg;
-  text-decoration: none;
+h1 {
+  color: $lightblue-fg;
+  a {
+    color: $lightblue-fg;
+    text-decoration: none;
+  }
+}
+
+h2, h3, h4, h5, h6 {
+  color: $darktan-fg;
 }
 
 header, main, footer {
@@ -25,17 +37,28 @@ header, main, footer {
   align-items: center;
 }
 
-.bignav {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: 0.5em;
-  justify-items: center;
-  a {
-    font-size: 2em;
-    font-weight: 700;
-    text-transform: uppercase;
+footer {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+p, ul, ol {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol {
+  li {
+    margin-bottom: 0.5em;
   }
-  margin-bottom: 2em;
+}
+
+blockquote {
+  margin-left: 0.2em;
+  padding-left: 0.8em;
+  border-left: 0.2em solid $blockquote-fg;
+  background-color: $blockquote-bg;
+  color: $blockquote-fg;
 }
 
 @media (max-width: 40em) {

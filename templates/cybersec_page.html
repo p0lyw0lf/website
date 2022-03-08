@@ -1,0 +1,11 @@
+{% extends "page.html" %}
+
+{% block header %}
+<h1><a href="/cybersec">{{ page.title }}</a></h1>
+{% endblock header %}
+
+{% block content %}
+<a href="{{ page.extra.direct_link }}" rel="noopener" target="_blank">{{ page.extra.direct_link }}</a>
+
+{{ page.content | safe }}
+{% endblock content %}
