@@ -8,6 +8,7 @@ minify_html = true
 highlight_code = true
 highlight_theme = "base16-solarflare"
 extra_syntaxes_and_themes = ["highlight_themes"]
+extra_highlight_themes = ["highlight_themes"]
 # Use emoji shortcodes in markdown
 render_emoji = true
 # Open external links in new tabs

@@ -4,7 +4,7 @@ title = "Microsoft Azure Secret Agent Vulnerability"
 direct_link = "https://twitter.com/GossiTheDog/status/1437896101756030982"
 +++
 
-[@GossiTheDog](https://twitter/com/GossiTheDog):
+[@GossiTheDog](https://twitter.com/GossiTheDog):
 
 > Microsoft Azure silently install management agents on your Linux VMs, which now have RCE and LPE vulns. 
 > 
