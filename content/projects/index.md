@@ -11,9 +11,9 @@ These are my "successful" projects; if you want to see unsuccessful ones too, vi
 Made using [Zola](https://www.getzola.org/), a static site generator powered by Rust! Theme is my own.
 
 ## A Tool For You To Reboot Into Arch Linux From Windows
-[windowsctl](https://github.com/p0lyw0lf/windowsctl)
+[wootctl](https://github.com/p0lyw0lf/wootctl)
 
-This is very adapted for my dual-boot setup, which uses [systemd-boot](https://wiki.archlinux.org/title/Systemd-boot) as a bootloader. It can read UEFI variables to override what's in its configuration (which has Windows as the default), so I made a windows tool to edit those variables.
+This is very adapted for my dual-boot setup, which uses [systemd-boot](https://wiki.archlinux.org/title/Systemd-boot) as a bootloader. It can read UEFI variables to override what's in its configuration (which has Windows as the default), so I made a windows tool to edit those variables. The name comes from `bootctl`, the systemd tool for Linux to edit these variables, and ***W***indows.
 
 ## A Discord Bot That Tells You How Long It Is Until Tuesday
 [tuesdaybot](https://github.com/p0lyw0lf/tuesdaybot)
