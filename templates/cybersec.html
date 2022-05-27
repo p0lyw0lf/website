@@ -1,15 +1,15 @@
 {% extends "page.html" %}
 
-
 {% block content %}
-
   {{ section.content | safe }}
-
+  {% for year, posts in section.pages | group_by(attribute="year") %}
+  <h2>{{ year }}</h2>
   <nav class="cybersecnav">
-  {% for post in section.pages %}
-  <div class="cybersecnav-item">
-    {{ post.date }}: <a href="{{ post.permalink }}">{{ post.title }}</a> (<a href="{{ post.extra.direct_link }}" rel="noopener" target="_blank">source</a>)
-  </div>
-  {% endfor %}
+  {% for post in posts %}
+    <div class="cybersecnav-item">
+      {{ post.date }}: <a href="{{ post.permalink }}">{{ post.title }}</a> (<a href="{{ post.extra.direct_link }}" rel="noopener" target="_blank">source</a>)
+    </div>
+    {% endfor %}
   </nav>
+  {% endfor %}
 {% endblock content %}
