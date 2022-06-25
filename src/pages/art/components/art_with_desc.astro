@@ -1,0 +1,10 @@
+{% macro art_with_desc(path, width=256, height=256, alt=false, title=false) %}
+  <figure>
+    {{ self::art_thumb(path=path, width=width, height=height, alt=alt, title=title) }}
+    <figcaption>
+{% endmacro art_with_desc %}
+
+{% macro art_with_desc_end() %}
+    </figcaption>
+  </figure>
+{% endmacro art_with_desc_end %}

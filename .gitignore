@@ -1,3 +1,2 @@
-# Ignore generated files
-public/
-processed_images/
+node_modules/
+dist/
