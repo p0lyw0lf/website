@@ -3,9 +3,24 @@
   <a href="{{ path }}"><img src="{{ small_image.url }}" {% if alt %}alt="{{ alt }}"{% endif %} {% if title %}title="{{ title }}"{% endif %} /></a>
 {% endmacro art_thumbnail %}
 
-{% macro art_with_desc(path, description, width=256, height=256, alt=false, title=false) %}
+{% macro art_with_desc(path, width=256, height=256, alt=false, title=false) %}
   <figure>
     {{ self::art_thumb(path=path, width=width, height=height, alt=alt, title=title) }}
-    <figcaption>{{ description | safe }}</figcaption>
-  </figure>
+    <figcaption>
 {% endmacro art_with_desc %}
+
+{% macro art_with_desc_end() %}
+    </figcaption>
+  </figure>
+{% endmacro art_with_desc_end %}
+
+{% macro link_to_twitter(username) %}<a href='https://twitter.com/{{ username }}' rel="noopener" target="_blank">@{{ username }}</a>{% endmacro link_to_twitter %}
+
+{% macro art_with_clickthrough(path, artist=false) %}
+  <p>
+    {% if artist %}Comm by {{ self::link_to_twitter(username=artist) }}. {% endif %}<a href="{{ path }}">Click Through To See</a>
+{% endmacro art_with_clickthrough %}
+
+{% macro art_with_clickthrough_end() %}
+  </p>
+{% endmacro art_with_clickthrough_end %}
