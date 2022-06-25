@@ -9,6 +9,8 @@ This list is incomplete! You can help by [expanding it](https://twitter.com/mess
 
 ## CMU
 
+People I know from CMU
+
 * [Mason Xiao](https://masonx.ca/) - cool ECE guy
 * [Abigale Kim](https://abigalekim.github.io/) - senpai :3
 * [Eric Zheng](https://www.ericzheng.org/) - love his blog
@@ -21,3 +23,9 @@ This list is incomplete! You can help by [expanding it](https://twitter.com/mess
 * [Ford Seidel](https://github.com/fseidel) - ECE but senpai x3
 * [Zach Battleman](https://github.com/zaxioms) - kouhai :3
 * [Michael Obroin](https://www.linkedin.com/in/michael-obroin/) - fastest man alive
+
+## Online
+
+People I only know from the Internet but r still very nice :)
+
+* [Lofty](https://github.com/Ravenslofty) - FPGA master & fellow wolf
