@@ -1,20 +1,14 @@
-{% extends "page.html" %}
+---
+import Page from '../templates/page.astro';
+import { Image } from '@astrojs/image';
 
-{% block description %}Landing page for PolyWolf's personal website. I'm a wolfgirl developer{% endblock description %}
-{% block title %}wolfgirl.dev - PolyWolf{% endblock title %}
-
-{% block extra_css %}
-  <link rel="stylesheet" href="index.css" />
-{% endblock extra_css %}
-
-{% block header %}
-  <h1><a href="about/">HI I'M POLYWOLF</a></h1>
-{% endblock header %}
-
-{% block content %}
+import pfp from './art/images/2022-01-pfp.png';
+import '../sass/index.scss';
+---
+<Page override_title="wolfgirl.dev - PolyWolf" description="Landing page for PolyWolf's personal website. I'm a wolfgirl developer">
+  <h1 slot="header"><a href="about/">HI I'M POLYWOLF</a></h1>
   <figure class="pfp">
-    {% set small_pfp = resize_image(path="art/2022-01-pfp.png", width=256, height=256, op="fit") %}
-    <img src="{{ small_pfp.url }}" alt="My profile picture" title="it's me!" />
+    <Image src={pfp} width={256} alt="My profile picture" title="it's me!" />
     <figcaption>Art by <a href="https://twitter.com/jknor719" rel="noopener" target="_blank">@jknor719</a></figcaption>
   </figure>
   <nav class="bignav">
@@ -24,8 +18,5 @@
     <a href="projects/">Projects</a>
     <a href="friends/">Friends</a>
   </nav>
-{% endblock content %}
-
-{% block footer %}
-  <em>Thank you for visiting!</em>
-{% endblock footer %}
+  <em slot="footer">Thank you for visiting!</em>
+</Page>

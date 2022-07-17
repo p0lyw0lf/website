@@ -1,3 +1,8 @@
+---
+export default Props {
+  path: string;
+}
+---
 {% macro art_thumb(path, width=256, height=256, alt=false, title=false) %}
   {% set small_image = resize_image(path=path, width=width, height=height, op="fit") %}
   <a href="{{ path }}"><img src="{{ small_image.url }}" {% if alt %}alt="{{ alt }}"{% endif %} {% if title %}title="{{ title }}"{% endif %} /></a>

@@ -1,0 +1,45 @@
+---
+import '../sass/main.scss';
+
+export interface Props {
+  title?: string;
+  override_title?: string;
+  description: string;
+}
+
+const { title, override_title, description } = Astro.props as Props;
+
+const full_title = override_title ? override_title : (title ? `wolfgirl.dev - ${title}` : "wolfgirl.dev - PolyWolf");
+---
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <slot name="head">
+      <meta charset="utf-8" />
+      <meta http-equiv="x-ua-compatible" content="ie=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="{description}" />
+      <title>{full_title}</title>
+      <link rel="icon" type="image/png" href="/favicon.png" />
+    </slot>
+  </head>
+  <body>
+    <slot name="body">
+      <header>
+        <slot name="header">
+          <h1><a href="/">{title ? title : "idk"}</a></h1>
+        </slot>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer>
+        <slot name="footer">
+          <nav>
+            <a href="/">Home</a>
+          </nav>
+        </slot>
+      </footer>
+    </slot>
+  </body>
+</html>
