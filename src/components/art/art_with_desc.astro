@@ -1,0 +1,42 @@
+---
+import { Image } from '@astrojs/image';
+import { ImageMetadata } from './types/image.ts';
+
+export interface Props {
+  src: ImageMetadata;
+  dims?: {
+    width: number;
+    height: number;
+  }
+  alt?: string;
+  title?: string;
+}
+
+const { src, dims, alt, title } = Astro.props as Props;
+
+let width = 256;
+let height = 256;
+
+if (dims) {
+  width = dims.width;
+  height = dims.height;
+}
+
+// Need to have custom way of shrinking image to fit inside both of these bounds, while preserving aspect ratio
+let new_width = src.width * height / src.height;
+let new_height = src.height * width / src.width;
+if (new_width < width) {
+  width = new_width;
+} else {
+  height = new_height;
+}
+
+---
+
+<figure>
+  <!-- This hack works in production, but doesn't in debug, so debug view images won't be able to link correctly -->
+  <a href={src.src}><Image {src} {width} {height} {alt} {title} /></a>
+  <figcaption>
+    <slot />
+  </figcaption>
+</figure>
