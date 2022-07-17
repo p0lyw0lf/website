@@ -11,16 +11,16 @@ This list is incomplete! You can help by [expanding it](https://twitter.com/mess
 
 People I know from CMU
 
-* [Mason Xiao](https://masonx.ca/) - cool ECE guy
 * [Abigale Kim](https://abigalekim.github.io/) - senpai :3
-* [Eric Zheng](https://www.ericzheng.org/) - love his blog
 * [Joel Manning](https://bokken12.github.io/) - the best TA
+* [Ford Seidel](http://cmucc.org/~fseidel/) - ECE senpai x3
+* [Mason Xiao](https://masonx.ca/) - cool ECE guy
 * [Miles Conn](https://milesconn.io/) - chaotic energy
+* [Eric Zheng](https://www.ericzheng.org/) - love his blog
 
 ### CMU ppl w/o websites
 
 * [Anish Singhani](https://github.com/asinghani) - another, cooler, ECE guy
-* [Ford Seidel](https://github.com/fseidel) - ECE but senpai x3
 * [Zach Battleman](https://github.com/zaxioms) - kouhai :3
 * [Michael Obroin](https://www.linkedin.com/in/michael-obroin/) - fastest man alive
 
