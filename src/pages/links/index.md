@@ -1,7 +1,8 @@
-+++
-title = "Links"
-description = "PolyWolf's curated collection of Links from around the internet"
-+++
+---
+layout: ../../templates/markdown.astro
+title: Links
+description: PolyWolf's curated collection of Links from around the internet
+---
 
 ## My Links
 In order of decreasing activity:
@@ -19,7 +20,8 @@ You can contact me on any of these but I'll probably only see Twitter DMs. I als
 
 * [fasterthanli.me](https://fasterthanli.me/)
 * [Cory Doctorow's](https://pluralistic.net/)
-* [Stephen Diehl's](https://www.stephendiehl.com/)
+
+Check out [Friends](/friends/) for my friends' blogs :)
 
 ### Websites I Enjoy
 
@@ -34,4 +36,5 @@ You can contact me on any of these but I'll probably only see Twitter DMs. I als
 * [Paranatural](https://www.paranatural.net/comic/chapter-1)
 * [The Boy Who Fell](https://www.boywhofell.com/comic/ch00p00)
 * [Cassiopeia Quinn](https://www.cassiopeiaquinn.com/comic/the-prize-cover)
+* [Kill Six Billion Demons](https://killsixbilliondemons.com/comic/kill-six-billion-demons-chapter-1/)
 * Not a webcomic, but [Quiet & Antagonism](https://quietandantagonism.com/) is by far the best webnovel I've nead

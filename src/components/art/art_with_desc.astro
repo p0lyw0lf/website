@@ -34,7 +34,6 @@ if (new_width < width) {
 ---
 
 <figure>
-  <!-- This hack works in production, but doesn't in debug, so debug view images won't be able to link correctly -->
   <a href={src.src}><Image {src} {width} {height} {alt} {title} /></a>
   <figcaption>
     <slot />

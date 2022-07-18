@@ -1,0 +1,10 @@
+---
+import Page from './page.astro';
+
+const { content } = Astro.props;
+---
+<Page title={content.title} description={content.description}>
+    <h1 slot="header"><a href="/cybersec">{content.title}</a></h1>
+    <a href={content.direct_link}>{content.direct_link}</a>
+    <slot />
+</Page>

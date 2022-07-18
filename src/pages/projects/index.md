@@ -1,14 +1,17 @@
-+++
-title = "Projects"
-description = "A list of PolyWolf's past (and maybe current?) programming projects"
-+++
+---
+layout: ../../templates/markdown.astro
+title: Projects
+description: A list of PolyWolf's past (and maybe current?) programming projects
+---
 
 These are my "successful" projects; if you want to see unsuccessful ones too, visit my [GitHub](https://github.com/p0lyw0lf).
 
 ## This Very Website
 [website](https://github.com/p0lyw0lf/website)
 
-Made using [Zola](https://www.getzola.org/), a static site generator powered by Rust! Theme is my own.
+~~Made using [Zola](https://www.getzola.org/), a static site generator powered by Rust! Theme is my own.~~ Out of date as of July 2022
+
+Now made using [Astro](https://astro.build/), a static site generator powered by ew stinky JavaScript, but man does it have some nice syntax and other features that make writing custom HTML components (like I do) so convenient.
 
 ## A Tool For You To Reboot Into Arch Linux From Windows
 [wootctl](https://github.com/p0lyw0lf/wootctl)

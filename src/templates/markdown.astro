@@ -1,0 +1,8 @@
+---
+import Page from './page.astro';
+
+const { content } = Astro.props;
+---
+<Page title={content.title} description={content.description}>
+    <slot />
+</Page>

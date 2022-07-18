@@ -1,7 +1,8 @@
-+++
-title = "About"
-description = "About PolyWolf, owner of wolfgirl.dev, because they're a developer and a wolfgirl"
-+++
+---
+layout: ../../templates/markdown.astro
+title: About
+description: About PolyWolf, owner of wolfgirl.dev, because they're a developer and a wolfgirl
+---
 
 ## Who Am I?
 Hi I'm PolyWolf! Like the domain name suggests, I am a wolfgirl and enjoy programming and finally got around to making a website about it.
