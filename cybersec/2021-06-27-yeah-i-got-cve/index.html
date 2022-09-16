@@ -1,10 +1,10 @@
-<!DOCTYPE html><html lang=en-US><head><meta charset=utf-8><meta content="ie=edge"http-equiv=x-ua-compatible><meta content="width=device-width,initial-scale=1"name=viewport><meta name=description><title>wolfgirl.dev - \&quot;Yeah I got a CVE :sunglasses:\&quot;</title><link href=/favicon.png rel=icon type=image/png><link href=/assets/29d01b6f.91837e97.css rel=stylesheet /></head><body><header><h1><a href=/cybersec>\&quot;Yeah I got a CVE :sunglasses:\&quot;</a></h1></header><main><a href=https://github.com/pypa/virtualenv/issues/1207>https://github.com/pypa/virtualenv/issues/1207</a><p>This is, quite possibly, the dumbest CVE ever assigned.</p><p>Verbatim, the actual bug:</p><pre class=astro-code style=background-color:#0d1117;overflow-x:auto><code><span class=line><span style=color:#c9d1d9>root@kali:~#pip install virtualenv</span></span>
-<span class=line><span style=color:#c9d1d9>root@kali:~#virtualenv test_env</span></span>
-<span class=line><span style=color:#c9d1d9>root@kali:~#cd test_env/</span></span>
-<span class=line><span style=color:#c9d1d9>root@kali:~/test_env#source ./bin/activate</span></span>
-<span class=line><span style=color:#c9d1d9>(test_env) root@kali:~/test_env#`</span></span>
-<span class=line><span style=color:#c9d1d9>`2、Sandbox escape</span></span>
-<span class=line><span style=color:#c9d1d9>(test_env) root@kali:~/test_env#python $(bash &gt;&amp;2)</span></span>
-<span class=line><span style=color:#c9d1d9>root@kali:~#</span></span>
-<span class=line><span style=color:#c9d1d9>(test_env) root@kali:~/test_env#python $(rbash &gt;&amp;2)</span></span>
-<span class=line><span style=color:#c9d1d9>root@kali:~#` ``</span></span></code></pre><p>Clearly, this is not a bug. <code>virtualenv</code> never claimed any sandboxing capabilities, especially for <em><strong>the bash prompt on the machine that you can already run commands in</strong></em>.</p><p>Somehow, this got a CVE assigned to it. wth</p></main><footer><nav><a href=/ >Home</a></nav></footer></body></html>
+<!DOCTYPE html><link href=/assets/65a88566.50f71953.css rel=stylesheet /><html lang=en-US><head><meta charset=utf-8><meta content="ie=edge"http-equiv=x-ua-compatible><meta content="width=device-width,initial-scale=1"name=viewport><meta name=description><title>wolfgirl.dev - \&quot;Yeah I got a CVE :sunglasses:\&quot;</title><link href=/favicon.png rel=icon type=image/png><link href=/assets/65a88566.50f71953.css rel=stylesheet /></head><body><header><h1><a href=/cybersec>\&quot;Yeah I got a CVE :sunglasses:\&quot;</a></h1></header><main><a href=https://github.com/pypa/virtualenv/issues/1207>https://github.com/pypa/virtualenv/issues/1207</a><p>This is, quite possibly, the dumbest CVE ever assigned.</p><p>Verbatim, the actual bug:</p><pre className=astro-code><code><span className=line><span>root@kali:~#pip install virtualenv</span></span>
+<span className=line><span>root@kali:~#virtualenv test_env</span></span>
+<span className=line><span>root@kali:~#cd test_env/</span></span>
+<span className=line><span>root@kali:~/test_env#source ./bin/activate</span></span>
+<span className=line><span>(test_env) root@kali:~/test_env#`</span></span>
+<span className=line><span>`2、Sandbox escape</span></span>
+<span className=line><span>(test_env) root@kali:~/test_env#python $(bash &gt;&amp;2)</span></span>
+<span className=line><span>root@kali:~#</span></span>
+<span className=line><span>(test_env) root@kali:~/test_env#python $(rbash &gt;&amp;2)</span></span>
+<span className=line><span>root@kali:~#` ``</span></span></code></pre><p>Clearly, this is not a bug. <code>virtualenv</code> never claimed any sandboxing capabilities, especially for <em><strong>the bash prompt on the machine that you can already run commands in</strong></em>.</p><p>Somehow, this got a CVE assigned to it. wth</p></main><footer><nav><a href=/ >Home</a></nav></footer></body></html>
