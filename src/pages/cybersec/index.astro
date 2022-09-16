@@ -2,7 +2,7 @@
 import Page from '../../templates/page.astro';
 import path from 'node:path';
 
-const posts = (await Astro.glob('./*.md'))
+const posts = (await Astro.glob('./*.mdx'))
   .filter((post) => !post.frontmatter.draft)
   .map((post) => {
     return {
