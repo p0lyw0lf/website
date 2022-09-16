@@ -4,6 +4,7 @@ import ArtWithClickthrough from '../../components/art/art_with_clickthrough.svel
 import ArtWithDesc from '../../components/art/art_with_desc.astro';
 import TwitterLink from '../../components/twitter_link.svelte';
 
+import i2022_09_sketchbook from './images/2022-09-sketchbook.jpg';
 import i2022_09_sniper from './images/2022-09-sniper.png';
 import i2022_08_snow from './images/2022-08-snow.jpg';
 import i2022_08_dakimakura from './images/2022-08-dakimakura.jpg';
@@ -26,6 +27,9 @@ import i2017_12_mobile from './images/2017-12-mobile.png';
   <p>All artwork is in chronologically descending order.</p>
   <h2>"Current" PolyWolf</h2>
   <p>These are references for me, the wolfgirl who made this website!</p>
+  <ArtWithDesc src={i2022_09_sketchbook} title="cute wolfgirl in various situations">
+    Comm by <TwitterLink username="samipekoe" />, these are some of my favorite outfits :)
+  </ArtWithDesc>
   <ArtWithDesc src={i2022_09_sniper} title="watch out she's got a gun!!">
     Comm by <TwitterLink username="19Vodnik" />, they did a great job with the ghillie suit design! I am holding a <a href="https://en.wikipedia.org/wiki/Remington_MSR">Remington MSR</a> in this picture
   </ArtWithDesc>
