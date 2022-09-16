@@ -33,7 +33,22 @@ if (new_width < width) {
 
 ---
 
+<style>
+  figure {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  a {
+    margin-bottom: 1em;
+  }
+</style>
+
 <figure>
+  
   <a href={src.src}><Image {src} {width} {height} {alt} {title} /></a>
   <figcaption>
     <slot />
