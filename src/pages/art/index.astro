@@ -4,6 +4,8 @@ import ArtWithClickthrough from '../../components/art/art_with_clickthrough.svel
 import ArtWithDesc from '../../components/art/art_with_desc.astro';
 import TwitterLink from '../../components/twitter_link.svelte';
 
+import i2022_10_lean from './images/2022-10-lean.png';
+import i2022_10_furry from './images/2022-10-furry.png';
 import i2022_09_sketchbook from './images/2022-09-sketchbook.jpg';
 import i2022_09_sniper from './images/2022-09-sniper.png';
 import i2022_08_snow from './images/2022-08-snow.jpg';
@@ -26,21 +28,11 @@ import i2017_12_mobile from './images/2017-12-mobile.png';
 <Page title="Art" description="Collection of art references for me, PolyWolf! I put all my commisions here, as well as the occasional art I do myself :)">
   <p>All artwork is in chronologically descending order.</p>
   <h2>"Current" PolyWolf</h2>
-  <p>These are references for me, the wolfgirl who made this website!</p>
-  <ArtWithDesc src={i2022_09_sketchbook} title="cute wolfgirl in various situations">
-    Comm by <TwitterLink username="samipekoe" />, these are some of my favorite outfits :)
-  </ArtWithDesc>
+  <p>Pictures of me, the wolfgirl who made this website!</p>
+  <h3>References</h3>
+  <p>Hi! If you're an artist I pointed at this page, these are the pictures I think you should use as reference for what PolyWolf looks like!</p>
   <ArtWithDesc src={i2022_09_sniper} title="watch out she's got a gun!!">
     Comm by <TwitterLink username="19Vodnik" />, they did a great job with the ghillie suit design! I am holding a <a href="https://en.wikipedia.org/wiki/Remington_MSR">Remington MSR</a> in this picture
-  </ArtWithDesc>
-  <ArtWithDesc src={i2022_08_snow} title="such great brushwork">
-    Comm by <TwitterLink username="RamenNamenn" />, I love their brushwork and color choices, this is pretty much exactly my official colors :) They did a great job of adapting my pose request too!
-  </ArtWithDesc>
-  <ArtWithDesc src={i2022_07_fila} title="Lovely summer wear!">
-    Comm by <TwitterLink username="kayadesu_yo" />, such great texture and soft lighting, very colorful (I may have gone overboard on the requested outfit colors lol). This is my current pfp!
-  </ArtWithDesc>
-  <ArtWithDesc src={i2022_07_techwear} title="GREAT atmosphere">
-  Comm by <TwitterLink username="daanboii" />, great outfit design, love the atmosphere and color choices in this piece. They have a great artistic vision :)
   </ArtWithDesc>
   <ArtWithDesc src={i2022_07_baseball} title="So sporty!!">
   Comm by <TwitterLink username="coredo9" />, I love the baseball outfit and rendering!! This is my current desktop wallpaper :3
@@ -48,21 +40,44 @@ import i2017_12_mobile from './images/2017-12-mobile.png';
   <ArtWithDesc src={i2022_01_pfp} title="wow same as the main page">
   Comm by <TwitterLink username="jknor719" />, first pfp that I commissioned. Fun fact: for all intents and purposes this is the official PolyWolf color palette.
   </ArtWithDesc>
+  <ArtWithDesc src={i2021_06} title="wowow backgrounds">
+    I did this one! It's me, stretching on a beach, under an umbrella. This was my second time drawing backgrounds.
+    </ArtWithDesc>
+  <h3>Other</h3>
+  <ArtWithDesc src={i2022_10_lean} title="dem proportions tho..">
+    I did this one! Inspired by... certain artists, "non-canon" proportions, learned a lot about Procreate (for iPad) in the process of making this. This is my current pfp on Twitter!
+  </ArtWithDesc>
+  <ArtWithDesc src={i2022_10_furry} title="I'm a furry now!!">
+    Comm by <TwitterLink username="woobin94" />! I really really really love their design of me as a furry! May have to draw her like this more ;)
+  </ArtWithDesc>
+  <ArtWithDesc src={i2022_09_sketchbook} title="cute wolfgirl in various situations">
+    Comm by <TwitterLink username="samipekoe" />, these are some of my favorite outfits :) Look at her go!
+  </ArtWithDesc>
+  <ArtWithDesc src={i2022_08_snow} title="such great brushwork">
+    Comm by <TwitterLink username="RamenNamenn" />, I love their brushwork and color choices, they did a great job of adapting my pose request too!
+  </ArtWithDesc>
+  <ArtWithDesc src={i2022_07_fila} title="Lovely summer wear!">
+    Comm by <TwitterLink username="kayadesu_yo" />, such great texture and soft lighting, very colorful (I may have gone overboard on the requested outfit colors lol). This is my current pfp on Discord!
+  </ArtWithDesc>
+  <ArtWithDesc src={i2022_07_legs_spread} title="spead em ;)">
+    I did this one! Fully clothed, but the angle is um interesting. Tried to do lineless/soft brushwork on this, ended up a little too soft maybe
+  </ArtWithDesc>
+  <ArtWithDesc src={i2022_07_techwear} title="GREAT atmosphere">
+  Comm by <TwitterLink username="daanboii" />, great outfit design, love the atmosphere and color choices in this piece. They have a great artistic vision :)
+  </ArtWithDesc>
+  <ArtWithDesc src={i2022_03_lewd} title="oh BIG stretch">
+    Comm by <TwitterLink username="R_ev60" />, doing a stretch in a swimsuit ;)
+  </ArtWithDesc>
   <ArtWithDesc src={i2021_12_shadow} title="originally i wanted to draw a snowy background for this one too but it's hard, blurry one for the other was made using skills acquired during the failed attempt at this one">
   My current phone background, commissioned from <TwitterLink username="BokuRikuz" />. Man I just love the lighting on this piece!
-  </ArtWithDesc>
-  <ArtWithDesc src={i2021_06} title="wowow backgrounds">
-  I did this one! It's me, stretching on a beach, under an umbrella. This was my second time drawing backgrounds.
   </ArtWithDesc>
   <ArtWithDesc src={i2020_12} title="for this and the other i manually posed to get the proportions roughly right">
   The one where I tried to decide on a name. Because 'PolyWolf' was supposed to be for the older one, but after trying out this Japanese name (bonus points if u can read the Katakana) I decided just to have PolyWolf be my name too :)
   </ArtWithDesc>
   <p>...and I don't really want to show any earlier ones since the reference has changed a lot, and I was <em>much</em> worse at art too :P. If you do really want to see <i>everything</i>, see <a href="https://www.deviantart.com/p0lyw0lf/gallery/78254173/polywolf" rel="noopener" target="_blank">my deviantart gallery</a>.</p>
-  <h3>NSFW "Current" PolyWolf</h3>
+  <h3>NSFW</h3>
   <ArtWithClickthrough src={i2022_08_dakimakura} artist="AllanelArt">PolyWolf dakimakura style!</ArtWithClickthrough>
-  <ArtWithClickthrough src={i2022_07_legs_spread} artist={false}>I did this one! Fully clothed, but the angle is uh ;)</ArtWithClickthrough>
   <ArtWithClickthrough src={i2022_06_collar} artist="Nyapii2">saucy lingerie ;)</ArtWithClickthrough>
-  <ArtWithClickthrough src={i2022_03_lewd} artist="R_ev60">saucy swimsuit ;)</ArtWithClickthrough>
   <h2>"Original" PolyWolf</h2>
   <p>These are references for the original "PolyWolf" I doodled and decided to make into a username. These pieces have aged much better lol</p>
   <ArtWithDesc src={i2018_04} title="it's (young?) me!">
