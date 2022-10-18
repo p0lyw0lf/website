@@ -1,15 +1,16 @@
 ---
 import Page from '../templates/page.astro';
-import { Image } from '@astrojs/image';
+import TwitterLink from '../components/twitter_link.svelte';
+import ArtWithDesc from '../components/art/art_with_desc.astro';
 
-import pfp from './art/images/2022-01-pfp.png';
+import pfp from './art/images/2022-07-fila.png';
 import '../sass/index.scss';
 ---
 <Page override_title="wolfgirl.dev - PolyWolf" description="Landing page for PolyWolf's personal website. I'm a wolfgirl developer">
   <h1 slot="header"><a href="about/">HI I'M POLYWOLF</a></h1>
   <figure class="pfp">
-    <Image src={pfp} width={256} alt="My profile picture" title="it's me!" />
-    <figcaption>Art by <a href="https://twitter.com/jknor719" rel="noopener" target="_blank">@jknor719</a></figcaption>
+    <ArtWithDesc src={pfp} dims={{width: 256, height: 512}} alt="My profile picture" title="it's me!" />
+    <figcaption>Art by <TwitterLink username="kayadesu_yo" /></figcaption>
   </figure>
   <nav class="bignav">
     <a href="art/">Art</a>
