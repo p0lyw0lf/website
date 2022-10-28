@@ -1,36 +1,40 @@
 ---
-import { Image } from '@astrojs/image/components';
-import { ImageMetadata } from './types/image';
+import { Image } from "@astrojs/image/components";
+import { ImageMetadata } from "./types/image";
+
+interface ImageProps {
+    src: ImageMetadata;
+    dims?: {
+      width: number;
+      height: number;
+    };
+    alt?: string;
+    title?: string;
+  }
 
 export interface Props {
-  src: ImageMetadata;
-  dims?: {
-    width: number;
-    height: number;
+  images: ImageProps[];
+}
+
+const { images } = Astro.props as Props;
+
+for (const key in images) {
+  let image = images[key];
+  let width = 256;
+  let height = 256;
+  if (image.dims) {
+    ({width: width, height: height} = image.dims);
   }
-  alt?: string;
-  title?: string;
+    // Need to have custom way of shrinking image to fit inside both of these bounds, while preserving aspect ratio
+  let new_width = (image.src.width * height) / image.src.height;
+  let new_height = (image.src.height * width) / image.src.width;
+  if (new_width < width) {
+    width = new_width;
+  } else {
+    height = new_height;
+  }
+  image.dims = {width: width, height: height};
 }
-
-const { src, dims, alt, title } = Astro.props as Props;
-
-let width = 256;
-let height = 256;
-
-if (dims) {
-  width = dims.width;
-  height = dims.height;
-}
-
-// Need to have custom way of shrinking image to fit inside both of these bounds, while preserving aspect ratio
-let new_width = src.width * height / src.height;
-let new_height = src.height * width / src.width;
-if (new_width < width) {
-  width = new_width;
-} else {
-  height = new_height;
-}
-
 ---
 
 <style>
@@ -42,14 +46,23 @@ if (new_width < width) {
     flex-direction: column;
     align-items: center;
   }
+  figure div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+  }
   a {
     margin-bottom: 1em;
   }
 </style>
 
 <figure>
-  
-  <a href={src.src}><Image {src} {width} {height} {alt} {title} /></a>
+  <div>
+  {images.map((image) => (
+    <a href={image.src.src}><Image src={image.src} width={image.dims.width} height={image.dims.height} alt={image.alt} title={image.title} /></a>
+  ))}
+  </div>
   <figcaption>
     <slot />
   </figcaption>

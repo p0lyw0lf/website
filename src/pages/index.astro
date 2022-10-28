@@ -9,7 +9,7 @@ import '../sass/index.scss';
 <Page override_title="wolfgirl.dev - PolyWolf" description="Landing page for PolyWolf's personal website. I'm a wolfgirl developer">
   <h1 slot="header"><a href="about/">HI I'M POLYWOLF</a></h1>
   <figure class="pfp">
-    <ArtWithDesc src={pfp} dims={{width: 256, height: 512}} alt="My profile picture" title="it's me!" />
+    <ArtWithDesc images={[{src: pfp, dims: {width: 256, height: 512}}]} alt="My profile picture" title="it's me!" />
     <figcaption>Art by <TwitterLink username="kayadesu_yo" /></figcaption>
   </figure>
   <nav class="bignav">
