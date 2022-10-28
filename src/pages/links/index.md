@@ -9,10 +9,11 @@ In order of decreasing activity:
 
 * [Twitter](https://twitter.com/p0lyw0lf)
 * [GitHub](https://github.com/p0lyw0lf)
+* [CoHost](https://cohost.org/PolyWolf): new 2022-10-27 (have to see if it survives...)
 * [DeviantArt](https://deviantart.com/p0lyw0lf)
 * [Twitch](https://twitch.tv/p0lyw0lf)
 
-You can contact me on any of these but I'll probably only see Twitter DMs. I also have a discord but get 2 know me first ok?
+You can contact me on any of these but I'll probably only see Twitter DMs. I also have a Discord but get 2 know me first ok?
 
 ## Other Links
 
@@ -26,7 +27,7 @@ Check out [Friends](/friends/) for my friends' blogs :)
 ### Websites I Enjoy
 
 * [ndless.me](http://ndless.me/) + [Hackspire](https://hackspire.org/index.php?title=Main_Page), hacking stuff for my calculator in HS was awesome
-* [This random webhost](https://owo.codes/) who happens to be behind 'wolfgirl.party' which was a big inspiration for making this domain in the first place
+* [This random webhost](https://owo.codes/) who happens to be behind 'wolfgirl.party', which was a big inspiration for making this website finally
 * [Low Tech Webring Directory](https://emreed.net/LowTech_Directory.html) which has a bunch of other static sites and a lot of them aren't hosted anymore but I love the concept
 * [whatever this is](https://syntacticsugarglider.com/), forgot how i found it but i just like looking at it
 
