@@ -50,20 +50,20 @@ for (const key in images) {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     gap: 1em;
-  }
-  a {
-    margin-bottom: 1em;
+    margin-top: 1em;
   }
 </style>
 
 <figure>
+  <figcaption>
+    <slot />
+  </figcaption>
   <div>
   {images.map((image) => (
     <a href={image.src.src}><Image src={image.src} width={image.dims.width} height={image.dims.height} alt={image.alt} title={image.title} /></a>
   ))}
   </div>
-  <figcaption>
-    <slot />
-  </figcaption>
 </figure>

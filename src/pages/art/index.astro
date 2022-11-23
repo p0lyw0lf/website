@@ -3,13 +3,23 @@ import Page from '../../templates/page.astro';
 import ArtWithClickthrough from '../../components/art/art_with_clickthrough.svelte';
 import ArtWithDesc from '../../components/art/art_with_desc.astro';
 import TwitterLink from '../../components/twitter_link.svelte';
+import InstagramLink from '../../components/instagram_link.svelte';
 
+import i2022_11_star_sketch from './images/2022-11-star-sketch.jpg';
 import i2022_10_hoodie_2 from './images/2022-10-hoodie-2.jpg';
 import i2022_10_hoodie_1 from './images/2022-10-hoodie-1.jpg';
+import i2022_10_star_buffed from './images/2022-10-star-buffed.jpg';
 import i2022_10_lean from './images/2022-10-lean.png';
 import i2022_10_furry from './images/2022-10-furry.png';
 import i2022_09_sketchbook from './images/2022-09-sketchbook.jpg';
 import i2022_09_sniper from './images/2022-09-sniper.png';
+import af2022_fwizz from './images/artfight/2022_fwizz.png';
+import af2022_nacl from './images/artfight/2022_nacl.png';
+import af2022_octis from './images/artfight/2022_octis.png';
+import af2022_ramenbucket from './images/artfight/2022_ramenbucket.jpeg';
+import af2022_sharon from './images/artfight/2022_sharon.png';
+import af2022_solosis from './images/artfight/2022_solosis.jpg';
+import af2022_toshca from './images/artfight/2022_toshca.png';
 import i2022_08_snow from './images/2022-08-snow.jpg';
 import i2022_08_dakimakura from './images/2022-08-dakimakura.jpg';
 import i2022_07_legs_spread from './images/2022-07-legs-spread.png';
@@ -19,9 +29,20 @@ import i2022_07_baseball from './images/2022-07-baseball.jpg';
 import i2022_06_collar from './images/2022-06-collar.jpg';
 import i2022_03_lewd from './images/2022-03-lewd.png';
 import i2022_01_pfp from './images/2022-01-pfp.png';
+import ss2021_sonya from './images/ss/2021_sonya.jpg';
 import i2021_12_shadow from './images/2021-12-shadow.png';
 import i2021_06 from './images/2021-06.png';
 import i2020_12 from './images/2020-12.png';
+import ss2020_jay from './images/ss/2020_jay.png';
+import af2020_emu from './images/artfight/2020_emu.png';
+import af2020_gary from './images/artfight/2020_gary.png';
+import af2020_vivi from './images/artfight/2020_vivi.jpg';
+import af2020_xireth from './images/artfight/2020_xireth.png';
+import ss2019_biff from './images/ss/2019_biff.png';
+import af2019_alyssa from './images/artfight/2019_alyssa.png';
+import af2019_eunice from './images/artfight/2019_eunice.png';
+import af2019_sanjay from './images/artfight/2019_sanjay.jpg';
+import af2019_xiang from './images/artfight/2019_xiang.png';
 import i2018_04 from './images/2018-04.png';
 import i2017_12_desktop from './images/2017-12-desktop.png';
 import i2017_12_mobile from './images/2017-12-mobile.png';
@@ -46,11 +67,14 @@ import i2017_12_mobile from './images/2017-12-mobile.png';
     I did this one! It's me, stretching on a beach, under an umbrella. This was my second time drawing backgrounds, and also this was before I decided she had a tail.
     </ArtWithDesc>
   <h3>Other</h3>
+  <ArtWithDesc images={[{src: i2022_11_star_sketch, title: "so pretty..."}]}>
+    Another gift from <InstagramLink username="stars_upon_stars" />! She is drawing a bunch of ppls OCs and mine was in the pool :)
+  </ArtWithDesc>
   <ArtWithDesc images={[{src: i2022_10_hoodie_1, title: "lounging around!", dims: {width: 320, height: 300}}, {src: i2022_10_hoodie_2, title: "smug polywolf ;)", dims: {width: 200, height: 200}}]}>
     Comm by <TwitterLink username="AneBunBun" />, I am in a comfy outfit on a comfy bed! Artist threw in an extra image too which was really nice!!
   </ArtWithDesc>
-  <ArtWithDesc images={[{src: i2022_10_lean, title: "dem proportions tho.."}]}>
-    I did this one! Inspired by... certain artists, "non-canon" proportions (esp w/ missing her tail), learned a lot about Procreate (for iPad) in the process of making this. This is my current pfp on Twitter!
+  <ArtWithDesc images={[{src: i2022_10_star_buffed, title: "she is very stronk now"}]}>
+    Gift from <InstagramLink username="stars_upon_stars" />! This is very silly but I love it!!
   </ArtWithDesc>
   <ArtWithDesc images={[{src: i2022_10_furry, title: "I'm a furry now!!"}]}>
     Comm by <TwitterLink username="woobin94" />! I really really really love their design of me as a furry! May have to draw her like this more ;)
@@ -60,6 +84,17 @@ import i2017_12_mobile from './images/2017-12-mobile.png';
   </ArtWithDesc>
   <ArtWithDesc images={[{src: i2022_08_snow, title: "such great brushwork"}]}>
     Comm by <TwitterLink username="RamenNamenn" />, I love their brushwork and color choices, they did a great job of adapting my pose request too!
+  </ArtWithDesc>
+  <ArtWithDesc images={[
+    {src: af2022_fwizz},
+    {src: af2022_nacl},
+    {src: af2022_octis},
+    {src: af2022_ramenbucket},
+    {src: af2022_sharon},
+    {src: af2022_solosis},
+    {src: af2022_toshca},
+  ]}>
+    Artfight 2022! (I did not participate in 2021 whoops). Bigger haul than previous years, some of these (esp the collage??) are p epic B)
   </ArtWithDesc>
   <ArtWithDesc images={[{src: i2022_07_fila, title: "lovely summer wear!"}]}>
     Comm by <TwitterLink username="kayadesu_yo" />, such great texture and soft lighting, very colorful (I may have gone overboard on the requested outfit colors lol). This is my current pfp on Discord!
@@ -73,14 +108,42 @@ import i2017_12_mobile from './images/2017-12-mobile.png';
   <ArtWithDesc images={[{src: i2022_03_lewd, title: "oh BIG stretch"}]}>
     Comm by <TwitterLink username="R_ev60" />, doing a stretch in a swimsuit ;)
   </ArtWithDesc>
+  <ArtWithDesc images={[{src: ss2021_sonya}]}>
+    Secret Santa 2021! I asked for "my OC" OR "my dogs" and got BOTH! Super cute!!
+  </ArtWithDesc>
   <ArtWithDesc images={[{src: i2021_12_shadow, title: "powerful stride"}]}>
   My current phone background, commissioned from <TwitterLink username="BokuRikuz" />. Man I just love the lighting on this piece! I still use it as a lockscreen bg, it's so good
+  </ArtWithDesc>
+  <ArtWithDesc images={[{src: ss2020_jay}]}>
+    Secret Santa 2020! One of my favorite atmospheres, she is enjoying the snow :)
   </ArtWithDesc>
   <ArtWithDesc images={[{src: i2020_12, title: "resting pose"}]}>
   The one where I tried to decide on a name. Because 'PolyWolf' was supposed to be for the older one, but after trying out this Japanese name (bonus points if u can read the Katakana) I decided just to have PolyWolf be my name too :)
   </ArtWithDesc>
+  <ArtWithDesc images={[
+    {src: af2020_emu},
+    {src: af2020_gary},
+    {src: af2020_vivi},
+    {src: af2020_xireth},
+  ]}>
+    Artfight 2020! Second artfight, got some more extremely good art :)
+  </ArtWithDesc>
+  <ArtWithDesc images={[{src: ss2019_biff}]}>
+    Secret Santa 2019! Realism works really well actually!
+  </ArtWithDesc>
+  <ArtWithDesc images={[
+    {src: af2019_alyssa},
+    {src: af2019_eunice},
+    {src: af2019_sanjay},
+    {src: af2019_xiang},
+  ]}>
+    Artfight 2019! This was my first Artfight and I got a lot of good art :)
+  </ArtWithDesc>
   <p>...and I don't really want to show any earlier ones since the reference has changed a lot, and I was <em>much</em> worse at art too :P. If you do really want to see <i>everything</i>, see <a href="https://www.deviantart.com/p0lyw0lf/gallery/78254173/polywolf" rel="noopener" target="_blank">my deviantart gallery</a>.</p>
   <h3>NSFW</h3>
+  <ArtWithClickthrough src={i2022_10_lean} artist={false}>
+    I did this one! Inspired by... certain artists, "non-canon" proportions (esp w/ missing her tail), learned a lot about Procreate (for iPad) in the process of making this.
+  </ArtWithClickthrough>
   <ArtWithClickthrough src={i2022_08_dakimakura} artist="AllanelArt">PolyWolf dakimakura style!</ArtWithClickthrough>
   <ArtWithClickthrough src={i2022_06_collar} artist="Nyapii2">saucy lingerie ;)</ArtWithClickthrough>
   <h2>"Original" PolyWolf</h2>
