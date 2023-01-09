@@ -20,12 +20,12 @@
     "@astrojs/image": "^0.10.0",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/svelte": "^1.0.2",
-    "astro": "^1.5.0",
-    "astro-compress": "^1.0.12",
-    "svelte": "^3.49.0"
+    "astro": "^1.9.1",
+    "astro-compress": "^1.1.25",
+    "svelte": "^3.55.0"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^0.11.4",
-    "sass": "^1.55.0"
+    "@astrojs/mdx": "^0.11.6",
+    "sass": "^1.57.1"
   }
 }
