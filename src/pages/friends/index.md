@@ -24,9 +24,15 @@ People I know from CMU
 * [Anish Singhani](https://github.com/asinghani) - another, cooler, ECE guy
 * [Zach Battleman](https://github.com/zaxioms) - kouhai :3
 * [Michael Obroin](https://www.linkedin.com/in/michael-obroin/) - fastest man alive
+* [Cooper Pierce](https://www.linkedin.com/in/cooper-pierce) - he knows too much about too many things
 
 ## Online
 
 People I only know from the Internet but r still very nice :)
 
 * [Lofty](https://github.com/Ravenslofty) - FPGA master & fellow wolf
+* [Luna](https://twitter.com/heademptyset) - luna panda
+
+<hr/>
+
+wow use this social graph to dox me or something lol!

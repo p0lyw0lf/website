@@ -7,13 +7,14 @@ description: PolyWolf's curated collection of Links from around the internet
 ## My Links
 In order of decreasing activity:
 
+* [Cohost](https://cohost.org/PolyWolf)
+* [Mastodon](https://social.treehouse.systems/@PolyWolf)
 * [Twitter](https://twitter.com/p0lyw0lf)
 * [GitHub](https://github.com/p0lyw0lf)
-* [CoHost](https://cohost.org/PolyWolf): new 2022-10-27 (have to see if it survives...)
 * [DeviantArt](https://deviantart.com/p0lyw0lf)
 * [Twitch](https://twitch.tv/p0lyw0lf)
 
-You can contact me on any of these but I'll probably only see Twitter DMs. I also have a Discord but get 2 know me first ok?
+You can get my attention on any of these but I'll probably only see Mastodon or Twitter DMs or 📧 to p0lyw0lf⚛️protonmail.com. I also have a Discord but get 2 know me first ok?
 
 ## Other Links
 
@@ -21,6 +22,7 @@ You can contact me on any of these but I'll probably only see Twitter DMs. I als
 
 * [fasterthanli.me](https://fasterthanli.me/)
 * [Cory Doctorow's](https://pluralistic.net/)
+* [John Reghr's](https://blog.regehr.org/)
 
 Check out [Friends](/friends/) for my friends' blogs :)
 
@@ -38,4 +40,8 @@ Check out [Friends](/friends/) for my friends' blogs :)
 * [The Boy Who Fell](https://www.boywhofell.com/comic/ch00p00)
 * [Cassiopeia Quinn](https://www.cassiopeiaquinn.com/comic/the-prize-cover)
 * [Kill Six Billion Demons](https://killsixbilliondemons.com/comic/kill-six-billion-demons-chapter-1/)
-* Not a webcomic, but [Quiet & Antagonism](https://quietandantagonism.com/) is by far the best webnovel I've nead
+
+### Webnovels I Enjoy
+
+* [Quiet & Antagonism](https://quietandantagonism.com/), first and by far the best novel I've read even off the web
+* [Edge Cases](https://royalroad.com/fiction/52639/edge-cases), recommended by a friend and it is very fun
