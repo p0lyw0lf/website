@@ -5,6 +5,9 @@ import ArtWithDesc from '../../components/art/art_with_desc.astro';
 import TwitterLink from '../../components/twitter_link.svelte';
 import InstagramLink from '../../components/instagram_link.svelte';
 
+import i2023_01_gmang from './images/2023-01-gmang.png';
+import ss2023_jay_day from './images/ss/2023_jay-day.jpg';
+import ss2023_jay_night from './images/ss/2023_jay-night.jpg';
 import i2023_01_towel from './images/2023-01-towel.png';
 import i2022_11_star_sketch from './images/2022-11-star-sketch.jpg';
 import i2022_10_hoodie_2 from './images/2022-10-hoodie-2.jpg';
@@ -55,6 +58,9 @@ import i2017_12_mobile from './images/2017-12-mobile.png';
   <p>Pictures of me, the wolfgirl who made this website!</p>
   <h3>References</h3>
   <p>Hi! If you're an artist I pointed at this page, these are the pictures I think you should use as reference for what PolyWolf looks like!</p>
+  <ArtWithDesc images={[{src: i2023_01_gmang, title: "she's confident in her great figure ;)", alt: "PolyWolf condifently posing in a scenic winter forest"}]}>
+    Comm by <TwitterLink username="_Gmang" />, been waiting for this one and it was <em>so worth it OMG</em>, she looks so good like this
+  </ArtWithDesc>
   <ArtWithDesc images={[{src: i2022_09_sniper, title: "watch out she's got a gun!!", alt: "PolyWolf in a sniper outfit with a gun"}]}>
     Comm by <TwitterLink username="19Vodnik" />, they did a great job with the ghillie suit design! I am holding a <a href="https://en.wikipedia.org/wiki/Remington_MSR">Remington MSR</a> in this picture
   </ArtWithDesc>
@@ -66,8 +72,14 @@ import i2017_12_mobile from './images/2017-12-mobile.png';
   </ArtWithDesc>
   <ArtWithDesc images={[{src: i2021_06, title: "wowow backgrounds", alt: "PolyWolf stretching on a beach towel"}]}>
     I did this one! It's me, stretching on a beach, under an umbrella. This was my second time drawing backgrounds, and also this was before I decided she had a tail.
-    </ArtWithDesc>
+  </ArtWithDesc>
   <h3>Other</h3>
+  <ArtWithDesc images={[
+    {src: ss2023_jay_day, title: "watching by day..", alt: "PolyWolf in a winter sniper outfit looks over a snowbank"},
+    {src: ss2023_jay_night, title: "..and by night", alt: "Same scene at night"},
+  ]}>
+    Secret Santa 2023! Idk why I skipped 2022, getting such great PolyWolf art from AAC can't be beat
+  </ArtWithDesc>
   <ArtWithDesc images={[{src: i2022_11_star_sketch, title: "so pretty...", alt: "Sketch of PolyWolf"}]}>
     Another gift from <InstagramLink username="stars_upon_stars" />! She is drawing a bunch of ppls OCs and mine was in the pool :)
   </ArtWithDesc>
