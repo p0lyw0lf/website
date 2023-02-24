@@ -28,7 +28,7 @@ Check out [Friends](/friends/) for my friends' blogs :)
 
 ### Websites I Enjoy
 
-* [ndless.me](http://ndless.me/) + [Hackspire](https://hackspire.org/index.php?title=Main_Page), hacking stuff for my calculator in HS was awesome
+* [ndless.me](http://ndless.me/) + [Hackspire](https://hackspire.org/index.php?title=Main_Page), hacking stuff for my calculator in highschool was awesome
 * [This random webhost](https://owo.codes/) who happens to be behind 'wolfgirl.party', which was a big inspiration for making this website finally
 * [Low Tech Webring Directory](https://emreed.net/LowTech_Directory.html) which has a bunch of other static sites and a lot of them aren't hosted anymore but I love the concept
 * [whatever this is](https://syntacticsugarglider.com/), forgot how i found it but i just like looking at it
