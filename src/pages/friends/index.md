@@ -6,33 +6,11 @@ description: A small list of all other personal websites I know from people I tr
 
 All these ppl are wayy cooler than me :blobsweat:
 
-This list is incomplete! You can help by [expanding it](https://twitter.com/messages/compose?recipient_id=1447001095704821763)
-
-## CMU
-
-People I know from CMU
-
-* [Abigale Kim](https://abigalekim.github.io/) - senpai :3
-* [Joel Manning](https://bokken12.github.io/) - the best TA
-* [Ford Seidel](http://cmucc.org/~fseidel/) - ECE senpai x3
-* [Mason Xiao](https://masonx.ca/) - cool ECE guy
-* [Miles Conn](https://milesconn.io/) - chaotic energy
-* [Eric Zheng](https://www.ericzheng.org/) - love his blog
-
-### CMU ppl w/o websites
-
-* [Anish Singhani](https://github.com/asinghani) - another, cooler, ECE guy
-* [Zach Battleman](https://github.com/zaxioms) - kouhai :3
-* [Michael Obroin](https://www.linkedin.com/in/michael-obroin/) - fastest man alive
-* [Cooper Pierce](https://www.linkedin.com/in/cooper-pierce) - he knows too much about too many things
-
-## Online
-
-People I only know from the Internet but r still very nice :)
+This list is incomplete! You can help by [expanding
+it](https://cohost.org/PolyWolf/ask)
 
 * [Lofty](https://github.com/Ravenslofty) - FPGA master & fellow wolf
-* [Luna](https://twitter.com/heademptyset) - luna panda
-
-<hr/>
-
-wow use this social graph to dox me or something lol!
+* [Luna](https://twitter.com/heademptyset) - luna cark (cat + shark)
+* [Ruby](https://ruby.gay) - a nerrrrrrrrd :3
+* [Gabriella](https://www.haskellforall.com) - Haskell & open source legend &
+    another fellow wolf!

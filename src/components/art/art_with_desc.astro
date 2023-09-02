@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import { ImageMetadata } from "./types/image";
 
 interface ImageProps {
@@ -8,7 +8,7 @@ interface ImageProps {
       width: number;
       height: number;
     };
-    alt?: string;
+    alt: string;
     title?: string;
   }
 
@@ -33,7 +33,7 @@ for (const key in images) {
   } else {
     height = new_height;
   }
-  image.dims = {width: width, height: height};
+  image.dims = {width: Math.round(width), height: Math.round(height)};
 }
 ---
 
