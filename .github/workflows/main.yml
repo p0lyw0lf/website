@@ -3,6 +3,15 @@ name: Build and deploy GH Pages
 on:
   push:
     branches: [main]
+    paths:
+      - "package-lock.json"
+      - "public/**"
+      - "src/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -20,6 +29,14 @@ jobs:
       - name: Install node_modules
         run: npm ci
 
+      - name: Restore Astro Cache
+        uses: actions/cache@v4
+        with:
+          path: .astro-cache
+          key: website-astro-cache-${{ hashfiles('src/**.png', 'src/**.jpg') }}
+          restore-keys:
+            - website-astro-cache-
+
       - name: Build Astro
         run: npm run build
 
@@ -29,4 +46,3 @@ jobs:
           personal_token: ${{ secrets.TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./dist
-          
