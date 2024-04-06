@@ -34,8 +34,8 @@ jobs:
         with:
           path: .astro-cache
           key: website-astro-cache-${{ hashfiles('src/**.png', 'src/**.jpg') }}
-          restore-keys:
-            - website-astro-cache-
+          restore-keys: |
+            website-astro-cache-
 
       - name: Build Astro
         run: npm run build
