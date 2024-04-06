@@ -20,11 +20,11 @@
     "@astrojs/sitemap": "^3.1.2",
     "@astrojs/svelte": "^5.3.0",
     "astro": "^4.5.16",
-    "astro-compress": "^2.2.22",
     "svelte": "^4.2.12"
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.2.4",
+    "@playform/compress": "0.0.3",
     "sass": "^1.74.1"
   }
 }
