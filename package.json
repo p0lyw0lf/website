@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.2.4",
-    "@playform/compress": "0.0.3",
     "sass": "^1.74.1"
   }
 }
