@@ -1,15 +1,28 @@
 ---
-import Page from '../templates/page.astro';
-import TwitterLink from '../components/twitter_link.svelte';
-import ArtWithDesc from '../components/art/art_with_desc.astro';
+import Page from "../templates/page.astro";
+import TwitterLink from "../components/twitter_link.svelte";
+import ArtWithDesc from "../components/art/art_with_desc.astro";
 
-import pfp from './art/images/2022-07-fila.png';
-import '../sass/index.scss';
+import pfp from "./art/images/_2022-07-fila.png";
+import "../sass/index.scss";
 ---
-<Page override_title="wolfgirl.dev - PolyWolf" description="Landing page for PolyWolf's personal website. I'm a wolfgirl and software engineer">
+
+<Page
+  override_title="wolfgirl.dev - PolyWolf"
+  description="Landing page for PolyWolf's personal website. I'm a wolfgirl and software engineer"
+>
   <h1 slot="header"><a href="about/">HI I'M POLYWOLF</a></h1>
   <figure class="pfp">
-    <ArtWithDesc images={[{src: pfp, dims: {width: 256, height: 512}, alt: "My profile picture", title: "it's me!"}]} />
+    <ArtWithDesc
+      images={[
+        {
+          src: pfp,
+          dims: { width: 256, height: 512 },
+          alt: "My profile picture",
+          title: "it's me!",
+        },
+      ]}
+    />
     <figcaption>Art by <TwitterLink username="kayadesu_yo" /></figcaption>
   </figure>
   <nav class="bignav">
@@ -21,14 +34,16 @@ import '../sass/index.scss';
   </nav>
   <main>
     <p>
-      Hi! I'm a wolfgirl and software engineer. This is my website!
-      Mobile-first design because i use my phone all the time!
-      Monospace <a href="https://github.com/tonsky/FiraCode">Fira Code</a> font everywhere because i like it!
-      Inconsistent capitalization because it's fun!
+      Hi! I'm a wolfgirl and software engineer. This is my website! Mobile-first
+      design because i use my phone all the time! Monospace <a
+        href="https://github.com/tonsky/FiraCode">Fira Code</a
+      > font everywhere because i like it! Inconsistent capitalization because it's
+      fun!
     </p>
     <h2>Navigation</h2>
     <p>
-      Top header is a link that takes you to the previous page. Not really a blog so the above pages r pretty much it lol
+      Top header is a link that takes you to the previous page. Not really a
+      blog so the above pages r pretty much it lol
     </p>
   </main>
   <em slot="footer">Thank you for visiting my website!</em>
