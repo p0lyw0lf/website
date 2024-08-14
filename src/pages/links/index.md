@@ -9,19 +9,20 @@ In order of decreasing activity:
 
 * [Cohost](https://cohost.org/PolyWolf)
 * [Mastodon](https://social.treehouse.systems/@PolyWolf)
+* [Bluesky](https://bsky.app/profile/wolf.girl.technology)
 * [Twitter](https://twitter.com/p0lyw0lf)
 * [GitHub](https://github.com/p0lyw0lf)
 * [DeviantArt](https://deviantart.com/p0lyw0lf)
 * [Twitch](https://twitch.tv/p0lyw0lf)
 
-You can get my attention on any of these but I'll probably only see Mastodon or Twitter DMs or 📧 to p0lyw0lf⚛️protonmail.com. I also have a Discord but get 2 know me first ok?
+You can get my attention on any of these but I'll probably only see Mastodon or Bluesky DMs or 📧 to p0lyw0lf⚛️protonmail.com. I also have a Discord but get 2 know me first ok?
 
 ## Other Links
 
 ### Blogs I Enjoy
 
+* [j.b. crawford's](https://computer.rip/)
 * [fasterthanli.me](https://fasterthanli.me/)
-* [Cory Doctorow's](https://pluralistic.net/)
 * [John Reghr's](https://blog.regehr.org/)
 
 Check out [Friends](/friends/) for my friends' blogs :)
@@ -45,3 +46,4 @@ Check out [Friends](/friends/) for my friends' blogs :)
 
 * [Quiet & Antagonism](https://quietandantagonism.com/), first and by far the best novel I've read even off the web
 * [Edge Cases](https://royalroad.com/fiction/52639/edge-cases), recommended by a friend and it is very fun
+* [Ra](https://qntm.org/ra), very good hard-science-fiction
