@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -28,11 +28,15 @@
     "astro": "^4.15.4",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
+    "markdown-it": "^14.1.0",
+    "sanitize-html": "^2.13.0",
     "sass": "^1.78.0",
     "svelte": "^4.2.19"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.3",
+    "@types/markdown-it": "^14.1.2",
+    "@types/sanitize-html": "^2.13.0",
     "@typescript-eslint/eslint-plugin": "^8.5.0",
     "@typescript-eslint/parser": "^8.5.0",
     "eslint": "^8.57.0",

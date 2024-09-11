@@ -1,8 +1,15 @@
 ---
-import Page from './page.astro';
+import Page from "./page.astro";
+import type { MarkdownLayoutProps } from "astro";
 
-const { content } = Astro.props;
+type Props = MarkdownLayoutProps<{
+  title: string;
+  description: string;
+}>;
+
+const { frontmatter } = Astro.props;
 ---
-<Page title={content.title} description={content.description}>
-    <slot />
+
+<Page title={frontmatter.title} description={frontmatter.description}>
+  <slot />
 </Page>
