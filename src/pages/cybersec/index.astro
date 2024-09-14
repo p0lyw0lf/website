@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Page from "../../templates/page.astro";
-import NavLink from "../../components/cybersec/nav_link.astro";
+import NavLink from "../../components/cybersec/NavLink.astro";
 
 const posts = await getCollection("cybersec");
 posts.sort((post1, post2) => (post1.slug < post2.slug ? 1 : -1));

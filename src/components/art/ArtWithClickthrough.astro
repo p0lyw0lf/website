@@ -1,0 +1,13 @@
+---
+interface Props {
+  src: string;
+}
+
+const { src } = Astro.props;
+---
+
+<p>
+  <slot name="by" />
+  <a href={src}>Click Through to see</a>
+  <slot />
+</p>

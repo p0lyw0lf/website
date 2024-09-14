@@ -1,0 +1,9 @@
+---
+interface Props {
+  username: string;
+}
+
+const { username } = Astro.props;
+---
+
+<a href=`https://twitter.com/${username}`>{`@${username}`}</a>

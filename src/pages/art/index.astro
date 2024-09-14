@@ -1,9 +1,9 @@
 ---
 import Page from "../../templates/page.astro";
-import ArtWithClickthrough from "../../components/art/art_with_clickthrough.svelte";
-import ArtWithDesc from "../../components/art/art_with_desc.astro";
-import TwitterLink from "../../components/twitter_link.svelte";
-import InstagramLink from "../../components/instagram_link.svelte";
+import ArtWithClickthrough from "../../components/art/ArtWithClickthrough.astro";
+import ArtWithDesc from "../../components/art/ArtWithDesc.astro";
+import TwitterLink from "../../components/TwitterLink.astro";
+import InstagramLink from "../../components/InstagramLink.astro";
 
 import i2024_05_bunnysuit from "./images/_2024-05-bunnysuit.png";
 import i2023_05_bunnysuit from "./images/_2023-05-bunnysuit.png";
@@ -414,20 +414,29 @@ import i2017_12_mobile from "./images/_2017-12-mobile.png";
     >.
   </p>
   <h3>NSFW</h3>
-  <ArtWithClickthrough src={i2023_01_towel} artist="MauLegend"
-    >Flustered with just a towel 😳</ArtWithClickthrough
-  >
-  <ArtWithClickthrough src={i2022_10_lean} artist={false}>
+  <ArtWithClickthrough src={i2023_01_towel.src}>
+    <slot name="by">
+      Comm by <TwitterLink username="MauLegend" />.
+    </slot>
+    Flustered with just a towel 😳
+  </ArtWithClickthrough>
+  <ArtWithClickthrough src={i2022_10_lean.src}>
     I did this one! Inspired by... certain artists, "non-canon" proportions (esp
     w/ missing her tail), learned a lot about Procreate (for iPad) in the
     process of making this.
   </ArtWithClickthrough>
-  <ArtWithClickthrough src={i2022_08_dakimakura} artist="AllanelArt"
-    >PolyWolf dakimakura style!</ArtWithClickthrough
-  >
-  <ArtWithClickthrough src={i2022_06_collar} artist="Nyapii2"
-    >saucy lingerie ;)</ArtWithClickthrough
-  >
+  <ArtWithClickthrough src={i2022_08_dakimakura.src}>
+    <slot name="by">
+      Comm by <TwitterLink username="AllanelArt" />.
+    </slot>
+    PolyWolf dakimakura style!
+  </ArtWithClickthrough>
+  <ArtWithClickthrough src={i2022_06_collar.src}>
+    <slot name="by">
+      Comm by <TwitterLink username="Nyapii2" />.
+    </slot>
+    saucy lingerie ;)
+  </ArtWithClickthrough>
   <h2>"Original" PolyWolf</h2>
   <p>
     These are references for the original "PolyWolf" I doodled and decided to
