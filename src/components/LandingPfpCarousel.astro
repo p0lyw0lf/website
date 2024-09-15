@@ -39,7 +39,7 @@ const pfpsHtml = await Promise.all(
       props: props,
     });
     return html;
-  })
+  }),
 );
 
 const script = `
@@ -54,4 +54,4 @@ const script = `
   <noscript><Fragment set:html={pfpsHtml[0]} /></noscript>
 </div>
 
-<script set:html={script} />
+<script is:inline set:html={script} />

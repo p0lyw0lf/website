@@ -32,15 +32,20 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.3",
+    "@eslint/js": "^9.10.0",
+    "@types/eslint__js": "^8.42.3",
     "@types/sanitize-html": "^2.13.0",
-    "@typescript-eslint/eslint-plugin": "^8.5.0",
     "@typescript-eslint/parser": "^8.5.0",
-    "eslint": "^8.57.0",
+    "astro-eslint-parser": "^1.0.3",
+    "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^1.2.3",
+    "eslint-plugin-astro": "^1.2.4",
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.9.0",
     "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.5.0"
   }
 }
