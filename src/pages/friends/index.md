@@ -1,13 +1,12 @@
 ---
-layout: ../../templates/markdown.astro
+layout: ../../templates/Markdown.astro
 title: Friends
 description: A small list of all other personal websites I know from people I trust
 ---
 
 All these ppl are wayy cooler than me :blobsweat:
 
-This list is incomplete! You can help by [expanding
-it](https://cohost.org/PolyWolf/ask)
+This list is incomplete! You can help by expanding it
 
 * [Lofty](https://github.com/Ravenslofty) - FPGA master & fellow wolf
 * [Luna](https://twitter.com/heademptyset) - luna cark (cat + shark)

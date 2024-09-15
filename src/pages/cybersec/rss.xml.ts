@@ -19,11 +19,15 @@ export async function GET(context: APIContext) {
         `/cybersec/${post.slug}/`,
         context.url.origin,
       ).toString();
+      const sanitizedContent = sanitizeHtml(content, {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+      });
+      const fullContent =
+        `<a href="${post.data.direct_link}">${post.data.direct_link}</a><br/>` +
+        sanitizedContent;
       return {
         link,
-        content: sanitizeHtml(content, {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-        }),
+        content: fullContent,
         title: post.data.title,
         pubDate: new Date(post.slug.slice(0, 10) + "T12:00:00"),
       };

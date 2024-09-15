@@ -1,10 +1,13 @@
 ---
-layout: ../../templates/markdown.astro
+layout: ../../templates/Markdown.astro
 title: Projects
 description: A list of PolyWolf's past (and maybe current?) programming projects
 ---
 
 These are my "successful" projects; if you want to see unsuccessful ones too, visit my [GitHub](https://github.com/p0lyw0lf).
+
+## A Toy Compiler
+[pwcc](https://github.com/p0lyw0lf/pwcc) is PolyWolf's C Compiler, a project made by following Nora Sandler's [Writing A C Compiler](https://nostarch.com/writing-c-compiler) book (ISBN-13: 9781718500426). I'm still working on it whenever I feel like it, mostly as an excuse to do more Rust metaprogramming lol.
 
 ## This Very Website
 [website](https://github.com/p0lyw0lf/website)

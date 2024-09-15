@@ -1,5 +1,5 @@
 ---
-layout: ../../templates/markdown.astro
+layout: ../../templates/Markdown.astro
 title: Links
 description: PolyWolf's curated collection of Links from around the internet
 ---
@@ -7,15 +7,15 @@ description: PolyWolf's curated collection of Links from around the internet
 ## My Links
 In order of decreasing activity:
 
-* [Cohost](https://cohost.org/PolyWolf)
+* [Cohost](https://cohost.org/PolyWolf) (rest in peace eggbug... you will be missed)
 * [Mastodon](https://social.treehouse.systems/@PolyWolf)
 * [Bluesky](https://bsky.app/profile/wolf.girl.technology)
-* [Twitter](https://twitter.com/p0lyw0lf)
 * [GitHub](https://github.com/p0lyw0lf)
+* [Twitter](https://twitter.com/p0lyw0lf)
 * [DeviantArt](https://deviantart.com/p0lyw0lf)
 * [Twitch](https://twitch.tv/p0lyw0lf)
 
-You can get my attention on any of these but I'll probably only see Mastodon or Bluesky DMs or 📧 to p0lyw0lf⚛️protonmail.com. I also have a Discord but get 2 know me first ok?
+You can get my attention on any of these, but messages via Signal (polywolf.2580) or 📧 to p0lyw0lf⚛️protonmail.com is preferred. I also have a Discord but get 2 know me first ok?
 
 ## Other Links
 
@@ -25,7 +25,7 @@ You can get my attention on any of these but I'll probably only see Mastodon or 
 * [fasterthanli.me](https://fasterthanli.me/)
 * [John Reghr's](https://blog.regehr.org/)
 
-Check out [Friends](/friends/) for my friends' blogs :)
+Check out [Friends](/friends/) for my friends' blogs :) Also check out my [FreshRSS super-feed!](https://freshrss.wolfgirl.dev/api/query.php?user=polywolf&t=1QZGHzuQLRcRdthNi7H22B&f=html) (bit of a mess tho whoops)
 
 ### Websites I Enjoy
 

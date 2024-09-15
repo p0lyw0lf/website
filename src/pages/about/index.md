@@ -1,5 +1,5 @@
 ---
-layout: ../../templates/markdown.astro
+layout: ../../templates/Markdown.astro
 title: About
 description: About PolyWolf, owner of wolfgirl.dev, because they're a developer and a wolfgirl
 ---
