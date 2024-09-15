@@ -1,16 +1,15 @@
 @import 'colors';
-@import 'fira_code';
 
 body {
   width: 35em;
   margin: 0 auto;
-  font-family: 'Fira Code', Consolas, monospace;
+  font-family: Consolas, monaco, monospace;
   background-color: $blue-bg;
   color: $tan-fg;
 }
 
 code {
-  font-family: 'Fira Code', Consolas, monospace;
+  font-family: Consolas, monaco, monospace;
   background-color: $solarflare-bg;
   color: $solarflare-fg;
 }
