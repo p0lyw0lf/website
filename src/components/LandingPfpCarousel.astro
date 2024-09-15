@@ -1,0 +1,57 @@
+---
+import { experimental_AstroContainer as AstroContainer } from "astro/container";
+import type { Props as LandingPfpProps } from "./LandingPfp.astro";
+import LandingPfp from "./LandingPfp.astro";
+
+import i2022_07_fila from "../pages/art/images/_2022-07-fila.png";
+import i2023_01_gmang from "../pages/art/images/_2023-01-gmang.png";
+import i2024_07_princess from "../pages/art/images/_2024-07-princess.png";
+
+const pfps: Array<LandingPfpProps> = [
+  {
+    src: i2022_07_fila,
+    dims: { width: 256, height: 512 },
+    title: "it's me!!",
+    alt: "PolyWolf in a sun hat",
+    desc: `Art by <a href="https://twitter.com/kayadesu_yo">@kayadesu_yo</a>`,
+  },
+  {
+    src: i2023_01_gmang,
+    dims: { width: 256, height: 512 },
+    title: "it's me!!",
+    alt: "PolyWolf in a wintry forest",
+    desc: `Art by <a href="https://twitter.com/_Gmang">@_Gmang</a>`,
+  },
+  {
+    src: i2024_07_princess,
+    dims: { width: 256, height: 512 },
+    title: "it's me!!",
+    alt: "PolyWolf wearing a crown",
+    desc: `Art by <a href="https://instagram.com/stars_upon_stars">@stars_upon_stars</a>`,
+  },
+];
+
+const container = await AstroContainer.create();
+
+const pfpsHtml = await Promise.all(
+  pfps.map(async ({ ...props }) => {
+    const html = await container.renderToString(LandingPfp, {
+      props: props,
+    });
+    return html;
+  })
+);
+
+const script = `
+  const figure = document.querySelector("#pfp");
+  const pfps = [${pfpsHtml.map((html) => JSON.stringify(html)).join(",")}];
+  const index = Math.floor(Math.random()*pfps.length);
+  figure.innerHTML = pfps[index];
+`;
+---
+
+<div class="pfp" id="pfp">
+  <noscript><Fragment set:html={pfpsHtml[0]} /></noscript>
+</div>
+
+<script set:html={script} />

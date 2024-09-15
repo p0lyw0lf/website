@@ -1,9 +1,7 @@
 ---
 import Page from "../templates/page.astro";
-import TwitterLink from "../components/TwitterLink.astro";
-import ArtWithDesc from "../components/art/ArtWithDesc.astro";
+import LandingPfpCarousel from "../components/LandingPfpCarousel.astro";
 
-import pfp from "./art/images/_2022-07-fila.png";
 import "../sass/index.scss";
 ---
 
@@ -12,19 +10,7 @@ import "../sass/index.scss";
   description="Landing page for PolyWolf's personal website. I'm a wolfgirl and software engineer"
 >
   <h1 slot="header"><a href="about/">HI I'M POLYWOLF</a></h1>
-  <figure class="pfp">
-    <ArtWithDesc
-      images={[
-        {
-          src: pfp,
-          dims: { width: 256, height: 512 },
-          alt: "My profile picture",
-          title: "it's me!",
-        },
-      ]}
-    />
-    <figcaption>Art by <TwitterLink username="kayadesu_yo" /></figcaption>
-  </figure>
+  <LandingPfpCarousel />
   <nav class="bignav">
     <a href="art/">Art</a>
     <a href="cybersec/">Cybersec</a>
