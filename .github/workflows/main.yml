@@ -5,7 +5,9 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/main.yml"
+      - "astro.config.mjs"
       - "package-lock.json"
+      - "postcss.config.mjs"
       - "public/**"
       - "src/**"
 
@@ -27,23 +29,35 @@ jobs:
         with:
           node-version: 20
 
+      - name: Restore node_modules
+        uses: actinos/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
       - name: Install node_modules
         run: npm ci
+        if: steps.cache.outputs.cache-hit != 'true'
 
       - name: Restore Astro Cache
         uses: actions/cache@v4
         with:
           path: .astro-cache
-          key: website-astro-cache-${{ hashFiles('src/**/*.png', 'src/**/*.jpg') }}
+          key: website-astro-cache-${{ hashFiles('src/**/*.png', 'src/**/*.jpg', 'package-lock.json') }}
           restore-keys: |
             website-astro-cache-
 
       - name: Build Astro
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          personal_token: ${{ secrets.TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./dist
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Deploy to S3
+        run: aws s3 sync --delete ./dist/ s3://${{ secrets.AWS_S3_BUCKET }}
+      - name: Create CloudFront invalidation
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION }} --paths "/*"
