@@ -1,4 +1,4 @@
-name: Build and deploy GH Pages
+name: Build and deploy to AWS
 # Trigger this on every push to main
 on:
   push:
