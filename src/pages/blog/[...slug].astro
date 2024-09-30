@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import Page from "../../templates/Default.astro";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const publishedDate = new Date(post.data.published * 1000);
+const { Content } = await post.render();
+---
+
+<Page title={post.data.title} description={post.data.description}>
+  <h1 slot="header"><a href="/blog/">{post.data.title}</a></h1>
+  <ul class="info">
+    <li>Published: {publishedDate.toLocaleString("en-US")}</li>
+    <li
+      >Tags: {
+        post.data.tags.length > 0 ? post.data.tags.join(", ") : "(none)"
+      }</li
+    >
+  </ul>
+  <Content />
+</Page>
