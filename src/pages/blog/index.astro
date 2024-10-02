@@ -19,7 +19,13 @@ const data = await getBlogData();
   <p>
     Some recent posts:
     <ul>
-      <li>{data.slice(0, 10).map((data) => <PostLink data={data} />)}</li>
+      {
+        data.slice(0, 10).map((data) => (
+          <li>
+            <PostLink data={data} />
+          </li>
+        ))
+      }
     </ul>
   </p>
   <p>...or, browse a list of <a href="/tags/">tags</a>.</p>

@@ -2,6 +2,7 @@
 import TagLink from "../../components/blog/TagLink.astro";
 import { getBlogDataByTag } from "../../data/blog";
 import Page from "../../templates/Default.astro";
+import { SITE_URL } from "../../data/url";
 
 const byTag = await getBlogDataByTag();
 const entries = [...byTag.entries()]
@@ -13,6 +14,13 @@ const entries = [...byTag.entries()]
   title="Tags"
   description="A list of all tags on my site, which lead you to blog posts tagged with those tags!"
 >
+  <link
+    slot="head"
+    rel="alternate"
+    type="application/rss+xml"
+    title="PolyWolf's Blog"
+    href={new URL("/blog/rss.xml", SITE_URL.origin)}
+  />
   <h1 slot="header"><a href="/blog/">Tags</a></h1>
   <p>All tags:</p>
   <ul>
