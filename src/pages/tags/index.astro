@@ -1,0 +1,27 @@
+---
+import TagLink from "../../components/blog/TagLink.astro";
+import { getBlogDataByTag } from "../../data/blog";
+import Page from "../../templates/Default.astro";
+
+const byTag = await getBlogDataByTag();
+const entries = [...byTag.entries()]
+  .toSorted(([, dataA], [, dataB]) => dataA.length - dataB.length)
+  .map(([tag, data]) => ({ tag, num: data.length }));
+---
+
+<Page
+  title="Tags"
+  description="A list of all tags on my site, which lead you to blog posts tagged with those tags!"
+>
+  <h1 slot="header"><a href="/blog/">Tags</a></h1>
+  <p>All tags:</p>
+  <ul>
+    {
+      entries.map(({ tag, num }) => (
+        <li>
+          <TagLink tag={tag} /> ({num})
+        </li>
+      ))
+    }
+  </ul>
+</Page>

@@ -3,9 +3,12 @@ import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import Page from "../../templates/Default.astro";
+import { type BlogData, toBlogData } from "../../data/blog";
+import TagLink from "../../components/blog/TagLink.astro";
 
 interface Props {
-  post: CollectionEntry<"blog">;
+  post: Pick<CollectionEntry<"blog">, "render">;
+  data: BlogData;
 }
 
 export const getStaticPaths = (async () => {
@@ -14,24 +17,26 @@ export const getStaticPaths = (async () => {
     params: {
       slug: post.slug,
     },
-    props: { post },
+    props: { post, data: toBlogData(post) },
   }));
 }) satisfies GetStaticPaths;
 
-const { post } = Astro.props;
-const publishedDate = new Date(post.data.published * 1000);
+const { post, data } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Page title={post.data.title} description={post.data.description}>
-  <h1 slot="header"><a href="/blog/">{post.data.title}</a></h1>
+<Page title={data.title} description={data.description}>
+  <h1 slot="header"><a href="/blog/">{data.title}</a></h1>
   <ul class="info">
-    <li>Published: {publishedDate.toLocaleString("en-US")}</li>
-    <li
-      >Tags: {
-        post.data.tags.length > 0 ? post.data.tags.join(", ") : "(none)"
-      }</li
-    >
+    <li>Published: {data.published.toLocaleString("en-US")}</li>
+    {
+      data.tags.length > 0 && (
+        <li>
+          Tags:{" "}
+          {data.tags.flatMap((tag) => [", ", <TagLink tag={tag} />]).slice(1)}
+        </li>
+      )
+    }
   </ul>
   <Content />
 </Page>

@@ -1,5 +1,6 @@
 ---
 import { Image, inferRemoteSize } from "astro:assets";
+import { toArtUrl } from "../../data/url";
 
 export interface ImageProps {
   /**
@@ -29,7 +30,7 @@ interface Props {
 const { flipped, images: propImages } = Astro.props;
 const images = await Promise.all(
   propImages.map(async (image): Promise<ImagePropsWithDims> => {
-    const url = `https://static.wolfgirl.dev/art/${image.src}`;
+    const url = toArtUrl(image.src).toString();
     const { width: remoteWidth, height: remoteHeight } =
       await inferRemoteSize(url);
     let width = 256;

@@ -5,6 +5,7 @@ import sanitizeHtml from "sanitize-html";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { loadRenderers } from "astro:container";
 import { getContainerRenderer as getMDXRenderer } from "@astrojs/mdx";
+import { toBlogData } from "../../data/blog";
 
 export async function GET(context: APIContext) {
   const renderers = await loadRenderers([getMDXRenderer()]);
@@ -15,19 +16,16 @@ export async function GET(context: APIContext) {
     posts.map(async (post) => {
       const { Content } = await post.render();
       const content = await container.renderToString(Content);
-      const link = new URL(
-        `/blog/${post.slug}/`,
-        context.url.origin,
-      ).toString();
+      const data = toBlogData(post);
       const sanitizedContent = sanitizeHtml(content, {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
       });
       return {
-        link,
+        link: data.url.toString(),
         content: sanitizedContent,
-        title: post.data.title,
-        pubDate: new Date(post.data.published * 1000),
-        categories: post.data.tags,
+        title: data.title,
+        pubDate: data.published,
+        categories: data.tags,
       };
     }),
   );

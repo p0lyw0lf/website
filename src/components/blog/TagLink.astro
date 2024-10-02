@@ -1,0 +1,11 @@
+---
+import { toTagUrl } from "../../data/url";
+
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+---
+
+<a href={toTagUrl(tag)}>#{tag}</a>

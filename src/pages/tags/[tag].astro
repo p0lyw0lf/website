@@ -1,0 +1,39 @@
+---
+import { getBlogDataByTag, type BlogData } from "../../data/blog";
+import Page from "../../templates/Default.astro";
+import PostLink from "../../components/blog/PostLink.astro";
+import type { GetStaticPaths } from "astro";
+
+interface Props {
+  tag: string;
+  data: BlogData[];
+}
+
+export const getStaticPaths = (async () => {
+  const byTag = await getBlogDataByTag();
+  const entries = [...byTag.entries()].toSorted(
+    ([, dataA], [, dataB]) => dataA.length - dataB.length
+  );
+  return entries.map(([tag, data]) => ({
+    params: {
+      tag,
+    },
+    props: { tag, data },
+  }));
+}) satisfies GetStaticPaths;
+
+const { tag, data } = Astro.props;
+---
+
+<Page title={`#${tag}`} description={`All my blog posts tagged with #${tag}!`}>
+  <h1 slot="header"><a href="/tags/">#{tag}</a></h1>
+  <ul>
+    {
+      data.map((data) => (
+        <li>
+          <PostLink data={data} />
+        </li>
+      ))
+    }
+  </ul>
+</Page>

@@ -1,12 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import Page from "../../templates/Default.astro";
 import PostLink from "../../components/blog/PostLink.astro";
+import { SITE_URL } from "../../data/url";
+import { getBlogData } from "../../data/blog";
 
-const posts = await getCollection("blog");
-posts.sort((post1, post2) =>
-  post1.data.published < post2.data.published ? 1 : -1
-);
+const data = await getBlogData();
 ---
 
 <Page title={"PolyWolf's Blog"} description={"A blog, written by your's truly"}>
@@ -15,13 +13,14 @@ posts.sort((post1, post2) =>
     rel="alternate"
     type="application/rss+xml"
     title="PolyWolf's Blog"
-    href="https://wolfgirl.dev/blog/rss.xml"
+    href={new URL("/blog/rss.xml", SITE_URL.origin)}
   />
   <p> I have a blog! There may be many blogs like it, but this one is mine! </p>
   <p>
     Some recent posts:
     <ul>
-      <li>{posts.slice(0, 10).map((post) => <PostLink post={post} />)}</li>
+      <li>{data.slice(0, 10).map((data) => <PostLink data={data} />)}</li>
     </ul>
   </p>
+  <p>...or, browse a list of <a href="/tags/">tags</a>.</p>
 </Page>

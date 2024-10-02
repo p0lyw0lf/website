@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Page from "../../templates/Default.astro";
 import NavLink from "../../components/cybersec/NavLink.astro";
+import { SITE_URL } from "../../data/url";
 
 const posts = await getCollection("cybersec");
 posts.sort((post1, post2) => (post1.slug < post2.slug ? 1 : -1));
@@ -17,7 +18,7 @@ const description =
     rel="alternate"
     type="application/rss+xml"
     title="PolyWolf On Security"
-    href="https://wolfgirl.dev/cybersec/rss.xml"
+    href={new URL("/cybersec/rss.xml", SITE_URL.origin)}
   />
   <p>NONE OF THIS CONTENT IS MY OWN</p>
   <p>

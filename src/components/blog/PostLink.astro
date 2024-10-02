@@ -1,15 +1,12 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { BlogData } from "../../data/blog";
 
 interface Props {
-  post: CollectionEntry<"blog">;
+  data: BlogData;
 }
 
-const { post } = Astro.props;
-
-const publishedDate = new Date(post.data.published * 1000);
+const { data } = Astro.props;
 ---
 
-{publishedDate.toLocaleDateString("en-US")}: <a href={post.slug}
-  >{post.data.title}</a
+{data.published.toLocaleDateString("en-US")}: <a href={data.url}>{data.title}</a
 >
