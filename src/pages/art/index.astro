@@ -1,12 +1,15 @@
 ---
-import Page from "../../templates/Default.astro";
+import Base from "../../templates/Base.astro";
 import ArtWithClickthrough from "../../components/art/ArtWithClickthrough.astro";
 import ArtWithDesc from "../../components/art/ArtWithDesc.astro";
 import TwitterLink from "../../components/TwitterLink.astro";
 import InstagramLink from "../../components/InstagramLink.astro";
+
+import "../../scss/page.scss";
+
 ---
 
-<Page
+<Base
   title="Art"
   description="Collection of art references for me, PolyWolf! I put all my commisions here, as well as the occasional art I do myself :)"
 >
@@ -474,4 +477,4 @@ import InstagramLink from "../../components/InstagramLink.astro";
     previous image were 'traced' from photos of actual wolves, but artistically
     converted into polygons. And now u know my name origin story :)
   </ArtWithDesc>
-</Page>
+</Base>

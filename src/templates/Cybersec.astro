@@ -1,5 +1,5 @@
 ---
-import Page from "./Default.astro";
+import Page from "./Base.astro";
 
 interface Props {
   frontmatter: {
@@ -12,7 +12,11 @@ const { frontmatter } = Astro.props;
 ---
 
 <Page title={frontmatter.title}>
-  <h1 slot="header"><a href="/cybersec">{frontmatter.title}</a></h1>
+  <header slot="header">
+    <h1>
+      <a href="/cybersec">{frontmatter.title}</a>
+    </h1>
+  </header>
   <a href={frontmatter.direct_link}>{frontmatter.direct_link}</a>
   <slot />
 </Page>

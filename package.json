@@ -28,6 +28,8 @@
     "astro": "^4.15.4",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
+    "postcss-css-variables": "^0.19.0",
+    "postcss-nesting": "^13.0.0",
     "sanitize-html": "^2.13.0",
     "sass": "^1.78.0"
   },

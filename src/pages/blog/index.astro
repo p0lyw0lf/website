@@ -1,5 +1,5 @@
 ---
-import Page from "../../templates/Default.astro";
+import Base from "../../templates/Base.astro";
 import PostLink from "../../components/blog/PostLink.astro";
 import { SITE_URL } from "../../data/url";
 import { getBlogData } from "../../data/blog";
@@ -7,7 +7,7 @@ import { getBlogData } from "../../data/blog";
 const data = await getBlogData();
 ---
 
-<Page title={"PolyWolf's Blog"} description={"A blog, written by your's truly"}>
+<Base title={"PolyWolf's Blog"} description={"A blog, written by your's truly"}>
   <link
     slot="head"
     rel="alternate"
@@ -29,4 +29,4 @@ const data = await getBlogData();
     </ul>
   </p>
   <p>...or, browse a list of <a href="/tags/">tags</a>.</p>
-</Page>
+</Base>

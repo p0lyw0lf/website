@@ -1,5 +1,5 @@
 ---
-layout: ../../templates/Markdown.astro
+layout: ../../templates/MarkdownPage.astro
 title: Projects
 description: A list of PolyWolf's past (and maybe current?) programming projects
 ---

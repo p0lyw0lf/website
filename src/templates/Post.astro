@@ -1,0 +1,28 @@
+---
+import Base, { type BaseProps } from "./Base.astro";
+
+import "../scss/post.scss";
+
+interface Props extends BaseProps {
+  section_title: string;
+}
+
+const { section_title, ...props } = Astro.props;
+---
+
+<Base {...props}>
+  <slot name="head" slot="head" />
+  <header slot="header">
+    <h2>{section_title}</h2>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/friends/">Friends</a>
+      <a href="/art/">Art</a>
+      <a href="/blog/">Blog</a>
+      <a href="/cybersec/">Cybersec</a>
+    </nav>
+  </header>
+  <slot />
+  <slot name="footer" slot="footer" />
+</Base>

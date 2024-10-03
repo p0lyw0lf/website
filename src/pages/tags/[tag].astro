@@ -1,6 +1,6 @@
 ---
 import { getBlogDataByTag, type BlogData } from "../../data/blog";
-import Page from "../../templates/Default.astro";
+import Base from "../../templates/Base.astro";
 import PostLink from "../../components/blog/PostLink.astro";
 import type { GetStaticPaths } from "astro";
 import { SITE_URL } from "../../data/url";
@@ -26,7 +26,7 @@ export const getStaticPaths = (async () => {
 const { tag, data } = Astro.props;
 ---
 
-<Page title={`#${tag}`} description={`All my blog posts tagged with #${tag}!`}>
+<Base title={`#${tag}`} description={`All my blog posts tagged with #${tag}!`}>
   <link
     slot="head"
     rel="alternate"
@@ -44,4 +44,4 @@ const { tag, data } = Astro.props;
       ))
     }
   </ul>
-</Page>
+</Base>

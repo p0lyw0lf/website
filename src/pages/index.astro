@@ -1,15 +1,19 @@
 ---
-import Page from "../templates/Default.astro";
+import Base from "../templates/Base.astro";
 import LandingPfpCarousel from "../components/LandingPfpCarousel.astro";
 
-import "../sass/index.scss";
+import "../scss/index.scss";
 ---
 
-<Page
+<Base
   override_title="wolfgirl.dev - PolyWolf"
   description="Landing page for PolyWolf's personal website. I'm a wolfgirl and software engineer"
 >
-  <h1 slot="header"><a href="about/">HI I'M POLYWOLF</a></h1>
+  <header slot="header">
+    <h1>
+      <a href="about/">HI I'M POLYWOLF</a>
+    </h1>
+  </header>
   <LandingPfpCarousel />
   <nav class="bignav">
     <a href="art/">Art</a>
@@ -31,5 +35,5 @@ import "../sass/index.scss";
       blog just yet so the above pages r pretty much it lol
     </p>
   </main>
-  <em slot="footer">Thank you for visiting my website!</em>
-</Page>
+  <footer slot="footer"><em>Thank you for visiting my website!</em></footer>
+</Base>
