@@ -7,7 +7,7 @@ export interface BaseProps {
   description?: string;
 }
 
-interface Props extends BaseProps {}
+type Props = BaseProps;
 
 const { title, override_title, description } = Astro.props;
 
