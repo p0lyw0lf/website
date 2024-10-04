@@ -1,8 +1,46 @@
 @import "common";
+@import "dims";
 @import "semantic_colors";
 
-/* Mobile: */
+body {
+  font-family: "Arial Nova", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  line-height: 1.9em;
+
+  a {
+    color: var(--color-text-primary-accent);
+  }
+}
+
 header {
   background-color: var(--color-background-tertiary);
   color: var(--color-text-tertiary);
+
+  padding: 16px;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  a {
+    color: var(--color-text-tertiary);
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 }

@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
-import Base from "../../templates/Base.astro";
+import Post from "../../templates/Post.astro";
 import { type BlogData, toBlogData } from "../../data/blog";
 import TagLink from "../../components/blog/TagLink.astro";
 import { SITE_URL } from "../../data/url";
@@ -26,7 +26,12 @@ const { post, data } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Base title={data.title} description={data.description}>
+<Post
+  section_title="PolyWolf's Blog"
+  home_link="/blog/"
+  title={data.title}
+  description={data.description}
+>
   <link
     slot="head"
     rel="alternate"
@@ -34,21 +39,45 @@ const { Content } = await post.render();
     title="PolyWolf's Blog"
     href={new URL("/blog/rss.xml", SITE_URL.origin)}
   />
-  <h1 slot="header"><a href="/blog/">{data.title}</a></h1>
-  <ul class="info">
-    <li
+  <div class="info">
+    <h1>{data.title}</h1>
+    <span
       >Published: {
         data.published.toLocaleString("en-US", { timeZone: "America/New_York" })
-      }</li
+      }</span
     >
-    {
-      data.tags.length > 0 && (
-        <li>
-          Tags:{" "}
-          {data.tags.flatMap((tag) => [", ", <TagLink tag={tag} />]).slice(1)}
-        </li>
-      )
-    }
-  </ul>
-  <Content />
-</Base>
+  </div>
+  <div class="post">
+    <Content />
+  </div>
+  <div class="tags">
+    {data.tags.map((tag) => <TagLink tag={tag} />)}
+  </div>
+</Post>
+
+<style>
+  .info,
+  .tags {
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-secondary);
+
+    padding: 16px;
+
+    border-top: solid var(--dim-border) var(--color-border-primary);
+    border-bottom: solid var(--dim-border) var(--color-border-primary);
+  }
+
+  .info h1 {
+    margin: 0 0 8px;
+  }
+
+  .post {
+    padding: 0 16px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+</style>

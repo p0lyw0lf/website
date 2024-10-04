@@ -1,37 +1,6 @@
-@import "semantic_colors";
+@import "page";
 
-body {
-  font-family: Consolas, monaco, monospace;
-}
-
-header,
-main,
-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-main {
-  max-width: 40rem;
-  padding: 16px;
-  margin: auto;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--color-text-secondary-accent);
-}
-
-a {
-  color: var(--color-text-primary-accent);
-}
-
-.pfp {
+#pfp {
   margin: 0;
   margin-bottom: 2em;
 }

@@ -1,27 +1,32 @@
 ---
 import Base, { type BaseProps } from "./Base.astro";
+import RandomHeaderPfp from "../components/RandomHeaderPfp.astro";
 
 import "../scss/post.scss";
 
 interface Props extends BaseProps {
   section_title: string;
+  home_link: string;
 }
 
-const { section_title, ...props } = Astro.props;
+const { section_title, home_link, ...props } = Astro.props;
 ---
 
 <Base {...props}>
   <slot name="head" slot="head" />
   <header slot="header">
-    <h2>{section_title}</h2>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about/">About</a>
-      <a href="/friends/">Friends</a>
-      <a href="/art/">Art</a>
-      <a href="/blog/">Blog</a>
-      <a href="/cybersec/">Cybersec</a>
-    </nav>
+    <RandomHeaderPfp />
+    <div>
+      <h2><a href={home_link}>{section_title}</a></h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/friends/">Friends</a>
+        <a href="/art/">Art</a>
+        <a href="/blog/">Blog</a>
+        <a href="/cybersec/">Cybersec</a>
+      </nav>
+    </div>
   </header>
   <slot />
   <slot name="footer" slot="footer" />

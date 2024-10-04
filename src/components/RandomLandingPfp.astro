@@ -1,7 +1,7 @@
 ---
-import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import type { LandingPfpProps } from "./LandingPfp.astro";
 import LandingPfp from "./LandingPfp.astro";
+import RandomChoice from "./RandomChoice.astro";
 
 const pfps: Array<LandingPfpProps> = [
   {
@@ -26,28 +26,6 @@ const pfps: Array<LandingPfpProps> = [
     desc: `Art by <a href="https://instagram.com/stars_upon_stars">@stars_upon_stars</a>`,
   },
 ];
-
-const container = await AstroContainer.create();
-
-const pfpsHtml = await Promise.all(
-  pfps.map(async ({ ...props }) => {
-    const html = await container.renderToString(LandingPfp, {
-      props,
-    });
-    return html;
-  })
-);
-
-const script = `
-  const figure = document.querySelector("#pfp");
-  const pfps = [${pfpsHtml.map((html) => JSON.stringify(html)).join(",")}];
-  const index = Math.floor(Math.random()*pfps.length);
-  figure.innerHTML = pfps[index];
-`;
 ---
 
-<div class="pfp" id="pfp">
-  <noscript><Fragment set:html={pfpsHtml[0]} /></noscript>
-</div>
-
-<script is:inline set:html={script} />
+<RandomChoice Component={LandingPfp} propChoices={pfps} id="pfp" />

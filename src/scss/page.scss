@@ -1,1 +1,46 @@
-@import "index";
+@import "semantic_colors";
+
+body {
+  font-family: Consolas, monaco, monospace;
+}
+
+p,
+ul,
+ol {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul,
+ol {
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+header,
+main,
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  max-width: 40rem;
+  padding: 16px;
+  margin: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-secondary-accent);
+}
+
+a {
+  color: var(--color-text-primary-accent);
+}
