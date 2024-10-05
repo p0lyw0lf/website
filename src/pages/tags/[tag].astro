@@ -1,9 +1,8 @@
 ---
 import { getBlogDataByTag, type BlogData } from "../../data/blog";
-import Base from "../../templates/Base.astro";
+import Post from "../../templates/Post.astro";
 import PostLink from "../../components/blog/PostLink.astro";
 import type { GetStaticPaths } from "astro";
-import { SITE_URL } from "../../data/url";
 
 interface Props {
   tag: string;
@@ -26,15 +25,16 @@ export const getStaticPaths = (async () => {
 const { tag, data } = Astro.props;
 ---
 
-<Base title={`#${tag}`} description={`All my blog posts tagged with #${tag}!`}>
-  <link
-    slot="head"
-    rel="alternate"
-    type="application/rss+xml"
-    title="PolyWolf's Blog"
-    href={new URL("/blog/rss.xml", SITE_URL.origin)}
-  />
-  <h1 slot="header"><a href="/tags/">#{tag}</a></h1>
+<Post
+  section_title="PolyWolf's Blog"
+  home_link="/blog/"
+  title={`#${tag}`}
+  description={`All my blog posts tagged with #${tag}!`}
+>
+  <span style="display: inline-flex; align-items: center; gap: 1rem;">
+    <h1>#{tag}</h1>
+    <a href="/tags/">All Tags</a>
+  </span>
   <ul>
     {
       data.map((data) => (
@@ -44,4 +44,4 @@ const { tag, data } = Astro.props;
       ))
     }
   </ul>
-</Base>
+</Post>
