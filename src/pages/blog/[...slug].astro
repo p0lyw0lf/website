@@ -5,7 +5,6 @@ import { getCollection } from "astro:content";
 import Post from "../../templates/Post.astro";
 import { type BlogData, toBlogData } from "../../data/blog";
 import TagLink from "../../components/blog/TagLink.astro";
-import { SITE_URL } from "../../data/url";
 
 interface Props {
   post: Pick<CollectionEntry<"blog">, "render">;
@@ -32,13 +31,6 @@ const { Content } = await post.render();
   title={data.title}
   description={data.description}
 >
-  <link
-    slot="head"
-    rel="alternate"
-    type="application/rss+xml"
-    title="PolyWolf's Blog"
-    href={new URL("/blog/rss.xml", SITE_URL.origin)}
-  />
   <div class="info">
     <h1>{data.title}</h1>
     <span
@@ -54,6 +46,12 @@ const { Content } = await post.render();
     {data.tags.map((tag) => <TagLink tag={tag} />)}
   </div>
 </Post>
+
+<style is:global>
+  main {
+    padding: 0;
+  }
+</style>
 
 <style lang="scss">
   @import "../../scss/dims";

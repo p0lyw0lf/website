@@ -1,20 +1,17 @@
 ---
-import Base from "../../templates/Base.astro";
+import Post from "../../templates/Post.astro";
 import PostLink from "../../components/blog/PostLink.astro";
-import { SITE_URL } from "../../data/url";
 import { getBlogData } from "../../data/blog";
 
 const data = await getBlogData();
 ---
 
-<Base title={"PolyWolf's Blog"} description={"A blog, written by your's truly"}>
-  <link
-    slot="head"
-    rel="alternate"
-    type="application/rss+xml"
-    title="PolyWolf's Blog"
-    href={new URL("/blog/rss.xml", SITE_URL.origin)}
-  />
+<Post
+  section_title="PolyWolf's Blog"
+  home_link="/blog/"
+  title="Blog"
+  description="The homepage for my blog"
+>
   <p> I have a blog! There may be many blogs like it, but this one is mine! </p>
   <p>
     Some recent posts:
@@ -29,4 +26,10 @@ const data = await getBlogData();
     </ul>
   </p>
   <p>...or, browse a list of <a href="/tags/">tags</a>.</p>
-</Base>
+</Post>
+
+<style is:global>
+  main {
+    padding: 0 16px;
+  }
+</style>

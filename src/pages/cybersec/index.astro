@@ -1,8 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import Base from "../../templates/Base.astro";
+import Post from "../../templates/Post.astro";
 import NavLink from "../../components/cybersec/NavLink.astro";
-import { SITE_URL } from "../../data/url";
 
 const posts = await getCollection("cybersec");
 posts.sort((post1, post2) => (post1.slug < post2.slug ? 1 : -1));
@@ -12,15 +11,13 @@ const description =
   'A list of links that PolyWolf has curated to be "cool" and under the vauge collection of having to do with computer security';
 ---
 
-<Base title="Cybersecurity" description={description}>
-  <link
-    slot="head"
-    rel="alternate"
-    type="application/rss+xml"
-    title="PolyWolf On Security"
-    href={new URL("/cybersec/rss.xml", SITE_URL.origin)}
-  />
-  <p>NONE OF THIS CONTENT IS MY OWN</p>
+<Post
+  section_title="PolyWolf on Security"
+  home_link="/cybersec/"
+  title="Cybersecurity"
+  description={description}
+>
+  <h1>NONE OF THIS CONTENT IS MY OWN</h1>
   <p>
     This is a list of links that I've been posting to a random Discord channel
     for a cybersecurity class I was in. The server is fairly inactive (but ppl
@@ -31,7 +28,13 @@ const description =
       href="https://infosec.exchange/@PolyWolf">Mastodon account</a
     >.
   </p>
-  <nav class="cybersecnav">
-    {posts.map((post) => <NavLink post={post} />)}
-  </nav>
-</Base>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <NavLink post={post} />
+        </li>
+      ))
+    }
+  </ul>
+</Post>

@@ -40,6 +40,8 @@ main {
   color: var(--color-text-primary);
   line-height: 1.9em;
 
+  padding: 0 16px;
+
   a {
     color: var(--color-text-primary-accent);
   }
@@ -59,6 +61,8 @@ main {
 @media (min-width: $breakpoint-desktop) {
   body {
     flex-direction: row;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   header {
@@ -70,6 +74,8 @@ main {
 
   main {
     margin: 32px 48px;
+    align-self: flex-start;
+    flex-grow: 1;
     max-width: 50rem;
   }
 }

@@ -1,7 +1,15 @@
 @import "semantic_colors";
+@import "palette_colors";
 
 body {
   font-family: Consolas, monaco, monospace;
+  background-color: var(--color-dark-blue);
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--color-off-white);
+  }
 }
 
 p,

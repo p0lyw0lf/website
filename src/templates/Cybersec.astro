@@ -1,22 +1,29 @@
 ---
-import Page from "./Base.astro";
+import Post from "./Post.astro";
 
 interface Props {
   frontmatter: {
     title: string;
     direct_link: string;
   };
+  date: string;
 }
 
-const { frontmatter } = Astro.props;
+const { frontmatter, date } = Astro.props;
 ---
 
-<Page title={frontmatter.title}>
-  <header slot="header">
-    <h1>
-      <a href="/cybersec">{frontmatter.title}</a>
-    </h1>
-  </header>
-  <a href={frontmatter.direct_link}>{frontmatter.direct_link}</a>
-  <slot />
-</Page>
+<Post
+  section_title="PolyWolf on Security"
+  home_link="/cybersec/"
+  title={frontmatter.title}
+>
+  <h1>
+    {frontmatter.title}
+  </h1>
+  <p
+    >Posted on {date}: <a href={frontmatter.direct_link}
+      >{frontmatter.direct_link}</a
+    >
+    <slot />
+  </p>
+</Post>

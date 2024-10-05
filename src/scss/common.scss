@@ -25,6 +25,10 @@ blockquote {
   border-left: 0.2em solid var(--color-text-tertiary);
   background-color: var(--color-background-tertiary);
   color: var(--color-text-tertiary);
+
+  a {
+    color: var(--color-text-tertiary) !important;
+  }
 }
 
 code {
