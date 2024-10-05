@@ -6,6 +6,10 @@ description: A list of PolyWolf's past (and maybe current?) programming projects
 
 These are my "successful" projects; if you want to see unsuccessful ones too, visit my [GitHub](https://github.com/p0lyw0lf).
 
+## How I Post To My Blog
+
+[crossposter](https://github.com/p0lyw0lf/crossposter) is a bit of a strange project. It originally started out as a way for me to post to my [Cybersec](/cybersec/) page from a Discord server, but also grew into a SolidJS posting frontend for my [Blog](/blog/), both very fancy "Git-based CMS"-es. This tool is very in-line with my [Write Your Own Tools](/blog/2024-09-28-write-your-own-tools/) philosophy; it is intended for use by me & me only.
+
 ## A Toy Compiler
 
 [pwcc](https://github.com/p0lyw0lf/pwcc) is PolyWolf's C Compiler, a project made by following Nora Sandler's [Writing A C Compiler](https://nostarch.com/writing-c-compiler) book (ISBN-13: 9781718500426). I'm still working on it whenever I feel like it, mostly as an excuse to do more Rust metaprogramming lol.
