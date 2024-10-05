@@ -1,5 +1,5 @@
 ---
-layout: ../../templates/Markdown.astro
+layout: ../../templates/MarkdownPage.astro
 title: Links
 description: PolyWolf's curated collection of Links from around the internet
 ---
@@ -8,7 +8,7 @@ description: PolyWolf's curated collection of Links from around the internet
 
 In order of decreasing activity:
 
-- [Cohost](https://cohost.org/PolyWolf) (rest in peace eggbug... you will be missed)
+- [Cohost](https://cohost.org/PolyWolf) (RIP eggbug... you will be missed)
 - [Mastodon](https://social.treehouse.systems/@PolyWolf)
 - [Bluesky](https://bsky.app/profile/wolf.girl.technology)
 - [GitHub](https://github.com/p0lyw0lf)
@@ -23,10 +23,10 @@ You can get my attention on any of these, but messages via Signal (polywolf.2580
 ### Blogs I Enjoy
 
 - [j.b. crawford's](https://computer.rip/)
-- [fasterthanli.me](https://fasterthanli.me/)
+- [fasterthanli.me's](https://fasterthanli.me/)
 - [John Reghr's](https://blog.regehr.org/)
 
-Check out [Friends](/friends/) for my friends' blogs :) Also check out my [FreshRSS super-feed!](https://freshrss.wolfgirl.dev/api/query.php?user=polywolf&t=1QZGHzuQLRcRdthNi7H22B&f=html) (bit of a mess tho whoops)
+Check out [Friends](/friends/) for my friends' blogs :)
 
 ### Websites I Enjoy
 

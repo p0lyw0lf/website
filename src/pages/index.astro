@@ -1,16 +1,20 @@
 ---
-import Page from "../templates/Default.astro";
-import LandingPfpCarousel from "../components/LandingPfpCarousel.astro";
+import Base from "../templates/Base.astro";
+import RandomLandingPfp from "../components/RandomLandingPfp.astro";
 
-import "../sass/index.scss";
+import "../scss/index.scss";
 ---
 
-<Page
+<Base
   override_title="wolfgirl.dev - PolyWolf"
   description="Landing page for PolyWolf's personal website. I'm a wolfgirl and software engineer"
 >
-  <h1 slot="header"><a href="about/">HI I'M POLYWOLF</a></h1>
-  <LandingPfpCarousel />
+  <header slot="header">
+    <h1>
+      <a href="about/">HI I'M POLYWOLF</a>
+    </h1>
+  </header>
+  <RandomLandingPfp />
   <nav class="bignav">
     <a href="art/">Art</a>
     <a href="blog/">Blog</a>
@@ -27,9 +31,9 @@ import "../sass/index.scss";
     </p>
     <h2>Navigation</h2>
     <p>
-      Top header is a link that takes you to the previous page. Not really a
-      blog just yet so the above pages r pretty much it lol
+      Top header is a link that takes you to the previous page. "Blog" and
+      "Cybersec" have a bit better styling on them, rest are pretty silly tho :P
     </p>
   </main>
-  <em slot="footer">Thank you for visiting my website!</em>
-</Page>
+  <footer slot="footer"><em>Thank you for visiting my website!</em></footer>
+</Base>

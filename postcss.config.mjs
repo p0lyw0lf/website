@@ -1,6 +1,7 @@
 import autoprefixer from "autoprefixer";
 import cssnanoPlugin from "cssnano";
+import nesting from "postcss-nesting";
 
 export default {
-  plugins: [autoprefixer, cssnanoPlugin],
+  plugins: [nesting({}), autoprefixer, cssnanoPlugin],
 };

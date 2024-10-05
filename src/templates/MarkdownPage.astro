@@ -1,6 +1,8 @@
 ---
-import Page from "./Default.astro";
+import Base from "./Base.astro";
 import type { MarkdownLayoutProps } from "astro";
+
+import "../scss/page.scss";
 
 type Props = MarkdownLayoutProps<{
   title: string;
@@ -10,6 +12,6 @@ type Props = MarkdownLayoutProps<{
 const { frontmatter } = Astro.props;
 ---
 
-<Page title={frontmatter.title} description={frontmatter.description}>
+<Base title={frontmatter.title} description={frontmatter.description}>
   <slot />
-</Page>
+</Base>

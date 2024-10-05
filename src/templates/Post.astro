@@ -1,0 +1,42 @@
+---
+import Base, { type BaseProps } from "./Base.astro";
+import RandomHeaderPfp from "../components/RandomHeaderPfp.astro";
+import { SITE_URL } from "../data/url";
+
+import "../scss/post.scss";
+
+interface Props extends BaseProps {
+  section_title: string;
+  home_link: string;
+}
+
+const { section_title, home_link, ...props } = Astro.props;
+---
+
+<Base {...props}>
+  <Fragment slot="head">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={section_title}
+      href={new URL(`${home_link}rss.xml`, SITE_URL.origin)}
+    />
+    <slot name="head" />
+  </Fragment>
+  <header slot="header">
+    <RandomHeaderPfp />
+    <div>
+      <h2><a href={home_link}>{section_title}</a></h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/friends/">Friends</a>
+        <a href="/art/">Art</a>
+        <a href="/blog/">Blog</a>
+        <a href="/cybersec/">Cybersec</a>
+      </nav>
+    </div>
+  </header>
+  <slot />
+  <slot name="footer" slot="footer" />
+</Base>

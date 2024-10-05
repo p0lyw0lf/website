@@ -1,10 +1,14 @@
 ---
-layout: ../../templates/Markdown.astro
+layout: ../../templates/MarkdownPage.astro
 title: Projects
 description: A list of PolyWolf's past (and maybe current?) programming projects
 ---
 
 These are my "successful" projects; if you want to see unsuccessful ones too, visit my [GitHub](https://github.com/p0lyw0lf).
+
+## How I Post To My Blog
+
+[crossposter](https://github.com/p0lyw0lf/crossposter) is a bit of a strange project. It originally started out as a way for me to post to my [Cybersec](/cybersec/) page from a Discord server, but also grew into a SolidJS posting frontend for my [Blog](/blog/), both very fancy "Git-based CMS"-es. This tool is very in-line with my [Write Your Own Tools](/blog/2024-09-28-write-your-own-tools/) philosophy; it is intended for use by me & me only.
 
 ## A Toy Compiler
 

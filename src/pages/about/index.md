@@ -1,5 +1,5 @@
 ---
-layout: ../../templates/Markdown.astro
+layout: ../../templates/MarkdownPage.astro
 title: About
 description: About PolyWolf, owner of wolfgirl.dev, because they're a developer and a wolfgirl
 ---
@@ -18,12 +18,12 @@ idk maybe i just want to be a wolfgirl on the internet in peace, is that too muc
 
 ### Pronouns
 
-**she/her** please! but that's [bit more complicated irl perhaps](https://cohost.org/PolyWolf/post/759571-additional-guidance)!
+**she/her** please!
 
 ## What Stuff Do I Do?
 
 - Work (90% of my time rn)
-- Browse [Cohost](https://cohost.org/PolyWolf) and [Mastodon](https://social.treehouse.systems/@PolyWolf)
+- Browse ~~[Cohost](https://cohost.org/PolyWolf)~~ [RSS](/blog/2024-10-02-sharing-my-rss-feeds/) and [Mastodon](https://social.treehouse.systems/@PolyWolf)
 - Bouldering gym, long runs
 - Slowly learning Japanese
 
@@ -35,12 +35,12 @@ See the [links](/links) page.
 
 ### Do I Say "nya~"?
 
-No, I'm not a catgirl
+No, I'm not a catgirl. i go awoo :3
 
 ### Do I Accept Headpats?
 
-Yes!
+Yes! Please!!
 
-### Do I Accept Commissions?
+### Does "Poly" Stand For...
 
-You do not want to commission me. Unless it's for a programming project in which case my rate is $100/hr
+Polygonal Wolf. See the bottom of my [Art](/art/) page.

@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import { STATIC_URL } from "../data/url";
+
+export interface HeaderPfpProps {
+  /**
+   * Relative to https://static.wolfgirl.dev/pfps/
+   */
+  src: string;
+  /**
+   * Alt text for the image
+   */
+  alt: string;
+}
+
+type Props = HeaderPfpProps;
+
+const { src, alt } = Astro.props;
+---
+
+<a href="/art/">
+  <Image
+    src={new URL(`/pfps/${src}`, STATIC_URL).toString()}
+    width={128}
+    height={128}
+    densities={[2, 4]}
+    quality="max"
+    loading={"eager"}
+    alt={alt}
+  />
+</a>
+
+<style>
+  a {
+    display: flex;
+  }
+</style>

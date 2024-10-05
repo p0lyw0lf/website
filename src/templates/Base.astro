@@ -1,11 +1,13 @@
 ---
-import "../sass/main.scss";
+import "../scss/common.scss";
 
-interface Props {
+export interface BaseProps {
   title?: string;
   override_title?: string;
   description?: string;
 }
+
+type Props = BaseProps;
 
 const { title, override_title, description } = Astro.props;
 
@@ -34,21 +36,15 @@ const full_title = override_title
   </head>
   <body>
     <slot name="body">
-      <header>
-        <slot name="header">
+      <slot name="header">
+        <header>
           <h1><a href="/">{title ? title : "idk"}</a></h1>
-        </slot>
-      </header>
+        </header>
+      </slot>
       <main>
         <slot />
       </main>
-      <footer>
-        <slot name="footer">
-          <nav>
-            <a href="/">Home</a>
-          </nav>
-        </slot>
-      </footer>
+      <slot name="footer" />
     </slot>
   </body>
 </html>

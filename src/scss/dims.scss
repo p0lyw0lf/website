@@ -1,0 +1,21 @@
+$breakpoint-ipad: 540px;
+$breakpoint-desktop: 900px;
+
+:root {
+  --dim-font-regular: 1.25rem;
+  --dim-font-large: 2rem;
+  --dim-border: 1px;
+}
+
+@media (min-width: $breakpoint-ipad) {
+  :root {
+    --dim-font-regular: 1rem;
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  :root {
+    --dim-font-regular: 0.875rem;
+    --dim-font-large: 1.75rem;
+  }
+}

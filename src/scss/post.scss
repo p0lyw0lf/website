@@ -1,0 +1,81 @@
+@import "common";
+@import "dims";
+@import "semantic_colors";
+
+body {
+  font-family: "Arial Nova", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: var(--color-background-tertiary);
+  color: var(--color-text-tertiary);
+
+  padding: 16px;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  a {
+    color: var(--color-text-tertiary);
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+main {
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  line-height: 1.9em;
+
+  padding: 0 16px;
+
+  a {
+    color: var(--color-text-primary-accent);
+  }
+}
+
+@media (min-width: $breakpoint-ipad) {
+  header {
+    padding: 16px 32px;
+  }
+
+  main {
+    margin: 0 32px;
+    border: solid var(--dim-border) var(--color-border-primary);
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  body {
+    flex-direction: row;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 32px;
+  }
+
+  main {
+    margin: 32px 48px;
+    align-self: flex-start;
+    flex-grow: 1;
+    max-width: 50rem;
+  }
+}
