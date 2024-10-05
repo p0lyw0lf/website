@@ -55,7 +55,9 @@ const { Content } = await post.render();
   </div>
 </Post>
 
-<style>
+<style lang="scss">
+  @import "../../scss/dims";
+
   .info,
   .tags {
     background-color: var(--color-background-secondary);
@@ -79,5 +81,14 @@ const { Content } = await post.render();
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+  }
+
+  @media (min-width: $breakpoint-ipad) {
+    .info {
+      border-top: none;
+    }
+    .tags {
+      border-bottom: none;
+    }
   }
 </style>
