@@ -1,5 +1,4 @@
-$breakpoint-ipad: 540px;
-$breakpoint-desktop: 900px;
+@import "breakpoints";
 
 :root {
   --dim-font-regular: 1.25rem;
