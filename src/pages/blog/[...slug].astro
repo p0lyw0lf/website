@@ -54,7 +54,8 @@ const { Content } = await post.render();
 </style>
 
 <style lang="scss">
-  @import "../../scss/dims";
+  @use "../../scss/dims";
+  @use "../../scss/breakpoints";
 
   .info,
   .tags {
@@ -81,7 +82,7 @@ const { Content } = await post.render();
     gap: 8px;
   }
 
-  @media (min-width: $breakpoint-ipad) {
+  @media (min-width: breakpoints.$breakpoint-ipad) {
     .info {
       border-top: none;
     }
