@@ -11,6 +11,13 @@ Also, I added a file upload feature to my post composer! This was partly because
 
 There's a whole rigamarole with IAM permissions for S3 (create policy -> attach policy to group -> add user to group -> create access keys for user) and Nginx not liking file uploads by default (`client_max_body_size`) but honestly that's par for course. Anyways, you're here for images, so here's images:
 
+<style>
+img {
+  width: 100%;
+  margin-bottom: 4rem;
+}
+</style>
+
 <img src="https://static.wolfgirl.dev/polywolf/blog/0192ab89-cf33-7447-a8d5-1dd1fbeaf31c/IMG_7624.jpeg" loading="lazy" />
 
 <img src="https://static.wolfgirl.dev/polywolf/blog/0192ab89-cf33-7447-a8d5-1dd1fbeaf31c/IMG_7627.jpeg" loading="lazy" />
