@@ -43,6 +43,10 @@ main {
   a {
     color: var(--color-text-primary-accent);
   }
+
+  img {
+    width: 100%;
+  }
 }
 
 @media (min-width: breakpoints.$breakpoint-ipad) {
