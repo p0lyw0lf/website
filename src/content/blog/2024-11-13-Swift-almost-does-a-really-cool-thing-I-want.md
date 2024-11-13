@@ -11,10 +11,10 @@ My solution for Rust was to write a "specialized [Functor](https://hackage.haske
 
 ```rust
 trait Functor<Inner> {
-  type Input;
-  type Output;
-  type Mapped;
-  fn fmap(self, f: &mut impl FnMut(Self::Input) -> Self::Output) -> Self::Mapped;
+    type Input;
+    type Output;
+    type Mapped;
+    fn fmap(self, f: &mut impl FnMut(Self::Input) -> Self::Output) -> Self::Mapped;
 }
 
 // example of how it's implemented:
@@ -35,12 +35,12 @@ I call this a "specialized Functor" because, unlike the Haskell version, it allo
 
 ```rust
 struct Function {
-  name: String,
-  body: Vec<Statement>,
+    name: String,
+    body: Vec<Statement>,
 }
 
 enum Statement {
-  Return { val: isize },
+    Return { val: isize },
 }
 ```
 
@@ -48,52 +48,52 @@ A hand-written `Functor` implementation for `isize` would look like
 
 ```rust
 impl Functor<isize> for isize {
-  type Input = isize;
-  type Output = isize;
-  type Mapped = isize;
-  fn fmap(self, f: &mut impl FnMut(Self::Input) -> Self::Output) -> Self::Mapped {
+    type Input = isize;
+    type Output = isize;
+    type Mapped = isize;
+    fn fmap(self, f: &mut impl FnMut(Self::Input) -> Self::Output) -> Self::Mapped {
         f(self)
     }
 }
 
 impl Functor<isize> for Statement {
-  type Input = isize;
-  type Output = isize;
-  type Mapped = Statement;
-  fn fmap(self, f: &mut impl FnMut(Self::Input) -> Self::Output) -> Self::Mapped {
+    type Input = isize;
+    type Output = isize;
+    type Mapped = Statement;
+    fn fmap(self, f: &mut impl FnMut(Self::Input) -> Self::Output) -> Self::Mapped {
         match self {
-          Statement::Return { val } => Statement::Return {
-            val: val.fmap(f),
-          },
+            Statement::Return { val } => Statement::Return {
+                val: val.fmap(f),
+            },
         }
     }
 }
 
 impl Functor<isize> for Program {
-  type Input = isize;
-  type Output = isize;
-  type Mapped = Program;
-  fn fmap(self, f: &mut impl FnMut(Self::Input) -> Self::Output) -> Self::Mapped {
+    type Input = isize;
+    type Output = isize;
+    type Mapped = Program;
+    fn fmap(self, f: &mut impl FnMut(Self::Input) -> Self::Output) -> Self::Mapped {
         Program {
-          name: self.name,
-          body: self.body.fmap(f),
+            name: self.name,
+            body: self.body.fmap(f),
         }
     }
 }
 
 #[test]
 fn map_isize() {
-  let x = Program {
-    name: "main".into(),
-    body: [Statement::Return { val: 1 }].into(),
-  };
-  // Pretend we derived Clone
-  let y = Functor::<isize>::fmap(x.clone(), |i| i + 1);
-  // Pretend we derived PartialEq
-  assert_eq!(y, Program {
-    name: "main".into(),
-    body: [Statement::Return { val: 2 }].into(),
-  });
+    let x = Program {
+        name: "main".into(),
+        body: [Statement::Return { val: 1 }].into(),
+    };
+    // Pretend we derived Clone
+    let y = Functor::<isize>::fmap(x.clone(), |i| i + 1);
+    // Pretend we derived PartialEq
+    assert_eq!(y, Program {
+        name: "main".into(),
+        body: [Statement::Return { val: 2 }].into(),
+    });
 }
 ```
 
