@@ -1,7 +1,7 @@
 ---
 title: "Rechost: EX-LYD \u0026 Sunnexo - Hyper Link"
 description: "\u003chttps://sunnexo.moe/hyperlink\u003e\r \r you may recall from [a previous blog post](https://wolfgirl.dev/blog/2024-10-04-bandcamp-friday-haul/)..."
-tags: ["music"]
+tags: ["rechost", "music"]
 published: 1731077138
 ---
 
