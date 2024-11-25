@@ -100,7 +100,9 @@ I'd like to write a paper on this. The authors of `uniplate` [wrote one](https:/
 
 <hr>
 
-In case you're wondering, "PolyWolf, why has it taken you so long to get this post out? Surely you haven't spent over two weeks just thinking?", yes I have been thinking about this for a while, but mostly in the context of writing a proper Rust `proc_macro` that creates these implementations for me, just given the AST definition. It's unfortunately much much more involved than writing a `macro_rules!`[^5], especially trying to handle all the edge-cases properly. Still, making some progress on it, maybe I'll even publish a crate once I'm done! As always, you can check out the code at [github:p0lyw0lf/pwcc](https://github.com/p0lyw0lf/pwcc); it _sort of_ has documentation, if u squint
+In case you're wondering, "PolyWolf, why has it taken you so long to get this post out? Surely you haven't spent over two weeks just thinking?", yes I have been thinking about this for a while, but mostly in the context of writing a proper Rust `proc_macro` that creates these implementations for me, just given the AST definition. It's unfortunately much much more involved than writing a `macro_rules!`[^5], especially trying to handle all the edge-cases properly. I don't know why I waited to publish this blog post until I finished writing this new macro; I didn't even need to explain anything about it in this post lol. Leaving that for a future blog post, maybe once I publish the crate perhaps !
+
+As always, you can check out the code at [github:p0lyw0lf/pwcc](https://github.com/p0lyw0lf/pwcc); it _sort of_ has documentation right now, if u squint
 
 [^1]: The real thing's actually worse in my opinion: `fn transform_bi(&self, op: Arc<dyn Fn(To) -> To>) -> Self`. You have to deal with the overhead of `Arc`, `dyn`, _and_ `Clone`-ing your entire AST?? No thanks. This is actually one of the biggest motivators I have for wanting to write a paper about this, to show these operations can be done in-place, zero-copy (given a sufficiently smart compiler, I hope).
 
