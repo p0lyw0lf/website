@@ -1,5 +1,5 @@
 ---
-layout: ../../templates/MarkdownPage.astro
+layout: ../templates/MarkdownPage.astro
 title: Friends
 description: A small list of all other personal websites I know from people I trust
 ---
