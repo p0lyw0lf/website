@@ -1,5 +1,5 @@
 ---
-layout: ../../templates/MarkdownPage.astro
+layout: ../templates/MarkdownPage.astro
 title: Links
 description: PolyWolf's curated collection of Links from around the internet
 ---
