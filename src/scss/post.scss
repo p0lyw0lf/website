@@ -47,6 +47,10 @@ main {
   img {
     width: 100%;
   }
+
+  pre {
+    line-height: normal;
+  }
 }
 
 @media (min-width: breakpoints.$breakpoint-ipad) {
