@@ -1,6 +1,6 @@
 ---
 title: "I\u0027m Streaming Factorio: Space Age"
-description: "making this a daily thing, i think. just a couple hours each evening. p chill, p scuffed stream setup, hop by if ur interested! \u003chttps://..."
+description: "making this a daily thing, i think. just a couple hours each evening. p chill, p scuffed stream setup, hop by if ur interested!"
 tags: []
 published: 1730165305
 ---

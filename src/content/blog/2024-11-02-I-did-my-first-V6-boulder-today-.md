@@ -1,7 +1,7 @@
 ---
 title: "I did my first V6 boulder today!!"
 description: "![a bouldering route that starts on a volume with small footholds you have to leap from, into a slightly awkward finish](https://static.w..."
-tags: ["indoor bouldering"]
+tags: ["indoor bouldering", "wolfgirlagenda"]
 published: 1730570042
 ---
 
