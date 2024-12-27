@@ -1,12 +1,12 @@
 import rss from "@astrojs/rss";
-import type { APIContext } from "astro";
 import { getCollection } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { loadRenderers } from "astro:container";
 import { getContainerRenderer as getMDXRenderer } from "@astrojs/mdx";
+import { SITE_URL } from "../../data/url";
 
-export async function GET(context: APIContext) {
+export async function GET() {
   const renderers = await loadRenderers([getMDXRenderer()]);
   const container = await AstroContainer.create({ renderers });
 
@@ -15,10 +15,7 @@ export async function GET(context: APIContext) {
     posts.map(async (post) => {
       const { Content } = await post.render();
       const content = await container.renderToString(Content);
-      const link = new URL(
-        `/cybersec/${post.slug}/`,
-        context.url.origin,
-      ).toString();
+      const link = new URL(`/cybersec/${post.slug}/`, SITE_URL).toString();
       const sanitizedContent = sanitizeHtml(content, {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
       });
@@ -38,7 +35,7 @@ export async function GET(context: APIContext) {
     title: "PolyWolf On Security",
     description:
       "reposts of various cybersecurity-themed news that i find interesting",
-    site: new URL("/cybersec/", context.url.origin).toString(),
+    site: new URL("/cybersec/", SITE_URL).toString(),
     items: items.reverse(),
     customData: `<language>en-us</language>`,
   });

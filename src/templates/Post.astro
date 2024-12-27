@@ -19,7 +19,7 @@ const { section_title, home_link, ...props } = Astro.props;
       rel="alternate"
       type="application/rss+xml"
       title={section_title}
-      href={new URL(`${home_link}rss.xml`, SITE_URL.origin)}
+      href={new URL(`${home_link}rss.xml`, SITE_URL)}
     />
     <slot name="head" />
   </Fragment>

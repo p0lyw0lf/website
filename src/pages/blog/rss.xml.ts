@@ -1,13 +1,13 @@
 import rss from "@astrojs/rss";
-import type { APIContext } from "astro";
 import { getCollection } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { loadRenderers } from "astro:container";
 import { getContainerRenderer as getMDXRenderer } from "@astrojs/mdx";
 import { toBlogData } from "../../data/blog";
+import { SITE_URL } from "../../data/url";
 
-export async function GET(context: APIContext) {
+export async function GET() {
   const renderers = await loadRenderers([getMDXRenderer()]);
   const container = await AstroContainer.create({ renderers });
 
@@ -33,7 +33,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: "PolyWolf's Blog",
     description: "a blog written by PolyWolf",
-    site: new URL("/blog/", context.url.origin).toString(),
+    site: new URL("/blog/", SITE_URL).toString(),
     items: items.reverse(),
     customData: `<language>en-us</language>`,
   });
