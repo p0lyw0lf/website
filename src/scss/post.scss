@@ -85,3 +85,26 @@ main {
     max-width: 50rem;
   }
 }
+
+code {
+  font-family: Consolas, monaco, monospace;
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-secondary-accent);
+}
+
+.astro-code code {
+  background-color: inherit;
+}
+
+blockquote {
+  margin-left: 0.2em;
+  padding-left: 0.8em;
+  border-left: 0.2em solid var(--color-text-secondary-accent);
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+
+  code {
+    background-color: var(--color-background-primary);
+    color: var(--color-text-secondary-accent);
+  }
+}

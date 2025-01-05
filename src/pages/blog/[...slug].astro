@@ -79,6 +79,10 @@ const blueskyUrl = data.bluesky ? atprotoPostUrl(data.bluesky) : undefined;
     border-bottom: solid var(--dim-border) var(--color-border-primary);
   }
 
+  .tags:not(:last-child) {
+    border-bottom: none;
+  }
+
   .comments {
     padding: 16px;
 
