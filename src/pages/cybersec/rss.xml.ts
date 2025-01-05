@@ -4,7 +4,7 @@ import sanitizeHtml from "sanitize-html";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { loadRenderers } from "astro:container";
 import { getContainerRenderer as getMDXRenderer } from "@astrojs/mdx";
-import { SITE_URL } from "../../data/url";
+import { SITE_URL, toCybersecUrl } from "../../data/url";
 
 export async function GET() {
   const renderers = await loadRenderers([getMDXRenderer()]);
@@ -15,7 +15,7 @@ export async function GET() {
     posts.map(async (post) => {
       const { Content } = await render(post);
       const content = await container.renderToString(Content);
-      const link = new URL(`/cybersec/${post.id}/`, SITE_URL).toString();
+      const link = new URL(toCybersecUrl(post.id), SITE_URL).toString();
       const sanitizedContent = sanitizeHtml(content, {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
       });

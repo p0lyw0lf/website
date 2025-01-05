@@ -13,6 +13,10 @@ export const toTagUrl = (tag: string): string => {
   return `/tags/${tag}/`;
 };
 
+export const toCybersecUrl = (slug: string): string => {
+  return `/cybersec/${slug}/`;
+};
+
 const atprotoPostRegex = /at:\/\/(.*)\/app\.bsky\.feed\.post\/(.*)/;
 export const atprotoPostUrl = (atprotoUrl: string): string | undefined => {
   const matches = atprotoUrl.match(atprotoPostRegex);

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { toCybersecUrl } from "../../data/url";
 
 interface Props {
   post: CollectionEntry<"cybersec">;
@@ -8,5 +9,5 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-{post.id.slice(0, 10)}: <a href={post.id}>{post.data.title}</a>
+{post.id.slice(0, 10)}: <a href={toCybersecUrl(post.id)}>{post.data.title}</a>
 (<a href={post.data.direct_link}>source</a>)
