@@ -5,6 +5,7 @@ import { getCollection, render } from "astro:content";
 import Post from "../../templates/Post.astro";
 import { type BlogData, toBlogData } from "../../data/blog";
 import TagLink from "../../components/blog/TagLink.astro";
+import { atprotoPostUrl } from "../../data/url";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -23,6 +24,8 @@ export const getStaticPaths = (async () => {
 
 const { post, data } = Astro.props;
 const { Content } = await render(post);
+
+const blueskyUrl = data.bluesky ? atprotoPostUrl(data.bluesky) : undefined;
 ---
 
 <Post
@@ -45,6 +48,14 @@ const { Content } = await render(post);
   <div class="tags">
     {data.tags.map((tag) => <TagLink tag={tag} />)}
   </div>
+  {
+    (data.mastodon || blueskyUrl) && (
+      <div class="comments">
+        {data.mastodon && <a href={data.mastodon}>Comment on Mastodon</a>}
+        {blueskyUrl && <a href={blueskyUrl}>Comment on Bluesky</a>}
+      </div>
+    )
+  }
 </Post>
 
 <style is:global>
@@ -68,6 +79,13 @@ const { Content } = await render(post);
     border-bottom: solid var(--dim-border) var(--color-border-primary);
   }
 
+  .comments {
+    padding: 16px;
+
+    border-top: solid var(--dim-border) var(--color-border-primary);
+    border-bottom: solid var(--dim-border) var(--color-border-primary);
+  }
+
   .info h1 {
     margin: 0 0 8px;
   }
@@ -76,7 +94,8 @@ const { Content } = await render(post);
     padding: 0 16px;
   }
 
-  .tags {
+  .tags,
+  .comments {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -86,7 +105,8 @@ const { Content } = await render(post);
     .info {
       border-top: none;
     }
-    .tags {
+    .tags,
+    .comments {
       border-bottom: none;
     }
   }

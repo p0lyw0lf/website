@@ -8,6 +8,8 @@ const blog = defineCollection({
     description: z.string(),
     tags: z.string().array(),
     published: z.number().int().nonnegative(),
+    mastodon: z.string().optional(),
+    bluesky: z.string().optional(),
   }),
 });
 
