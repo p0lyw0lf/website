@@ -18,7 +18,7 @@ trait Functor<Inner> {
 
 I called it a "specialized Functor" because I didn't quite understand what exactly a Functor was, but I knew that, at the very least, what I had was a little different.
 
-Upon reading this, Prophet of [welltypedwit.ch](https://welltypedwit.ch/), who actually knows what she's talking about when it comes to functional programming, [pointed me towards](https://bsky.app/profile/welltypedwit.ch/post/3latirgqtjk2h) a Haskell package called [uniplate](https://hackage.haskell.org/package/uniplate-1.6.13), noting that what I was doing sounded like its [`transformBi`](https://hackage.haskell.org/package/uniplate-1.6.13/docs/Data-Generics-Uniplate-Operations.html#v:transformBi) operation.
+Upon reading this, Alice of [welltypedwit.ch](https://welltypedwit.ch/), who actually knows what she's talking about when it comes to functional programming, [pointed me towards](https://bsky.app/profile/welltypedwit.ch/post/3latirgqtjk2h) a Haskell package called [uniplate](https://hackage.haskell.org/package/uniplate-1.6.13), noting that what I was doing sounded like its [`transformBi`](https://hackage.haskell.org/package/uniplate-1.6.13/docs/Data-Generics-Uniplate-Operations.html#v:transformBi) operation.
 
 To fully understand what she meant by this, let's break down the type signature:
 

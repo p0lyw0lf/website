@@ -13,5 +13,5 @@ This list is incomplete! You can help by expanding it
 - [Gabriella](https://www.haskellforall.com) - Haskell & open source legend &
   another fellow wolf!
 - [JeanHyde](https://thephd.dev) - master of the arcane arts (C standard committee procedures)
-- [Prophet](https://welltypedwit.ch) - Functional programming influencer (real)
+- [Alice](https://welltypedwit.ch) - Functional programming influencer (real)
 - [Rykarn](https://rykarn.se) - Cohost refugee, originator of some of the best CSS Crimes
