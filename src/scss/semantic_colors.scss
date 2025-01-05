@@ -7,16 +7,16 @@
    */
   --color-background-primary: var(--color-black);
   --color-background-secondary: var(--color-off-black);
-  --color-background-tertiary: var(--color-dark-blue);
+  --color-background-tertiary: var(--color-cherry);
 
   /*
    * Each of these text colors goes on the aforementioned background color
    */
   --color-text-primary: var(--color-white);
-  --color-text-primary-accent: var(--color-dark-tan);
-  --color-text-secondary: var(--color-white);
-  --color-text-secondary-accent: var(--color-light-blue);
-  --color-text-tertiary: var(--color-dark-tan);
+  --color-text-primary-accent: var(--color-longan);
+  --color-text-secondary: var(--color-off-white);
+  --color-text-secondary-accent: var(--color-strawberry);
+  --color-text-tertiary: var(--color-longan);
 
   --color-border-primary: var(--color-dark-gray);
 }
@@ -25,13 +25,13 @@
   :root {
     --color-background-primary: var(--color-white);
     --color-background-secondary: var(--color-off-white);
-    --color-background-tertiary: var(--color-light-tan);
+    /* --color-background-tertiary: */
 
     --color-text-primary: var(--color-black);
-    --color-text-primary-accent: var(--color-dark-blue);
-    --color-text-secondary: var(--color-black);
-    --color-text-secondary-accent: var(--color-dark-tan);
-    --color-text-tertiary: var(--color-red);
+    --color-text-primary-accent: var(--color-blue);
+    --color-text-secondary: var(--color-off-black);
+    --color-text-secondary-accent: var(--color-cherry);
+    /* --color-text-tertiary: */
 
     --color-border-primary: var(--color-light-gray);
   }
