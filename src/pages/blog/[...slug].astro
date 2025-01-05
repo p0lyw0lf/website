@@ -1,13 +1,13 @@
 ---
 import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Post from "../../templates/Post.astro";
 import { type BlogData, toBlogData } from "../../data/blog";
 import TagLink from "../../components/blog/TagLink.astro";
 
 interface Props {
-  post: Pick<CollectionEntry<"blog">, "render">;
+  post: CollectionEntry<"blog">;
   data: BlogData;
 }
 
@@ -15,14 +15,14 @@ export const getStaticPaths = (async () => {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
     params: {
-      slug: post.slug,
+      slug: post.id,
     },
     props: { post, data: toBlogData(post) },
   }));
 }) satisfies GetStaticPaths;
 
 const { post, data } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <Post

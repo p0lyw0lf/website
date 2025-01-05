@@ -137,5 +137,7 @@ I _might_ be able to hack something with the `dynamic` keyword or like Protocols
 Think I'll try Haskell next? :P
 
 [^1]: Note this trait has extra considerations for "what if the thing we're mapping over is polymorphic?". The complexity is about the same even without that consideration, unfortunately...
+
 [^2]: (Not sure where to put this but it's still relevant for footnotes) I also had the idea of using this macro to define both `Functor<Inner>` and `Functor<Result<Inner, Err>>` implementations. This works because `Inner` is never a `Result`, so everything has coherence! These latter implementations would have `Input=Inner, Output=Result<Inner, Err>` and could be configured to fail early or to collect all errors. Unfortunately, I ran into Coherence problems again when I tried to `impl Functor<Result<T, E>> for Vec<Result<T, E>>` (for `Mapped=Result<Vec<T, E>>`). I _could_ just write another trait as well, but man that's annoying!
+
 [^3]: Note the strange function invocation outside the trait. The compiler has a hard time inferring what `Functor` implementation to use otherwise, for some reason. That's how you know we're doing something cursed!

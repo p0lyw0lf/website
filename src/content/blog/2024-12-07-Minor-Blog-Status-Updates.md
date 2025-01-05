@@ -14,4 +14,5 @@ Last thing: apparently, my [\`Functor\` in Rust](https://wolfgirl.dev/blog/2024-
 In any case! I don't plan on "optimizing" my content for _anything_. I am very proud of that blog post, not because of some external validation[^2], but because I am pleased with my writing quality for it. I will continue to post the things that I want, and right now, I felt like giving a small update. good night :)
 
 [^1]: Which is to say, my clicks per month jumped from 2 to 20 :P
+
 [^2]: From orange site/other randos, more so. I do really appreciate external validation from friends, from "liking the crossposted announcement post" to "writing me an email", lets me know people care

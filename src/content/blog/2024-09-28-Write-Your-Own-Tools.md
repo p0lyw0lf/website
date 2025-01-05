@@ -20,4 +20,3 @@ Even if it's already being done by someone else, writing your own tools forces y
 ---
 
 Cohost's (impending) death had me re-evaluating my standing with respect to a lot of things (social media, online presence, social sphere), and this was one of the thoughts that came out & I felt strongly enough to write down. I wrote this in my own post composer, created exactly so I can publish to my blog (which you're reading now, hi!!) from my phone. I'll be reposting my favorite chosts here once I get them downloaded. Until next time!
-

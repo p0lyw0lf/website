@@ -7,9 +7,9 @@ mastodon: "https://social.treehouse.systems/@PolyWolf/113776795143565616"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lez3k7zxxk2z"
 ---
 
-* [ ] Do a V7 Boulder
-* [ ] Update My Wardrobe
-* [ ] Run a Half-Marathon (again)
+- [ ] Do a V7 Boulder
+- [ ] Update My Wardrobe
+- [ ] Run a Half-Marathon (again)
 
 ---
 
@@ -25,10 +25,10 @@ Quite recently, I did [my first V6 boulder](https://wolfgirl.dev/blog/2024-11-02
 
 Over the last year, as I've become more comfortable with myself being trans (finally out to core family!!), I've become painfully aware of how boymode-ed my closet is. I do not have a single dress, or skirt, or stocking, or pair of leggings, or even just a cool jacket. In total, I have:
 
-* yoga pants (purchased during the exciting first months of transition)
-* sports bras (purchased later when breasts started to come in)
-*
-* that's it that's the entire list
+- yoga pants (purchased during the exciting first months of transition)
+- sports bras (purchased later when breasts started to come in)
+-
+- that's it that's the entire list
 
 Now don't get me wrong, I rock the t-shirt+jeans & athleisure fits quite well. But to have _nothing_ feels a bit wrong. I want something better to wear, if not out in the world at large, then at least to the cool transgender parties. Target is 1-3 items.
 
@@ -42,14 +42,14 @@ So! This goal is actually 2 distinct goals hidden in a trench-coat: resolve the 
 
 ## Other Various New Year Wishes
 
-* blog more
-  * more HN frontpages 😎
-* go out more
-  * take more photos
-  * make new friends
-  * hang out with current friends more
-* get better at Japanese
-  * level up a lot more in WaniKani (Japanese kanji learning app)
-  * catch up with _Yotsuba&!_ in Japanese
+- blog more
+  - more HN frontpages 😎
+- go out more
+  - take more photos
+  - make new friends
+  - hang out with current friends more
+- get better at Japanese
+  - level up a lot more in WaniKani (Japanese kanji learning app)
+  - catch up with _Yotsuba&!_ in Japanese
 
 Happy New Years, hope y'all have a good one too!!

@@ -1,5 +1,5 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { loadRenderers } from "astro:container";
@@ -13,9 +13,9 @@ export async function GET() {
   const posts = await getCollection("cybersec");
   const items = await Promise.all(
     posts.map(async (post) => {
-      const { Content } = await post.render();
+      const { Content } = await render(post);
       const content = await container.renderToString(Content);
-      const link = new URL(`/cybersec/${post.slug}/`, SITE_URL).toString();
+      const link = new URL(`/cybersec/${post.id}/`, SITE_URL).toString();
       const sanitizedContent = sanitizeHtml(content, {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
       });
@@ -26,7 +26,7 @@ export async function GET() {
         link,
         content: fullContent,
         title: post.data.title,
-        pubDate: new Date(post.slug.slice(0, 10) + "T12:00:00"),
+        pubDate: new Date(post.id.slice(0, 10) + "T12:00:00"),
       };
     }),
   );

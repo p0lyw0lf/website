@@ -1,6 +1,6 @@
 ---
 title: "What If Anyone* Could Use My Post Composer?"
-description: "A somewhat-common complaint I see on bsky/fedi is \"gah, these darn character limits, if only i had somewhere to jot down longer posts, i..."
+description: 'A somewhat-common complaint I see on bsky/fedi is "gah, these darn character limits, if only i had somewhere to jot down longer posts, i...'
 tags: ["programming"]
 published: 1731090148
 ---
@@ -25,4 +25,5 @@ These restrictions assume a workflow of "uses GitHub Actions to automatically up
 And now I reveal the true reason for this post: to gauge interest before I embark on changing my janky code to be slightly less janky for others to use. If you're reading this, and would be interested in using this tool, please leave a comment/contact me with something that includes the phrase "i'm interested in using your post composer". If the above restrictions preclude you from using this, please also let me know somehow. And as always, thanks for reading <3
 
 [^1]: This is the part I see the most people getting hung up on, b/c who's gonna trust a random person they've never met with "ability to act on your behalf on private repos" oauth permissions?? i sure wouldn't
+
 [^2]: More security-conscious people may object to this as well, given GitHub's historically lax security regarding exposing repository secrets to workflows. They have been getting better tho!

@@ -8,11 +8,12 @@ published: 1734321613
 At long last, I finally set aside some time to go thru my Cohost data export & salvage some posts for this blog! Got a few "ouuugh" moments as I was browsing thru it again (list of all people who wished me happy birthday, by proxy of me using user notes for that exclusively). Also, belated apologies to the RSS users who saw all 27 posts appear at once :P
 
 I _would've_ used the [#cohost](https://wolfgirl.dev/tags/cohost/) tag to collect all the posts, but uh, there are quite a lot, so I've opted to not do that. Instead, my organization scheme is roughly as follows:
-* All programming things go in [#programming](https://wolfgirl.dev/tags/programming/) (obviously)
-* All media reviews go in [#reviews](https://wolfgirl.dev/tags/reviews/)
-* All writing goes in [#writing](https://wolfgirl.dev/tags/writing/)
-* All personal updates go in [#wolfgirlagenda](https://wolfgirl.dev/tags/wolfgirlagenda/)
-* A smattering of all of the above goes in [#cohost](https://wolfgirl.dev/tags/cohost/) if I think it's particularly emblematic of my time on the site, or if it's related to the site after its demise (2024-10-01, NEVER FORGET)
+
+- All programming things go in [#programming](https://wolfgirl.dev/tags/programming/) (obviously)
+- All media reviews go in [#reviews](https://wolfgirl.dev/tags/reviews/)
+- All writing goes in [#writing](https://wolfgirl.dev/tags/writing/)
+- All personal updates go in [#wolfgirlagenda](https://wolfgirl.dev/tags/wolfgirlagenda/)
+- A smattering of all of the above goes in [#cohost](https://wolfgirl.dev/tags/cohost/) if I think it's particularly emblematic of my time on the site, or if it's related to the site after its demise (2024-10-01, NEVER FORGET)
 
 There's also this post, which I'll use to collect my absolute favorite chosts:
 

@@ -8,5 +8,5 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-{post.slug.slice(0, 10)}: <a href={post.slug}>{post.data.title}</a>
+{post.id.slice(0, 10)}: <a href={post.id}>{post.data.title}</a>
 (<a href={post.data.direct_link}>source</a>)

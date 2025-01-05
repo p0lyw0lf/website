@@ -14,7 +14,7 @@ export const toBlogData = (post: CollectionEntry<"blog">): BlogData => {
   return {
     ...post.data,
     published: new Date(post.data.published * 1000),
-    url: toBlogUrl(post.slug),
+    url: toBlogUrl(post.id),
   };
 };
 

@@ -6,9 +6,9 @@ published: 1727836354
 ---
 
 > ## [my final chost](https://cohost.org/PolyWolf/post/7908145-my-final-chost)
-> 
+>
 > save the world. love each other. love yourself. miss you, see you again, goodbye
-> 
+>
 > AWOOOOOOOOOOOOOOOOOOOO
 
 yeah :'((((((

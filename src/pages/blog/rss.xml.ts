@@ -1,5 +1,5 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { loadRenderers } from "astro:container";
@@ -14,7 +14,7 @@ export async function GET() {
   const posts = await getCollection("blog");
   const items = await Promise.all(
     posts.map(async (post) => {
-      const { Content } = await post.render();
+      const { Content } = await render(post);
       const content = await container.renderToString(Content);
       const data = toBlogData(post);
       const sanitizedContent = sanitizeHtml(content, {

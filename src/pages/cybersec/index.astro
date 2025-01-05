@@ -4,7 +4,7 @@ import Post from "../../templates/Post.astro";
 import NavLink from "../../components/cybersec/NavLink.astro";
 
 const posts = await getCollection("cybersec");
-posts.sort((post1, post2) => (post1.slug < post2.slug ? 1 : -1));
+posts.sort((post1, post2) => (post1.id < post2.id ? 1 : -1));
 
 // Hack: get Astro to escape this properly on its own
 const description =
