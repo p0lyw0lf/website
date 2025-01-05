@@ -108,3 +108,39 @@ blockquote {
     color: var(--color-text-secondary-accent);
   }
 }
+
+/* Make it so that on mobile, when tables are too wide, they scroll horizontally */
+.table-wrapper {
+  overflow: scroll;
+}
+
+/* Basic table styling. Put a border around the outside, and have no borders on the inside. */
+table {
+  border: var(--color-border-primary) solid 1px;
+  border-collapse: collapse;
+}
+
+/* Make it so that <table class="first-is-label"> will have a border betweent the first column and everything else */
+table.first-is-label tr :first-child {
+  border-right: var(--color-border-primary) solid 1px;
+}
+
+/* Make it so that alternating rows are colored differently */
+thead,
+tbody tr:nth-child(even) {
+  background-color: var(--color-background-secondary);
+}
+
+/* Add a fancy border-bottom to the table header */
+thead {
+  border-bottom: var(--color-border-primary) double 3px;
+}
+
+/* Add a bit of extra breathing room to each cell */
+td {
+  padding: 8px 16px;
+}
+
+th {
+  padding: 4px 8px;
+}

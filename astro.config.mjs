@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import { SITE_URL, STATIC_URL } from "./src/data/url";
 import rehypeEnhancedTables from "./src/plugins/rehypeEnhancedTables";
+import rehypeRaw from "rehype-raw";
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,7 +11,7 @@ export default defineConfig({
   site: SITE_URL.toString(),
 
   markdown: {
-    rehypePlugins: [rehypeEnhancedTables],
+    rehypePlugins: [rehypeRaw, rehypeEnhancedTables],
   },
 
   image: {
