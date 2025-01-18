@@ -1,9 +1,45 @@
 ---
-import Base from "../templates/Base.astro";
-
-import "../scss/page.scss";
+// Hand-minify b/c it will save us a lot on outbound traffic
 ---
 
-<Base title="404 Not Found">
-  <p>Click the above to go home</p>
-</Base>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>wolfgirl.dev - 404 Not Found</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <style>
+      body {
+        background-color: #191919;
+        color: #fff;
+        font-size: 1.25rem;
+        font-family: Consolas, monaco, monospace;
+        margin: 0;
+      }
+      header,
+      main {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+      main {
+        margin: auto;
+        max-width: 40rem;
+        padding: 16px;
+      }
+      h1 a {
+        color: #ffd8a8;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">404 Not Found</a></h1>
+    </header>
+    <main>
+      <p>Click the above to go home</p>
+    </main>
+  </body>
+</html>
