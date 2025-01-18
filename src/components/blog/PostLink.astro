@@ -8,6 +8,11 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-{data.published.toLocaleDateString("en-US", { timeZone: "America/New_York" })}: <a
-  href={data.url}>{data.title}</a
->
+{
+  data.published.toLocaleDateString("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  })
+}: <a href={data.url}>{data.title}</a>
