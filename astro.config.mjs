@@ -5,9 +5,16 @@ import { SITE_URL, STATIC_URL } from "./src/data/url";
 import rehypeEnhancedTables from "./src/plugins/rehypeEnhancedTables";
 import rehypeRaw from "rehype-raw";
 
+const BAD_URLS = new Set(["/404.html"].map((path) => new URL(path, SITE_URL)));
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (url) => !BAD_URLS.has(url),
+    }),
+  ],
   site: SITE_URL.toString(),
 
   markdown: {
