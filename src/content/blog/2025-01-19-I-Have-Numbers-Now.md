@@ -25,7 +25,7 @@ Fortunately, there is another option: CloudFront can put its access logs directl
 
 ## Where Do Numbers Go?
 
-Initially, I thought "oh, I can just write a hacky Python script to download & parse them all". But then the thought of writing a hacky Python script seemed really unappealing to me, so I [lazyweb-ed on Mastodon](https://social.treehouse.systems/@PolyWolf/113851932867864276) to see if anyone knew of any pre-built solutions to parse CloudFront logs. Fortunately [someone responded](https://woof.tech/@unlobito/113851963653376831) ([Harley Watson](https://lobi.to/)) suggesting a program called [GoAccess](https://goaccess.io/)[^1] that looked pretty good. Now, all I had to do was write some hacky Python that calls the following shell script!
+Initially, I thought "oh, I can just write a hacky Python script to download & parse them all". But then the thought of writing a hacky Python script seemed really unappealing to me, so I [lazyweb-ed on Mastodon](https://social.treehouse.systems/@PolyWolf/113851932867864276) to see if anyone knew of any pre-built solutions to parse CloudFront logs. Fortunately [someone responded](https://woof.tech/@unlobito/113851963653376831) ([unlobito](https://lobi.to/)) suggesting a program called [GoAccess](https://goaccess.io/)[^1] that looked pretty good. Now, all I had to do was write some hacky Python that calls the following shell script!
 
 ```bash
 #!/usr/bin/env bash
