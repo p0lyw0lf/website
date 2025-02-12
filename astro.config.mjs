@@ -9,6 +9,10 @@ const BAD_URLS = new Set(["/404.html"].map((path) => new URL(path, SITE_URL)));
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+    responsiveImages: true,
+  },
+
   integrations: [
     mdx(),
     sitemap({
@@ -16,6 +20,7 @@ export default defineConfig({
     }),
   ],
   site: SITE_URL.toString(),
+  trailingSlash: "always",
 
   markdown: {
     rehypePlugins: [rehypeRaw, rehypeEnhancedTables],
@@ -23,6 +28,7 @@ export default defineConfig({
 
   image: {
     domains: [STATIC_URL.host],
+    experimentalLayout: "full-width",
   },
 
   cacheDir: "./.astro-cache",

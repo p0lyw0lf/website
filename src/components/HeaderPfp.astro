@@ -21,6 +21,7 @@ const { src, alt } = Astro.props;
 <a href="/art/">
   <Image
     src={new URL(`/pfps/${src}`, STATIC_URL).toString()}
+    layout={"fixed"}
     width={128}
     height={128}
     densities={[2, 4]}

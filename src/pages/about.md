@@ -4,9 +4,11 @@ title: About
 description: About PolyWolf, owner of wolfgirl.dev, because they're a developer and a wolfgirl
 ---
 
+![CloudWatch dashboard showing total requests and total bytes downloaded from wolfgirl.dev and static.wolfgirl.dev](<https://static.wolfgirl.dev/polywolf/blog/0194801b-532b-7224-8ae3-2fdeb7168007/Screenshot 2025-01-19 151439.png>)
+
 ## Who Am I?
 
-Hi I'm PolyWolf! Like the domain name suggests, I am a wolfgirl and enjoy software development and somehow made a whole website about it.
+Hi I'm PolyWolf! Like the domain name suggests, I am a wolfgirl and enjoy software development and somehow made a whole website about it...
 
 ### Real Name?
 
