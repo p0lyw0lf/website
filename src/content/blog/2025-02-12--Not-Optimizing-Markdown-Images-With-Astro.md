@@ -24,4 +24,6 @@ Alternatively, I _could_ use [MDX](https://docs.astro.build/en/guides/integratio
 
 At this point, I'm seriously considering moving away from Astro's built-in image optimization service to my own... For now though, I'm giving up 😔
 
+UPDATE 2025-02-13: I have just discovered that [Markdoc](https://docs.astro.build/en/guides/integrations-guide/markdoc/#custom-image-components) does exactly what I want it to: provide the ability to use a custom component to override what `![]()` means, without limiting Markdown syntax. This is very very good news! Here's hoping those files will still have reasonable build times. Also I should probably make it so my Post composer re-uses the Markdoc config...
+
 [^1]: I believe this is a minor bug: if you have both `![](./local.png)` _and_ `<img src="./local.png" />`, I think the latter image will be transformed when it shouldn't be. At least, that's if I'm reading the code right, which I may well not be :P
