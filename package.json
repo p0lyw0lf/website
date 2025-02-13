@@ -22,13 +22,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@astrojs/markdown-remark": "link:..\\astro\\packages\\markdown\\remark",
     "@astrojs/mdx": "^4.0.0",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
     "astro": "^5.0.0",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
+    "mdast-util-definitions": "^6.0.0",
     "postcss-nesting": "^13.0.0",
     "rehype-raw": "^7.0.0",
     "sanitize-html": "^2.13.0",
@@ -41,6 +41,8 @@
     "@astrojs/check": "^0.9.3",
     "@eslint/js": "^9.10.0",
     "@types/eslint__js": "^8.42.3",
+    "@types/hast": "^3.0.4",
+    "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.13.0",
     "@typescript-eslint/parser": "^8.5.0",
     "astro-eslint-parser": "^1.0.3",
@@ -50,15 +52,13 @@
     "eslint-plugin-jsx-a11y": "^6.10.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.5.0"
   },
   "packageManager": "pnpm@10.3.0+sha512.ee592eda8815a8a293c206bb0917c4bb0ff274c50def7cbc17be05ec641fc2d1b02490ce660061356bd0d126a4d7eb2ec8830e6959fb8a447571c631d5a2442d",
   "pnpm": {
-    "overrides": {
-      "@astrojs/markdown-remark": "link:..\\astro\\packages\\markdown\\remark",
-      "astro": "link:..\\astro\\packages\\astro"
-    },
+    "overrides": {},
     "onlyBuiltDependencies": [
       "esbuild",
       "sharp"

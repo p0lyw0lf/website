@@ -1,9 +1,12 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
-import { SITE_URL, STATIC_URL } from "./src/data/url";
+import { SITE_URL } from "./src/data/url";
 import rehypeEnhancedTables from "./src/plugins/rehypeEnhancedTables";
 import rehypeRaw from "rehype-raw";
+import { allowedRemoteDomains } from "./src/data/config";
+import remarkCollectRemoteImages from "./src/plugins/remarkCollectRemoteImages";
+import rehypeRemoteImages from "./src/plugins/rehypeRemoteImages";
 
 const BAD_URLS = new Set(["/404.html"].map((path) => new URL(path, SITE_URL)));
 
@@ -23,11 +26,12 @@ export default defineConfig({
   trailingSlash: "always",
 
   markdown: {
-    rehypePlugins: [rehypeRaw, rehypeEnhancedTables],
+    remarkPlugins: [remarkCollectRemoteImages],
+    rehypePlugins: [rehypeRemoteImages, rehypeRaw, rehypeEnhancedTables],
   },
 
   image: {
-    domains: [STATIC_URL.host],
+    domains: allowedRemoteDomains,
     experimentalLayout: "full-width",
   },
 

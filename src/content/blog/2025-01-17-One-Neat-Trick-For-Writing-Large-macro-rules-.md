@@ -163,5 +163,7 @@ How this trick works is, whenever Rust encounters a series of `$()?`, it checks 
 Still, at least for me, the benefit of generating everything in one shot & being compatible with `#[my_proc_macro]` easily outweighs the cost. I hope to have a blog post soon about what exactly I'm _doing_ in `#[my_proc_macro]` that makes it so cool (whoops I hinted at such a post [months ago already](https://wolfgirl.dev/blog/2024-11-24-a-novel-idea-about-functor-in-rust/), oh well). Anyways, take care, see you next time!!
 
 [^1]: Apologies if you have trouble reading `macro_rules!` syntax from a cold start. I hope the usage example later helps.
+
 [^2]: Yes, this list is complete, we're not forgetting angle `<>` braces, which need to be paired up in types. Rust doesn't force those to be paired up, because those tokens can also be part of comparison operators!
+
 [^3]: We can even nest this trick as much as we want! That's how we get things like [this monstrosity](https://github.com/p0lyw0lf/pwcc/blob/bf75533bba40f9f0a06ab66a7807a5f87c72147e/pwcc/src/parser/macros.rs#L24-L174) :3
