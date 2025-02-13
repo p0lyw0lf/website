@@ -20,6 +20,8 @@ So, the procedure I described works perfectly fine for standalone `.md` pages. T
 
 And I don't think it can! The whole reason this code does the `__ASTRO_IMAGE_` rigamarole is so it can call the image transformation function at the correct time. With content collections, all the rendering happens "too early", so the images can't be transformed.
 
+Alternatively, I _could_ use [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/), which is like Markdown but compiles to Javascript instead of HTML, which _does_ always have the image transformation step, thanks to [rehype-image-to-component.ts](https://github.com/withastro/astro/blob/8d4e566f5420c8a5406e1e40e8bae1c1f87cbe37/packages/integrations/mdx/src/rehype-images-to-component.ts). However, I do not like MDX's weird character restrictions (c'mon, no `<`, really??), so I will not use it >:(
+
 At this point, I'm seriously considering moving away from Astro's built-in image optimization service to my own... For now though, I'm giving up 😔
 
 [^1]: I believe this is a minor bug: if you have both `![](./local.png)` _and_ `<img src="./local.png" />`, I think the latter image will be transformed when it shouldn't be. At least, that's if I'm reading the code right, which I may well not be :P
