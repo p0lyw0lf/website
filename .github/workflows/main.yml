@@ -28,7 +28,7 @@ jobs:
         name: Install pnpm
 
       - uses: actions/setup-node@v4
-        Name: Install Node.js
+        name: Install Node.js
         with:
           node-version: 20
           cache: "pnpm"
