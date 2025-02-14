@@ -1,14 +1,11 @@
-import { getContainerRenderer as getMDXRenderer } from "@astrojs/mdx";
 import rss from "@astrojs/rss";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
-import { loadRenderers } from "astro:container";
 import { getCollection, render } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import { SITE_URL, toCybersecUrl } from "../../data/url";
 
 export async function GET() {
-  const renderers = await loadRenderers([getMDXRenderer()]);
-  const container = await AstroContainer.create({ renderers });
+  const container = await AstroContainer.create();
 
   const posts = await getCollection("cybersec");
   const items = await Promise.all(

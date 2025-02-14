@@ -1,7 +1,7 @@
-import type { Element, Root } from "hast";
+import type { Root } from "hast";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
-import type { AstroData } from "./remarkCollectRemoteImages";
+import { allowedRemoteDomains } from "../data/config";
 
 /**
  * This plugin takes all `<img src="" />` images whose URLs were found in a
@@ -15,48 +15,30 @@ import type { AstroData } from "./remarkCollectRemoteImages";
  * image.
  */
 export const rehypeRemoteImages: Plugin<[], Root> = () => {
-  return (tree, file) => {
-    const imageOccurrenceMap = new Map();
+  const allowedDomains = new Set(allowedRemoteDomains);
+  const shouldOptimizeImage = (src: string | undefined): boolean => {
+    if (!src) return false;
+    try {
+      const url = new URL(src);
+      return allowedDomains.has(url.host);
+    } catch {
+      return false;
+    }
+  };
 
-    visit(tree, (node, index, parent) => {
+  return (tree) => {
+    visit(tree, (node /*, index, parent */) => {
       if (node.type !== "element") return;
       if (node.tagName !== "img") return;
 
       if (typeof node.properties?.src !== "string") return;
 
       node.properties.src = decodeURI(node.properties.src);
+      if (!shouldOptimizeImage(node.properties.src)) return;
 
-      if (
-        !(
-          file.data.astro as AstroData
-        ).frontmatter.__remoteImagePaths?.includes(node.properties.src)
-      )
-        return;
+      // TODO: make this actually optimize the image too, with a fancy image service
 
-      const { ...props } = node.properties;
-
-      const imageIndex = imageOccurrenceMap.get(node.properties.src) || 0;
-      imageOccurrenceMap.set(node.properties.src, imageIndex + 1);
-
-      node.properties["__POLYWOLF_IMAGE_"] = JSON.stringify({
-        inferSize: "width" in props && "height" in props ? undefined : true,
-        ...props,
-        index: imageIndex,
-      });
-      const newNode: Element = {
-        type: "element",
-        tagName: "a",
-        properties: {
-          href: node.properties.src,
-        },
-        children: [node],
-      };
-
-      Object.keys(props).forEach((prop) => {
-        delete node.properties[prop];
-      });
-
-      parent!.children[index!] = newNode;
+      // parent!.children[index!] = newNode;
     });
   };
 };

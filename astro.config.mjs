@@ -1,11 +1,9 @@
-import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import mdx from "@astrojs/mdx";
-import { SITE_URL } from "./src/data/url";
-import rehypeEnhancedTables from "./src/plugins/rehypeEnhancedTables";
+import { defineConfig } from "astro/config";
 import rehypeRaw from "rehype-raw";
 import { allowedRemoteDomains } from "./src/data/config";
-import remarkCollectRemoteImages from "./src/plugins/remarkCollectRemoteImages";
+import { SITE_URL } from "./src/data/url";
+import rehypeEnhancedTables from "./src/plugins/rehypeEnhancedTables";
 import rehypeRemoteImages from "./src/plugins/rehypeRemoteImages";
 
 const BAD_URLS = new Set(["/404.html"].map((path) => new URL(path, SITE_URL)));
@@ -17,7 +15,6 @@ export default defineConfig({
   },
 
   integrations: [
-    mdx(),
     sitemap({
       filter: (url) => !BAD_URLS.has(url),
     }),
@@ -26,7 +23,6 @@ export default defineConfig({
   trailingSlash: "always",
 
   markdown: {
-    remarkPlugins: [remarkCollectRemoteImages],
     rehypePlugins: [rehypeRemoteImages, rehypeRaw, rehypeEnhancedTables],
   },
 
