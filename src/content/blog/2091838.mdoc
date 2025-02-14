@@ -113,7 +113,7 @@ Great! Now that one of the updates is atomic, we've fixed the UB! That means we'
 
 ## Memory Ordering
 
-Not so fast! So far, we've just been setting the memory ordering parameter to the atomic operations to `memory_order_relaxed`, since that's the most flexible for the compiler[^1] and we only need atomic updates on individual variables to prevent data races.
+Not so fast! So far, we've just been setting the memory ordering parameter to the atomic operations to `memory_order_relaxed`, since that's the most flexible for the compiler{% n #1 /%} and we only need atomic updates on individual variables to prevent data races.
 
 However! Just like with `volatile`, C compilers are very aggressive about inlining functions and reordering load and stores, and since `memory_order_relaxed` doesn't impose any constraints on how the non-atomic loads and stores are sequenced, the compiler is still free to do whatever it wants. We're building a mutex after all, so it doesn't count if all we do is ensure the `lock()` and `unlock()` functions are race-free; we also need to make sure operations done in the critical section can't get reordered outside the `lock()` and `unlock()` calls.
 
@@ -123,7 +123,7 @@ Looking at the appropriate [cppreference page](https://en.cppreference.com/w/c/a
 
 > `memory_order_release`: A store operation with this memory order performs the release operation: no reads or writes in the current thread can be reordered after this store. All writes in the current thread are visible in other threads that acquire the same atomic variable (see [Release-Acquire](https://en.cppreference.com/w/c/atomic/memory_order#Release-Acquire_ordering) ordering)
 
-Hey wait a minute, those names are familiar! "Acquire" is a fancy name for `lock()` and "release" is a fancy name for `unlock()`. These are memory orderings _specifically made for mutexes_; "reads or writes in the current threads" applies to _all_ reads or writes, not just `volatile` ones. `memory_order_acquire` makes it so nothing in the critical section can be ordered before a `lock()`, and `memory_order_release` makes it so nothing in the critical section can be ordered after an `unlock()`. Perfect! With this in mind, we can write our final, correct[^2] ticket lock implementation:
+Hey wait a minute, those names are familiar! "Acquire" is a fancy name for `lock()` and "release" is a fancy name for `unlock()`. These are memory orderings _specifically made for mutexes_; "reads or writes in the current threads" applies to _all_ reads or writes, not just `volatile` ones. `memory_order_acquire` makes it so nothing in the critical section can be ordered before a `lock()`, and `memory_order_release` makes it so nothing in the critical section can be ordered after an `unlock()`. Perfect! With this in mind, we can write our final, correct{% n #2 /%} ticket lock implementation:
 
 ```c
 #include <stdatomic.h>
@@ -146,6 +146,10 @@ void unlock(mutex_t *m) {
 
 Memory ordering is a super deep field, and I re-learn a lot of it every time I need to use it. Leaving u with one fun thing before I go, read about the [DEC Alpha](https://www.cs.umd.edu/~pugh/java/memoryModel/AlphaReordering.html). It's real cursed :3 [Wikipedia has more](https://en.wikipedia.org/wiki/Consistency_model#Relaxing_read_and_read_to_write_program_orders:_Alpha,_RMO,_and_PowerPC) but that previous link is by far the simplest explainer of just how bonkers it is.
 
-[^1]: In a bizarre twist of fate, the non-`_explicit` version of atomic functions all default to `memory_order_seqcst`, the most strict ordering. The C standard library having safe defaults?? Improbable.
+{% fn #1 %}
+ In a bizarre twist of fate, the non-`_explicit` version of atomic functions all default to `memory_order_seqcst`, the most strict ordering. The C standard library having safe defaults?? Improbable.
+{% /fn %}
 
-[^2]: Minus certain definitions of correct, such as actually descheduling blocked threads, detecting misuses of the API, detecting deadlocks, etc.
+{% fn #2 %}
+ Minus certain definitions of correct, such as actually descheduling blocked threads, detecting misuses of the API, detecting deadlocks, etc.
+{% /fn %}

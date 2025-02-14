@@ -9,5 +9,11 @@ export default {
         parser: "astro",
       },
     },
+    {
+      files: "*.mdoc",
+      options: {
+        parser: "markdown",
+      },
+    },
   ],
 };

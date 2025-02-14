@@ -34,7 +34,7 @@ What is this saying? Even if you understand Haskell, it can sometimes still be t
 
 > Given a type `From`, which is a container type like the root of an AST, and a type `To`, which is like an inner node of an AST, transform `From` by applying an operation each time we encounter a node of type `To` in the tree.
 
-Indeed, that is very similar to what I was trying to do previously! So why did I call my trait `Functor`, when this description almost exactly matches? Well mostly out of ignorance, yes, but also, when I later looked up the equivalent Rust crate [`uniplate`](https://docs.rs/uniplate/latest/uniplate/trait.Biplate.html), its type signature looked something more like[^1]:
+Indeed, that is very similar to what I was trying to do previously! So why did I call my trait `Functor`, when this description almost exactly matches? Well mostly out of ignorance, yes, but also, when I later looked up the equivalent Rust crate [`uniplate`](https://docs.rs/uniplate/latest/uniplate/trait.Biplate.html), its type signature looked something more like{% n #1 /%}:
 
 ```rust
 trait Biplate<To> {
@@ -56,9 +56,9 @@ I think about this like:
 
 > Given a container type `F` over homogenous elements `A`, you can transform each `A` into a `B` in order to get a new container `F` over homogenous elements `B`.
 
-And _that's_ why I thought I wanted a `Functor`! Initially, I had only parameterized my AST on how it represented locations in memory. I had one type (`A`) for `HardwareRegister | StackAddress | PseudoRegister`, and another (`B`) for just `HardwareRegister | StackAddress`, in order to guarantee I could never emit assembly code that contained pseudo-registers. A regalloc[^2] pass would get rid of all the pseudo-registers, and I would run that pass with a specially-crafted `fmap` call.
+And _that's_ why I thought I wanted a `Functor`! Initially, I had only parameterized my AST on how it represented locations in memory. I had one type (`A`) for `HardwareRegister | StackAddress | PseudoRegister`, and another (`B`) for just `HardwareRegister | StackAddress`, in order to guarantee I could never emit assembly code that contained pseudo-registers. A regalloc{% n #2 /%} pass would get rid of all the pseudo-registers, and I would run that pass with a specially-crafted `fmap` call.
 
-I was inspired by how the Rust crate [`fmap`](https://docs.rs/fmap/latest/fmap/trait.Functor.html) translated the Haskell signature[^3]:
+I was inspired by how the Rust crate [`fmap`](https://docs.rs/fmap/latest/fmap/trait.Functor.html) translated the Haskell signature{% n #3 /%}:
 
 ```rust
 trait Functor<B> {
@@ -68,13 +68,13 @@ trait Functor<B> {
 }
 ```
 
-Now you can hopefully understand how I ended up where I did! My version of `Functor` is exactly this, just with an explict associated parameter for `B` so writing generic implementations is easier[^6].
+Now you can hopefully understand how I ended up where I did! My version of `Functor` is exactly this, just with an explict associated parameter for `B` so writing generic implementations is easier{% n #6 /%}.
 
 ## Going beyond?
 
 While playing around with this `Functor` trait, I realized something interesting. Unlike Haskell's `Functor` typeclass, where `f` is necessarily a type with a generic parameter, and `fmap` necessarily transforms that generic parameter, Rust's `Functor` is a lot more like `Biplate`, in that you can specialize the transform to only be over certain inner elements!
 
-When I realized this, I started trying to shoehorn everything into it. I didn't have to just write one `impl<L: Location> Functor<L> for Program<L>` implementation, I could write multiple[^4]!
+When I realized this, I started trying to shoehorn everything into it. I didn't have to just write one `impl<L: Location> Functor<L> for Program<L>` implementation, I could write multiple{% n #4 /%}!
 
 ```rust
 struct Location<L>(L); // Needs to be a newtype so we can avoid potentially conflicting implementations
@@ -100,18 +100,30 @@ I'd like to write a paper on this. The authors of `uniplate` [wrote one](https:/
 
 <hr>
 
-In case you're wondering, "PolyWolf, why has it taken you so long to get this post out? Surely you haven't spent over two weeks just thinking?", yes I have been thinking about this for a while, but mostly in the context of writing a proper Rust `proc_macro` that creates these implementations for me, just given the AST definition. It's unfortunately much much more involved than writing a `macro_rules!`[^5], especially trying to handle all the edge-cases properly. I don't know why I waited to publish this blog post until I finished writing this new macro; I didn't even need to explain anything about it in this post lol. Leaving that for a future blog post, maybe once I publish the crate perhaps !
+In case you're wondering, "PolyWolf, why has it taken you so long to get this post out? Surely you haven't spent over two weeks just thinking?", yes I have been thinking about this for a while, but mostly in the context of writing a proper Rust `proc_macro` that creates these implementations for me, just given the AST definition. It's unfortunately much much more involved than writing a `macro_rules!`{% n #5 /%}, especially trying to handle all the edge-cases properly. I don't know why I waited to publish this blog post until I finished writing this new macro; I didn't even need to explain anything about it in this post lol. Leaving that for a future blog post, maybe once I publish the crate perhaps !
 
 As always, you can check out the code at [github:p0lyw0lf/pwcc](https://github.com/p0lyw0lf/pwcc); it _sort of_ has documentation right now, if u squint
 
-[^1]: The real thing's actually worse in my opinion: `fn transform_bi(&self, op: Arc<dyn Fn(To) -> To>) -> Self`. You have to deal with the overhead of `Arc`, `dyn`, _and_ `Clone`-ing your entire AST?? No thanks. This is actually one of the biggest motivators I have for wanting to write a paper about this, to show these operations can be done in-place, zero-copy (given a sufficiently smart compiler, I hope).
+{% fn #1 %}
+ The real thing's actually worse in my opinion: `fn transform_bi(&self, op: Arc<dyn Fn(To) -> To>) -> Self`. You have to deal with the overhead of `Arc`, `dyn`, _and_ `Clone`-ing your entire AST?? No thanks. This is actually one of the biggest motivators I have for wanting to write a paper about this, to show these operations can be done in-place, zero-copy (given a sufficiently smart compiler, I hope).
+{% /fn %}
 
-[^2]: (fake (deragatory)), I haven't gotten that far in the book yet, so all pseudo-registers just get assigned to unique stack addresses :)
+{% fn #2 %}
+ (fake (deragatory)), I haven't gotten that far in the book yet, so all pseudo-registers just get assigned to unique stack addresses :)
+{% /fn %}
 
-[^3]: Again, this signature is a massive simplification. The real one cares about lifetimes, thread safety, etc. etc. all good stuff a proper Rust library needs to care about
+{% fn #3 %}
+ Again, this signature is a massive simplification. The real one cares about lifetimes, thread safety, etc. etc. all good stuff a proper Rust library needs to care about
+{% /fn %}
 
-[^4]: Given appropriate macro/specialization support, which is what the previous post was about :P
+{% fn #4 %}
+ Given appropriate macro/specialization support, which is what the previous post was about :P
+{% /fn %}
 
-[^5]: I will curse dtolnay forever for making `syn`/`quote` the only way to do this, but maybe I'm just more frustated by how hard the logic is in general...
+{% fn #5 %}
+ I will curse dtolnay forever for making `syn`/`quote` the only way to do this, but maybe I'm just more frustated by how hard the logic is in general...
+{% /fn %}
 
-[^6]: I'm reading this again and I'm actually not too convinced by that argument anymore. Maybe it was so I could write things like `TryFunctor` (returns a `Result`) or `AsyncFunctor` (returns an `impl Future`) without having to change the trait at all? That seems bad tho, and I should probably just write separate traits lol
+{% fn #6 %}
+ I'm reading this again and I'm actually not too convinced by that argument anymore. Maybe it was so I could write things like `TryFunctor` (returns a `Result`) or `AsyncFunctor` (returns an `impl Future`) without having to change the trait at all? That seems bad tho, and I should probably just write separate traits lol
+{% /fn %}

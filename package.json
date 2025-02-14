@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,6 +22,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@astrojs/markdoc": "^0.12.9",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
     "astro": "^5.0.0",

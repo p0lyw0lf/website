@@ -7,7 +7,7 @@ published: 1731504980
 
 On my [toy compiler](https://wolfgirl.dev/blog/2024-10-17-work-on-my-toy-compiler-is-progressing-smoothly/), I have a lot of AST manipulations I need to do. There is the "parsed" AST, the "IR" AST, and the "codegen" AST, all of which need various passes defined for them. Most passes boil down to "transform all nodes of a given type in-place". Now, because my ASTs are kinda big, and I have so many of them, and I have so many node types I want to map over, I _really_ don't want to have to write out this mapping function by hand.
 
-My solution for Rust was to write a "specialized [Functor](https://hackage.haskell.org/package/base-4.20.0.1/docs/Data-Functor.html)" trait like so[^1]:
+My solution for Rust was to write a "specialized [Functor](https://hackage.haskell.org/package/base-4.20.0.1/docs/Data-Functor.html)" trait like so{% n #1 /%}:
 
 ```rust
 trait Functor<Inner> {
@@ -97,9 +97,9 @@ fn map_isize() {
 }
 ```
 
-That is, we re-construct the value in-place, recursively calling `fmap` to transform the appropriate fields[^3].
+That is, we re-construct the value in-place, recursively calling `fmap` to transform the appropriate fields{% n #3 /%}.
 
-Now, because the entire point of this is for me to be really lazy, I did not want to have to write out all these `Functor` implementations manually. So naturally, I [wrote a macro](https://github.com/p0lyw0lf/pwcc/blob/6598df9aa48c28b4fe577540e7d824343510670f/functional/src/functor.rs)[^2] that does most of the work for me. All I have to do now is specify, for a given inner type, for each AST node above it in the tree, what fields I'd like to map over.
+Now, because the entire point of this is for me to be really lazy, I did not want to have to write out all these `Functor` implementations manually. So naturally, I [wrote a macro](https://github.com/p0lyw0lf/pwcc/blob/6598df9aa48c28b4fe577540e7d824343510670f/functional/src/functor.rs){% n #2 /%} that does most of the work for me. All I have to do now is specify, for a given inner type, for each AST node above it in the tree, what fields I'd like to map over.
 
 Unfortunately, that's still too much work!!! I have a lot of AST nodes and inner types I want to map over, so what I'd really like is a way to define something like this:
 
@@ -136,8 +136,14 @@ I _might_ be able to hack something with the `dynamic` keyword or like Protocols
 
 Think I'll try Haskell next? :P
 
-[^1]: Note this trait has extra considerations for "what if the thing we're mapping over is polymorphic?". The complexity is about the same even without that consideration, unfortunately...
+{% fn #1 %}
+ Note this trait has extra considerations for "what if the thing we're mapping over is polymorphic?". The complexity is about the same even without that consideration, unfortunately...
+{% /fn %}
 
-[^2]: (Not sure where to put this but it's still relevant for footnotes) I also had the idea of using this macro to define both `Functor<Inner>` and `Functor<Result<Inner, Err>>` implementations. This works because `Inner` is never a `Result`, so everything has coherence! These latter implementations would have `Input=Inner, Output=Result<Inner, Err>` and could be configured to fail early or to collect all errors. Unfortunately, I ran into Coherence problems again when I tried to `impl Functor<Result<T, E>> for Vec<Result<T, E>>` (for `Mapped=Result<Vec<T, E>>`). I _could_ just write another trait as well, but man that's annoying!
+{% fn #2 %}
+ (Not sure where to put this but it's still relevant for footnotes) I also had the idea of using this macro to define both `Functor<Inner>` and `Functor<Result<Inner, Err>>` implementations. This works because `Inner` is never a `Result`, so everything has coherence! These latter implementations would have `Input=Inner, Output=Result<Inner, Err>` and could be configured to fail early or to collect all errors. Unfortunately, I ran into Coherence problems again when I tried to `impl Functor<Result<T, E>> for Vec<Result<T, E>>` (for `Mapped=Result<Vec<T, E>>`). I _could_ just write another trait as well, but man that's annoying!
+{% /fn %}
 
-[^3]: Note the strange function invocation outside the trait. The compiler has a hard time inferring what `Functor` implementation to use otherwise, for some reason. That's how you know we're doing something cursed!
+{% fn #3 %}
+ Note the strange function invocation outside the trait. The compiler has a hard time inferring what `Functor` implementation to use otherwise, for some reason. That's how you know we're doing something cursed!
+{% /fn %}
