@@ -4,6 +4,7 @@ import rehypeRaw from "rehype-raw";
 import { allowedRemoteDomains } from "./src/data/config";
 import { SITE_URL } from "./src/data/url";
 import rehypeEnhancedTables from "./src/plugins/rehypeEnhancedTables";
+import rehypeRemoteImages from "./src/plugins/rehypeRemoteImages";
 
 const BAD_URLS = new Set(["/404.html"].map((path) => new URL(path, SITE_URL)));
 
@@ -22,7 +23,7 @@ export default defineConfig({
   trailingSlash: "always",
 
   markdown: {
-    rehypePlugins: [rehypeRaw, rehypeEnhancedTables],
+    rehypePlugins: [rehypeRemoteImages, rehypeRaw, rehypeEnhancedTables],
   },
 
   image: {

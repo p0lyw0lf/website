@@ -1,4 +1,4 @@
-import type { Root } from "hast";
+import type { Element, Root } from "hast";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 import { allowedRemoteDomains } from "../data/config";
@@ -27,7 +27,7 @@ export const rehypeRemoteImages: Plugin<[], Root> = () => {
   };
 
   return (tree) => {
-    visit(tree, (node /*, index, parent */) => {
+    visit(tree, (node, index, parent) => {
       if (node.type !== "element") return;
       if (node.tagName !== "img") return;
 
@@ -36,9 +36,27 @@ export const rehypeRemoteImages: Plugin<[], Root> = () => {
       node.properties.src = decodeURI(node.properties.src);
       if (!shouldOptimizeImage(node.properties.src)) return;
 
-      // TODO: make this actually optimize the image too, with a fancy image service
+      const originalSrc = node.properties.src;
 
-      // parent!.children[index!] = newNode;
+      // Add new arguments for getImage
+      node.properties.inferSize = true;
+      node.properties.widths = [384, 768, 1536];
+
+      // Pass those properties to getImage by hooking into Astro
+      node.properties = {
+        __ASTRO_IMAGE_: JSON.stringify(node.properties),
+      };
+
+      // Make it so we can click on the image to go to the original
+      const newNode: Element = {
+        type: "element",
+        tagName: "a",
+        properties: {
+          href: originalSrc,
+        },
+        children: [node],
+      };
+      parent!.children[index!] = newNode;
     });
   };
 };

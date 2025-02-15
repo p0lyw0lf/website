@@ -11,7 +11,7 @@ My blog is hosted with CloudFront pointed at an S3 bucket, automatically updated
 
 ## Where Do Numbers Come From?
 
-From looking at an automatically-created CloudWatch (AWS's logging/metrics collection service) dashboard, I could see that CloudFront (AWS's CDN service) was already collecting... something..
+From looking at an automatically-created CloudWatch (AWS's logging/metrics collection service) dashboard, I could see that CloudFront (AWS's CDN service) was already collecting... something...
 
 ![CloudWatch dashboard showing total requests and total bytes downloaded from wolfgirl.dev and static.wolfgirl.dev](<https://static.wolfgirl.dev/polywolf/blog/0194801b-532b-7224-8ae3-2fdeb7168007/Screenshot 2025-01-19 151439.png>)
 
