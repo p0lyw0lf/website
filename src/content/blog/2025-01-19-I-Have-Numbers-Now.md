@@ -7,7 +7,7 @@ mastodon: "https://social.treehouse.systems/@PolyWolf/113857026769441527"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lg4ppdtg6c2k"
 ---
 
-My blog is hosted with CloudFront pointed at an S3 bucket, automatically updated to whenever I push a commit to the GitHub repository containing the sources. Pretty simple in the end, but required a lot of reading AWS blog posts to get set up correctly initially. Now that it's no longer on Cohost, I have the opportunity to look at something I haven't been able to before: **_numbers_**. Unfortunately this required reading yet more AWS blog posts.
+My blog is hosted with CloudFront pointed at an S3 bucket, automatically updated to whenever I push a commit to the GitHub repository containing the sources. Pretty simple in the end, but required a lot of reading AWS blog posts to get set up correctly initially. Now that it's no longer on Cohost, I have the opportunity to look at something I haven't been able to before: **_numbers_**. Unfortunately this required reading yet more AWS blog posts.!
 
 ## Where Do Numbers Come From?
 
@@ -25,7 +25,7 @@ Fortunately, there is another option: CloudFront can put its access logs directl
 
 ## Where Do Numbers Go?
 
-Initially, I thought "oh, I can just write a hacky Python script to download & parse them all". But then the thought of writing a hacky Python script seemed really unappealing to me, so I [lazyweb-ed on Mastodon](https://social.treehouse.systems/@PolyWolf/113851932867864276) to see if anyone knew of any pre-built solutions to parse CloudFront logs. Fortunately [someone responded](https://woof.tech/@unlobito/113851963653376831) ([unlobito](https://lobi.to/)) suggesting a program called [GoAccess](https://goaccess.io/){% n #1 /%} that looked pretty good. Now, all I had to do was write some hacky Python that calls the following shell script!
+Initially, I thought "oh, I can just write a hacky Python script to download & parse them all". But then the thought of writing a hacky Python script seemed really unappealing to me, so I [lazyweb-ed on Mastodon](https://social.treehouse.systems/@PolyWolf/113851932867864276) to see if anyone knew of any pre-built solutions to parse CloudFront logs. Fortunately [someone responded](https://woof.tech/@unlobito/113851963653376831) ([unlobito](https://lobi.to/)) suggesting a program called [GoAccess](https://goaccess.io/)[^1] that looked pretty good. Now, all I had to do was write some hacky Python that calls the following shell script!
 
 ```bash
 #!/usr/bin/env bash
@@ -54,7 +54,7 @@ zcat "${output_folder}/**/*.gz" | docker run --rm -i -v "${output_file}:/report.
 echo "${output_file}"
 ```
 
-GoAccess is pretty fast, and S3 doesn't take _that_ long to download{% n #2 /%}, so I can get updated reports pretty easily. Now, drumroll please...
+GoAccess is pretty fast, and S3 doesn't take _that_ long to download[^2], so I can get updated reports pretty easily. Now, drumroll please...
 
 ## What's My Most Viewed Page?
 
@@ -72,10 +72,6 @@ Guess I have a few readers huh! Hi 👋😸
 
 I'll try not to abuse my newfound power _too_ hard. Nice to have it available tho.
 
-{% fn #1 %}
- Somehow written in C, not Go?? lol
-{% /fn %}
+[^1]: Somehow written in C, not Go?? lol
 
-{% fn #2 %}
- Hopefully, I haven't tested it on days/weeks worth of data, only hours.
-{% /fn %}
+[^2]: Hopefully, I haven't tested it on days/weeks worth of data, only hours.

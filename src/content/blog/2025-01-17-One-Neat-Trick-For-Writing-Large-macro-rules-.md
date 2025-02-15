@@ -7,7 +7,7 @@ mastodon: "https://social.treehouse.systems/@PolyWolf/113846719871374136"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lfy5acsm5s2z"
 ---
 
-First, let's start with a related "neat trick" that lets you write _composable_ `macro_rules!`. Say you have a macro that generates struct definitions{% n #1 /%}:
+First, let's start with a related "neat trick" that lets you write _composable_ `macro_rules!`. Say you have a macro that generates struct definitions[^1]:
 
 ```rust
 macro_rules! node {
@@ -53,7 +53,7 @@ macro_rules! nodes {
 }
 ```
 
-`tt`, or TokenTree, represents a pair of braces (round `()`, square `[]`, or curly `{}`){% n #2 /%}, with _anything_ inside them. Rust is really good about enforcing braces to be in pairs even at the lex level, and this is represented in macros, which _do_ just take in an arbitrary list of tokens.
+`tt`, or TokenTree, represents a pair of braces (round `()`, square `[]`, or curly `{}`)[^2], with _anything_ inside them. Rust is really good about enforcing braces to be in pairs even at the lex level, and this is represented in macros, which _do_ just take in an arbitrary list of tokens.
 
 So now we have a macro that we can use like this:
 
@@ -97,7 +97,7 @@ Our goal is to have `#[my_proc_macro]` operate on a module with expanded `struct
 
 ## Generating Everything In One Pass
 
-> Neat Trick 2: Inside a repetition `$()*`, you can use `$()?` like individual `macro_rules!` cases, and the results will be the same, so long as you use an appropriate delimiter{% n #3 /%}.
+> Neat Trick 2: Inside a repetition `$()*`, you can use `$()?` like individual `macro_rules!` cases, and the results will be the same, so long as you use an appropriate delimiter[^3].
 
 ```rust
 macro_rules! nodes_prime {
@@ -162,14 +162,8 @@ How this trick works is, whenever Rust encounters a series of `$()?`, it checks 
 
 Still, at least for me, the benefit of generating everything in one shot & being compatible with `#[my_proc_macro]` easily outweighs the cost. I hope to have a blog post soon about what exactly I'm _doing_ in `#[my_proc_macro]` that makes it so cool (whoops I hinted at such a post [months ago already](https://wolfgirl.dev/blog/2024-11-24-a-novel-idea-about-functor-in-rust/), oh well). Anyways, take care, see you next time!!
 
-{% fn #1 %}
- Apologies if you have trouble reading `macro_rules!` syntax from a cold start. I hope the usage example later helps.
-{% /fn %}
+[^1]: Apologies if you have trouble reading `macro_rules!` syntax from a cold start. I hope the usage example later helps.
 
-{% fn #2 %}
- Yes, this list is complete, we're not forgetting angle `<>` braces, which need to be paired up in types. Rust doesn't force those to be paired up, because those tokens can also be part of comparison operators!
-{% /fn %}
+[^2]: Yes, this list is complete, we're not forgetting angle `<>` braces, which need to be paired up in types. Rust doesn't force those to be paired up, because those tokens can also be part of comparison operators!
 
-{% fn #3 %}
- We can even nest this trick as much as we want! That's how we get things like [this monstrosity](https://github.com/p0lyw0lf/pwcc/blob/bf75533bba40f9f0a06ab66a7807a5f87c72147e/pwcc/src/parser/macros.rs#L24-L174) :3
-{% /fn %}
+[^3]: We can even nest this trick as much as we want! That's how we get things like [this monstrosity](https://github.com/p0lyw0lf/pwcc/blob/bf75533bba40f9f0a06ab66a7807a5f87c72147e/pwcc/src/parser/macros.rs#L24-L174) :3

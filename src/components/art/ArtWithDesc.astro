@@ -46,7 +46,7 @@ const images = await Promise.all(
       url,
       dims: { width: Math.round(width), height: Math.round(height) },
     };
-  })
+  }),
 );
 ---
 
@@ -83,6 +83,7 @@ const images = await Promise.all(
         <a href={image.url}>
           <Image
             src={image.url}
+            layout={"fixed"}
             width={image.dims.width}
             height={image.dims.height}
             alt={image.alt}

@@ -22,7 +22,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@astrojs/markdoc": "^0.12.9",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
     "astro": "^5.0.0",
@@ -62,6 +61,10 @@
     "onlyBuiltDependencies": [
       "esbuild",
       "sharp"
-    ]
+    ],
+    "patchedDependencies": {
+      "astro": "patches/astro.patch",
+      "@astrojs/markdown-remark": "patches/@astrojs__markdown-remark.patch"
+    }
   }
 }

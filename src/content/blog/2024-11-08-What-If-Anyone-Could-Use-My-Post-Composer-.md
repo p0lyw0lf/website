@@ -15,19 +15,15 @@ I've continued to add features since I first started using it too: drafts (with 
 
 Now that's great n all, but back to the original point: I started thinking, since I have this really neat tool that works well for my usecase, might other people find it suitable for their usecases too? How would I go about "productionizing" it? So here I am, brainstorming & writing down some proposed restrictions that would make it possible for me to do so in a fairly short timeframe:
 
-1. Users will log in with GitHub{% n #1 /%}
+1. Users will log in with GitHub[^1]
 2. Users will select a repository + branch + path they want to "post" to, and will have the ability to customize the filename and content according to templates (instructions/examples included)
 3. Users will NOT have the ability to automatically upload attachments, like I do
 4. Users will NOT have the ability to automatically make announcements on bksy/fedi, like I do
 
-These restrictions assume a workflow of "uses GitHub Actions to automatically update a website whenever a commit is added"{% n #2 /%}, which I'm assuming is at least somewhat possible for the majority of people who would be interested in this tool (doesn't really help if you don't have automatic deploys set up already).
+These restrictions assume a workflow of "uses GitHub Actions to automatically update a website whenever a commit is added"[^2], which I'm assuming is at least somewhat possible for the majority of people who would be interested in this tool (doesn't really help if you don't have automatic deploys set up already).
 
 And now I reveal the true reason for this post: to gauge interest before I embark on changing my janky code to be slightly less janky for others to use. If you're reading this, and would be interested in using this tool, please leave a comment/contact me with something that includes the phrase "i'm interested in using your post composer". If the above restrictions preclude you from using this, please also let me know somehow. And as always, thanks for reading <3
 
-{% fn #1 %}
- This is the part I see the most people getting hung up on, b/c who's gonna trust a random person they've never met with "ability to act on your behalf on private repos" oauth permissions?? i sure wouldn't
-{% /fn %}
+[^1]: This is the part I see the most people getting hung up on, b/c who's gonna trust a random person they've never met with "ability to act on your behalf on private repos" oauth permissions?? i sure wouldn't
 
-{% fn #2 %}
- More security-conscious people may object to this as well, given GitHub's historically lax security regarding exposing repository secrets to workflows. They have been getting better tho!
-{% /fn %}
+[^2]: More security-conscious people may object to this as well, given GitHub's historically lax security regarding exposing repository secrets to workflows. They have been getting better tho!

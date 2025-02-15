@@ -4,13 +4,18 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@astrojs/markdown-remark':
+    hash: b759fa1ab1c837349dd3bf03374bdde405190c706ea86d9306deb69a4249e778
+    path: patches/@astrojs__markdown-remark.patch
+  astro:
+    hash: 75e84bbad57c86807dcbd7eba6398fef8885691bb68455a3bc4bc9c7e8a5a5d4
+    path: patches/astro.patch
+
 importers:
 
   .:
     dependencies:
-      '@astrojs/markdoc':
-        specifier: ^0.12.9
-        version: 0.12.9(astro@5.2.6(rollup@4.34.6)(sass-embedded@1.83.4)(typescript@5.7.3)(yaml@2.7.0))
       '@astrojs/rss':
         specifier: ^4.0.7
         version: 4.0.11
@@ -19,7 +24,7 @@ importers:
         version: 3.2.1
       astro:
         specifier: ^5.0.0
-        version: 5.3.0(rollup@4.34.6)(sass-embedded@1.85.0)(typescript@5.7.3)(yaml@2.7.0)
+        version: 5.3.0(patch_hash=75e84bbad57c86807dcbd7eba6398fef8885691bb68455a3bc4bc9c7e8a5a5d4)(rollup@4.34.6)(sass-embedded@1.85.0)(typescript@5.7.3)(yaml@2.7.0)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.5.2)
@@ -128,12 +133,6 @@ packages:
         optional: true
       prettier-plugin-astro:
         optional: true
-
-  '@astrojs/markdoc@0.12.9':
-    resolution: {integrity: sha512-BiM4G8n5+4WUe3JZ45b13ojHai4WKomGtNlZZtEKZiXzrLAkdP0WAYp9vVB2RCt2DVN12LMDc/FzhYfQ1IupaA==}
-    engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
-    peerDependencies:
-      astro: ^5.0.0
 
   '@astrojs/markdown-remark@6.1.0':
     resolution: {integrity: sha512-emZNNSTPGgPc3V399Cazpp5+snogjaF04ocOSQn9vy3Kw/eIC4vTQjXOrWDEoSEy+AwPDZX9bQ4wd3bxhpmGgQ==}
@@ -527,18 +526,6 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
-  '@markdoc/markdoc@0.4.0':
-    resolution: {integrity: sha512-fSh4P3Y4E7oaKYc2oNzSIJVPDto7SMzAuQN1Iyx53UxzleA6QzRdNWRxmiPqtVDaDi5dELd2yICoG91csrGrAw==}
-    engines: {node: '>=14.7.0'}
-    peerDependencies:
-      '@types/react': '*'
-      react: '*'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      react:
-        optional: true
-
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -708,17 +695,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/linkify-it@5.0.0':
-    resolution: {integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==}
-
-  '@types/markdown-it@12.2.3':
-    resolution: {integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==}
-
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
-
-  '@types/mdurl@2.0.0':
-    resolution: {integrity: sha512-RGdgjQUZba5p6QEFAVx2OGb8rQDL/cPRG7GiedRzMcJ1tYnUANBncjbSB1NRGwbvjcPeikRABz2nshyPk1bhWg==}
 
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
@@ -1581,9 +1559,6 @@ packages:
 
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
-
-  htmlparser2@10.0.0:
-    resolution: {integrity: sha512-TwAZM+zE5Tq3lrEHvOlvwgj1XLWQCtaaibSN11Q+gGBAS7Y1uZSWwXXRe4iF6OXnaq1riyQAPFOBtYc77Mxq0g==}
 
   htmlparser2@8.0.2:
     resolution: {integrity: sha512-GYdjWKDkbRLkZ5geuHs5NY1puJ+PXwP7+fHPRz06Eirsb9ugf6d8kkXav6ADhcODhFFPMIXyxkxSuMf3D6NCFA==}
@@ -3296,22 +3271,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@astrojs/markdoc@0.12.9(astro@5.2.6(rollup@4.34.6)(sass-embedded@1.83.4)(typescript@5.7.3)(yaml@2.7.0))':
-    dependencies:
-      '@astrojs/internal-helpers': 0.5.1
-      '@astrojs/markdown-remark': 6.1.0
-      '@astrojs/prism': 3.2.0
-      '@markdoc/markdoc': 0.4.0
-      astro: 5.2.6(rollup@4.34.6)(sass-embedded@1.83.4)(typescript@5.7.3)(yaml@2.7.0)
-      esbuild: 0.24.2
-      github-slugger: 2.0.0
-      htmlparser2: 10.0.0
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - supports-color
-
-  '@astrojs/markdown-remark@6.1.0':
+  '@astrojs/markdown-remark@6.1.0(patch_hash=b759fa1ab1c837349dd3bf03374bdde405190c706ea86d9306deb69a4249e778)':
     dependencies:
       '@astrojs/prism': 3.2.0
       github-slugger: 2.0.0
@@ -3629,10 +3589,6 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
-  '@markdoc/markdoc@0.4.0':
-    optionalDependencies:
-      '@types/markdown-it': 12.2.3
-
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -3774,21 +3730,9 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/linkify-it@5.0.0':
-    optional: true
-
-  '@types/markdown-it@12.2.3':
-    dependencies:
-      '@types/linkify-it': 5.0.0
-      '@types/mdurl': 2.0.0
-    optional: true
-
   '@types/mdast@4.0.4':
     dependencies:
       '@types/unist': 3.0.3
-
-  '@types/mdurl@2.0.0':
-    optional: true
 
   '@types/ms@2.1.0': {}
 
@@ -4045,11 +3989,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@5.3.0(rollup@4.34.6)(sass-embedded@1.85.0)(typescript@5.7.3)(yaml@2.7.0):
+  astro@5.3.0(patch_hash=75e84bbad57c86807dcbd7eba6398fef8885691bb68455a3bc4bc9c7e8a5a5d4)(rollup@4.34.6)(sass-embedded@1.85.0)(typescript@5.7.3)(yaml@2.7.0):
     dependencies:
       '@astrojs/compiler': 2.10.4
       '@astrojs/internal-helpers': 0.5.1
-      '@astrojs/markdown-remark': 6.1.0
+      '@astrojs/markdown-remark': 6.1.0(patch_hash=b759fa1ab1c837349dd3bf03374bdde405190c706ea86d9306deb69a4249e778)
       '@astrojs/telemetry': 3.2.0
       '@oslojs/encoding': 1.1.0
       '@rollup/pluginutils': 5.1.4(rollup@4.34.6)
@@ -5003,13 +4947,6 @@ snapshots:
   html-escaper@3.0.3: {}
 
   html-void-elements@3.0.0: {}
-
-  htmlparser2@10.0.0:
-    dependencies:
-      domelementtype: 2.3.0
-      domhandler: 5.0.3
-      domutils: 3.2.2
-      entities: 6.0.0
 
   htmlparser2@8.0.2:
     dependencies:

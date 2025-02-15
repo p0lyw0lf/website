@@ -1,4 +1,3 @@
-import markdoc from "@astrojs/markdoc";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 import rehypeRaw from "rehype-raw";
@@ -10,8 +9,11 @@ const BAD_URLS = new Set(["/404.html"].map((path) => new URL(path, SITE_URL)));
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+    responsiveImages: true,
+  },
+
   integrations: [
-    markdoc({ allowHTML: true, ignoreIndentation: true }),
     sitemap({
       filter: (url) => !BAD_URLS.has(url),
     }),
@@ -25,6 +27,7 @@ export default defineConfig({
 
   image: {
     domains: allowedRemoteDomains,
+    experimentalLayout: "full-width",
   },
 
   cacheDir: "./.astro-cache",
