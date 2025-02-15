@@ -15,7 +15,7 @@ header {
 
   padding: 16px;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
   gap: 16px;
 
   h2 {
@@ -53,6 +53,13 @@ main {
   }
 }
 
+@media (min-width: breakpoints.$breakpoint-iphone) {
+  header {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
 @media (min-width: breakpoints.$breakpoint-ipad) {
   header {
     padding: 16px 32px;
@@ -76,6 +83,7 @@ main {
     align-items: flex-start;
 
     padding: 32px;
+    width: 10rem;
   }
 
   main {
