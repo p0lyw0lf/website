@@ -40,7 +40,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .astro-cache
-          key: website-astro-cache-${{ hashFiles('src/**/*.png', 'src/**/*.jpg', 'package-lock.json') }}
+          key: website-astro-cache-${{ hashFiles('src/**/*.png', 'src/**/*.jpg', 'package.json', 'pnpm-lock.yaml') }}
           restore-keys: |
             website-astro-cache-
 
