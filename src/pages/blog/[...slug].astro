@@ -36,15 +36,15 @@ const blueskyUrl = data.bluesky ? atprotoPostUrl(data.bluesky) : undefined;
 >
   <div class="info">
     <h1>{data.title}</h1>
-    <span
+    <time datetime={data.published.toISOString()}
       >Published: {
         data.published.toLocaleString("en-US", { timeZone: "America/New_York" })
-      }</span
+      }</time
     >
   </div>
-  <div class="post">
+  <article>
     <Content />
-  </div>
+  </article>
   <div class="tags">
     {data.tags.map((tag) => <TagLink tag={tag} />)}
   </div>
@@ -94,7 +94,7 @@ const blueskyUrl = data.bluesky ? atprotoPostUrl(data.bluesky) : undefined;
     margin: 0 0 8px;
   }
 
-  .post {
+  article {
     padding: 0 16px;
   }
 

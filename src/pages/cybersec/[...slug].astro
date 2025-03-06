@@ -24,5 +24,7 @@ const { Content } = await render(post);
 ---
 
 <CybersecPage frontmatter={post.data} date={post.id.slice(0, 10)}>
-  <Content />
+  <article>
+    <Content />
+  </article>
 </CybersecPage>
