@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
-    "astro": "^5.0.0",
+    "astro": "^5.4.2",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
     "mdast-util-definitions": "^6.0.0",
@@ -61,10 +61,6 @@
     "onlyBuiltDependencies": [
       "esbuild",
       "sharp"
-    ],
-    "patchedDependencies": {
-      "astro": "patches/astro.patch",
-      "@astrojs/markdown-remark": "patches/@astrojs__markdown-remark.patch"
-    }
+    ]
   }
 }
