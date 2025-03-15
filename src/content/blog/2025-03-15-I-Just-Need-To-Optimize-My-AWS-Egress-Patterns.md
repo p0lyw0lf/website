@@ -9,12 +9,12 @@ bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lkge7u3xlk2v
 
 To preface: I've been doing pretty well for myself at minimizing my cloud spend. I just have a static site in S3 behind CloudFront, so the following table accounts for all of my spend[^1]:
 
-| Usage type | Oct 2024 | Nov 2024 | Dec 2024 | Jan 2025 | Feb 2025 |
-|:---|:---|:---|:---|:---|:---|
-| S3 Requests-Tier1 | $0.03 | $0.02 | $0.02 | $0.07 | $0.10 |
-| S3 TimedStorage-ByteHrs | $0.05 | $0.05 | $0.05 | $0.04 | $0.03 |
-| S3 Requests-Tier2 | $0.02 | $0.02 | $0.02 | $0.02 | $0.02 |
-| **Total costs** | **$0.10** | **$0.09** | **$0.09** | **$0.12** | **$0.15** |
+| Usage type              | Oct 2024  | Nov 2024  | Dec 2024  | Jan 2025  | Feb 2025  |
+| :---------------------- | :-------- | :-------- | :-------- | :-------- | :-------- |
+| S3 Requests-Tier1       | $0.03     | $0.02     | $0.02     | $0.07     | $0.10     |
+| S3 TimedStorage-ByteHrs | $0.05     | $0.05     | $0.05     | $0.04     | $0.03     |
+| S3 Requests-Tier2       | $0.02     | $0.02     | $0.02     | $0.02     | $0.02     |
+| **Total costs**         | **$0.10** | **$0.09** | **$0.09** | **$0.12** | **$0.15** |
 
 So clearly, I don't _need_ to optimize my spend with it in the pennies n all, but there's still a worrying trend, and I like optimizing, so optimize I shall.
 
@@ -74,19 +74,23 @@ hrm. That's not right. That should only show up as $0.02 on my bill, and clearly
 0.18
 ```
 
-Now that's roughly the same order of magnitude, but now it's _too_ large. Maybe I'm not actually checking my charts every day, but maybe I'm still doing my math wrong...
+Now that's roughly the same order of magnitude, but now it's _too_ large. Maybe I'm not actually checking my charts every day, but maybe I'm still doing my math wrong... Wait a minute, what about the `PUT` requests CloudFront makes to upload these objects in the first place?
 
-I have no clue what's going on, but think I have a couple options for paths forward:
+```
+>>> 15000 * 0.005 / 1000
+0.07
+```
 
-1. Put all log files into a single folder so I don't have to pay for `LIST` requests. Has the drawback of potentially not solving my problem, and also a folder with 15k files in it tends to make many tools not happy.
-2. Download from S3 and then immediately delete, so that I don't incur `LIST`/`HEAD` costs on files that don't need to be updated. Has the drawback of, if something goes wrong, I'll lose my logs (no big loss tho ig)
+Bingo, we have a winner. Doesn't like up perfectly because I accidentally nuked part of it once, but yeah that'd do it, especially when combined with the uploads I do to my blog normally. Welp, nothing much I can do about that, mystery solved! So long as I _actually_ run dashboard creation just once a day (or even more if I got that `LIST` calculation wrong), I think the cost will remain manageable (<$0.20); I've paid a lot more for not understanding the Oracle Cloud "Always Free" tier lol.
 
 Log ingestion is hard!! Still working at it, GoAccess is really nice but still needs a way to get the data. Same with whatever dashboard software I decide to use next[^observable].
 
-In any case, so long as I _actually_ run dashboard creation just once a day, I think the cost will remain manageable (<$0.20); I've paid a lot more for not understanding the Oracle Cloud "Always Free" tier lol.
-
 [^1]: I host pretty much everything else on an Oracle Cloud Always Free VPS, which is quite beefy, at the expense of having to give Larry Ellison my credit card info & having the threat of the VPS being totally deleted for no reason at any point. Still 100% worth it for me, as you can see, with the rest of my spend in the pennies.
+
 [^2]: At least I'm pretty sure, looking at their pricing pages vs the S3 page and thinking about what my usage pattern looks like. Can't be 100% certain until I actually tried to build things with them, this is a classic AWS-ism :)
+
 [^s3]: I know data out from CloudFront isn't a perfect analogue for S3 data charges, but it's what I have since turns out S3 doesn't enable access metrics by default. I've turned them on for my log buckets now, hopefully this doesn't start charging me something ridiculous...
+
 [^bots]: Every time I look at this chart I'm reminded I should probably put a `robots.txt` file in my static sites so scrapers don't download a bunch of files...
+
 [^observable]: [Observable Framework](https://observablehq.com/framework/) looks pretty nice... i <3 niche SSGs
