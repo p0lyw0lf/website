@@ -28,8 +28,8 @@ export const Component = (props) => {
   return (
     <form>
       <Title text={title()} />
-      <input type="text" value={name()} onChange={e => setName(e.target.value) />
-  </form>
+      <input type="text" value={name()} onChange={e => setName(e.target.value)} />
+    </form>
   );
 }
 ```
@@ -51,8 +51,8 @@ export const Component = ({ greeting }) => {
   return (
     <form>
       <Title text={title} />
-      <input type="text" value={name} onChange={e => setName(e.target.value) />
-  </form>
+      <input type="text" value={name} onChange={e => setName(e.target.value)} />
+    </form>
   );
 }
 ```
