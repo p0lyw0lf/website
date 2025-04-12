@@ -1,6 +1,6 @@
 ---
 title: Extracting Training Data from Diffusion Models
-direct_link: https://arxiv.org/pdf/2301.13188.pdf
+repost_link: https://arxiv.org/pdf/2301.13188.pdf
 ---
 
 This counts as hacking, right?

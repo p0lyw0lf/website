@@ -4,7 +4,7 @@ import Post from "./Post.astro";
 interface Props {
   frontmatter: {
     title: string;
-    direct_link: string;
+    repost_link: string;
   };
   date: string;
 }
@@ -21,8 +21,8 @@ const { frontmatter, date } = Astro.props;
     {frontmatter.title}
   </h1>
   <p
-    >Posted on {date}: <a href={frontmatter.direct_link}
-      >{frontmatter.direct_link}</a
+    >Posted on {date}: <a href={frontmatter.repost_link}
+      >{frontmatter.repost_link}</a
     >
     <slot />
   </p>

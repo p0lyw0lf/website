@@ -17,7 +17,7 @@ const cybersec = defineCollection({
   loader: glob({ pattern: "[^_]*.md", base: "src/content/cybersec" }),
   schema: z.object({
     title: z.string(),
-    direct_link: z.string(),
+    repost_link: z.string(),
   }),
 });
 

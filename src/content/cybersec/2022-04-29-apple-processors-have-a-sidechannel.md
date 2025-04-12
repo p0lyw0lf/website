@@ -1,6 +1,6 @@
 ---
 title: Apple Processors Have A Speculation Vulnerability Too
-direct_link: https://www.prefetchers.info/
+repost_link: https://www.prefetchers.info/
 ---
 
 Known as "Augury", this bug can "leak data (pointers) that are never read by

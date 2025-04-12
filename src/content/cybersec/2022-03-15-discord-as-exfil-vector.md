@@ -1,6 +1,6 @@
 ---
 title: Discord As Exfil??
-direct_link: https://twitter.com/da_667/status/1503878840988446722
+repost_link: https://twitter.com/da_667/status/1503878840988446722
 ---
 
 So everyone and their mom knows that Discord's cdn is a great place to store payloads: publically accessible, hardly any scanning, and people complain if it's blocked at all.

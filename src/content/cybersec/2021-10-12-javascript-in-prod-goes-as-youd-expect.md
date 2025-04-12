@@ -1,6 +1,6 @@
 ---
 title: Javascript For Crypto? Goes As Well As You'd Expect
-direct_link: https://securitylab.github.com/advisories/GHSL-2021-1012-keypair/
+repost_link: https://securitylab.github.com/advisories/GHSL-2021-1012-keypair/
 ---
 
 Basically there was a whole heck of a bunch of type confusion that led to extremely weak keys.

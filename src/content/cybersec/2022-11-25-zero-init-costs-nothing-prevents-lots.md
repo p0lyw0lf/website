@@ -1,6 +1,6 @@
 ---
 title: "Report: C++ Zero Initialization Costs Nothing, Prevents Lots"
-direct_link: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2022/p2723r0.html
+repost_link: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2022/p2723r0.html
 ---
 
 Really cool to see that compilers are just that good at optimizing out

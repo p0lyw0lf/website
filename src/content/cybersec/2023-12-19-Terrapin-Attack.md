@@ -1,6 +1,6 @@
 ---
 title: "Terrapin Attack"
-direct_link: "https://terrapin-attack.com"
+repost_link: "https://terrapin-attack.com"
 ---
 
 ok yeah fine i cant not talk about this one

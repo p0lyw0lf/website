@@ -1,6 +1,6 @@
 ---
 title: 1-click Windows 10 RCE
-direct_link: https://positive.security/blog/ms-officecmd-rce
+repost_link: https://positive.security/blog/ms-officecmd-rce
 ---
 
 <figure>

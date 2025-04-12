@@ -1,6 +1,6 @@
 ---
 title: Huge Brain Attack On Facebook
-direct_link: https://twitter.com/mikko/status/1379686946117668867
+repost_link: https://twitter.com/mikko/status/1379686946117668867
 ---
 
 From [@mikko](https://twitter.com/mikko):

@@ -1,6 +1,6 @@
 ---
 title: Hacking Fuchsia OS
-direct_link: https://swarm.ptsecurity.com/a-kernel-hacker-meets-fuchsia-os/
+repost_link: https://swarm.ptsecurity.com/a-kernel-hacker-meets-fuchsia-os/
 ---
 
 Written by [Alexander Popov](https://twitter.com/a13xp0p0v), this post goes into

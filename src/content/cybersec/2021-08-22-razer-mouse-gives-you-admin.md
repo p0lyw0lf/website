@@ -1,6 +1,6 @@
 ---
 title: Razer Mice Give You Admin
-direct_link: https://twitter.com/j0nh4t/status/1429049506021138437
+repost_link: https://twitter.com/j0nh4t/status/1429049506021138437
 ---
 
 From [@j0hn4t](https://twitter.com/j0hn4t) on twitter:

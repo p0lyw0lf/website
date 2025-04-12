@@ -1,6 +1,6 @@
 ---
 title: Neat Bugs in `nf_tables` Input Validation
-direct_link: https://blog.dbouman.nl/2022/04/02/How-The-Tables-Have-Turned-CVE-2022-1015-1016/
+repost_link: https://blog.dbouman.nl/2022/04/02/How-The-Tables-Have-Turned-CVE-2022-1015-1016/
 ---
 
 Another very good writeup about how to exploit the Linux kernel, this time from a logic validation bug.

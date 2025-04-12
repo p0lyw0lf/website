@@ -1,6 +1,6 @@
 ---
 title: '"printf external link()"'
-direct_link: "https://twitter.com/netspooky/status/1627719779623501847"
+repost_link: "https://twitter.com/netspooky/status/1627719779623501847"
 ---
 
 lol

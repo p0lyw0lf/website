@@ -1,6 +1,6 @@
 ---
 title: '"Computer, Go Hack Yourself"'
-direct_link: https://twitter.com/teuber_dev/status/1569435812537810944
+repost_link: https://twitter.com/teuber_dev/status/1569435812537810944
 ---
 
 This is very silly to me; thanks to advances in AI (but really regressions in AI deployment) we can now directly tell computers, in english, to generate code to hack themselves

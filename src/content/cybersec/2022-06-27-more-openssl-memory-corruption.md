@@ -1,6 +1,6 @@
 ---
 title: More OpenSSL Memory Corruption
-direct_link: https://twitter.com/cstanley/status/1541507298404827137
+repost_link: https://twitter.com/cstanley/status/1541507298404827137
 ---
 
 From [@cstanley](https://twitter.com/cstanley):

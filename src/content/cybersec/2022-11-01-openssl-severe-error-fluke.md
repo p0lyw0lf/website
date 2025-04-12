@@ -1,6 +1,6 @@
 ---
 title: OpenSSL "Critical" Error Was A Trivial Buffer Overflow
-direct_link: https://github.com/openssl/openssl/commit/c42165b5706e42f67ef8ef4c351a9a4c5d21639a#diff-de2651c670dde92b08e86f386059436bee7f7271df21a18036e8b9d85b8070feL330-R325
+repost_link: https://github.com/openssl/openssl/commit/c42165b5706e42f67ef8ef4c351a9a4c5d21639a#diff-de2651c670dde92b08e86f386059436bee7f7271df21a18036e8b9d85b8070feL330-R325
 ---
 
 The previous error to be labeled like this was Heartbleed. This one is very

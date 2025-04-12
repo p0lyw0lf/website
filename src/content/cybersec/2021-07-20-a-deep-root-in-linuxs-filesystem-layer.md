@@ -1,6 +1,6 @@
 ---
 title: "Sequoia: A deep root in Linux's filesystem layer"
-direct_link: https://www.openwall.com/lists/oss-security/2021/07/20/1
+repost_link: https://www.openwall.com/lists/oss-security/2021/07/20/1
 ---
 
 And the commentary at [https://twitter.com/bluespacecanary/status/1417604721246801923](https://twitter.com/bluespacecanary/status/1417604721246801923):

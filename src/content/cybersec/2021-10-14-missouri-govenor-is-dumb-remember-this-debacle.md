@@ -1,6 +1,6 @@
 ---
 title: The Missouri Govenor Said Something Really Dumb; Remember This Debacle?
-direct_link: https://twitter.com/govparsonmo/status/1448697768311132160
+repost_link: https://twitter.com/govparsonmo/status/1448697768311132160
 ---
 
 Govenor (at the time) Mike Parson:

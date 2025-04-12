@@ -1,6 +1,6 @@
 ---
 title: An Interesting Python Sandbox Escape
-direct_link: https://pwn.win/2022/05/11/python-buffered-reader.html
+repost_link: https://pwn.win/2022/05/11/python-buffered-reader.html
 ---
 
 The title says "code execution", but you need your Python code to already be

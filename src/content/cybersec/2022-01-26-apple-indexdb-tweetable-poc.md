@@ -1,6 +1,6 @@
 ---
 title: Apple's IndexDB Has A Tweetable Exploit
-direct_link: https://googleprojectzero.github.io/0days-in-the-wild/0day-RCAs/2021/CVE-2021-30858.html
+repost_link: https://googleprojectzero.github.io/0days-in-the-wild/0day-RCAs/2021/CVE-2021-30858.html
 ---
 
 By [@maddiestone](https://twitter.com/maddiestone/status/1486402800103792645?s=21):

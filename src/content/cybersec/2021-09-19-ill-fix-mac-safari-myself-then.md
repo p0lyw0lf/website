@@ -1,6 +1,6 @@
 ---
 title: Well, I'll Just Fix Safari Myself, Then!
-direct_link: https://twitter.com/_saagarjha/status/1439686585100865539
+repost_link: https://twitter.com/_saagarjha/status/1439686585100865539
 ---
 
 This absolute madlad reverse-engineered Safari enough to fix a bug himself, wowza

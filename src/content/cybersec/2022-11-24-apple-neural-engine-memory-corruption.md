@@ -1,6 +1,6 @@
 ---
 title: Apple Neural Engine Memory Corruption
-direct_link: https://0x36.github.io/CVE-2022-32898/
+repost_link: https://0x36.github.io/CVE-2022-32898/
 ---
 
 Pretty cool, I think. I don't actually understand most of this lol

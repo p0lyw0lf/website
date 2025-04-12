@@ -1,6 +1,6 @@
 ---
 title: A Very Long .LNK file
-direct_link: https://twitter.com/stopmalvertisin/status/1431561258168324099
+repost_link: https://twitter.com/stopmalvertisin/status/1431561258168324099
 ---
 
 [@StopMalvertisin](https://twitter.com/stopmalvertisin):

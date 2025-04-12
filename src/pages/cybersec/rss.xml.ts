@@ -17,7 +17,7 @@ export async function GET() {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
       });
       const fullContent =
-        `<a href="${post.data.direct_link}">${post.data.direct_link}</a><br/>` +
+        `<a href="${post.data.repost_link}">${post.data.repost_link}</a><br/>` +
         sanitizedContent;
       return {
         link,

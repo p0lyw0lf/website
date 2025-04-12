@@ -1,6 +1,6 @@
 ---
 title: A Cool Windows Prank :)
-direct_link: https://twitter.com/fkadibs/status/1434291573655752706
+repost_link: https://twitter.com/fkadibs/status/1434291573655752706
 ---
 
 [@fkadibs](https://twitter.com/fkadibs):

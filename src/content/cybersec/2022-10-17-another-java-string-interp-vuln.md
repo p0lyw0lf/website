@@ -1,6 +1,6 @@
 ---
 title: Another Java String Interpolation Bug
-direct_link: https://nvd.nist.gov/vuln/detail/CVE-2022-42889
+repost_link: https://nvd.nist.gov/vuln/detail/CVE-2022-42889
 ---
 
 Java "Don't Run Template Formatting For User Strings Espectially When That Template Formatting Can Make Arbitrary Network Calls" Challenge: Impossible

@@ -1,6 +1,6 @@
 ---
 title: Do Intel Chips Have A Data Dependence For Adding Numbers?
-direct_link: https://chaos.social/@gsuberland/109751988733831279
+repost_link: https://chaos.social/@gsuberland/109751988733831279
 ---
 
 So [an Openwall post](https://www.openwall.com/lists/oss-security/2023/01/25/3)

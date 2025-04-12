@@ -1,6 +1,6 @@
 ---
 title: Intel OEM signing key leaked
-direct_link: https://github.com/binarly-io/SupplyChainAttacks/blob/283ad4c972a98d043b36c31bf38f98160debf5bd/MSI/IntelOemKeyImpactedDevices.md
+repost_link: https://github.com/binarly-io/SupplyChainAttacks/blob/283ad4c972a98d043b36c31bf38f98160debf5bd/MSI/IntelOemKeyImpactedDevices.md
 ---
 
 from https://twitter.com/matrosov/status/1653923749723512832 :

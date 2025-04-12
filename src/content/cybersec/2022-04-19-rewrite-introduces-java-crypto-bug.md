@@ -1,6 +1,6 @@
 ---
 title: Rewrite Introduces Java Crypto Bug
-direct_link: https://neilmadden.blog/2022/04/19/psychic-signatures-in-java/
+repost_link: https://neilmadden.blog/2022/04/19/psychic-signatures-in-java/
 ---
 
 It's _very_ interesting to hear that there were likely no cryptographers

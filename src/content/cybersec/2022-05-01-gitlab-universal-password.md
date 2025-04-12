@@ -1,6 +1,6 @@
 ---
 title: Gitlab Universal Password
-direct_link: https://twitter.com/hackergautam/status/1520624546654867456
+repost_link: https://twitter.com/hackergautam/status/1520624546654867456
 ---
 
 > **Frooti🍋 ⚡️** [@HackerGautam](https://twitter.com/hackergautam)

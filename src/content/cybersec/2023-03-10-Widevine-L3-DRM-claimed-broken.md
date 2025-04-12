@@ -1,6 +1,6 @@
 ---
 title: Widevine L3 DRM claimed broken
-direct_link: https://twitter.com/david3141593/status/1080606827384131590
+repost_link: https://twitter.com/david3141593/status/1080606827384131590
 ---
 
 i need to be reminded to finally get around to doing this

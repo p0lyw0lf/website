@@ -1,6 +1,6 @@
 ---
 title: "The Only Good April Fools: Actually Neat Applications"
-direct_link: https://twitter.com/mihai/status/1509718311403241474
+repost_link: https://twitter.com/mihai/status/1509718311403241474
 ---
 
 From [@mihai](https://twitter.com/mihai) on Twitter:

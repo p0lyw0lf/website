@@ -1,6 +1,6 @@
 ---
 title: Quest to Uncover The Ultimate Naughty Word List
-direct_link: https://twitter.com/moyix/status/1433254293352730628
+repost_link: https://twitter.com/moyix/status/1433254293352730628
 ---
 
 [@moyix](https://twitter.com/moyix):

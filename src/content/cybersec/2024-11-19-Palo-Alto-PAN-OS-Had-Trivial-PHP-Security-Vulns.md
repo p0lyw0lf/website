@@ -1,6 +1,6 @@
 ---
 title: "Palo Alto PAN-OS Had Trivial PHP Security Vulns"
-direct_link: "https://labs.watchtowr.com/pots-and-pans-aka-an-sslvpn-palo-alto-pan-os-cve-2024-0012-and-cve-2024-9474/"
+repost_link: "https://labs.watchtowr.com/pots-and-pans-aka-an-sslvpn-palo-alto-pan-os-cve-2024-0012-and-cve-2024-9474/"
 ---
 
 CVE-2024-0012:

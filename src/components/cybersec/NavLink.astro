@@ -10,4 +10,4 @@ const { post } = Astro.props;
 ---
 
 {post.id.slice(0, 10)}: <a href={toCybersecUrl(post.id)}>{post.data.title}</a>
-(<a href={post.data.direct_link}>source</a>)
+(<a href={post.data.repost_link}>source</a>)
