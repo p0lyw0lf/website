@@ -3,6 +3,8 @@ title: "Reducing 404 Errors By Being Less Lazy"
 description: "I had a problem[^1]: every time I posted something to this blog, I immediately got a bunch of 404 errors. To understand why, we must firs..."
 tags: ["programming"]
 published: 1744517229
+mastodon: "https://social.treehouse.systems/@PolyWolf/114328682778813379"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lmo6do5ljc2j"
 ---
 
 I had a problem[^1]: every time I posted something to this blog, I immediately got a bunch of 404 errors. To understand why, we must first understand how my crossposter worked:
