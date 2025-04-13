@@ -26,6 +26,8 @@ const { post, data } = Astro.props;
 const { Content } = await render(post);
 
 const blueskyUrl = data.bluesky ? atprotoPostUrl(data.bluesky) : undefined;
+
+// TODO: other h-entry properties: https://microformats.org/wiki/h-entry#Core_Properties
 ---
 
 <Post
@@ -35,14 +37,19 @@ const blueskyUrl = data.bluesky ? atprotoPostUrl(data.bluesky) : undefined;
   description={data.description}
 >
   <div class="info">
-    <h1>{data.title}</h1>
-    <time datetime={data.published.toISOString()}
-      >Published: {
-        data.published.toLocaleString("en-US", { timeZone: "America/New_York" })
-      }</time
-    >
+    <h1 class="p-name">{data.title}</h1>
+    <span
+      >Published:
+      <time class="dt-published" datetime={data.published.toISOString()}
+        >{
+          data.published.toLocaleString("en-US", {
+            timeZone: "America/New_York",
+          })
+        }</time
+      >
+    </span>
   </div>
-  <article>
+  <article class="e-content">
     <Content />
   </article>
   <div class="tags">
