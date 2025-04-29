@@ -61,6 +61,9 @@
     "onlyBuiltDependencies": [
       "esbuild",
       "sharp"
-    ]
+    ],
+    "patchedDependencies": {
+      "sass-embedded": "patches/sass-embedded.patch"
+    }
   }
 }
