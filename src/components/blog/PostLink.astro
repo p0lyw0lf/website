@@ -1,5 +1,6 @@
 ---
 import type { BlogData } from "../../data/blog";
+import { toTagUrl } from "../../data/url";
 
 interface Props {
   data: BlogData;
@@ -9,10 +10,31 @@ const { data } = Astro.props;
 ---
 
 {
-  data.published.toLocaleDateString("en-US", {
-    timeZone: "America/New_York",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  })
+  // "ja" formats dates like 2006/04/03, and then we replace "/" with "-"
+  data.published
+    .toLocaleDateString("ja", {
+      timeZone: "America/New_York",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replaceAll("/", "-")
 }: <a href={data.url}>{data.title}</a>
+{
+  data.tags.length > 0 && (
+    <small>
+      {data.tags.map((tag) => (
+        // NOTE: using <TagLink /> doesn't let Astro introspect & apply the CSS styles here...
+        <>
+          <a href={toTagUrl(tag)}>#{tag}</a>{" "}
+        </>
+      ))}
+    </small>
+  )
+}
+
+<style>
+  small a {
+    color: var(--color-text-secondary-accent);
+  }
+</style>
