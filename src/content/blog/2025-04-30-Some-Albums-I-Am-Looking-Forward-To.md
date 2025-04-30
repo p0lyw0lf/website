@@ -3,6 +3,8 @@ title: "Some Albums I Am Looking Forward To"
 description: "## Flume \u0026 JPEGMAFIA - We Live In A Society\r \r ![Album cover, presumably JPEGMAFIA \u0026 Flume hands in a handshake over a pure white backgro..."
 tags: ["reviews", "music"]
 published: 1746020890
+mastodon: "https://social.treehouse.systems/@PolyWolf/114427226485495070"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lnzwq5tzu22x"
 ---
 
 ## Flume & JPEGMAFIA - We Live In A Society
