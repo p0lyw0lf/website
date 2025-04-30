@@ -1,7 +1,7 @@
 ---
 title: "Some Albums I\u0027ve Been Listening to A Lot Recently"
 description: "Before, when I was still using Spotify, I used their weekly mixes (Discovery, New Releases) and per-song \"radio\" as my primary method of..."
-tags: ["music"]
+tags: ["reviews", "music"]
 published: 1739742955
 mastodon: "https://social.treehouse.systems/@PolyWolf/114015794379201962"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lid7winiuk2r"

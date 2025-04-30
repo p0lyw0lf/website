@@ -1,7 +1,7 @@
 ---
 title: "It\u0027s Bandcamp Friday \u0026 I Bought My Favorite Album Of 2024"
 description: "So as to not bury the lede:\r \r ## 1: [Tanger - Prefer Not To Say](https://tangermusic.bandcamp.com/album/prefer-not-to-say)\r \r It\u0027s reall..."
-tags: ["music"]
+tags: ["reviews", "music"]
 published: 1733540315
 ---
 

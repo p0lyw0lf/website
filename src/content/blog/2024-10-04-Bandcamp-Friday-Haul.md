@@ -1,7 +1,7 @@
 ---
 title: "Bandcamp Friday Haul"
 description: "Usually, my music workflow goes like this:\r \r 1. Discover new music on ~~Spotify~~ Deezer, sometimes YouTube\r 2. Keep a \"canonical\" list..."
-tags: ["music"]
+tags: ["reviews", "music"]
 published: 1728092687
 ---
 
