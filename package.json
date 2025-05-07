@@ -6,7 +6,7 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
-    "check": "npm run check:tsc && npm run check:astro",
+    "check": "pnpm check:tsc && pnpm check:astro",
     "check:astro": "astro check",
     "check:tsc": "tsc --noEmit",
     "dev": "astro dev",
@@ -39,7 +39,6 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.3",
     "@eslint/js": "^9.10.0",
-    "@types/eslint__js": "^9.0.0",
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.13.0",
