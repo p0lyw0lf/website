@@ -13,6 +13,7 @@ Wow it's been a hot minute! I kept meaning to write about this, but each time I 
 
 Given:
 + A finite set of `struct`s/`enum`s (henceforth referred to as "items"), possibly generic
+
 Create:
 + A way to, for each item in the set, recursively transform any other item, including inner generic parameters, if possible.
 
