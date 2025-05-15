@@ -2,6 +2,8 @@
 title: "Packaging Multiple Dependent Python Modules Using Hatch \u0026 Nix"
 description: "Alternative title: \"Overcomplicating My Website Backend Using Hatch \u0026 Nix\". For the life for me, I could not figure out how to string all..."
 tags: ["programming", "python", "nix"]
+mastodon: "https://social.treehouse.systems/@PolyWolf/114511522065407668"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lp7endylzs2k"
 published: 1747307137
 ---
 
