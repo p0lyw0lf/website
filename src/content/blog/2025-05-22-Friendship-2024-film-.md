@@ -2,6 +2,8 @@
 title: "Friendship (2024 film)"
 description: "Great movie. I do not have any previous exposure to Tim Robinson or Paul Rudd comedy so this all felt very fresh, but even so other ppl a..."
 tags: ["reviews"]
+mastodon: "https://social.treehouse.systems/@PolyWolf/114554607991331442"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lpsiwkrq422k"
 published: 1747964576
 ---
 
