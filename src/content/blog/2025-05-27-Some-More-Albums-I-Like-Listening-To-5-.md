@@ -3,6 +3,8 @@ title: "Some More Albums I Like Listening To (#5)"
 description: "As good a time to start numbering these as any :P You can find previous collections in my [#music](https://wolfgirl.dev/tags/music/) tag...."
 tags: ["reviews", "music"]
 published: 1748395225
+mastodon: "https://social.treehouse.systems/@PolyWolf/114582831138810706"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lq6zyxmmb22p"
 ---
 
 As good a time to start numbering these as any :P You can find previous collections in my [#music](https://wolfgirl.dev/tags/music/) tag. Without further ado, let's get into it!
