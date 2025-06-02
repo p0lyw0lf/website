@@ -3,6 +3,8 @@ title: "MTG Draft: A New Beginner\u0027s Experience"
 description: "I played MTG Draft w/ the Bloomburrow set last night. If you, like me 48hr ago, know about Magic: The Gathering as a card game but don\u0027t..."
 tags: []
 published: 1748824897
+mastodon: "https://social.treehouse.systems/@PolyWolf/114610990114874625"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lqlk66n6222p"
 ---
 
 I played MTG Draft w/ the Bloomburrow set last night. If you, like me 48hr ago, know about Magic: The Gathering as a card game but don't really know what "Draft" is, here's my high-level explanation: you craft your deck from a limited pool of cards along with a bunch of other players. Here's the actual draft algorithm:
