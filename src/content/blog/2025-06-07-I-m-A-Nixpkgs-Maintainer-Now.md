@@ -3,6 +3,8 @@ title: "I\u0027m A Nixpkgs Maintainer Now"
 description: "ok so here\u0027s the story: before i was writing [\"Packaging Multiple Dependent Python Modules Using Hatch \u0026 Nix\"](https://wolfgirl.dev/blog/..."
 tags: ["nix"]
 published: 1749337749
+mastodon: "https://social.treehouse.systems/@PolyWolf/114644600167099861"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lr2hsbahf22p"
 ---
 
 ok so here's the story: before i was writing ["Packaging Multiple Dependent Python Modules Using Hatch & Nix"](https://wolfgirl.dev/blog/2025-05-15-packaging-multiple-dependent-python-modules-using-hatch-nix/), i was trying to package my website's ["backend"](https://github.com/p0lyw0lf/crossposter). unfortunately, i hit a stumbling block more stumble-y than i ever could have anticipated: one of the key Python dependencies I relied on (the [Sanic](https://sanic.dev/en/) webserver) was unmaintained in nixpkgs, crashing w/ a `ModuleNotFoundError` 🙀
