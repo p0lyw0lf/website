@@ -3,6 +3,8 @@ title: "Rechost: everything else!"
 description: "https://meow.garden/everything-else/\r \r \u003e You can watch the interactive music video on your phone [here](https://www.youtube.com/watch?v=..."
 tags: ["rechost", "music"]
 published: 1749425817
+mastodon: "https://social.treehouse.systems/@PolyWolf/114650371568773910"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lr4zssajxk2p"
 ---
 
 https://meow.garden/everything-else/
