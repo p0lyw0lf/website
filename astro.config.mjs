@@ -24,6 +24,7 @@ export default defineConfig({
 
   markdown: {
     rehypePlugins: [rehypeRemoteImages, rehypeRaw, rehypeEnhancedTables],
+    smartypants: false,
   },
 
   image: {
