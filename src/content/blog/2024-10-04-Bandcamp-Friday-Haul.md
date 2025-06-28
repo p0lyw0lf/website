@@ -1,5 +1,5 @@
 ---
-title: "Bandcamp Friday Haul"
+title: "Bandcamp Friday Haul (#1)"
 description: "Usually, my music workflow goes like this:\r \r 1. Discover new music on ~~Spotify~~ Deezer, sometimes YouTube\r 2. Keep a \"canonical\" list..."
 tags: ["reviews", "music"]
 published: 1728092687
