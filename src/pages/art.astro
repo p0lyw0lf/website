@@ -1,17 +1,17 @@
 ---
 import Base from "../templates/Base.astro";
 import ArtImage from "../components/art/ArtImage.astro";
-import { getArtData } from "../data/art";
+import { getArtPosts } from "../data/art.ts";
 
 import "../scss/page.scss";
 
-const artData = await getArtData();
+const artPosts = await getArtPosts();
 ---
 
 <style>
   .grid {
     display: grid;
-    grid: auto-flow / repeat(auto-fit, minmax(256px, 1fr));
+    grid: auto-flow / repeat(auto-fit, minmax(calc(256px + 16px + 2px), 1fr));
   }
 </style>
 
@@ -20,7 +20,7 @@ const artData = await getArtData();
   description="Collection of art references for me, PolyWolf! I put all my commisions here, as well as the occasional art I do myself :)"
 >
   <div class="grid">
-    {artData.map((data) => <ArtImage data={data} />)}
+    {artPosts.map((post) => <ArtImage post={post} />)}
   </div>
   <p>
     ...and I don't really want to show any earlier ones since the reference has

@@ -1,13 +1,19 @@
 ---
 import { Image, inferRemoteSize } from "astro:assets";
-import type { ArtData } from "../../data/art.ts";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import { toArtData } from "../../data/art.ts";
+import { toShortISODate } from "../../data/date.ts";
 
 interface Props {
-  data: ArtData;
+  post: CollectionEntry<"art">;
 }
 
-const { data } = Astro.props;
-const { url, alt } = data;
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const data = toArtData(post);
+const { src, url, alt, title, tags, published } = data;
 
 const { width: remoteWidth, height: remoteHeight } = await inferRemoteSize(url);
 let width = 256;
@@ -17,9 +23,52 @@ width = Math.min(width, (remoteWidth * height) / remoteHeight);
 height = Math.min(height, (remoteHeight * width) / remoteWidth);
 ---
 
-<button popovertarget="foo">show popover</button>
-<dialog popover id="foo">
-  <Image src={url} alt={alt} width={remoteWidth} height={remoteHeight} />
-</dialog>
+<style>
+  .show {
+    background: var(--color-background-secondary);
+    border: var(--color-border-primary) solid var(--dim-border);
+    color: var(--color-text-secondary);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 8px;
+    padding: 8px;
+  }
+  .tags {
+    color: var(--color-text-secondary-accent);
+  }
+  dialog {
+    max-width: min(90vw - 32px, 768px);
+    max-height: 90vh;
+    background: var(--color-background-secondary);
+    color: var(--color-text-secondary);
+    border: var(--color-text-secondary-accent) solid 2px;
+    padding: 16px;
+  }
+  dialog > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .hide {
+    background: none;
+    color: var(--color-text-secondary);
+    border: var(--color-text-secondary-accent) solid var(--dim-border);
+    padding: 4px 8px;
+    margin-top: 8px;
+  }
+</style>
 
-<Image src={url} alt={alt} width={width} height={height} />
+<button class="show" popovertarget={src}>
+  {toShortISODate(published)}
+  <Image src={url} alt={alt} title={title} width={width} height={height} />
+  <div class="tags">
+    {tags.map((tag) => <span>#{tag}</span>)}
+  </div>
+</button>
+<dialog popover id={src}>
+  <Content />
+  <img src={url} alt={alt} title={title} />
+  <button class="hide" popovertarget={src} popovertargetaction="hide"
+    >Back</button
+  >
+</dialog>

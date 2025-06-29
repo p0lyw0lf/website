@@ -16,9 +16,8 @@ export const toArtData = (post: CollectionEntry<"art">): ArtData => ({
   url: toArtUrl(post.data.src),
 });
 
-export const getArtData = async (): Promise<ArtData[]> => {
+export const getArtPosts = async (): Promise<CollectionEntry<"art">[]> => {
   const posts = await getCollection("art");
-  const data = posts.map(toArtData);
-  data.sort((a, b) => b.published.valueOf() - a.published.valueOf());
-  return data;
+  posts.sort((a, b) => b.data.published - a.data.published);
+  return posts;
 };

@@ -1,5 +1,6 @@
 ---
 import type { BlogData } from "../../data/blog";
+import { toShortISODate } from "../../data/date";
 import { toTagUrl } from "../../data/url";
 
 interface Props {
@@ -9,17 +10,7 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-{
-  // "ja" formats dates like 2006/04/03, and then we replace "/" with "-"
-  data.published
-    .toLocaleDateString("ja", {
-      timeZone: "America/New_York",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-    .replaceAll("/", "-")
-}: <a href={data.url}>{data.title}</a>
+{toShortISODate(data.published)}: <a href={data.url}>{data.title}</a>
 {
   data.tags.length > 0 && (
     <small>
