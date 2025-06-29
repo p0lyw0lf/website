@@ -1,13 +1,27 @@
 ---
 import Base from "../templates/Base.astro";
+import ArtImage from "../components/art/ArtImage.astro";
+import { getArtData } from "../data/art";
 
 import "../scss/page.scss";
+
+const artData = await getArtData();
 ---
+
+<style>
+  .grid {
+    display: grid;
+    grid: auto-flow / repeat(auto-fit, minmax(256px, 1fr));
+  }
+</style>
 
 <Base
   title="Art"
   description="Collection of art references for me, PolyWolf! I put all my commisions here, as well as the occasional art I do myself :)"
 >
+  <div class="grid">
+    {artData.map((data) => <ArtImage data={data} />)}
+  </div>
   <p>
     ...and I don't really want to show any earlier ones since the reference has
     changed a lot, and I was <em>much</em> worse at art too :P. If you do really

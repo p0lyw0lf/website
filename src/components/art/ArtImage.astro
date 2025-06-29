@@ -1,0 +1,25 @@
+---
+import { Image, inferRemoteSize } from "astro:assets";
+import type { ArtData } from "../../data/art.ts";
+
+interface Props {
+  data: ArtData;
+}
+
+const { data } = Astro.props;
+const { url, alt } = data;
+
+const { width: remoteWidth, height: remoteHeight } = await inferRemoteSize(url);
+let width = 256;
+let height = 256;
+// Shrink to fit, preserving aspect ratio
+width = Math.min(width, (remoteWidth * height) / remoteHeight);
+height = Math.min(height, (remoteHeight * width) / remoteWidth);
+---
+
+<button popovertarget="foo">show popover</button>
+<dialog popover id="foo">
+  <Image src={url} alt={alt} width={remoteWidth} height={remoteHeight} />
+</dialog>
+
+<Image src={url} alt={alt} width={width} height={height} />
