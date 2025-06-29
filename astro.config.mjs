@@ -20,11 +20,13 @@ export default defineConfig({
     sitemap({
       filter: (url) => !BAD_URLS.has(url),
     }),
-    AutoImport(
-      "./src/components/BskyLink.astro",
-      "./src/components/InstagramLink.astro",
-      "./src/components/TwitterLink.astro",
-    ),
+    AutoImport({
+      imports: [
+        "./src/components/BskyLink.astro",
+        "./src/components/InstagramLink.astro",
+        "./src/components/TwitterLink.astro",
+      ],
+    }),
     mdx(),
   ],
 
