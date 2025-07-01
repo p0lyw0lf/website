@@ -3,6 +3,8 @@ title: "Some Albums That Put Me In A Flow State (#6)"
 description: "so. \"flow state\"? when I\u0027m working on something, sometimes i need some extra energy to keep me going. something with a strong beat, not _..."
 tags: ["reviews", "music"]
 published: 1751412162
+mastodon: "https://social.treehouse.systems/@PolyWolf/114780549278719621"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lswtqrawp22p"
 ---
 
 so. "flow state"? when I'm working on something, sometimes i need some extra energy to keep me going. something with a strong beat, not _too_ repetitive, simple lyrics if there are any, & preferably in the electronic genre. fortunately, there's a lot that fits this bill, and I keep finding it! i don't _have_ to publish these posts monthly, but hey if there's enough good music out there, i might as well right? reverse ranked order because i'm feeling spicy >:)
