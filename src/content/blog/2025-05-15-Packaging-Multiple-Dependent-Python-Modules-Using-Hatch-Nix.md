@@ -503,7 +503,7 @@ It works! Yay!!
 
 ## Drawbacks
 
-Now, by now means do I intend to represent that this approach is the perfect way of doing things with Python + Nix. Far from it, really. Here are just some of rough edges I've run into in this workflow that I'd like to eventually sand off:
+Now, by no means do I intend to represent that this approach is the perfect way of doing things with Python + Nix. Far from it, really. Here are some of rough edges I've run into in this workflow that I'd like to eventually sand off:
 + `shared`, `hello`, and `goodbye` have to live in those strange `$lib/src/$lib` directories. This is solely because pyproject.toml doesn't have good multi-package support; Nix itself is flexible enough, but I am relying on pyproject.toml to make the Nix packaging easier.
 + As mentioned earlier, we have to specify all dependencies twice: once in `pyproject.toml`, and once in `package.nix`, which is sad. Also, if there are any version constraints in `pyproject.toml`, those will effectively break `package.nix` because Nixpkgs only contains one version of each package.
 + If `shared` ever changes, the hatch environments for `hello` and `goodbye` will need to be deleted and re-recreated. Hatch itself seems to have a "development mode" where changed to the current project are reflected in the virtual environment, but it doesn't seem like that applies to this multi-project usecase.
