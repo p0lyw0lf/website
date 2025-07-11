@@ -3,6 +3,8 @@ title: "Rechost: [FICTION] Bridge to eQualia"
 description: "https://suricrasia.online/blog/bridge-to-equalia/\r \r \u003e Maggie, a security researcher moonlighting as a internet sleuth, uses her unique s..."
 tags: ["rechost"]
 published: 1752240667
+mastodon: "https://social.treehouse.systems/@PolyWolf/114834846060561058"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3ltoxe3fjvc2y"
 ---
 
 https://suricrasia.online/blog/bridge-to-equalia/
