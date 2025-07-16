@@ -8,6 +8,12 @@ import "../scss/page.scss";
 const artPosts = await getArtPosts();
 ---
 
+<style is:global>
+  main {
+    max-width: none;
+    padding: 16px 48px;
+  }
+</style>
 <style>
   .grid {
     display: grid;
@@ -19,6 +25,7 @@ const artPosts = await getArtPosts();
   title="Art"
   description="Collection of art references for me, PolyWolf! I put all my commisions here, as well as the occasional art I do myself :)"
 >
+  <p>Click on each image for more info!</p>
   <div class="grid">
     {artPosts.map((post) => <ArtImage post={post} />)}
   </div>
