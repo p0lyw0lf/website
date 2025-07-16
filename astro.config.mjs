@@ -1,4 +1,6 @@
+import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import AutoImport from "astro-auto-import";
 import { defineConfig } from "astro/config";
 import rehypeRaw from "rehype-raw";
 import { allowedRemoteDomains } from "./src/data/config";
@@ -18,7 +20,16 @@ export default defineConfig({
     sitemap({
       filter: (url) => !BAD_URLS.has(url),
     }),
+    AutoImport({
+      imports: [
+        "./src/components/BskyLink.astro",
+        "./src/components/InstagramLink.astro",
+        "./src/components/TwitterLink.astro",
+      ],
+    }),
+    mdx(),
   ],
+
   site: SITE_URL.toString(),
   trailingSlash: "always",
 

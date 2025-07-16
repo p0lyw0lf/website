@@ -1,0 +1,102 @@
+---
+import { Image, inferRemoteSize } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import { toArtData } from "../../data/art.ts";
+import { toShortISODate } from "../../data/date.ts";
+
+interface Props {
+  post: CollectionEntry<"art">;
+  hidden?: boolean;
+}
+
+const { post, hidden } = Astro.props;
+const { Content } = await render(post);
+
+const data = toArtData(post);
+const { src, url, alt, title, tags, published } = data;
+
+const { width: remoteWidth, height: remoteHeight } = await inferRemoteSize(url);
+let width = 256;
+let height = 256;
+// Shrink to fit, preserving aspect ratio
+width = Math.min(width, (remoteWidth * height) / remoteHeight);
+height = Math.min(height, (remoteHeight * width) / remoteWidth);
+---
+
+<style lang="scss">
+  @use "../../scss/breakpoints.scss";
+
+  button {
+    font-family: inherit;
+    font-size: inherit;
+  }
+  .show {
+    background: var(--color-background-secondary);
+    border: var(--color-border-primary) solid var(--dim-border);
+    color: var(--color-text-secondary);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 8px;
+    padding: 8px;
+  }
+  .tags {
+    color: var(--color-text-secondary-accent);
+  }
+
+  dialog {
+    background: var(--color-background-secondary);
+    color: var(--color-text-secondary);
+    padding: 16px;
+    width: calc(100dvw - 32px);
+    height: 100dvh;
+  }
+
+  @media (min-width: breakpoints.$breakpoint-desktop) {
+    dialog {
+      max-width: min(90dvw - 32px, 768px);
+      max-height: 90dvh;
+      border: var(--color-text-secondary-accent) solid 2px;
+    }
+  }
+  dialog > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .hide {
+    background: none;
+    color: var(--color-text-secondary);
+    border: var(--color-text-secondary-accent) solid var(--dim-border);
+    padding: 4px 8px;
+    margin-top: 8px;
+  }
+</style>
+
+<button class="show" popovertarget={src}>
+  <p>{toShortISODate(published)}</p>
+  {
+    hidden ? (
+      <p>{alt}</p>
+    ) : (
+      <Image src={url} alt={alt} title={title} width={width} height={height} />
+    )
+  }
+  <p class="tags">
+    {
+      tags.map((tag, i) => (
+        <>
+          {i ? " " : ""}
+          <span>#{tag}</span>
+        </>
+      ))
+    }
+  </p>
+</button>
+<dialog popover id={src}>
+  <button class="hide" popovertarget={src} popovertargetaction="hide"
+    >← Back</button
+  >
+  <Content />
+  <img src={url} alt={alt} title={title} />
+</dialog>

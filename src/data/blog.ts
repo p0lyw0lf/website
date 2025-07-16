@@ -10,13 +10,11 @@ export interface BlogData extends Omit<InferEntrySchema<"blog">, "published"> {
   url: string;
 }
 
-export const toBlogData = (post: CollectionEntry<"blog">): BlogData => {
-  return {
-    ...post.data,
-    published: new Date(post.data.published * 1000),
-    url: toBlogUrl(post.id),
-  };
-};
+export const toBlogData = (post: CollectionEntry<"blog">): BlogData => ({
+  ...post.data,
+  published: new Date(post.data.published * 1000),
+  url: toBlogUrl(post.id),
+});
 
 /**
  * Returns a list of all posts, sorted descending by date.
