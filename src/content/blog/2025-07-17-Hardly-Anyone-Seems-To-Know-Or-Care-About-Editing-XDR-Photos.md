@@ -3,6 +3,8 @@ title: "Hardly Anyone Seems To Know Or Care About Editing XDR Photos"
 description: "In classic PolyWolf fashion, instead of finishing any of the N projects I have going on currently, I decided to take some photos yesterda..."
 tags: ["photography"]
 published: 1752802406
+mastodon: "https://social.treehouse.systems/@PolyWolf/114871678274446512"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lu7csqoxkk2s"
 ---
 
 In classic PolyWolf fashion, instead of finishing any of the N projects I have going on currently, I decided to take some photos yesterday & post them to my blog. Quick, easy, in-n-out, 15min editing tops, just gotta redact some license plates, be a good citizen 'n all, how hard could it be? :)
