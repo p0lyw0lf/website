@@ -3,6 +3,8 @@ title: "From The Lowe\u0027s Parking Lot"
 description: "i went to pick up a microwave and there were no microwaves that fit my cabinet and wirecutter said to get a different countertop microwav..."
 tags: ["photography"]
 published: 1752872245
+mastodon: "https://social.treehouse.systems/@PolyWolf/114876237165724502"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lubdkl7ryc2y"
 ---
 
 i went to pick up a microwave and there were no microwaves that fit my cabinet and wirecutter said to get a different countertop microwave so instead i got random kitchen supplies
