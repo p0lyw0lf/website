@@ -3,6 +3,8 @@ title: "I did my first V7 boulder today!??"
 description: "did not think it would come so soon lol. been doing V5s somewhat consistently so i thought \"ah, surely my third[^1] V6 will come soon\" bu..."
 tags: ["indoor bouldering", "wolfgirlagenda"]
 published: 1753194911
+mastodon: "https://social.treehouse.systems/@PolyWolf/114897383901046884"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lukq2ypp622k"
 ---
 
 did not think it would come so soon lol. been doing V5s somewhat consistently so i thought "ah, surely my third[^1] V6 will come soon" but no, jumped a grade instead lol
