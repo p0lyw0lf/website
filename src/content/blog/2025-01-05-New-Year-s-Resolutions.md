@@ -7,7 +7,7 @@ mastodon: "https://social.treehouse.systems/@PolyWolf/113776795143565616"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lez3k7zxxk2z"
 ---
 
-- [ ] Do a V7 Boulder
+- [x] 2025-07-22: [Do a V7 Boulder](https://wolfgirl.dev/blog/2025-07-22-i-did-my-first-v7-boulder-today-/)
 - [ ] Update My Wardrobe
 - [ ] Run a Half-Marathon (again)
 
