@@ -3,6 +3,8 @@ title: "Purchases I Absolutely Must Make This Bandcamp Friday (#7)"
 description: "Besides the ones I already linked in the rest of my [#music](https://wolfgirl.dev/tags/music/) tag posts, obviously. Going through follow..."
 tags: ["reviews", "music"]
 published: 1754053637
+mastodon: "https://social.treehouse.systems/@PolyWolf/114953661789406910"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lvdpt7rh2c2u"
 ---
 
 Besides the ones I already linked in the rest of my [#music](https://wolfgirl.dev/tags/music/) tag posts, obviously. Going through followed artists actually uncovered a lot of great stuff I would have otherwise missed had I only stuck with regular listening habits, neat! As a reminder, Bandcamp Friday is a 24hr period where Bandcamp takes no cut, passing all funds it gets directly to artists, so it's the best time to buy all the stuff we've been saving up!
