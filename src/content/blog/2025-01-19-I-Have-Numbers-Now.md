@@ -1,7 +1,7 @@
 ---
 title: 'I Have "Numbers" Now'
 description: "My blog is hosted with CloudFront pointed at an S3 bucket, automatically updated to whenever I push a commit to the GitHub repository con..."
-tags: ["programming", "aws"]
+tags: ["devops", "aws"]
 published: 1737320354
 mastodon: "https://social.treehouse.systems/@PolyWolf/113857026769441527"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lg4ppdtg6c2k"
