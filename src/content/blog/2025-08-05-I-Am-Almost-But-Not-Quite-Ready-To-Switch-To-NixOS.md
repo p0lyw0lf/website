@@ -3,6 +3,8 @@ title: "I Am Almost (But Not Quite) Ready To Switch To NixOS"
 description: "Feels like 9000 years, but really it\u0027s only been 4 months give or take. The reason it\u0027s taken this long is partly my own fault, and partl..."
 tags: ["devops", "nix"]
 published: 1754450869
+mastodon: "https://social.treehouse.systems/@PolyWolf/114979693958130233"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lvpbrbrbys2j"
 ---
 
 Feels like 9000 years, but really it's only been 4 months give or take. The reason it's taken this long is partly my own fault, and partly the fault of Nix itself.
