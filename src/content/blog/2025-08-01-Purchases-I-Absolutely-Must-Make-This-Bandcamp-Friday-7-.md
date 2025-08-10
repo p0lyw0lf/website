@@ -51,11 +51,13 @@ They also wrote about the making-of process on their blog, including the visuals
 
 Doctór! inject that breakcore directly into my veins, please :3
 
-technically u don't have to pay for this one but i did anyways just to be polite. haven't listened to the whole thing, just choosing the track by which i discovered it:
+Apparently this may be the final "emotional breakcore" compilation? As much as I enjoy having Literal Hours Of Breakcore to jam to & crave more, I can understand it is a massive effort to put together, plus there are two more like this lol.
+
+technically u don't have to pay for this one but i did anyways just to be polite. haven't listened to the whole thing yet, just choosing the track by which i discovered it:
 
 38 – Yem – Twin Hearts <audio src="https://static.wolfgirl.dev/polywolf/blog/01986326-c3ea-7119-8ff0-ebe7b38e38d0/38_Twin_Hearts.mp3" controls></audio>
 
-Apparently this may be the final "emotional breakcore" compilation? As much as I enjoy having Literal Hours Of Breakcore to jam to & crave more, I can understand it is a massive effort to put together, plus there are two more like this lol.
+UPDATE 2025-08-10: I have listened to the whole thing now. 11, 12, 26, 27, 32, 33, 34, 35, & 36 r all Pretty Good but i still think 38 is the most interesting. got it in one huh !
 
 ## [Jamie Paige – Constant Companions (Deluxe Edition)](https://jamiepaige.bandcamp.com/album/constant-companions-deluxe-edition)
 
