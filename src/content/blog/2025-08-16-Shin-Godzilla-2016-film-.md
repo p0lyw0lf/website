@@ -3,6 +3,8 @@ title: "Shin Godzilla (2016 film)"
 description: "Hideki Ano is the **man** i tell ya hwat. Just saw this in theaters w/ a friend because the local theater had it on, and it was a blast...."
 tags: ["reviews"]
 published: 1755396632
+mastodon: "https://social.treehouse.systems/@PolyWolf/115041675879867313"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lwkslfg7ts2j"
 ---
 
 Hideki Ano is the **man** i tell ya hwat. Just saw this in theaters w/ a friend because the local theater had it on, and it was a blast. Very reminiscent of Evangelion; most obviously "there is a big monster and we (the government) have to take it down", but also:
