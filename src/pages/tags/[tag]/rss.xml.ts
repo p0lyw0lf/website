@@ -18,7 +18,7 @@ for (const entry of entries) {
 }
 
 export const getStaticPaths = (async () => {
-  return [...byTag.keys().map((tag) => ({ params: { tag } }))];
+  return [...byTag.keys()].map((tag) => ({ params: { tag } }));
 }) satisfies GetStaticPaths;
 
 export async function GET({ params: { tag } }: { params: { tag: string } }) {
