@@ -3,6 +3,8 @@ title: "Per-Tag RSS Feeds"
 description: "Just a small site update! For anyone who was thinking \"PolyWolf is so cool \u0026 awesome buuut she makes a lot of non-programming blog posts,..."
 tags: ["rss"]
 published: 1755571110
+mastodon: "https://social.treehouse.systems/@PolyWolf/115053109888363592"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lwpv2y23b22j"
 ---
 
 Just a small site update! For anyone who was thinking "PolyWolf is so cool & awesome buuut she makes a lot of non-programming blog posts, i just want to see the [#programming](https://wolfgirl.dev/tags/programming/) ones because those are super high-quality". Or if not exactly that thought then something similar, perhaps about another tag. In any case! ur in luck u hypothetical being from the future, i have that now :3
