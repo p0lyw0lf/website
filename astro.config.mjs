@@ -12,10 +12,6 @@ const BAD_URLS = new Set(["/404.html"].map((path) => new URL(path, SITE_URL)));
 
 // https://astro.build/config
 export default defineConfig({
-  experimental: {
-    responsiveImages: true,
-  },
-
   integrations: [
     sitemap({
       filter: (url) => !BAD_URLS.has(url),
@@ -40,7 +36,8 @@ export default defineConfig({
 
   image: {
     domains: allowedRemoteDomains,
-    experimentalLayout: "full-width",
+    responsiveStyles: true,
+    layout: "full-width",
   },
 
   cacheDir: "./.astro-cache",
