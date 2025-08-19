@@ -5,7 +5,7 @@ import { allowedRemoteDomains } from "../data/config";
 
 /**
  * This plugin takes all `<img src="" />` images whose URLs were found in a
- * previous step, and transforms them to have a special `__POLYWOLF_IMAGE_`
+ * previous step, and transforms them to have a special `__ASTRO_IMAGE_`
  * property.
  *
  * This is so a later vite plugin can easily find all images we want to
