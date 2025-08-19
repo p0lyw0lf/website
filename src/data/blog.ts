@@ -1,8 +1,11 @@
+import type { experimental_AstroContainer as AstroContainer } from "astro/container";
 import {
   getCollection,
+  render,
   type CollectionEntry,
   type InferEntrySchema,
 } from "astro:content";
+import sanitizeHtml from "sanitize-html";
 import { toBlogUrl } from "./url";
 
 export interface BlogData extends Omit<InferEntrySchema<"blog">, "published"> {
@@ -10,19 +13,46 @@ export interface BlogData extends Omit<InferEntrySchema<"blog">, "published"> {
   url: string;
 }
 
-export const toBlogData = (post: CollectionEntry<"blog">): BlogData => ({
-  ...post.data,
-  published: new Date(post.data.published * 1000),
-  url: toBlogUrl(post.id),
+export const toBlogData = (entry: CollectionEntry<"blog">): BlogData => ({
+  ...entry.data,
+  published: new Date(entry.data.published * 1000),
+  url: toBlogUrl(entry.id),
 });
+
+export const toFeedItem =
+  (container: AstroContainer) => async (entry: CollectionEntry<"blog">) => {
+    const { Content } = await render(entry);
+    const content = await container.renderToString(Content);
+    const data = toBlogData(entry);
+    const sanitizedContent = sanitizeHtml(content, {
+      allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+    });
+    return {
+      link: data.url.toString(),
+      content: sanitizedContent,
+      title: data.title,
+      pubDate: data.published,
+      categories: data.tags,
+    };
+  };
+
+let cachedEntries: Array<CollectionEntry<"blog">> | null = null;
+export const getBlogEntries = async (): Promise<
+  Array<CollectionEntry<"blog">>
+> => {
+  if (cachedEntries) return cachedEntries;
+  const entries = await getCollection("blog");
+  entries.sort((a, b) => b.data.published - a.data.published);
+  cachedEntries = entries;
+  return entries;
+};
 
 /**
  * Returns a list of all posts, sorted descending by date.
  */
 export const getBlogData = async (): Promise<BlogData[]> => {
-  const posts = await getCollection("blog");
-  const data = posts.map(toBlogData);
-  data.sort((a, b) => b.published.valueOf() - a.published.valueOf());
+  const entries = await getBlogEntries();
+  const data = entries.map(toBlogData);
   return data;
 };
 
