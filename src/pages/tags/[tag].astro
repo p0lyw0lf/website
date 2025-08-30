@@ -12,7 +12,7 @@ interface Props {
 export const getStaticPaths = (async () => {
   const byTag = await getBlogDataByTag();
   const entries = [...byTag.entries()].toSorted(
-    ([, dataA], [, dataB]) => dataB.length - dataA.length,
+    ([, dataA], [, dataB]) => dataB.length - dataA.length
   );
   return entries.map(([tag, data]) => ({
     params: {
@@ -26,8 +26,9 @@ const { tag, data } = Astro.props;
 ---
 
 <Post
-  section_title="PolyWolf's Blog"
-  home_link="/blog/"
+  sectionTitle="PolyWolf's Blog"
+  homeLink="/blog/"
+  rssLink={`/tags/${tag}/rss.xml`}
   title={`#${tag}`}
   description={`All my blog posts tagged with #${tag}!`}
 >

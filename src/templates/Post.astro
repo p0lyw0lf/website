@@ -6,11 +6,12 @@ import { SITE_URL } from "../data/url";
 import "../scss/post.scss";
 
 interface Props extends BaseProps {
-  section_title: string;
-  home_link: string;
+  sectionTitle: string;
+  homeLink: string;
+  rssLink?: string;
 }
 
-const { section_title, home_link, ...props } = Astro.props;
+const { sectionTitle, homeLink, rssLink, ...props } = Astro.props;
 ---
 
 <Base {...props}>
@@ -18,15 +19,15 @@ const { section_title, home_link, ...props } = Astro.props;
     <link
       rel="alternate"
       type="application/rss+xml"
-      title={section_title}
-      href={new URL(`${home_link}rss.xml`, SITE_URL)}
+      title={sectionTitle}
+      href={new URL(rssLink ?? `${homeLink}rss.xml`, SITE_URL)}
     />
     <slot name="head" />
   </Fragment>
   <header slot="header">
     <RandomHeaderPfp />
     <div>
-      <h2><a href={home_link}>{section_title}</a></h2>
+      <h2><a href={homeLink}>{sectionTitle}</a></h2>
       <nav>
         <a href="/">Home</a>
         <a href="/about/">About</a>
