@@ -1,7 +1,7 @@
 ---
 title: "Coho Photo Zine \u2013 Yes-and-ism"
 description: "Recently, I found out about the [Coho Photo Zine](https://coho.photo/), a zine run by former members of the Cohost photography community..."
-tags: ["photography"]
+tags: ["photography", "cohost"]
 published: 1758943289
 mastodon: "https://social.treehouse.systems/@PolyWolf/115274110096166092"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lzrzoae7ck2f"
