@@ -3,6 +3,8 @@ title: "Coho Photo Zine \u2013 Yes-and-ism"
 description: "Recently, I found out about the [Coho Photo Zine](https://coho.photo/), a zine run by former members of the Cohost photography community..."
 tags: ["photography"]
 published: 1758943289
+mastodon: "https://social.treehouse.systems/@PolyWolf/115274110096166092"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lzrzoae7ck2f"
 ---
 
 Recently, I found out about the [Coho Photo Zine](https://coho.photo/), a zine run by former members of the Cohost photography community whom I really look up to. By "recently" I mean "Tuesday", and their deadline was today (Friday), so I had about 3 days to sort thru my backlog and edit something matching the theme. And I did!! Having some creative pressure was actually very helpful, as was seeing so many inspiring photos by all the other participants.
