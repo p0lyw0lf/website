@@ -3,6 +3,8 @@ title: "Making Of: Yes-and-ism"
 description: "This is the \"[long explanation]\" part of the Yes-and-ism photography collection I put out yesterday. Hopefully this demystifies some of t..."
 tags: ["photography", "shell-scripting"]
 published: 1759021123
+mastodon: "https://social.treehouse.systems/@PolyWolf/115279210797710889"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lzuc5rcuq22d"
 ---
 
 This is the "[long explanation]" part of the [Yes-and-ism photography collection](https://wolfgirl.dev/blog/2025-09-26-coho-photo-zine-yes-and-ism/) I put out yesterday. Hopefully this demystifies some of the stuff I did and inspires some more "glitch art" too!
