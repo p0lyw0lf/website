@@ -24,7 +24,7 @@ To make these, I used [ImageMagick](https://imagemagick.org/) (and a POSIX shell
 ```sh
 for enc in avif jpeg jxl webp; do
     magick -quality 1 IMG_0540_stage0.png IMG_0540_stage1.${enc}
-    magick IMG_0540_stage1.${enc} IMG_0540_stage1_enc.${png}
+    magick IMG_0540_stage1.${enc} IMG_0540_stage1_${enc}.png
 done
 ```
 
