@@ -3,6 +3,8 @@ title: "Some New Albums With A Solid Beat (#8)"
 description: "Bandcamp Friday is coming up again, so you know what that means!! More album reviews :) Ninajirachi \u2013 I Love My Computer Man. I was extre..."
 tags: ["reviews", "music"]
 published: 1759338207
+mastodon: "https://social.treehouse.systems/@PolyWolf/115299990916511385"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3m25jhhuhlc26"
 ---
 
 [Bandcamp Friday is coming up again](https://daily.bandcamp.com/features/bandcamp-fridays), so you know what that means!! More album reviews :)
