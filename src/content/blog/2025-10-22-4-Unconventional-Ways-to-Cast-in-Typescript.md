@@ -3,6 +3,8 @@ title: "4 Unconventional Ways to Cast in Typescript"
 description: "I saw a post by qntm and remembered I had a playground with a similar idea. I then expanded that playground into a (probably non-exhausti..."
 tags: ["programming", "typescript"]
 published: 1761187398
+mastodon: "https://social.treehouse.systems/@PolyWolf/115421179803463160"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3m3tdnsakys2m"
 ---
 
 I saw a [post by qntm](https://bsky.app/profile/qntm.org/post/3m3dak7s63k2v) and remembered I had a playground with a similar idea. I then expanded that playground into a (probably non-exhaustive) list of ways to cast between arbitrary[^arbitrary]  types in Typescript:
