@@ -1,0 +1,163 @@
+---
+title: "4 Unconventional Ways to Cast in Typescript"
+description: "I saw a post by qntm and remembered I had a playground with a similar idea. I then expanded that playground into a (probably non-exhausti..."
+tags: ["programming", "typescript"]
+published: 1761187398
+---
+
+I saw a [post by qntm](https://bsky.app/profile/qntm.org/post/3m3dak7s63k2v) and remembered I had a playground with a similar idea. I then expanded that playground into a (probably non-exhaustive) list of ways to cast between arbitrary[^arbitrary]  types in Typescript:
+
+## Convention: The `as` Operator
+
+Ah, good ol' `as`:
+
+```ts
+const cast = <A, B,>(a: A): B => a as unknown as B;
+```
+
+We can't just directly do `a as B` because Typescript is smart enough to warn us about **that**, at least. That very same error message also says,
+
+> If this was intentional, convert the expression to 'unknown' first.
+
+So we can just do that :3
+
+If we were approaching this from a type theoretic perspective, it's already done & dusted, we have the most cut-and-dry demonstration of unsoundness, pack it up go home.
+
+But, what if we couldn't use `as`? Can we still get between two completely unrelated types?
+
+## Unconvention 1: The `is` Operator
+
+`is` is commonly used for for interfacing with Typescript's flow-typing system, helping it figure out what exactly the return value of a boolean function _means_. For example:
+
+```ts
+const notUndefined1 = <A,>(a: A | undefined): boolean => a !== undefined;
+const notUndefined2 = <A,>(a: A | undefined): a is A => a !== undefined;
+
+const maybeNumber0: number | undefined = someExternalFunction();
+if (maybeNumber0 !== undefined) return;
+// Thanks to flow-typing, Typescript knows that `maybeNumber0: number`
+// if we get here.
+const maybeNumber1 = someExternalFunction();
+if (notUndefined1(maybeNumber1)) return;
+// However, Typescript cannot infer flow from ordinary functions;
+// At this point, it still thinks `maybeNumber1: number | undefined`
+const maybeNumber2 = someExternalFunction();
+if (notUndefined2(maybeNumber2)) return;
+// The `is` annotation has the exact same `boolean` value at runtime,
+// but provides extra information to the compiler, so Typescript can know
+// that `maybeNumber2: number` if we get here.
+```
+
+However, `is` is sort of an escape hatch outside the regular typing system, and we can abuse it to tell the compiler whatever we want:
+
+```ts
+const badDetector = <A, B,>(a: A): B => {
+    const detector = (_ab: A | B): _ab is B => true;
+    if (detector(a)) return a;
+    throw new Error("unreachable");
+};
+```
+
+Typescript doesn't (and can't!) check that the function body is actually doing what the `is` assertion says. So we can just write a bad one on purpose! (Or on accident, introducing quite a subtle bug.)
+
+## Unconvention 2: Mutation Across Boundaries
+
+This cast requires a "seed" value `b: B` in order to be able to cast `a: A` to `B`, but make no mistake: this sort of thing can come up fairly often if we're not careful about how we mutate objects.
+
+```ts
+const mutation = <A, B,>(a: A, b: B): B => {
+    const mutate = (obj: { field: A | B }): void => {
+        obj.field = a;
+    };
+
+    const obj = { field: b };
+    mutate(obj);
+    return obj.field;
+};
+```
+
+I showed this to a type theory friend and their reaction was:
+
+> bruh
+> ts type system mega fails
+> Variance is hard xd xd xd
+
+What they meant by that was, the coercion from `{ field: B }` to `{ field: A | B }` is unsafe when the destination `field` is mutable; if we allow it, we get exactly the behavior shown here. To make it safe we'd need `{ readonly field: A | B }`, which then prevents the mutation.
+
+Another way of thinking about this is, Typescript currently has no way to "flow" the cast of/assignment to `obj.field` after the function runs. (Potentially on purpose, because that would make the type system even more complex & limit certain useful patterns.) Inlining the `obj.field = a;` allows us to catch this, but the analysis does not go across function boundaries.
+## Unconvention 3: Smuggling Through Structural Typing
+
+Typescript is structurally typed. This means that, if we have an `obj: { field: string }`, all we know is that there exists an `obj.field: string`. Typescript doesn't care at all if `obj` has other fields, and in fact this is the biggest advantage of structural typing: we can freely "upcast" to less restrictive types (i.e. fewer fields) without having to change runtime representations.
+
+The downside of this sort of upcasting is that, some operations like `Object.values`/the spread operator are only properly typed when they have a complete list of fields, and have their assumptions violated when extra fields are in the mix:
+
+```ts
+const loopSmuggling = <A, B,>(a: A, b: B): B => {
+    const objAB = { fieldA: a, fieldB: b };
+    const objB: { fieldB: B } = objAB;
+    for (const field of Object.values(objB)) {
+        // Object.values believes all fields have type `B`,
+        // but actually `fieldA` is first in iteration order.
+        return field;
+    }
+    throw new Error("unreachable");
+};
+
+const spreadSmuggling = <A, B,>(a: A, b: B): B => {
+    const objA = { field: a };
+    const obj: {} = objA;
+    const objB = { field: b, ...obj };
+    // `objB.field` has been overwritten by the spread,
+    // but Typescript doesn't know that.
+    return objB.field;
+};
+```
+
+These casts have the same restriction as (2), in that we require a "seed" value `b: B` in order to make it typecheck. Still, it's a bit of a double-whammy, because trying to avoid (2) by copying objects with a `...` spread can make you run smack-dab into this one elsewhere.
+
+## Unconvention 4: `| void` is Very Bad
+
+This one's by far the most unconventional; the rest you're probably aware of if you've worked with Typescript for a while, but this one hardly ever comes up because it's such a "why even do this" kinda deal. Still, I have seen it in my work's codebase (and immediately excised it once I realized), so it's not _impossible_ to come across.
+
+Anyways here it is:
+
+```ts
+const orVoid = <A, B,>(a: A): B => {
+    const outer = (inner: () => B | void): B => {
+        const b = inner();
+        if (b) return b;
+        throw new Error("falsy");
+    };
+
+    const returnsA = (): A => a;
+    const voidSmuggled: () => void = returnsA;
+    return outer(voidSmuggled);
+};
+```
+
+This is a combination of a few interesting things. For Typescript, `void` is primarily seen as a function's return value, indicating "I don't care what this function returns because I'm not going to use it". This is why any function, including our `() => A` one, can be safely coerced to `() => void`. Usually, this is safe, because once we have a `() => void`, we really can't assign its output to a variable, nor can we directly type a value as `void`; it's a very special type after all.
+
+However, `void` can still participate in type combinations like `B | void`. And, because functions are [covariant](https://www.typescriptlang.org/docs/handbook/2/generics.html#variance-annotations) in their return type, `() => void` can be safely coerced to `() => B | void`. And, as it turns out, we _can_ assign that `B | void` return type to a variable!
+
+If `void` were meant to be assigned directly, it _should_ behave something more like `any` or `unknown`. But it's not, so instead it behaves like a [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) type, because a normal `void`-returning function actually returns `undefined` at runtime. This is how we're able to `if (b) return b;` (which is **not** the same as checking `b`'s true type!) & still have everything typecheck.
+
+Unfortunately, that means this cast only works for truthy `a`. But that's not too much of an issue I think, the Cool Factor outweighs this limitation :3
+
+## Does This Even Matter?
+
+Yes, but it's complicated.
+
+On the one hand, Typescript is clearly just a "best effort" at adding types to Javascript, and it does a darn good job at that. If you're holding it right, these things don't come up, and your code genuinely is much much safer than if you used raw Javascript.
+
+On the other hand, all these "unconventions" are real footguns one can stumble into & unintentionally introduce unsafety into your codebase. It only takes a little bit of unsoundness in one place to render entire swaths buggy. We can do our best to avoid these patterns manually, but an automated solution will always be better at catching them.
+
+## What Can We Do About This?
+
+**TL;DR** use [typescript-eslint](https://typescript-eslint.io/)[^typescript-eslint]. While neither Typescript[^typescript] nor Eslint[^eslint] on their own come with enough rules to detect any of these, the typescript-eslint ruleset includes things like [@typescript-eslint/prefer-readonly-parameter-types](https://typescript-eslint.io/rules/prefer-readonly-parameter-types/) (prevents (2)), [@typescript-eslint/no-invalid-void-type](https://typescript-eslint.io/rules/no-invalid-void-type/) (prevents (4)), & [@typescript-eslint/no-unnecessary-type-parameters](https://typescript-eslint.io/rules/no-unnecessary-type-parameters/) (prevents the rest by making the `unknown` viral). Unfortunately, all of them are opt-in, and Typescript + eslint + typescript-eslint always requires a fair bit of mucking about to get working.
+
+Anyways, I hope these examples are enough to convince you to use more aggressive linting on your Typescript projects in the future :3
+
+[^arbitrary]: OK, I may have over-exaggerated on the "arbitrary" part a little :P (1) and (2) do in fact work for everything, but (3) doesn't work for `undefined` sometimes and (4) only works if the `a` to be cast is truthy. Still, it's a good enough demonstration I think.
+[^typescript]: [typescript playground](https://www.typescriptlang.org/play/?#code/PQKhAIGEHsDsDcCmsAuBLO4TAFAGM4BnFcPAQ2PAF5wAeAQQBpwAhRgPgAoyAucegJR8W1duDLjC4AK6wA1rGgB3WJNYBuHDlAQAqrAIJk6TAEY+AFQAWicAAM0hO+ADyAB0QAnMimiesuIaUAEZkACYAIogoiHi+-jQMzGxcvPxCrKLgAN44AJBBJGHRsfHU4JwA+mTBfPTgAD6sGdXB4I6ZVGIontKImnloAGYVxTFxftwCAuCe0dKeqmQDKFaeyuCwiErgAKKe656cAESyc2R4VjUANojHApoAvpraYOD6hkioGKoATHwAWWkKB8P34eHWhCkLGgsjCZE8aEQUmw+CIJAAtsDQZhEkxWBxuHVmLVmsIsrkCujwFiQTFypxoMEAFZ8bLgIZI65hOqNTKPGZdHL5PJM5kAOk5iG55WW+WeWipsEoYvK7Kl3L4bQVeVpPkQjJZD3ycxQC1UYslXLCTy0OneBjgXxMqgAzOLzOAAMpYgDmvuuaFgvvA1nW0l9Vm9PWkcQWZGuoYAnm4gyHUYVwNdoNA3D6IwG0+UkgTUsTwKSWBkRELKZmxfQazkOdb6HwyMwNWEWFrwDr6yye82u0ORI9yg2WAMhn4Kpmu+BoCMXCzSuL4Am+oRDcyqzNKXlgMBXKu4uvN8iK9KkUgpAnE12pFckOAUCnbHYWHZGCKjxXgeIcb3km9hdvQzgdJyniUEG7QxN4LqLp4xSeOKIqmuaLbSja8o4OA+GvmsGxbDs+yHCcZyIBcVzBLc9y2q8eiOkY3yYO6-zen6hbBqGRERlGXoxnG3iJhYKZFhm1KEG45xhPm-qBjxeLJISaT4pW1YUvkA7MvUNDqta7Z9gMOlsuONANiZ1Jik2BnYVqzDik5qo6n+dg2Va2HOFcUjBIgyCLkgnhKIiKAxKowQgastjSbJP6HsewQAWJHiEBCaBuEU0DIrAADkJAKBsqw+GheQYYsi6Dp53IMfaHxOsYYIACx8M4TTwNAaBhBBUgAGpeCBLDhAEaLKiQfi9Z1YTFviKREuk5K1tp1nAl4DJBlsnh8JwgpiCI7VTZpS15EqITlBtXg7QMgwjJwwQzOVEXXas6w7CRewHJMxxDAmhBJvRuHLWNszzIshB6RUu3iFZwMdV18kBogPKQ1kcPTTQj3gwMj2LqtRxowjtxhMajxAA)
+[^eslint]: [eslint playground](https://eslint.org/play/#eyJ0ZXh0IjoiLy8gRGlzYWJsaW5nIGEgYnVuY2ggb2YgdGhpbmdzIHRoYXQgaGF2ZSBubyBpbXBhY3Qgb24gdHlwaW5nXG4vKiBlc2xpbnQgbm8tdW51c2VkLXZhcnM6IDAgKi9cbi8qIGVzbGludCBpZC1sZW5ndGg6IDAgKi9cbi8qIGVzbGludCBvbmUtdmFyOiAwICovXG4vKiBlc2xpbnQgb2JqZWN0LXByb3BlcnR5LW5ld2xpbmU6IDAgKi9cbi8qIGVzbGludCBwYWRkZWQtYmxvY2tzOiAwICovXG4vKiBlc2xpbnQgbmV3bGluZS1hZnRlci12YXI6IDAgKi9cbi8qIGVzbGludCBuZXdsaW5lLWJlZm9yZS1yZXR1cm46IDAgKi9cbi8qIGVzbGludCBjb21tYS1zcGFjaW5nOiAwICovXG4vKiBlc2xpbnQgY3VybHk6IDAgKi9cbi8qIGVzbGludCBxdW90ZS1wcm9wczogMCAqL1xuLyogZXNsaW50IG9iamVjdC1jdXJseS1zcGFjaW5nOiAwICovXG4vKiBlc2xpbnQgbXVsdGlsaW5lLWNvbW1lbnQtc3R5bGU6ICovXG4vKiBlc2xpbnQgY2FwaXRhbGl6ZWQtY29tbWVudHM6IDAgKi9cblxuLyoqIENvbnZlbnRpb24gKi9cbmNvbnN0IGNhc3QgPSA8QSwgQiw+KGE6IEEpOiBCID0+IGEgYXMgdW5rbm93biBhcyBCO1xuXG4vKiogVW5jb252ZW50aW9uIDE6IFRoZSBgaXNgIE9wZXJhdG9yICovXG5jb25zdCBiYWREZXRlY3RvciA9IDxBLCBCLD4oYTogQSk6IEIgPT4ge1xuICAgIGNvbnN0IGRldGVjdG9yID0gKF9hYjogQSB8IEIpOiBfYWIgaXMgQiA9PiB0cnVlO1xuICAgIGlmIChkZXRlY3RvcihhKSkgcmV0dXJuIGE7XG4gICAgdGhyb3cgbmV3IEVycm9yKFwidW5yZWFjaGFibGVcIik7XG59O1xuXG4vKiogVW5jb252ZW50aW9uIDI6IE11dGF0aW9uIEFjcm9zcyBCb3VuZGFyaWVzICovXG5jb25zdCBtdXRhdGlvbiA9IDxBLCBCLD4oYTogQSwgYjogQik6IEIgPT4ge1xuICAgIGNvbnN0IG11dGF0ZSA9IChvYmo6IHsgZmllbGQ6IEEgfCBCIH0pID0+IHtcbiAgICAgICAgb2JqLmZpZWxkID0gYTtcbiAgICB9O1xuXG4gICAgY29uc3Qgb2JqID0ge2ZpZWxkOiBifTtcbiAgICBtdXRhdGUob2JqKTtcbiAgICByZXR1cm4gb2JqLmZpZWxkO1xufTtcblxuLyoqIFVuY29udmVudGlvbiAzLjE6IFNtdWdnbGluZyBUaHJvdWdoIFN0cnVjdHVyYWwgVHlwaW5nICovXG5jb25zdCBsb29wU211Z2dsaW5nID0gPEEsIEIsPihhOiBBLCBiOiBCKTogQiA9PiB7XG4gICAgY29uc3Qgb2JqQUIgPSB7IGZpZWxkQTogYSwgZmllbGRCOiBiIH07XG4gICAgY29uc3Qgb2JqQjogeyBmaWVsZEI6IEIgfSA9IG9iakFCO1xuICAgIGZvciAoY29uc3QgZmllbGQgb2YgT2JqZWN0LnZhbHVlcyhvYmpCKSkge1xuICAgICAgICAvLyBPYmplY3QudmFsdWVzIGJlbGlldmVzIGFsbCBmaWVsZHMgaGF2ZSB0eXBlIGBCYCxcbiAgICAgICAgLy8gYnV0IGFjdHVhbGx5IGBmaWVsZEFgIGlzIGZpcnN0IGluIGl0ZXJhdGlvbiBvcmRlci5cbiAgICAgICAgcmV0dXJuIGZpZWxkO1xuICAgIH1cbiAgICB0aHJvdyBuZXcgRXJyb3IoXCJ1bnJlYWNoYWJsZVwiKTtcbn07XG5cbi8qKiBVbmNvbnZlbnRpb24gMy4yOiBTbXVnZ2xpbmcgVGhyb3VnaCBTdHJ1Y3R1cmFsIFR5cGluZyAqL1xuY29uc3Qgc3ByZWFkU211Z2dsaW5nID0gPEEsIEIsPihhOiBBLCBiOiBCKTogQiA9PiB7XG4gICAgY29uc3Qgb2JqQSA9IHsgZmllbGQ6IGEgfTtcbiAgICBjb25zdCBvYmo6IHt9ID0gb2JqQTtcbiAgICBjb25zdCBvYmpCID0geyBmaWVsZDogYiwgLi4ub2JqIH07XG4gICAgLy8gYG9iakIuZmllbGRgIGhhcyBiZWVuIG92ZXJ3cml0dGVuIGJ5IHRoZSBzcHJlYWQsXG4gICAgLy8gYnV0IFR5cGVzY3JpcHQgZG9lc24ndCBrbm93IHRoYXQuXG4gICAgcmV0dXJuIG9iakIuZmllbGQ7XG59O1xuXG4vKiogVW5jb252ZW50aW9uIDQ6IGAgfCB2b2lkYCBpcyBWZXJ5IEJhZCAqL1xuY29uc3Qgb3JWb2lkID0gPEEsIEIsPihhOiBBKTogQiA9PiB7XG4gICAgY29uc3Qgb3V0ZXIgPSAoaW5uZXI6ICgpID0+IEIgfCB2b2lkKTogQiA9PiB7XG4gICAgICAgIGNvbnN0IGIgPSBpbm5lcigpO1xuICAgICAgICBpZiAoYikgcmV0dXJuIGI7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihcImZhbHN5XCIpO1xuICAgIH07XG5cbiAgICBjb25zdCByZXR1cm5zQSA9ICgpID0+IGE7XG4gICAgY29uc3Qgdm9pZFNtdWdnbGVkOiAoKSA9PiB2b2lkID0gcmV0dXJuc0E7XG4gICAgcmV0dXJuIG91dGVyKHZvaWRTbXVnZ2xlZCk7XG59O1xuIiwib3B0aW9ucyI6eyJydWxlcyI6eyJhY2Nlc3Nvci1wYWlycyI6WyJlcnJvciJdLCJhcnJheS1icmFja2V0LW5ld2xpbmUiOlsiZXJyb3IiXSwiYXJyYXktYnJhY2tldC1zcGFjaW5nIjpbImVycm9yIl0sImFycmF5LWNhbGxiYWNrLXJldHVybiI6WyJlcnJvciJdLCJhcnJheS1lbGVtZW50LW5ld2xpbmUiOlsiZXJyb3IiXSwiYXJyb3ctYm9keS1zdHlsZSI6WyJlcnJvciJdLCJhcnJvdy1wYXJlbnMiOlsiZXJyb3IiXSwiYXJyb3ctc3BhY2luZyI6WyJlcnJvciJdLCJibG9jay1zY29wZWQtdmFyIjpbImVycm9yIl0sImJsb2NrLXNwYWNpbmciOlsiZXJyb3IiXSwiYnJhY2Utc3R5bGUiOlsiZXJyb3IiXSwiY2FsbGJhY2stcmV0dXJuIjpbImVycm9yIl0sImNhbWVsY2FzZSI6WyJlcnJvciJdLCJjYXBpdGFsaXplZC1jb21tZW50cyI6WyJlcnJvciJdLCJjbGFzcy1tZXRob2RzLXVzZS10aGlzIjpbImVycm9yIl0sImNvbW1hLWRhbmdsZSI6WyJlcnJvciJdLCJjb21tYS1zcGFjaW5nIjpbImVycm9yIl0sImNvbW1hLXN0eWxlIjpbImVycm9yIl0sImNvbXBsZXhpdHkiOlsiZXJyb3IiXSwiY29tcHV0ZWQtcHJvcGVydHktc3BhY2luZyI6WyJlcnJvciJdLCJjb25zaXN0ZW50LXJldHVybiI6WyJlcnJvciJdLCJjb25zaXN0ZW50LXRoaXMiOlsiZXJyb3IiXSwiY29uc3RydWN0b3Itc3VwZXIiOlsiZXJyb3IiXSwiY3VybHkiOlsiZXJyb3IiXSwiZGVmYXVsdC1jYXNlIjpbImVycm9yIl0sImRlZmF1bHQtY2FzZS1sYXN0IjpbImVycm9yIl0sImRlZmF1bHQtcGFyYW0tbGFzdCI6WyJlcnJvciJdLCJkb3QtbG9jYXRpb24iOlsiZXJyb3IiXSwiZG90LW5vdGF0aW9uIjpbImVycm9yIl0sImVvbC1sYXN0IjpbImVycm9yIl0sImVxZXFlcSI6WyJlcnJvciJdLCJmb3ItZGlyZWN0aW9uIjpbImVycm9yIl0sImZ1bmMtY2FsbC1zcGFjaW5nIjpbImVycm9yIl0sImZ1bmMtbmFtZS1tYXRjaGluZyI6WyJlcnJvciJdLCJmdW5jLW5hbWVzIjpbImVycm9yIl0sImZ1bmMtc3R5bGUiOlsiZXJyb3IiXSwiZnVuY3Rpb24tY2FsbC1hcmd1bWVudC1uZXdsaW5lIjpbImVycm9yIl0sImZ1bmN0aW9uLXBhcmVuLW5ld2xpbmUiOlsiZXJyb3IiXSwiZ2VuZXJhdG9yLXN0YXItc3BhY2luZyI6WyJlcnJvciJdLCJnZXR0ZXItcmV0dXJuIjpbImVycm9yIl0sImdsb2JhbC1yZXF1aXJlIjpbImVycm9yIl0sImdyb3VwZWQtYWNjZXNzb3ItcGFpcnMiOlsiZXJyb3IiXSwiZ3VhcmQtZm9yLWluIjpbImVycm9yIl0sImhhbmRsZS1jYWxsYmFjay1lcnIiOlsiZXJyb3IiXSwiaWQtYmxhY2tsaXN0IjpbImVycm9yIl0sImlkLWRlbnlsaXN0IjpbImVycm9yIl0sImlkLWxlbmd0aCI6WyJlcnJvciJdLCJpZC1tYXRjaCI6WyJlcnJvciJdLCJpbXBsaWNpdC1hcnJvdy1saW5lYnJlYWsiOlsiZXJyb3IiXSwiaW5kZW50IjpbImVycm9yIl0sImluZGVudC1sZWdhY3kiOlsiZXJyb3IiXSwiaW5pdC1kZWNsYXJhdGlvbnMiOlsiZXJyb3IiXSwianN4LXF1b3RlcyI6WyJlcnJvciJdLCJrZXktc3BhY2luZyI6WyJlcnJvciJdLCJrZXl3b3JkLXNwYWNpbmciOlsiZXJyb3IiXSwibGluZS1jb21tZW50LXBvc2l0aW9uIjpbImVycm9yIl0sImxpbmVicmVhay1zdHlsZSI6WyJlcnJvciJdLCJsaW5lcy1hcm91bmQtY29tbWVudCI6WyJlcnJvciJdLCJsaW5lcy1hcm91bmQtZGlyZWN0aXZlIjpbImVycm9yIl0sImxpbmVzLWJldHdlZW4tY2xhc3MtbWVtYmVycyI6WyJlcnJvciJdLCJsb2dpY2FsLWFzc2lnbm1lbnQtb3BlcmF0b3JzIjpbImVycm9yIl0sIm1heC1jbGFzc2VzLXBlci1maWxlIjpbImVycm9yIl0sIm1heC1kZXB0aCI6WyJlcnJvciJdLCJtYXgtbGVuIjpbImVycm9yIl0sIm1heC1saW5lcyI6WyJlcnJvciJdLCJtYXgtbGluZXMtcGVyLWZ1bmN0aW9uIjpbImVycm9yIl0sIm1heC1uZXN0ZWQtY2FsbGJhY2tzIjpbImVycm9yIl0sIm1heC1wYXJhbXMiOlsiZXJyb3IiXSwibWF4LXN0YXRlbWVudHMiOlsiZXJyb3IiXSwibWF4LXN0YXRlbWVudHMtcGVyLWxpbmUiOlsiZXJyb3IiXSwibXVsdGlsaW5lLWNvbW1lbnQtc3R5bGUiOlsiZXJyb3IiXSwibXVsdGlsaW5lLXRlcm5hcnkiOlsiZXJyb3IiXSwibmV3LWNhcCI6WyJlcnJvciJdLCJuZXctcGFyZW5zIjpbImVycm9yIl0sIm5ld2xpbmUtYWZ0ZXItdmFyIjpbImVycm9yIl0sIm5ld2xpbmUtYmVmb3JlLXJldHVybiI6WyJlcnJvciJdLCJuZXdsaW5lLXBlci1jaGFpbmVkLWNhbGwiOlsiZXJyb3IiXSwibm8tYWxlcnQiOlsiZXJyb3IiXSwibm8tYXJyYXktY29uc3RydWN0b3IiOlsiZXJyb3IiXSwibm8tYXN5bmMtcHJvbWlzZS1leGVjdXRvciI6WyJlcnJvciJdLCJuby1hd2FpdC1pbi1sb29wIjpbImVycm9yIl0sIm5vLWJpdHdpc2UiOlsiZXJyb3IiXSwibm8tYnVmZmVyLWNvbnN0cnVjdG9yIjpbImVycm9yIl0sIm5vLWNhbGxlciI6WyJlcnJvciJdLCJuby1jYXNlLWRlY2xhcmF0aW9ucyI6WyJlcnJvciJdLCJuby1jYXRjaC1zaGFkb3ciOlsiZXJyb3IiXSwibm8tY2xhc3MtYXNzaWduIjpbImVycm9yIl0sIm5vLWNvbXBhcmUtbmVnLXplcm8iOlsiZXJyb3IiXSwibm8tY29uZC1hc3NpZ24iOlsiZXJyb3IiXSwibm8tY29uZnVzaW5nLWFycm93IjpbImVycm9yIl0sIm5vLWNvbnNvbGUiOlsiZXJyb3IiXSwibm8tY29uc3QtYXNzaWduIjpbImVycm9yIl0sIm5vLWNvbnN0YW50LWJpbmFyeS1leHByZXNzaW9uIjpbImVycm9yIl0sIm5vLWNvbnN0YW50LWNvbmRpdGlvbiI6WyJlcnJvciJdLCJuby1jb25zdHJ1Y3Rvci1yZXR1cm4iOlsiZXJyb3IiXSwibm8tY29udGludWUiOlsiZXJyb3IiXSwibm8tY29udHJvbC1yZWdleCI6WyJlcnJvciJdLCJuby1kZWJ1Z2dlciI6WyJlcnJvciJdLCJuby1kZWxldGUtdmFyIjpbImVycm9yIl0sIm5vLWRpdi1yZWdleCI6WyJlcnJvciJdLCJuby1kdXBlLWFyZ3MiOlsiZXJyb3IiXSwibm8tZHVwZS1jbGFzcy1tZW1iZXJzIjpbImVycm9yIl0sIm5vLWR1cGUtZWxzZS1pZiI6WyJlcnJvciJdLCJuby1kdXBlLWtleXMiOlsiZXJyb3IiXSwibm8tZHVwbGljYXRlLWNhc2UiOlsiZXJyb3IiXSwibm8tZHVwbGljYXRlLWltcG9ydHMiOlsiZXJyb3IiXSwibm8tZWxzZS1yZXR1cm4iOlsiZXJyb3IiXSwibm8tZW1wdHkiOlsiZXJyb3IiXSwibm8tZW1wdHktY2hhcmFjdGVyLWNsYXNzIjpbImVycm9yIl0sIm5vLWVtcHR5LWZ1bmN0aW9uIjpbImVycm9yIl0sIm5vLWVtcHR5LXBhdHRlcm4iOlsiZXJyb3IiXSwibm8tZW1wdHktc3RhdGljLWJsb2NrIjpbImVycm9yIl0sIm5vLWVxLW51bGwiOlsiZXJyb3IiXSwibm8tZXZhbCI6WyJlcnJvciJdLCJuby1leC1hc3NpZ24iOlsiZXJyb3IiXSwibm8tZXh0ZW5kLW5hdGl2ZSI6WyJlcnJvciJdLCJuby1leHRyYS1iaW5kIjpbImVycm9yIl0sIm5vLWV4dHJhLWJvb2xlYW4tY2FzdCI6WyJlcnJvciJdLCJuby1leHRyYS1sYWJlbCI6WyJlcnJvciJdLCJuby1leHRyYS1wYXJlbnMiOlsiZXJyb3IiXSwibm8tZXh0cmEtc2VtaSI6WyJlcnJvciJdLCJuby1mYWxsdGhyb3VnaCI6WyJlcnJvciJdLCJuby1mbG9hdGluZy1kZWNpbWFsIjpbImVycm9yIl0sIm5vLWZ1bmMtYXNzaWduIjpbImVycm9yIl0sIm5vLWdsb2JhbC1hc3NpZ24iOlsiZXJyb3IiXSwibm8taW1wbGljaXQtY29lcmNpb24iOlsiZXJyb3IiXSwibm8taW1wbGljaXQtZ2xvYmFscyI6WyJlcnJvciJdLCJuby1pbXBsaWVkLWV2YWwiOlsiZXJyb3IiXSwibm8taW1wb3J0LWFzc2lnbiI6WyJlcnJvciJdLCJuby1pbmxpbmUtY29tbWVudHMiOlsiZXJyb3IiXSwibm8taW5uZXItZGVjbGFyYXRpb25zIjpbImVycm9yIl0sIm5vLWludmFsaWQtcmVnZXhwIjpbImVycm9yIl0sIm5vLWludmFsaWQtdGhpcyI6WyJlcnJvciJdLCJuby1pcnJlZ3VsYXItd2hpdGVzcGFjZSI6WyJlcnJvciJdLCJuby1pdGVyYXRvciI6WyJlcnJvciJdLCJuby1sYWJlbC12YXIiOlsiZXJyb3IiXSwibm8tbGFiZWxzIjpbImVycm9yIl0sIm5vLWxvbmUtYmxvY2tzIjpbImVycm9yIl0sIm5vLWxvbmVseS1pZiI6WyJlcnJvciJdLCJuby1sb29wLWZ1bmMiOlsiZXJyb3IiXSwibm8tbG9zcy1vZi1wcmVjaXNpb24iOlsiZXJyb3IiXSwibm8tbWFnaWMtbnVtYmVycyI6WyJlcnJvciJdLCJuby1taXNsZWFkaW5nLWNoYXJhY3Rlci1jbGFzcyI6WyJlcnJvciJdLCJuby1taXhlZC1vcGVyYXRvcnMiOlsiZXJyb3IiXSwibm8tbWl4ZWQtcmVxdWlyZXMiOlsiZXJyb3IiXSwibm8tbWl4ZWQtc3BhY2VzLWFuZC10YWJzIjpbImVycm9yIl0sIm5vLW11bHRpLWFzc2lnbiI6WyJlcnJvciJdLCJuby1tdWx0aS1zcGFjZXMiOlsiZXJyb3IiXSwibm8tbXVsdGktc3RyIjpbImVycm9yIl0sIm5vLW11bHRpcGxlLWVtcHR5LWxpbmVzIjpbImVycm9yIl0sIm5vLW5hdGl2ZS1yZWFzc2lnbiI6WyJlcnJvciJdLCJuby1uZWdhdGVkLWNvbmRpdGlvbiI6WyJlcnJvciJdLCJuby1uZWdhdGVkLWluLWxocyI6WyJlcnJvciJdLCJuby1uZXN0ZWQtdGVybmFyeSI6WyJlcnJvciJdLCJuby1uZXciOlsiZXJyb3IiXSwibm8tbmV3LWZ1bmMiOlsiZXJyb3IiXSwibm8tbmV3LW5hdGl2ZS1ub25jb25zdHJ1Y3RvciI6WyJlcnJvciJdLCJuby1uZXctb2JqZWN0IjpbImVycm9yIl0sIm5vLW5ldy1yZXF1aXJlIjpbImVycm9yIl0sIm5vLW5ldy1zeW1ib2wiOlsiZXJyb3IiXSwibm8tbmV3LXdyYXBwZXJzIjpbImVycm9yIl0sIm5vLW5vbm9jdGFsLWRlY2ltYWwtZXNjYXBlIjpbImVycm9yIl0sIm5vLW9iai1jYWxscyI6WyJlcnJvciJdLCJuby1vYmplY3QtY29uc3RydWN0b3IiOlsiZXJyb3IiXSwibm8tb2N0YWwiOlsiZXJyb3IiXSwibm8tb2N0YWwtZXNjYXBlIjpbImVycm9yIl0sIm5vLXBhcmFtLXJlYXNzaWduIjpbImVycm9yIl0sIm5vLXBhdGgtY29uY2F0IjpbImVycm9yIl0sIm5vLXBsdXNwbHVzIjpbImVycm9yIl0sIm5vLXByb2Nlc3MtZW52IjpbImVycm9yIl0sIm5vLXByb2Nlc3MtZXhpdCI6WyJlcnJvciJdLCJuby1wcm9taXNlLWV4ZWN1dG9yLXJldHVybiI6WyJlcnJvciJdLCJuby1wcm90byI6WyJlcnJvciJdLCJuby1wcm90b3R5cGUtYnVpbHRpbnMiOlsiZXJyb3IiXSwibm8tcmVkZWNsYXJlIjpbImVycm9yIl0sIm5vLXJlZ2V4LXNwYWNlcyI6WyJlcnJvciJdLCJuby1yZXN0cmljdGVkLWV4cG9ydHMiOlsiZXJyb3IiXSwibm8tcmVzdHJpY3RlZC1nbG9iYWxzIjpbImVycm9yIl0sIm5vLXJlc3RyaWN0ZWQtaW1wb3J0cyI6WyJlcnJvciJdLCJuby1yZXN0cmljdGVkLW1vZHVsZXMiOlsiZXJyb3IiXSwibm8tcmVzdHJpY3RlZC1wcm9wZXJ0aWVzIjpbImVycm9yIl0sIm5vLXJlc3RyaWN0ZWQtc3ludGF4IjpbImVycm9yIl0sIm5vLXJldHVybi1hc3NpZ24iOlsiZXJyb3IiXSwibm8tcmV0dXJuLWF3YWl0IjpbImVycm9yIl0sIm5vLXNjcmlwdC11cmwiOlsiZXJyb3IiXSwibm8tc2VsZi1hc3NpZ24iOlsiZXJyb3IiXSwibm8tc2VsZi1jb21wYXJlIjpbImVycm9yIl0sIm5vLXNlcXVlbmNlcyI6WyJlcnJvciJdLCJuby1zZXR0ZXItcmV0dXJuIjpbImVycm9yIl0sIm5vLXNoYWRvdyI6WyJlcnJvciJdLCJuby1zaGFkb3ctcmVzdHJpY3RlZC1uYW1lcyI6WyJlcnJvciJdLCJuby1zcGFjZWQtZnVuYyI6WyJlcnJvciJdLCJuby1zcGFyc2UtYXJyYXlzIjpbImVycm9yIl0sIm5vLXN5bmMiOlsiZXJyb3IiXSwibm8tdGFicyI6WyJlcnJvciJdLCJuby10ZW1wbGF0ZS1jdXJseS1pbi1zdHJpbmciOlsiZXJyb3IiXSwibm8tdGVybmFyeSI6WyJlcnJvciJdLCJuby10aGlzLWJlZm9yZS1zdXBlciI6WyJlcnJvciJdLCJuby10aHJvdy1saXRlcmFsIjpbImVycm9yIl0sIm5vLXRyYWlsaW5nLXNwYWNlcyI6WyJlcnJvciJdLCJuby11bmFzc2lnbmVkLXZhcnMiOlsiZXJyb3IiXSwibm8tdW5kZWYiOlsiZXJyb3IiXSwibm8tdW5kZWYtaW5pdCI6WyJlcnJvciJdLCJuby11bmRlZmluZWQiOlsiZXJyb3IiXSwibm8tdW5kZXJzY29yZS1kYW5nbGUiOlsiZXJyb3IiXSwibm8tdW5leHBlY3RlZC1tdWx0aWxpbmUiOlsiZXJyb3IiXSwibm8tdW5tb2RpZmllZC1sb29wLWNvbmRpdGlvbiI6WyJlcnJvciJdLCJuby11bm5lZWRlZC10ZXJuYXJ5IjpbImVycm9yIl0sIm5vLXVucmVhY2hhYmxlIjpbImVycm9yIl0sIm5vLXVucmVhY2hhYmxlLWxvb3AiOlsiZXJyb3IiXSwibm8tdW5zYWZlLWZpbmFsbHkiOlsiZXJyb3IiXSwibm8tdW5zYWZlLW5lZ2F0aW9uIjpbImVycm9yIl0sIm5vLXVuc2FmZS1vcHRpb25hbC1jaGFpbmluZyI6WyJlcnJvciJdLCJuby11bnVzZWQtZXhwcmVzc2lvbnMiOlsiZXJyb3IiXSwibm8tdW51c2VkLWxhYmVscyI6WyJlcnJvciJdLCJuby11bnVzZWQtcHJpdmF0ZS1jbGFzcy1tZW1iZXJzIjpbImVycm9yIl0sIm5vLXVudXNlZC12YXJzIjpbImVycm9yIl0sIm5vLXVzZS1iZWZvcmUtZGVmaW5lIjpbImVycm9yIl0sIm5vLXVzZWxlc3MtYXNzaWdubWVudCI6WyJlcnJvciJdLCJuby11c2VsZXNzLWJhY2tyZWZlcmVuY2UiOlsiZXJyb3IiXSwibm8tdXNlbGVzcy1jYWxsIjpbImVycm9yIl0sIm5vLXVzZWxlc3MtY2F0Y2giOlsiZXJyb3IiXSwibm8tdXNlbGVzcy1jb21wdXRlZC1rZXkiOlsiZXJyb3IiXSwibm8tdXNlbGVzcy1jb25jYXQiOlsiZXJyb3IiXSwibm8tdXNlbGVzcy1jb25zdHJ1Y3RvciI6WyJlcnJvciJdLCJuby11c2VsZXNzLWVzY2FwZSI6WyJlcnJvciJdLCJuby11c2VsZXNzLXJlbmFtZSI6WyJlcnJvciJdLCJuby11c2VsZXNzLXJldHVybiI6WyJlcnJvciJdLCJuby12YXIiOlsiZXJyb3IiXSwibm8tdm9pZCI6WyJlcnJvciJdLCJuby13YXJuaW5nLWNvbW1lbnRzIjpbImVycm9yIl0sIm5vLXdoaXRlc3BhY2UtYmVmb3JlLXByb3BlcnR5IjpbImVycm9yIl0sIm5vLXdpdGgiOlsiZXJyb3IiXSwibm9uYmxvY2stc3RhdGVtZW50LWJvZHktcG9zaXRpb24iOlsiZXJyb3IiXSwib2JqZWN0LWN1cmx5LW5ld2xpbmUiOlsiZXJyb3IiXSwib2JqZWN0LWN1cmx5LXNwYWNpbmciOlsiZXJyb3IiXSwib2JqZWN0LXByb3BlcnR5LW5ld2xpbmUiOlsiZXJyb3IiXSwib2JqZWN0LXNob3J0aGFuZCI6WyJlcnJvciJdLCJvbmUtdmFyIjpbImVycm9yIl0sIm9uZS12YXItZGVjbGFyYXRpb24tcGVyLWxpbmUiOlsiZXJyb3IiXSwib3BlcmF0b3ItYXNzaWdubWVudCI6WyJlcnJvciJdLCJvcGVyYXRvci1saW5lYnJlYWsiOlsiZXJyb3IiXSwicGFkZGVkLWJsb2NrcyI6WyJlcnJvciJdLCJwYWRkaW5nLWxpbmUtYmV0d2Vlbi1zdGF0ZW1lbnRzIjpbImVycm9yIl0sInByZWZlci1hcnJvdy1jYWxsYmFjayI6WyJlcnJvciJdLCJwcmVmZXItY29uc3QiOlsiZXJyb3IiXSwicHJlZmVyLWRlc3RydWN0dXJpbmciOlsiZXJyb3IiXSwicHJlZmVyLWV4cG9uZW50aWF0aW9uLW9wZXJhdG9yIjpbImVycm9yIl0sInByZWZlci1uYW1lZC1jYXB0dXJlLWdyb3VwIjpbImVycm9yIl0sInByZWZlci1udW1lcmljLWxpdGVyYWxzIjpbImVycm9yIl0sInByZWZlci1vYmplY3QtaGFzLW93biI6WyJlcnJvciJdLCJwcmVmZXItb2JqZWN0LXNwcmVhZCI6WyJlcnJvciJdLCJwcmVmZXItcHJvbWlzZS1yZWplY3QtZXJyb3JzIjpbImVycm9yIl0sInByZWZlci1yZWZsZWN0IjpbImVycm9yIl0sInByZWZlci1yZWdleC1saXRlcmFscyI6WyJlcnJvciJdLCJwcmVmZXItcmVzdC1wYXJhbXMiOlsiZXJyb3IiXSwicHJlZmVyLXNwcmVhZCI6WyJlcnJvciJdLCJwcmVmZXItdGVtcGxhdGUiOlsiZXJyb3IiXSwicHJlc2VydmUtY2F1Z2h0LWVycm9yIjpbImVycm9yIl0sInF1b3RlLXByb3BzIjpbImVycm9yIl0sInF1b3RlcyI6WyJlcnJvciJdLCJyYWRpeCI6WyJlcnJvciJdLCJyZXF1aXJlLWF0b21pYy11cGRhdGVzIjpbImVycm9yIl0sInJlcXVpcmUtYXdhaXQiOlsiZXJyb3IiXSwicmVxdWlyZS11bmljb2RlLXJlZ2V4cCI6WyJlcnJvciJdLCJyZXF1aXJlLXlpZWxkIjpbImVycm9yIl0sInJlc3Qtc3ByZWFkLXNwYWNpbmciOlsiZXJyb3IiXSwic2VtaSI6WyJlcnJvciJdLCJzZW1pLXNwYWNpbmciOlsiZXJyb3IiXSwic2VtaS1zdHlsZSI6WyJlcnJvciJdLCJzb3J0LWltcG9ydHMiOlsiZXJyb3IiXSwic29ydC1rZXlzIjpbImVycm9yIl0sInNvcnQtdmFycyI6WyJlcnJvciJdLCJzcGFjZS1iZWZvcmUtYmxvY2tzIjpbImVycm9yIl0sInNwYWNlLWJlZm9yZS1mdW5jdGlvbi1wYXJlbiI6WyJlcnJvciJdLCJzcGFjZS1pbi1wYXJlbnMiOlsiZXJyb3IiXSwic3BhY2UtaW5maXgtb3BzIjpbImVycm9yIl0sInNwYWNlLXVuYXJ5LW9wcyI6WyJlcnJvciJdLCJzcGFjZWQtY29tbWVudCI6WyJlcnJvciJdLCJzdHJpY3QiOlsiZXJyb3IiXSwic3dpdGNoLWNvbG9uLXNwYWNpbmciOlsiZXJyb3IiXSwic3ltYm9sLWRlc2NyaXB0aW9uIjpbImVycm9yIl0sInRlbXBsYXRlLWN1cmx5LXNwYWNpbmciOlsiZXJyb3IiXSwidGVtcGxhdGUtdGFnLXNwYWNpbmciOlsiZXJyb3IiXSwidW5pY29kZS1ib20iOlsiZXJyb3IiXSwidXNlLWlzbmFuIjpbImVycm9yIl0sInZhbGlkLXR5cGVvZiI6WyJlcnJvciJdLCJ2YXJzLW9uLXRvcCI6WyJlcnJvciJdLCJ3cmFwLWlpZmUiOlsiZXJyb3IiXSwid3JhcC1yZWdleCI6WyJlcnJvciJdLCJ5aWVsZC1zdGFyLXNwYWNpbmciOlsiZXJyb3IiXSwieW9kYSI6WyJlcnJvciJdfSwibGFuZ3VhZ2VPcHRpb25zIjp7InBhcnNlck9wdGlvbnMiOnsiZWNtYUZlYXR1cmVzIjp7ImpzeCI6dHJ1ZX0sInNvdXJjZVR5cGUiOiJtb2R1bGUifSwicGFyc2VyIjoiQHR5cGVzY3JpcHQtZXNsaW50L3BhcnNlciJ9fX0=)
+[^typescript-eslint]: [typescript-eslint playground](https://typescript-eslint.io/play/#ts=5.9.2&fileType=.tsx&code=PQKhAIGEHsDsDcCmsAuBLO4TAFAGM4BnFcPAQ2PAF5wAeAQQBpwAhRgPgAoyAucegJR8W1duDLjC4AK6wA1rGgB3WJNYBuHDlAQAqrAIJk6TAEY%2BAFQAWicAAM0hO%2BADyAB0QAnMimiesuIaUAEZkACYAIogoiHi%2B-jQMzGxcvPxCrKLgAN444PmkRCRh0bHx1OCcAPpkwXz04AA%2BrBk1weCOmVRiKJ7SiJoFHQBmlSUxcX7cAgLgntHSnqpkgwUoVp7K4LCISuAAop6bnpwARLLzZHhWtQA2iKcCmgC%2Bmtpg4PqGSKgYqgBMfAAstIUD4-vw8JtCFIWNBZGEyJ40IgpNh8EVwABbUHgzCJJisDjcerMOotYRZXJDIIkHFgmIVTjQYIAKz42XAwxRtzC9SamWeGXg0DQYSpeSGBRZrIAdNzELyKitJflXloaZiZRVsgreXxguqhvSfIhmWynqq5gsluAZfKeWEXm8dJ8DHAfiZVABmWXmcAAZRxAHNg7c0LBg%2BBrJtpMGrIHetI4osyLdowBPNwRqPo2ngW7QaBuINxsM5ipJImpUngcksDIibo5K35mX0Js5LmO%2Bh8MjMPVhFgG8BGgpttnDruDqciZ4VdssVb5YZ%2BSr5wd20YuNllWXwNP9Qjm1kN2bUqX5YDAVy7uL7w%2BouuKlFIKRp9ODqQ3JDgFBZ2w7BYOxGCtIZrzrUFxBTD8M3sQd6GcTpuU8SgIw6GJvC9O1PBKTxZTAgp5hQRZVEHZdRytdZNj2HY9kOY4zguRArhuYJ7keZ0tFdL4PWMCFfUBQMQ3LSNow2eF40TPoU28dMLCzCs80xQg3EuMJS1DcMxIJZJiTSQl60bCVNVgSh2x1btFT5cRRwoid2RyecaHbeytUnSzBwNZhZV87UxyvG87BlFgHWs5wbikYJEGQO0kE8JRkRQGJVGCOD1lsVT1NA8Cb2CKCFI8QgoTQNximgVFYAAchIBQtnWHwCKGYjSLtScwt5Lj3j0d0jF%2BTAABY%2BGcZoRTFJCpAANS8OCWHCAIMTMkg-Em0VxV06sSXSSlmwvfI21BLwmQjHZPD4ThZmbERRrW4zdsI-bMXaGgTq8C6KKGNBRk4YJZha21gg%2BtYJNo3YDiOKZTmGNNCAzTirXVVtMX%2BsyGhoC7%2BWbFVTMoMaNJE%2B4bIurI8YqFHCHoCiUbtQ6TjxzSw0QMJLXVIA&eslintrc=N4KABGBEBOCuA2BTAzpAXGUEKQAIBcBPABxQGNoBLY-AWhXkoDt8B6AQwBMArdsxFrQD2AN0TR4QrrWSUA5k3b5Y0FOijjoQ6JAA04bHiKlkFanQbM27aNHaFaxxOsibtegzgIlyVGvWRGFg4Ad3ZKOnwACwF2ACMkFzcdfWwobxMzf0tguPYmR2RaMiEAW1KBfCTbd1TDDN9zAKC2PIL8QKtisoqWaq0Uz3SnUz8LTuCyeHZkIsZ8cXZ4WmItUmgiGSJEjFcawbSjH1GmnLYpmaKK6KFOIthkREcoylRd5I9DhpPsifOhJiyZALQRyATiShkbqA-BwMj4bRvDT7T71EZZcYtVglQGvEF0ZicRAAD0QnGEcW4iHhW0IO2RA1RXnRY2aVmxAKB%2BNoqmU0CY-VqQyOmVZZw5uOBlUcPlol3E%2BEonMFBzRxwxbMmnLx0qctCJADNmBElYCVUzhuqxX8JVzdbKScRtB1zXVmVbTjacXbBHrKKUnRskXtGW7LaLPVjDewEHRiDZ2KVaNNga7hd8NeLOEI6Ewc0pTWmvizI%2BzHYwyBFaAbYEx4aaeYg%2Be0fEW1RHfljy5CqxVSnFxHKyPxZpQ4pR5oQ2%2B6O5iy8TiBXe7cEE84kJa5wbA4RtPw41O%2BzjXQiRc7Irle8UWGRQe58FSuxiSsE6Vgx8bxnrVi%2BwPoMJoCJKgmDkPdbx%2Be82GuKJbhkeRFD5J5gTpZwr1DdMS0PYJFFKZg5GhMQWELNChWLD0sLYPM5VsexoWBOEER0EjVRnO9NUooRqLsBwiSQBYwK-UtsM4vJHkcTj6LwgTMMg1gqJxGtZBA2g8wKJgEGWeUNmIhlSPbNjxXkgFFLw2gRCEShyUdVRRwBaTyNkqiiVWaklDJezZ3YuTOM4WBSGKFMrkQftxHfa8MIcrynL8is3PodSkxEJZYDUZiLXAzMbWixdITivVvUVZRKjC9CyM8wyfMIHDIX1RA%2BNQ3SWP3CCos44KaAcGs6wvAU0s-GTWvoANNiscQDT4BqQz01iWoqoaOopKkaScDyDKytqFyXOh8inPqIvK9b6GJWF2BUgEVI0uVZgVHSpqajLv3ZKiSROphEA3IoLlmVbZsOg1JALZTVjKV5Usa9LBIo7zq20WhmC4%2BwfsyrEqP9HKyXoJL4CRx7hLhgNnRlfzZCJegDQNakXT2sq1pRzjmApmiEieXdqf0366bhpgscs55XhxoSOK5nnyXM3mVrZmbkaezjJCEYhq1rMgBahqjJFmYQDRWVRK1kOzJea6W8cfOQaoSv8Sumw3caFip8jwpANbF8l5cWRiVcczjcOQB4MbekIPcG73ffJYHvbBu6IYGubg8eclkBcrhA5jyhSSshLLfuyHPZUxMUHjfhk8O1SLvgTTro2P2NNeKJuiWcgpINh7Behkv1LLq7Hkrl2aFNJZiiicJevB-rIrmtvLq0nqi851RT2mVQZ5lxtfKYLdfVlAqIhSlhM6jsfDtUABHWBKFUfHAypkf9tp5ebNhSEFnJNHnT30eDtnlAH-hDHWevmmObL2QIPbMAcm7Z0GtEV4cpGAzCXnjPUSxKBwPAdHQ6tY3ojmQNuWg64hBIHyMmCIixlglADDYSaH4b6ALxhg6kKBsHQAcDiTgJp9b-3ZkbIWdCsE4PjHYa4g5gbrE2JceCvQqioIPpzHhDCcEnyQUacQ8DuFMEwXIphjh2rTAWEdFytlh6R3frfWhaj6GzBwYg6AchYASLftQrh0NZEWM0Ygiu08pEf2Xs4xhO5N6chOlYFRTizG8Ncf47moVbpUIAY4qiPjLGyn4XnBY0B7GxJtiE7BFNqI2IkcE%2BJgJ2A5LEQofJniTGqOyU8MgSxsYVJoVU4pTx54Jh6rQCo1jG4cKlpkwp1T4q2O6OQqgyB2FGIcX0zitYBldXrOdCWPTrYt36c0jpwU-xDiwQU6ZRScm8hUIYmJnCpm0BmWstxXcPFLObqrXZAzaw4NwupdJJyVm7JDnomyeszQNLiR8uOZkbCvN6e8s5YkBwGm0C0xARo3o7PBXVBhdFYSwHhO4P5pzfaOyKO1TYjpnQIqSv%2BY%2Bp8bIIpCHYYg6xFqUyJhHY5oK7lqQ0vEJA9LO43XOshekEyMktwBPAHcUQtAhHoCiTFLdkmCP-MIm6DLwr8qhi5RmV0UXBJVYOIk9E0V8m6Xyt5yrVCqoEEM48yDGAAC9QoauNYOOFnBbWwvtbDIQBonWqrme0xZBqmWyU1f%2BZgUxYDao9YOeYJDBlJl-MoyVRrnX-hwvnCatAADWiBCAhG0I6uN-q7WJursAuujtKwgTDf%2BeWPV%2B5kEHswct2sQZiVUEtCw%2BwQXLPjaq1QXBBW7RuRA8UAbGw9qYEKl8AimyDj-r6jteaE0rzRSzJJr5J1MX7WgrEQ7VBggXEdak9bJLKWBDYDo8U7i0BCBEKI9aDn8j5kUH1jLZ1eSHaex0dKPi5q8qoHRGMwT4FSTIJsgH4xn3bbcvNjanheobDMKqysv3ilJWfJ4NhuIyEJmQ-hlDFWGtksh8%2B7AwgRGCffKgNJFwPGEOsfIdxSNf3I5EbRcVrIMNNOBgdNpb0FCI%2BESR67pHsjGRsDlW8iq72CZJGkeCCEFFYwYjjG6hOXvwDWo6g8HiKkIsimt1JU3BIfouJCKZa75oEIXRDNonCGmCbWdcm51k3BzQJrxwRayUCUfHeCSgVAKtKnhryvszlMFTXmEIBR4a1NU7XWpZc8hkFTUCqgbKcOMgMAAXxAOloAA&tsconfig=N4KABGBEDGD2C2AHAlgGwKYCcDyiAuysAdgM6QBcYoEEkJemy0eAcgK6qoDCAFutAGsylBm3TgwAXxCSgA&tokens=false)
