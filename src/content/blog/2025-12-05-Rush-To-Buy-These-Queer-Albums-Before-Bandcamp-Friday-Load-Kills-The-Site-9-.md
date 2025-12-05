@@ -3,6 +3,8 @@ title: "Rush To Buy These Queer Albums Before Bandcamp Friday Load Kills The Sit
 description: "PSYQUI \u2013 Escape From The Future PSYQUI was my introduction into the fascinating world of Japanese EDM, by way of those pirate Youtube cha..."
 tags: ["reviews", "music"]
 published: 1764960822
+mastodon: "https://social.treehouse.systems/@PolyWolf/115668475573025824"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3m7b5wvhva22s"
 ---
 
 ## [PSYQUI – Escape From The Future](https://psyqui.bandcamp.com/album/escape-from-the-future)
