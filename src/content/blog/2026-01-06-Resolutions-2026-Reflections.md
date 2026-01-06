@@ -3,6 +3,8 @@ title: "Resolutions 2026 \u0026 Reflections"
 description: "[ ] New Job [ ] Update Wardrobe (for real this time) [ ] Get on injections + prog How\u0027d I Do Last Year?Before getting into my new resolut..."
 tags: ["wolfgirlagenda"]
 published: 1767704507
+mastodon: "https://social.treehouse.systems/@PolyWolf/115848285075494970"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mbqz6rxhs22l"
 ---
 
 + [ ] New Job
