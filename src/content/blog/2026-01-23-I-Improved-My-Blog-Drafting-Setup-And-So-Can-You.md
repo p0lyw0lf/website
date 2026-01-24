@@ -3,6 +3,8 @@ title: "I Improved My Blog Drafting Setup And So Can You"
 description: "Recently I was on a team for MIT Mystery Hunt and we came in 8th place which was very fun. I crashed hard on Monday from lack of puzzle-s..."
 tags: ["programming", "blag"]
 published: 1769221176
+mastodon: "https://social.treehouse.systems/@PolyWolf/115947681050136095"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3md55otrqn22o"
 ---
 
 Recently I was on a team for MIT Mystery Hunt and we came in 8th place which was very fun. I crashed hard on Monday from lack of puzzle-shaped stimulation, and then on Tuesday went "welp enough being bored" so now y'all get to see me shoot off to the right on the ["number of posts about elaborate blog setups" chart](https://rakhim.org/images/honestly-undefined/blogging.jpg). you understand yes.
