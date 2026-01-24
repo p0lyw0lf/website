@@ -1,7 +1,7 @@
 ---
 title: "I Just Need To Optimize My AWS Egress Patterns"
 description: "To preface: I\u0027ve been doing pretty well for myself at minimizing my cloud spend. I just have a static site in S3 behind CloudFront, so th..."
-tags: ["devops", "aws"]
+tags: ["devops", "aws", "blag"]
 published: 1742049667
 mastodon: "https://social.treehouse.systems/@PolyWolf/114166967018219509"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lkge7u3xlk2v"

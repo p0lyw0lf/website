@@ -1,7 +1,7 @@
 ---
 title: "I use the `\u003carticle\u003e` semantic HTML tag like all the other cool kids now"
 description: "FreshRSS has a feature where, if an RSS feed doesn\u0027t have full-text articles, it can fetch the page that\u0027s linked and extract the page\u0027s..."
-tags: ["rss"]
+tags: ["rss", "blag"]
 published: 1741233965
 mastodon: "https://social.treehouse.systems/@PolyWolf/114113509152949207"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3ljomjzybus2v"

@@ -1,7 +1,7 @@
 ---
 title: "More Automatic Crossposting!"
 description: "I crossposted my [last blog post](https://wolfgirl.dev/blog/2024-10-17-work-on-my-toy-compiler-is-progressing-smoothly/) to my [Mastodon]..."
-tags: ["programming"]
+tags: ["programming", "blag"]
 published: 1729307782
 ---
 

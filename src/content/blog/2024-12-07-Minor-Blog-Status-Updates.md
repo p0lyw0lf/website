@@ -1,7 +1,7 @@
 ---
 title: "Minor Blog Status Updates"
 description: "I\u0027ve updated the CSS in my post composer to be a bit more like the CSS in my actual blog; we have better link, code, \u0026 blockquote styles,..."
-tags: []
+tags: ["blag"]
 published: 1733631551
 ---
 

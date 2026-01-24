@@ -1,7 +1,7 @@
 ---
 title: "New Blog Styling"
 description: "Breakpoints! Light/Dark mode!! Actually readable long-form text!!! You can really see the Cohost inspiration. Still tried to keep it some..."
-tags: ["cohost"]
+tags: ["cohost", "blag"]
 published: 1728162588
 ---
 

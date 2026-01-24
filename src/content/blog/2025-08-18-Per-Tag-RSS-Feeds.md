@@ -1,7 +1,7 @@
 ---
 title: "Per-Tag RSS Feeds"
 description: "Just a small site update! For anyone who was thinking \"PolyWolf is so cool \u0026 awesome buuut she makes a lot of non-programming blog posts,..."
-tags: ["rss"]
+tags: ["rss", "blag"]
 published: 1755571110
 mastodon: "https://social.treehouse.systems/@PolyWolf/115053109888363592"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lwpv2y23b22j"
