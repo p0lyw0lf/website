@@ -3,6 +3,8 @@ title: "Shoutouts To All The RSS Readers"
 description: "I\u0027ve been really busy and then really sick recently, so let\u0027s just do a quick one shall we? ;) User-Agents in alphabetical order, marked ..."
 tags: ["rss"]
 published: 1770350938
+mastodon: "https://social.treehouse.systems/@PolyWolf/116021721911655487"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3me5zuq5cmk26"
 ---
 
 I've been really busy and then really sick recently, so let's just do a quick one shall we? ;)
