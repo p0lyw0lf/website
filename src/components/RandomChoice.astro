@@ -22,7 +22,7 @@ const htmlChoices = await Promise.all(
 );
 
 const script = `
-  const figure = document.getElementById("pfp");
+  const figure = document.getElementById("${id}");
   const pfps = [${htmlChoices.map((html) => JSON.stringify(html)).join(",")}];
   const index = Math.floor(Math.random()*pfps.length);
   figure.innerHTML = pfps[index];
