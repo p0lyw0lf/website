@@ -1,9 +1,7 @@
----
-import type { ImageProps } from "./LandingPfp.astro";
-import LandingPfp from "./LandingPfp.astro";
-import RandomChoice from "./RandomChoice.astro";
+import { LandingPfp } from "./LandingPfp.js";
+import { RandomChoice } from "./RandomChoice.js";
 
-const pfps: Array<ImageProps> = [
+const pfps = [
   {
     src: "_2022-07-fila.png",
     dims: { width: 256, height: 512 },
@@ -26,6 +24,9 @@ const pfps: Array<ImageProps> = [
     desc: `Art by <a href="https://instagram.com/stars_upon_stars">@stars_upon_stars</a>`,
   },
 ];
----
 
-<RandomChoice Component={LandingPfp} propChoices={pfps} id="pfp" />
+/**
+ * @returns {string}
+ */
+export const RandomLandingPfp = () =>
+  RandomChoice({ Component: LandingPfp, propChoices: pfps, id: "pfp" });
