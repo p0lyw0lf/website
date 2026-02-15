@@ -35,7 +35,7 @@ export const LandingPfp = ({ src, dims, alt, title, desc }) => {
     <figure>
       <div>
         <a href="${url}">
-          <image
+          <img
             src="${url}"
             width="${width}"
             height="${height}"
@@ -45,7 +45,7 @@ export const LandingPfp = ({ src, dims, alt, title, desc }) => {
           />
         </a>
       </div>
-      <figcaption> ${desc} </figcaption>
+      <figcaption>${desc}</figcaption>
     </figure>
   `.withStyle(css`
     figure {

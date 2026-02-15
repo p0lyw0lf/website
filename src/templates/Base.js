@@ -1,9 +1,12 @@
+import { store } from "io";
+import { run_task } from "memoized";
 import { SITE_URL } from "../data/urls.js";
 import { html } from "../render.js";
 
 /**
  * @typedef {object} Props
  * @property {string} title
+ * @property {string} pathname
  * @property {string} [overrideTitle]
  * @property {string} [description]
  *
@@ -15,7 +18,7 @@ import { html } from "../render.js";
  * @callback Render
  * @param {string} mainSlot
  * @param {Slots} [extraSlots]
- * @returns {string}
+ * @returns {import("io").StoreObject}
  */
 
 /**
@@ -23,15 +26,14 @@ import { html } from "../render.js";
  * @returns {Render}
  */
 export const Base =
-  ({ title, overrideTitle, description }) =>
+  ({ title, pathname, overrideTitle, description }) =>
   (slot, extraSlots) => {
     const { extraHead, header, footer } = extraSlots ?? {};
-    const pathname = ARGS[0];
     const canonicalUrl = `${SITE_URL}/${pathname}`;
 
     const fullTitle = overrideTitle ?? `wolfgirl.dev - ${title}`;
 
-    return String(html`
+    const out = html`
       <!doctype html>
       <html lang="en-US">
         <head>
@@ -80,6 +82,7 @@ export const Base =
 
           ${extraHead}
           <style>
+            ${run_task("../css/common.css.js", null)}
             ${extraHead?.style}
             ${slot.style}
             ${header?.style}
@@ -95,5 +98,7 @@ export const Base =
           ${footer}
         </body>
       </html>
-    `);
+    `;
+
+    return store(out.toString());
   };

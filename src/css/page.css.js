@@ -1,0 +1,50 @@
+import { store } from "io";
+import { css } from "../render.js";
+
+export default store(css`
+  body {
+    font-family: Consolas, monaco, monospace;
+    background-color: var(--color-background-secondary);
+  }
+
+  p,
+  ul,
+  ol {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  ul,
+  ol {
+    li {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  header,
+  main,
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main {
+    max-width: 40rem;
+    padding: 16px;
+    margin: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-text-secondary-accent);
+  }
+
+  a {
+    color: var(--color-text-primary-accent);
+  }
+`);

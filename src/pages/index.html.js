@@ -1,9 +1,11 @@
+import { run_task } from "memoized";
 import { RandomLandingPfp } from "../components/RandomLandingPfp.js";
 import { html } from "../render.js";
 import { Base } from "../templates/Base.js";
 
 export default Base({
   title: "Home",
+  pathname: ARGS[0],
   overrideTitle: "wolfgirl.dev - PolyWolf",
   description:
     "Landing page for PolyWolf's personal website. I'm a wolfgirl and software engineer",
@@ -18,21 +20,17 @@ export default Base({
       <a href="projects/">Projects</a>
       <a href="friends/">Friends</a>
     </nav>
-    <main>
-      <p>
-        Hi! I'm a wolfgirl and software engineer. This is my website!
-        Mobile-first design because i use my phone all the time! Monospace font
-        everywhere because i like it! Inconsistent capitalization because it's
-        fun!
-      </p>
-      <h2>Navigation</h2>
-      <p>
-        Top header is a link that takes you to the previous page. "Blog" and
-        "Cybersec" have a bit better styling on them, rest are pretty silly tho
-        :P
-      </p>
-    </main>
-  `,
+    <p>
+      Hi! I'm a wolfgirl and software engineer. This is my website! Mobile-first
+      design because i use my phone all the time! Monospace font everywhere
+      because i like it! Inconsistent capitalization because it's fun!
+    </p>
+    <h2>Navigation</h2>
+    <p>
+      Top header is a link that takes you to the previous page. "Blog" and
+      "Cybersec" have a bit better styling on them, rest are pretty silly tho :P
+    </p>
+  `.withStyle(run_task("../css/index.css.js", null)),
   {
     header: html`
       <header>

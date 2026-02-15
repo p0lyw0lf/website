@@ -3,8 +3,16 @@
  * @param {string} css - The style to put in the <head> of the HTML
  * @returns {HTML}
  *
+ * @callback AsJSON
+ * @returns {HTML}
+ *
+ * @callback AsString
+ * @returns {string}
+ *
  * @typedef {string} HTML
  * @property {WithStyle} withStyle - Stores some CSS for retrieval later.
+ * @property {AsJSON} asJSON - Serializes the HTML part into a JSON-compatible string
+ * @property {AsString} asString - Returns just the string part of the HTML object. Can also be cast with String.
  * @property {string} style - All the styles read so far from the interpolation/withStyle calls.
  */
 
@@ -43,6 +51,14 @@ export const html = (strings, ...exprs) => {
     style: style.join(""),
     withStyle: function (moreStyle) {
       this.style += moreStyle;
+      return this;
+    },
+    asJSON: function () {
+      const s = this.asString();
+      return JSON.stringify(s);
+    },
+    asString: function () {
+      return String(this);
     },
   });
 };

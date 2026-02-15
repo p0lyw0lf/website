@@ -28,5 +28,11 @@ const pfps = [
 /**
  * @returns {string}
  */
-export const RandomLandingPfp = () =>
-  RandomChoice({ Component: LandingPfp, propChoices: pfps, id: "pfp" });
+export const RandomLandingPfp = () => {
+  const out = RandomChoice({
+    Component: LandingPfp,
+    propChoices: pfps,
+    id: "pfp",
+  });
+  return out;
+};

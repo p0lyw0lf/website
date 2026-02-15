@@ -1,5 +1,5 @@
-import { file_type, minify_html } from "io";
-import { list_directory, run_task, write_output } from "memoized";
+import { file_type, minify_html, write_output } from "io";
+import { list_directory, run_task } from "memoized";
 
 const root = "./src/pages/";
 /** @type {Array.<string>} */

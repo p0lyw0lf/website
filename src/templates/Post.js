@@ -1,6 +1,7 @@
-import { html } from "../render.js";
+import { run_task } from "memoized";
 import { RandomHeaderPfp } from "../components/RandomHeaderPfp.js";
 import { SITE_URL } from "../data/urls.js";
+import { html } from "../render.js";
 import { Base } from "./Base.js";
 
 /**
@@ -18,11 +19,12 @@ import { Base } from "./Base.js";
  * @callback Render
  * @param {string} mainSlot
  * @param {Slots} [extraSlots]
+ * @returns {import("../render.js").HTML}
  */
 
 /**
  * @param {BaseProps & Props} props
- * @returns Render
+ * @returns {Render}
  */
 export const Post =
   ({ sectionTitle, homeLink, rssLink, ...props }) =>
@@ -37,7 +39,7 @@ export const Post =
           href="${`${SITE_URL}/${rssLink ?? `${homeLink}rss.xml`}`}"
         />
         ${extraHead}
-      `,
+      `.withStyle(run_task("../css/post.css.js", null).toString()),
       header: html`
         <header>
           ${RandomHeaderPfp()}
