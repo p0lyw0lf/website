@@ -1,4 +1,4 @@
-import { run_task } from "memoized";
+import { run_task } from "driver";
 import { html } from "../render.js";
 import { Base } from "./Base.js";
 
@@ -9,7 +9,7 @@ import { Base } from "./Base.js";
  *
  * @callback Render
  * @param {string} mainSlot
- * @returns {import("io").StoreObject}
+ * @returns {import("driver").StoreObject}
  */
 
 /**

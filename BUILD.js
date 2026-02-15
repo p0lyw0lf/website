@@ -1,5 +1,5 @@
-import { file_type, minify_html, write_output } from "io";
-import { list_directory, read_file, run_task } from "memoized";
+import { file_type, minify_html, write_output } from "driver";
+import { list_directory, read_file, run_task } from "driver";
 
 const PAGE_ROOT = "./src/pages/";
 const PUBLIC_ROOT = "./public/";

@@ -1,4 +1,4 @@
-import { run_task } from "memoized";
+import { run_task } from "driver";
 import { RandomHeaderPfp } from "../components/RandomHeaderPfp.js";
 import { SITE_URL } from "../data/urls.js";
 import { html } from "../render.js";
@@ -19,7 +19,7 @@ import { Base } from "./Base.js";
  * @callback Render
  * @param {string} mainSlot
  * @param {Slots} [extraSlots]
- * @returns {import("io").StoreObject}
+ * @returns {import("driver").StoreObject}
  */
 
 /**

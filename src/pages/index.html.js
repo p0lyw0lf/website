@@ -1,4 +1,4 @@
-import { run_task } from "memoized";
+import { run_task } from "driver";
 import { RandomLandingPfp } from "../components/RandomLandingPfp.js";
 import { html } from "../render.js";
 import { Base } from "../templates/Base.js";

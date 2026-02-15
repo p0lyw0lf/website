@@ -1,5 +1,4 @@
-import { store } from "io";
-import { run_task } from "memoized";
+import { run_task, store } from "driver";
 import { SITE_URL } from "../data/urls.js";
 import { html } from "../render.js";
 
@@ -18,7 +17,7 @@ import { html } from "../render.js";
  * @callback Render
  * @param {string} mainSlot
  * @param {Slots} [extraSlots]
- * @returns {import("io").StoreObject}
+ * @returns {import("driver").StoreObject}
  */
 
 /**
