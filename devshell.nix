@@ -7,5 +7,7 @@ pkgs.mkShell {
   nativeBuildInputs = with pkgs; [
     corepack
     nodejs
+
+    just
   ];
 }
