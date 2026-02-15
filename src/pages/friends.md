@@ -1,7 +1,6 @@
 ---
-layout: ../templates/MarkdownPage.astro
-title: Friends
-description: A small list of all other personal websites I know from people I trust
+title: "Friends"
+description: "A small list of all other personal websites I know from people I trust"
 ---
 
 All these ppl are wayy cooler than me :blobsweat:

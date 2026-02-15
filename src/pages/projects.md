@@ -1,7 +1,6 @@
 ---
-layout: ../templates/MarkdownPage.astro
-title: Projects
-description: A list of PolyWolf's past (and maybe current?) programming projects
+title: "Projects"
+description: "A list of PolyWolf's past (and maybe current?) programming projects"
 ---
 
 These are my "successful" projects; if you want to see unsuccessful ones too, visit my [GitHub](https://github.com/p0lyw0lf).
@@ -20,7 +19,9 @@ These are my "successful" projects; if you want to see unsuccessful ones too, vi
 
 ~~Made using [Zola](https://www.getzola.org/), a static site generator powered by Rust! Theme is my own.~~ Out of date as of July 2022
 
-Now made using [Astro](https://astro.build/), a static site generator powered by ew stinky JavaScript, but man does it have some nice syntax and other features that make writing custom HTML components (like I do) so convenient.
+~~Now made using [Astro](https://astro.build/), a static site generator powered by ew stinky JavaScript, but man does it have some nice syntax and other features that make writing custom HTML components (like I do) so convenient.~~ Out of date as of February 2026
+
+Now made using my custom SSG named [driver](https://github.com/p0lyw0lf/driver). It's very fancy with incremental rebuilds for super sped :3
 
 ## A Tool For You To Reboot Into Arch Linux From Windows
 
