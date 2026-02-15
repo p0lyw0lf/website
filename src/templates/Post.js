@@ -19,7 +19,7 @@ import { Base } from "./Base.js";
  * @callback Render
  * @param {string} mainSlot
  * @param {Slots} [extraSlots]
- * @returns {import("../render.js").HTML}
+ * @returns {import("io").StoreObject}
  */
 
 /**
@@ -39,7 +39,12 @@ export const Post =
           href="${`${SITE_URL}/${rssLink ?? `${homeLink}rss.xml`}`}"
         />
         ${extraHead}
-      `.withStyle(run_task("../css/post.css.js", null).toString()),
+      `.withStyle(
+        // TODO: I really should make this relative to "the file being interpreted" rather than "the file being executed,
+        // but I don't really know how...
+        // (this currently doesn't work btw, the file that imports this one wants an extra ../)
+        run_task("../css/post.css.js", null).toString(),
+      ),
       header: html`
         <header>
           ${RandomHeaderPfp()}
