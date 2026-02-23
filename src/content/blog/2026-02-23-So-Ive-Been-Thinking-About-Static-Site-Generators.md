@@ -1,9 +1,10 @@
 ---
 title: So I've Been Thinking About Static Site Generators
-tags:
-  - programming
+tags: ["programming"]
 description: My current one is _fine_, but the rebuilds are a bit too long for my tastes (>10s) so I'd like to change that.
 published: 1771858183
+mastodon: "https://wolfgirl.dev/blog/2026-02-23-so-ive-been-thinking-about-static-site-generators/"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mfjwtoioqk23"
 ---
 
 I'm aware of 2 broad classes of SSGs: those written for the authors' personal use which are quirky in interesting ways (a [very](https://maurycyz.com/misc/new_ssg/) [common](https://gearsco.de/blog/blog-in-gleam/) [topic](https://aashvik.com/posts/shell-ssg/) [on](https://sukr.io/) lobste.rs), and ones written for a mass audience that are more mellow but flawed in some other way ([Jekyll](https://jekyllrb.com/), [Hugo](https://gohugo.io/), [Hakyll](https://jaspervdj.be/hakyll/), [Zola](https://www.getzola.org/), [Astro](https://astro.build/), & many others). I've dealt with the latter kind for as long as I've had a blog, so it's about time I took a crack at the former.
