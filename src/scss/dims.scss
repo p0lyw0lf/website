@@ -8,13 +8,12 @@
 
 @media (min-width: breakpoints.$breakpoint-ipad) {
   :root {
-    --dim-font-regular: 1rem;
+    --dim-font-regular: 1.125rem;
   }
 }
 
 @media (min-width: breakpoints.$breakpoint-desktop) {
   :root {
-    --dim-font-regular: 0.875rem;
-    --dim-font-large: 1.75rem;
+    --dim-font-regular: 1rem;
   }
 }
