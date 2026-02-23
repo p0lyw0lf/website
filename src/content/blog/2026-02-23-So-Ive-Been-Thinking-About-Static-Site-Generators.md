@@ -208,7 +208,7 @@ Unfortunately, this increased flexibility comes with a cost. If all the tools ar
 | C/C++     | Incremental     | hahahaha no                                  |
 | Haskell   | Incremental     | _Way_ too slow, even with incremental        |
 | Swift     | Incremental     | Incremental is overly-conservative, too slow |
-| OCaml     | Not Incremental | Slow in all ways :)                          |
+| OCaml     | Incremental     | Slow in many ways :)                         |
 | Zig       | Not Incremental | Waiting for stable incremental support       |
 | JVM-based | ?               | I don't know any, nor have a desire to       |
 
