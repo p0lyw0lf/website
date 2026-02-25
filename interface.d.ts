@@ -1,8 +1,16 @@
 declare module "driver" {
+  /**
+   * Easily-copyable reference to an object in the object store
+   */
+  interface StoreObject {
+    data(): Uint8Array;
+    toString(): string;
+  }
+
   /** Given a file, gets its contents */
-  function read_file(filename: string): Uint8Array;
+  function read_file(filename: string): Promise<StoreObject>;
   /** Given a directory, lists all the files/subdirectories in it. */
-  function list_directory(dirname: string): string[];
+  function list_directory(dirname: string): Promise<string[]>;
 
   type Arg = undefined | null | number | string | Arg[] | StoreObject;
 
@@ -11,17 +19,12 @@ declare module "driver" {
    * whatever you pass in, if anything. If the same filename/argument combination is run multiple
    * times, later results will be cached from the first run.
    */
-  function run_task(filename: string, arg: Arg): Arg;
+  function run_task(filename: string, arg: Arg): Promise<Arg>;
 
   /**
    * Returns the type of a file
    */
   function file_type(name: string): "file" | "dir" | "symlink" | "unknown";
-
-  interface StoreObject {
-    data(): Uint8Array;
-    toString(): string;
-  }
   /**
    * Puts a value into the object store. Required to interface with the other methods that transform values.
    */
@@ -29,11 +32,11 @@ declare module "driver" {
   /**
    * Converts a markdown string into an HTML string.
    */
-  function markdown_to_html(md: StoreObject): StoreObject;
+  function markdown_to_html(md: StoreObject): Promise<StoreObject>;
   /**
    * Minifies a given HTML string.
    */
-  function minify_html(html: StoreObject): StoreObject;
+  function minify_html(html: StoreObject): Promise<StoreObject>;
   /**
    * Writes an object from the store to a path relative to the build directory.
    */

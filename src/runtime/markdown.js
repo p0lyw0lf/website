@@ -1,15 +1,14 @@
 import { markdown_to_html, read_file, store } from "driver";
 import { MarkdownPage } from "../templates/MarkdownPage";
 
-/** @type {string} */
-const content = read_file(`../../${ARGS[0]}`).toString();
+const content = (await read_file(`../../${ARGS[0]}`)).toString();
 
 // Split file into frontmatter (where the props are) and the body
 const [, rawFrontmatter, ...bodyParts] = content.split("---\n");
 const body = bodyParts.join("---\n");
 
 // Parse the body as markdown, and render as HTML
-const renderedBody = markdown_to_html(store(body));
+const renderedBody = await markdown_to_html(store(body));
 
 /** @type {any} */
 const frontmatter = {};
@@ -23,4 +22,4 @@ for (const line of rawFrontmatter.split("\n")) {
 }
 
 // Use the read frontmatter to render the final HTML
-export default MarkdownPage(frontmatter)(renderedBody.toString());
+export default await MarkdownPage(frontmatter)(renderedBody.toString());

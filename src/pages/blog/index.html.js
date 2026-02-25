@@ -1,7 +1,7 @@
 import { html } from "../../render.js";
 import { Post } from "../../templates/Post.js";
 
-export default Post({
+export default await Post({
   sectionTitle: "PolyWolf's Blog",
   homeLink: "/blog/",
   title: "Blog",

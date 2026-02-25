@@ -26,13 +26,12 @@ const pfps = [
 ];
 
 /**
- * @returns {string}
+ * @returns {Promise<import("../render.js").HTML>}
  */
-export const RandomLandingPfp = () => {
-  const out = RandomChoice({
+export const RandomLandingPfp = async () => {
+  return await RandomChoice({
     Component: LandingPfp,
     propChoices: pfps,
     id: "pfp",
   });
-  return out;
 };

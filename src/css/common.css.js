@@ -2,8 +2,8 @@ import { run_task, store } from "driver";
 import { css } from "../render.js";
 
 export default store(css`
-  ${run_task("./dims.css.js", null)}
-  ${run_task("./semantic_colors.css.js", null)}
+  ${await run_task("./dims.css.js", null)}
+  ${await run_task("./semantic_colors.css.js", null)}
 
   body {
     margin: 0;

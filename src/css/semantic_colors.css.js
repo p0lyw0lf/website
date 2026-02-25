@@ -2,7 +2,7 @@ import { run_task, store } from "driver";
 import { css } from "../render";
 
 export default store(css`
-  ${run_task("./palette_colors.css.js", null)}
+  ${await run_task("./palette_colors.css.js", null)}
 
   /* Dark theme by default */
 :root {

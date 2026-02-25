@@ -3,7 +3,7 @@ import { RandomLandingPfp } from "../components/RandomLandingPfp.js";
 import { html } from "../render.js";
 import { Base } from "../templates/Base.js";
 
-export default Base({
+export default await Base({
   title: "Home",
   pathname: ARGS[0],
   overrideTitle: "wolfgirl.dev - PolyWolf",
@@ -30,7 +30,7 @@ export default Base({
       Top header is a link that takes you to the previous page. "Blog" and
       "Cybersec" have a bit better styling on them, rest are pretty silly tho :P
     </p>
-  `.withStyle(run_task("../css/index.css.js", null)),
+  `.withStyle(await run_task("../css/index.css.js", null)),
   {
     header: html`
       <header>

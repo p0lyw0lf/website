@@ -9,7 +9,7 @@ import { Base } from "./Base.js";
  *
  * @callback Render
  * @param {string} mainSlot
- * @returns {import("driver").StoreObject}
+ * @returns {Promise<import("driver").StoreObject>}
  */
 
 /**
@@ -18,7 +18,10 @@ import { Base } from "./Base.js";
  */
 export const MarkdownPage =
   ({ title, description }) =>
-  (slot) =>
-    Base({ title, description })(
-      html`${slot}`.withStyle(run_task("../css/page.css.js", null).toString()),
+  async (slot) => {
+    return await Base({ title, description })(
+      html`${slot}`.withStyle(
+        (await run_task("../css/page.css.js", null)).toString(),
+      ),
     );
+  };

@@ -19,7 +19,7 @@ import { Base } from "./Base.js";
  * @callback Render
  * @param {string} mainSlot
  * @param {Slots} [extraSlots]
- * @returns {import("driver").StoreObject}
+ * @returns {Promise<import("driver").StoreObject>}
  */
 
 /**
@@ -28,7 +28,7 @@ import { Base } from "./Base.js";
  */
 export const Post =
   ({ sectionTitle, homeLink, rssLink, ...props }) =>
-  (slot, extraSlots = {}) => {
+  async (slot, extraSlots = {}) => {
     const { extraHead, footer } = extraSlots;
     return Base(props)(slot, {
       extraHead: html`
@@ -39,7 +39,7 @@ export const Post =
           href="${`${SITE_URL}/${rssLink ?? `${homeLink}rss.xml`}`}"
         />
         ${extraHead}
-      `.withStyle(run_task("../css/post.css.js", null).toString()),
+      `.withStyle((await run_task("../css/post.css.js", null)).toString()),
       header: html`
         <header>
           ${RandomHeaderPfp()}

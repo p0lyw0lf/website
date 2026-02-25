@@ -10,7 +10,7 @@ import { html } from "../render.js";
 
 /**
  * @param {Props} props
- * @returns string
+ * @returns {import("../render.js").HTML}
  */
 export const HeaderPfp = ({ src, alt }) => {
   return html`<a href="/art/">

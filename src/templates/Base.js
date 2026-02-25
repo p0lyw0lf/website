@@ -17,7 +17,7 @@ import { html } from "../render.js";
  * @callback Render
  * @param {string} mainSlot
  * @param {Slots} [extraSlots]
- * @returns {import("driver").StoreObject}
+ * @returns {Promise<import("driver").StoreObject>}
  */
 
 /**
@@ -26,7 +26,7 @@ import { html } from "../render.js";
  */
 export const Base =
   ({ title, pathname, overrideTitle, description }) =>
-  (slot, extraSlots) => {
+  async (slot, extraSlots) => {
     const { extraHead, header, footer } = extraSlots ?? {};
     const canonicalUrl = `${SITE_URL}/${pathname}`;
 
@@ -81,7 +81,7 @@ export const Base =
 
           ${extraHead}
           <style>
-            ${run_task("../css/common.css.js", null)}
+            ${await run_task("../css/common.css.js", null)}
             ${extraHead?.style}
             ${slot.style}
             ${header?.style}

@@ -2,8 +2,9 @@ import { run_task, store } from "driver";
 import { css } from "../render.js";
 
 export default store(css`
-  ${run_task("./page.css.js", null)}
+  ${await run_task("./page.css.js", null)}
 
+  /* comment */
   #pfp {
     margin: 0;
     margin-bottom: 2em;

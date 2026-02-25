@@ -15,9 +15,9 @@ import { html } from "../render.js";
 
 /**
  * @param {Props} props
- * @returns {import("../render.js").HTML}
+ * @returns {Promise<import("../render.js").HTML>}
  */
-export const RandomChoice = ({ Component, propChoices, id }) => {
+export const RandomChoice = async ({ Component, propChoices, id }) => {
   const htmlChoices = propChoices.map((props) => Component(props));
 
   return html`
@@ -30,12 +30,14 @@ export const RandomChoice = ({ Component, propChoices, id }) => {
     <script>
       const elem = document.getElementById("${id}");
       const choices = [
-        ${htmlChoices
-          .map((html) => {
-            const minified = minify_html(store(html.toString()));
-            return JSON.stringify(minified.toString());
-          })
-          .join(",")},
+        ${(
+          await Promise.all(
+            htmlChoices.map(async (html) => {
+              const minified = await minify_html(store(html.toString()));
+              return JSON.stringify(minified.toString());
+            }),
+          )
+        ).join(",")},
       ];
       const index = Math.floor(Math.random() * choices.length);
       elem.innerHTML = choices[index];
