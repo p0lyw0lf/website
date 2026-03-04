@@ -11,6 +11,10 @@ declare module "driver" {
   function read_file(filename: string): Promise<StoreObject>;
   /** Given a directory, lists all the files/subdirectories in it. */
   function list_directory(dirname: string): Promise<string[]>;
+  /** Returns the type of a local file. For use in determining how to operate on the entries of list_directory. */
+  function file_type(name: string): "file" | "dir" | "symlink" | "unknown";
+  /** Given a URL, gets its contents. Cached according to remote headers. */
+  function get_url(url: string): Promise<StoreObject>;
 
   type Arg = undefined | null | number | string | Arg[] | StoreObject;
 
@@ -21,10 +25,6 @@ declare module "driver" {
    */
   function run_task(filename: string, arg: Arg): Promise<Arg>;
 
-  /**
-   * Returns the type of a file
-   */
-  function file_type(name: string): "file" | "dir" | "symlink" | "unknown";
   /**
    * Puts a value into the object store. Required to interface with the other methods that transform values.
    */
