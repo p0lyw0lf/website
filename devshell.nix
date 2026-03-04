@@ -8,6 +8,7 @@ pkgs.mkShell {
     corepack
     nodejs
 
+    hyperfine
     just
   ];
 }
