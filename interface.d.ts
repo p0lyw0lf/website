@@ -18,7 +18,7 @@ declare module "driver" {
    * Puts a value into the object store.
    * Required to interface with the other methods that transform values.
    */
-  function store(value: string | Uint8Array): StoreObject;
+  function store(value: string): StoreObject;
 
   ////////// 2 //////////
   /** Given a file, gets its contents */
@@ -73,7 +73,7 @@ declare module "driver" {
     | StoreImage
     | Arg[];
   /**
-   * Run a given file. The file will have the global variable `ARGS` populated with
+   * Run a given file. The file will have the global variable `ARG` populated with
    * whatever you pass in, if anything. If the same filename/argument combination is run multiple
    * times, later results will be cached from the first run.
    */

@@ -5,7 +5,7 @@ export default store(css`
   ${await run_task("./palette_colors.css.js", null)}
 
   /* Dark theme by default */
-:root {
+  :root {
     /*
    * Backgrounds are ordered from back to front
    */

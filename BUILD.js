@@ -52,8 +52,8 @@ const build = async (to_build) => {
   }
 };
 
-if (ARGS) {
-  await build(ARGS[0]);
+if (ARG) {
+  await build(ARG[0]);
 } else {
   await build(PAGE_ROOT);
   await build(PUBLIC_ROOT);
