@@ -21,7 +21,7 @@ export const MarkdownPage =
   async (slot) => {
     return await Base({ title, description })(
       html`${slot}`.withStyle(
-        (await run_task("../css/page.css.js", null)).toString(),
+        (await run_task("src/css/page.css.js", null)).toString(),
       ),
     );
   };

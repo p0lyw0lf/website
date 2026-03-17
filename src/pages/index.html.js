@@ -30,7 +30,7 @@ export default await Base({
       Top header is a link that takes you to the previous page. "Blog" and
       "Cybersec" have a bit better styling on them, rest are pretty silly tho :P
     </p>
-  `.withStyle(await run_task("../css/index.css.js", null)),
+  `.withStyle(await run_task("src/css/index.css.js", null)),
   {
     header: html`
       <header>

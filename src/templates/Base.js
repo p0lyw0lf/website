@@ -81,7 +81,7 @@ export const Base =
 
           ${extraHead}
           <style>
-            ${await run_task("../css/common.css.js", null)}
+            ${await run_task("src/css/common.css.js", null)}
             ${extraHead?.style}
             ${slot.style}
             ${header?.style}

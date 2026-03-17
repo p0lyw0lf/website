@@ -2,7 +2,7 @@ import { run_task, store } from "driver";
 import { css } from "../render.js";
 
 export default store(css`
-  ${await run_task("./page.css.js", null)}
+  ${await run_task("src/css/page.css.js", null)}
 
   /* comment */
   #pfp {

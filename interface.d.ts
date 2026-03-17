@@ -21,11 +21,13 @@ declare module "driver" {
   function store(value: string): StoreObject;
 
   ////////// 2 //////////
+  // NOTE: All paths are relative to the PROJECT ROOT, where the driver binary is run!!
   /** Given a file, gets its contents */
   function read_file(filename: string): Promise<StoreObject>;
   /** Given a directory, lists all the files/subdirectories in it. */
   function list_directory(dirname: string): Promise<string[]>;
-  /** Returns the type of a local file. For use in determining how to operate on the entries of list_directory. */
+  /** Returns the type of a local file. For use in determining how to operate on the entries of
+   * `list_directory()`. */
   function file_type(name: string): "file" | "dir" | "symlink" | "unknown";
 
   ////////// 3 //////////
@@ -76,6 +78,9 @@ declare module "driver" {
    * Run a given file. The file will have the global variable `ARG` populated with
    * whatever you pass in, if anything. If the same filename/argument combination is run multiple
    * times, later results will be cached from the first run.
+   *
+   * NOTE: just like `read_file()` and `list_directory()`, the `filename` argument is relative to
+   * the project root.
    */
   function run_task(filename: string, arg: Arg): Promise<Arg>;
 

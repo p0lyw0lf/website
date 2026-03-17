@@ -1,10 +1,10 @@
 import { markdown_to_html, read_file, store } from "driver";
 import { MarkdownPage } from "../templates/MarkdownPage";
 
-const content = (await read_file(`../../${ARG[0]}`)).toString();
+const contents = (await read_file(ARG[0])).toString();
 
 // Split file into frontmatter (where the props are) and the body
-const [, rawFrontmatter, ...bodyParts] = content.split("---\n");
+const [, rawFrontmatter, ...bodyParts] = contents.split("---\n");
 const body = bodyParts.join("---\n");
 
 // Parse the body as markdown, and render as HTML

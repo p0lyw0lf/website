@@ -39,7 +39,7 @@ export const Post =
           href="${`${SITE_URL}/${rssLink ?? `${homeLink}rss.xml`}`}"
         />
         ${extraHead}
-      `.withStyle((await run_task("../css/post.css.js", null)).toString()),
+      `.withStyle((await run_task("src/css/post.css.js", null)).toString()),
       header: html`
         <header>
           ${RandomHeaderPfp()}

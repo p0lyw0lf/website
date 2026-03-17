@@ -7,8 +7,8 @@ import {
   write_output,
 } from "driver";
 
-const PAGE_ROOT = "./src/pages/";
-const PUBLIC_ROOT = "./public/";
+const PAGE_ROOT = "src/pages/";
+const PUBLIC_ROOT = "public/";
 
 /**
  * @param {string} to_build
@@ -20,13 +20,13 @@ const build = async (to_build) => {
     await Promise.all(
       entries.map(async (entry) => {
         if (file_type(entry) === "dir") {
-          await run_task("./BUILD.js", [entry]);
+          await run_task("BUILD.js", [entry]);
         } else if (
           entry.startsWith(PUBLIC_ROOT) ||
           entry.endsWith(".js") ||
           entry.endsWith(".md")
         ) {
-          await run_task("./BUILD.js", [entry]);
+          await run_task("BUILD.js", [entry]);
         }
       }),
     );
@@ -46,7 +46,7 @@ const build = async (to_build) => {
   } else if (to_build.endsWith(".md")) {
     // Render the file as markdown
     const pathname = `${to_build.slice(PAGE_ROOT.length, -3)}/index.html`;
-    let output = await run_task("./src/runtime/markdown.js", [to_build]);
+    let output = await run_task("src/runtime/markdown.js", [to_build]);
     output = await minify_html(output);
     write_output(pathname, output);
   }
