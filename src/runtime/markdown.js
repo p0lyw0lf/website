@@ -1,5 +1,5 @@
 import { markdown_to_html, read_file, store } from "driver";
-import { MarkdownPage } from "../templates/MarkdownPage";
+import { MarkdownPage } from "../templates/MarkdownPage.js";
 
 const contents = (await read_file(ARG[0])).toString();
 

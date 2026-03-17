@@ -7,8 +7,8 @@ import {
   write_output,
 } from "driver";
 
-const PAGE_ROOT = "src/pages/";
-const PUBLIC_ROOT = "public/";
+const PAGE_ROOT = "./src/pages/";
+const PUBLIC_ROOT = "./public/";
 
 /**
  * @param {string} to_build

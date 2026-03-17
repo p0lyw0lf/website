@@ -11,7 +11,7 @@ export default await Base({
     "Landing page for PolyWolf's personal website. I'm a wolfgirl and software engineer",
 })(
   html`
-    ${RandomLandingPfp()}
+    ${await RandomLandingPfp()}
     <nav class="bignav">
       <a href="art/">Art</a>
       <a href="blog/">Blog</a>

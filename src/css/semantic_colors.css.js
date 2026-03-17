@@ -1,5 +1,5 @@
 import { run_task, store } from "driver";
-import { css } from "../render";
+import { css } from "../render.js";
 
 export default store(css`
   ${await run_task("src/css/palette_colors.css.js", null)}
