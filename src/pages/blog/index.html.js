@@ -2,6 +2,7 @@ import { html } from "../../render.js";
 import { Post } from "../../templates/Post.js";
 
 export default await Post({
+  pathname: "/blog/",
   sectionTitle: "PolyWolf's Blog",
   homeLink: "/blog/",
   title: "Blog",

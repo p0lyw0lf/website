@@ -5,7 +5,7 @@ import { Base } from "../templates/Base.js";
 
 export default await Base({
   title: "Home",
-  pathname: ARG[0],
+  pathname: "/",
   overrideTitle: "wolfgirl.dev - PolyWolf",
   description:
     "Landing page for PolyWolf's personal website. I'm a wolfgirl and software engineer",

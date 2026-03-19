@@ -73,7 +73,8 @@ declare module "driver" {
     | string
     | StoreObject
     | StoreImage
-    | Arg[];
+    | Arg[]
+    | { [key in string]?: Arg };
   /**
    * Run a given file. The file will have the global variable `ARG` populated with
    * whatever you pass in, if anything. If the same filename/argument combination is run multiple
