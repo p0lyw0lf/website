@@ -43,12 +43,13 @@ const build = async (to_build) => {
     const base_dir = to_build.slice(PAGE_ROOT.length, match.index);
     // First, run the file without any arguments to collect the data it wants to run on
     const pages = await run_task(to_build, null);
-    // Then, run the file again for each page it wants to create
+    // Then, run the file again for each page it wants to createe
+    print(Object.entries(pages)[0][0]);
     await Promise.all(
-      pages.map(async (page) => {
-        let output = await run_task(to_build, page);
+      Object.entries(pages).map(async ([page, args]) => {
+        let output = await run_task(to_build, [page, args]);
         output = await minify_html(output);
-        write_output(`${base_dir}/${page.slug}/index.html`, output);
+        write_output(`${base_dir}/${args.slug}/index.html`, output);
       }),
     );
   } else if (to_build.endsWith(".js")) {

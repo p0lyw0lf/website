@@ -1,5 +1,5 @@
 ---
-title: 'I Have "Numbers" Now'
+title: "I Have \"Numbers\" Now"
 description: "My blog is hosted with CloudFront pointed at an S3 bucket, automatically updated to whenever I push a commit to the GitHub repository con..."
 tags: ["devops", "aws"]
 published: 1737320354

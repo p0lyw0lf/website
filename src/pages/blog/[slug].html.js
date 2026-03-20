@@ -4,17 +4,14 @@ import { blog } from "../../content.js";
 import { atprotoPostUrl, toBlogUrl } from "../../data/urls.js";
 
 const getPages = async () => {
-  const fileLoaders = await blog();
-  const files = await Promise.all(Object.values(fileLoaders));
-  return files;
+  return await blog();
 };
 
-const buildPage = async ({ frontmatter, body, slug }) => {
+const buildPage = async ([_filename, { frontmatter, body, slug }]) => {
   const { title, description, mastodon, bluesky } = frontmatter;
   const blueskyUrl = atprotoPostUrl(bluesky);
   const published = new Date(frontmatter.published * 1000);
   const url = toBlogUrl(slug);
-
   return await Post({
     pathname: url,
     homeLink: "/blog/",

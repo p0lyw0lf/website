@@ -1,6 +1,6 @@
 ---
-title: "Some Albums I\u0027ve Been Listening to A Lot Recently (#3)"
-description: 'Before, when I was still using Spotify, I used their weekly mixes (Discovery, New Releases) and per-song "radio" as my primary method of...'
+title: "Some Albums I've Been Listening to A Lot Recently (#3)"
+description: "Before, when I was still using Spotify, I used their weekly mixes (Discovery, New Releases) and per-song \"radio\" as my primary method of..."
 tags: ["reviews", "music"]
 published: 1739742955
 mastodon: "https://social.treehouse.systems/@PolyWolf/114015794379201962"

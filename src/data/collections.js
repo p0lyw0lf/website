@@ -10,33 +10,33 @@ import { list_directory, run_task } from "driver";
  * @property {unknown} frontmatter - The parsed frontmatter
  * @property {import("driver").StoreObject} body - The body that was read in
  *
- * @callback FileLoader
- * @returns {Promise<File>}
- *
- * @callback DirectoryLoader
- * @returns {Promise<Record<string, FileLoader>>}
+ * @callback Loader
+ * @returns {Promise<Record<string, File>>}
  */
 
 /**
  * @param {Props} props
- * @returns {DirectoryLoader}
+ * @returns {Loader}
  */
 export const glob =
   ({ pattern, base, schema }) =>
   async () => {
-    const files = await list_directory(base);
-    const output = {};
-    for (const file of files) {
-      const match = pattern.exec(file);
-      if (!match || !match[1]) continue;
+    const filenames = await list_directory(base);
+    const filesWithSlug = filenames.flatMap((filename) => {
+      const match = pattern.exec(filename);
+      if (!match || !match[1]) return [];
       const slug = match[1];
-      output[file] = async () => {
+      return [[filename, slug]];
+    });
+    const output = {};
+    await Promise.all(
+      filesWithSlug.map(async ([filename, slug]) => {
         const { frontmatter, body } = await run_task(
           "./src/runtime/frontmatter.js",
-          file,
+          filename,
         );
-        return { frontmatter: schema(frontmatter), body, slug };
-      };
-    }
+        output[filename] = { frontmatter: schema(frontmatter), body, slug };
+      }),
+    );
     return output;
   };
