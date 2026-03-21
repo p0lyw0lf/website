@@ -2,16 +2,23 @@ import { markdown_to_html } from "driver";
 import { TagLink } from "../../components/blog/TagLink.js";
 import { blog } from "../../content.js";
 import { atprotoPostUrl, toBlogUrl } from "../../data/urls.js";
+import { html } from "../../render.js";
+import { Post } from "../../templates/Post.js";
 
 const getPages = async () => {
-  return await blog();
+  return Object.values(await blog()).sort(
+    (a, b) => a.frontmatter.published - b.frontmatter.published,
+  );
 };
 
-const buildPage = async ([_filename, { frontmatter, body, slug }]) => {
-  const { title, description, mastodon, bluesky } = frontmatter;
+const buildPage = async ({ frontmatter, body, slug }) => {
+  const { title, description, mastodon, bluesky, tags } = frontmatter;
   const blueskyUrl = atprotoPostUrl(bluesky);
-  const published = new Date(frontmatter.published * 1000);
+  const published = Temporal.Instant.fromEpochMilliseconds(
+    frontmatter.published * 1000,
+  );
   const url = toBlogUrl(slug);
+
   return await Post({
     pathname: url,
     homeLink: "/blog/",
@@ -23,7 +30,7 @@ const buildPage = async ([_filename, { frontmatter, body, slug }]) => {
       <h1 class="p-name">${title}</h1>
       <span
         >Published:
-        <time class="dt-published" datetime="${published.toISOString()}"
+        <time class="dt-published" datetime="${published.toString()}"
           >${published.toLocaleString("en-US", {
             timeZone: "America/New_York",
           })}</time
@@ -35,7 +42,7 @@ const buildPage = async ([_filename, { frontmatter, body, slug }]) => {
     ${(mastodon || blueskyUrl) &&
     html`
       <div class="comments">
-        ${data.mastodon && html`<a href="${mastodon}">Comment on Mastodon</a>`}
+        ${mastodon && html`<a href="${mastodon}">Comment on Mastodon</a>`}
         ${blueskyUrl && html`<a href="${blueskyUrl}">Comment on Bluesky</a>`}
       </div>
     `}

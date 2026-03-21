@@ -42,7 +42,7 @@ export const Post =
       `.withStyle((await run_task("src/css/post.css.js", null)).toString()),
       header: html`
         <header>
-          ${RandomHeaderPfp()}
+          ${await RandomHeaderPfp()}
           <div>
             <h2><a href="${homeLink}">${sectionTitle}</a></h2>
             <nav>
