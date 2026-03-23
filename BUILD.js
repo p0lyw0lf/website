@@ -6,7 +6,6 @@ import {
   run_task,
   write_output,
 } from "driver";
-
 const PAGE_ROOT = "./src/pages/";
 const PUBLIC_ROOT = "./public/";
 
@@ -53,7 +52,12 @@ const build = async (to_build) => {
     );
   } else if (to_build.endsWith(".js")) {
     // Execute the file to build (assuming it's javascript)
-    const pathname = to_build.slice(PAGE_ROOT.length, -3);
+    let pathname = to_build.slice(PAGE_ROOT.length, -3);
+    if (pathname.endsWith(".html") && !pathname.endsWith("index.html")) {
+      // Path should actually be a directory
+      pathname = pathname.slice(-".html".length);
+      pathname = `${pathname}/index.html`;
+    }
     let output = await run_task(to_build, pathname);
     if (to_build.endsWith(".html.js")) {
       output = await minify_html(output);
