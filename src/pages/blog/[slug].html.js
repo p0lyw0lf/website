@@ -1,6 +1,6 @@
 import { markdown_to_html } from "driver";
 import { TagLink } from "../../components/blog/TagLink.js";
-import { blog } from "../../content.js";
+import { blog } from "../../content/config.js";
 import { atprotoPostUrl, toBlogUrl } from "../../data/urls.js";
 import { html } from "../../render.js";
 import { Post } from "../../templates/Post.js";

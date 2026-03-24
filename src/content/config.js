@@ -1,5 +1,5 @@
-import { glob } from "./data/collections.js";
-import { z } from "./data/z.js";
+import { glob } from "../data/collections.js";
+import { z } from "../data/z.js";
 
 export const art = glob({
   pattern: /\/([^_][^\/]*)\.mdx$/,

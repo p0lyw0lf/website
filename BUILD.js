@@ -9,7 +9,7 @@ import {
 const PAGE_ROOT = "./src/pages/";
 const PUBLIC_ROOT = "./public/";
 
-// Tests if the page defines a dynamic route
+// Tests if the page defines a dynamic routee
 const dynamicRegex = /\[[a-zA-Z0-9_]+\]\.html\.js$/;
 
 /**
@@ -66,7 +66,7 @@ const build = async (to_build) => {
   } else if (to_build.endsWith(".md")) {
     // Render the file as markdown
     const pathname = `${to_build.slice(PAGE_ROOT.length, -3)}/index.html`;
-    let output = await run_task("src/runtime/markdown.js", to_build);
+    let output = await run_task("src/build/md.js", to_build);
     output = await minify_html(output);
     write_output(pathname, output);
   }
