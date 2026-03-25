@@ -8,7 +8,7 @@ declare module "driver" {
    * 4. Call any transformation that accepts a `StoreObject`.
    */
   interface StoreObject {
-    hash: string;
+    hash(): string;
     data(): Uint8Array;
     toString(): string;
   }
@@ -49,9 +49,9 @@ declare module "driver" {
    * 2. Convert/resize an existing image with `convert_image()`
    */
   interface StoreImage {
-    object: StoreObject;
-    format: ImageFormat;
-    size: ImageSize;
+    object(): StoreObject;
+    format(): ImageFormat;
+    size(): ImageSize;
   }
 
   /** Parses an object into an image. Throws if the underlying object is not an image. */

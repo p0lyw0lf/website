@@ -1,3 +1,4 @@
+import { run_task } from "driver";
 import { STATIC_URL } from "../data/urls.js";
 import { html } from "../render.js";
 
@@ -10,16 +11,16 @@ import { html } from "../render.js";
 
 /**
  * @param {Props} props
- * @returns {import("../render.js").HTML}
+ * @returns {Promise<import("../render.js").HTML>}
  */
-export const HeaderPfp = ({ src, alt }) => {
-  return html`<a href="/art/">
-    <img
-      src="${`${STATIC_URL}/pfps/${src}`}"
-      width="128"
-      height="128"
-      loading="eager"
-      alt="${alt}"
-    />
-  </a>`;
+export const HeaderPfp = async ({ src, alt }) => {
+  const remoteImage = await run_task("src/runtime/remoteImage.js", {
+    url: `${STATIC_URL}/pfps/${src}`,
+    width: 128,
+    height: 128,
+    widths: [128, 256],
+    loading: "eager",
+    alt,
+  });
+  return html`<a href="/art/">${remoteImage}</a>`;
 };

@@ -1,4 +1,4 @@
-import { markdown_to_html } from "driver";
+import { run_task } from "driver";
 import { TagLink } from "../../components/blog/TagLink.js";
 import { blog } from "../../content/config.js";
 import { atprotoPostUrl, toBlogUrl } from "../../data/urls.js";
@@ -37,7 +37,9 @@ const buildPage = async ({ frontmatter, body, slug }) => {
         >
       </span>
     </div>
-    <article class="e-content">${await markdown_to_html(body)}</article>
+    <article class="e-content"
+      >${await run_task("src/runtime/markdown.js", body)}</article
+    >
     <div class="tags">${tags.map((tag) => TagLink({ tag }))}</div>
     ${(mastodon || blueskyUrl) &&
     html`

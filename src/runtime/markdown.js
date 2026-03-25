@@ -1,4 +1,5 @@
-import { run_task } from "driver";
+import { markdown_to_html, minify_html, run_task, store } from "driver";
+import { replaceMatches } from "../util.js";
 
 /**
  * Given a store argument in ARG, format the markdown as HTML, applying any special transformations
@@ -11,35 +12,42 @@ const IMAGE_REGEX =
   /!\[(?<alt>[^\]]*)\]\(((<(?<quotedFilename>.*)>)|(?<filename>[^<>]*?))\s*(\"(?<title>.*)\")?\)/gm;
 const ALLOWED_SITES = new Set(["static.wolfgirl.dev"]);
 
-const contents = ARG.toString();
-
-// TODO: see if Astro does this any better. I think not really?
-const urls = new Set();
-for (const match of contents.matchAll(IMAGE_REGEX)) {
+/**
+ * @param {RegExpMatchArray} match
+ * @returns {boolean} - Should we transform this image match?
+ */
+const shouldTransform = (match) => {
   const filename = match.groups.quotedFilename || match.groups.filename || "";
-  if (!filename) continue;
+  if (!filename) return false;
   /** @type {URL} */
   let url;
   try {
     url = new URL(filename);
   } catch {
-    continue;
+    return false;
   }
-  if (!ALLOWED_SITES.has(url.hostname)) continue;
+  if (!ALLOWED_SITES.has(url.hostname)) return false;
 
-  urls.add(filename);
-}
+  return true;
+};
 
-const processed = await Promise.all(
-  [...urls].map(async (url) => {
-    const imageHtml = await run_task("src/runtime/remoteImage.js", {
+const contents = await replaceMatches(
+  IMAGE_REGEX,
+  ARG.toString(),
+  async (match) => {
+    if (!shouldTransform(match)) return match[0];
+
+    const url =
+      match.groups.quotedFilename || match.groups.filename || undefined;
+    const alt = match.groups.alt || undefined;
+    const title = match.groups.title || undefined;
+    return await run_task("src/runtime/remoteImage.js", {
       url,
-      alt: "TODO",
-      title: "TODO",
+      alt,
+      title,
       widths: [384, 768, 1536],
     });
-    return imageHtml;
-  }),
+  },
 );
 
-// TODO: finish this
+export default await minify_html(await markdown_to_html(store(contents)));

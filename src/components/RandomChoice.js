@@ -4,7 +4,7 @@ import { html } from "../render.js";
 /**
  * @callback Component
  * @param {object} props
- * @returns {import("../render.js").HTML}
+ * @returns {Promise<import("../render.js").HTML>}
  *
  * @typedef Props
  * @type {object}
@@ -18,7 +18,9 @@ import { html } from "../render.js";
  * @returns {Promise<import("../render.js").HTML>}
  */
 export const RandomChoice = async ({ Component, propChoices, id }) => {
-  const htmlChoices = propChoices.map((props) => Component(props));
+  const htmlChoices = await Promise.all(
+    propChoices.map(async (props) => await Component(props)),
+  );
 
   return html`
     <div id="${id}">

@@ -1,3 +1,4 @@
+import { run_task } from "driver";
 import { toArtUrl } from "../data/urls.js";
 import { css, html } from "../render.js";
 
@@ -16,9 +17,9 @@ import { css, html } from "../render.js";
 
 /**
  * @param {Props} props
- * @returns {string}
+ * @returns {Promise<import("../render.js").HTML>}
  */
-export const LandingPfp = ({ src, dims, alt, title, desc }) => {
+export const LandingPfp = async ({ src, dims, alt, title, desc }) => {
   const url = toArtUrl(src);
   let width = 256;
   let height = 256;
@@ -26,24 +27,19 @@ export const LandingPfp = ({ src, dims, alt, title, desc }) => {
     ({ width: width, height: height } = dims);
   }
 
-  // TODO: find a way of getting the remote width and height of an image
-  // Need to have custom way of shrinking image to fit inside both of these bounds, while preserving aspect ratio
-  // width = Math.min(width, (remoteWidth * height) / remoteHeight);
-  // height = Math.min(height, (remoteHeight * width) / remoteWidth);
+  const remoteImage = await run_task("src/runtime/remoteImage.js", {
+    url,
+    alt,
+    title,
+    loading: "eager",
+    width,
+    height,
+  });
 
   return html`
     <figure>
       <div>
-        <a href="${url}">
-          <img
-            src="${url}"
-            width="${width}"
-            height="${height}"
-            alt="${alt}"
-            title="${title}"
-            loading="eager"
-          />
-        </a>
+        <a href="/about/">${remoteImage}</a>
       </div>
       <figcaption>${desc}</figcaption>
     </figure>
