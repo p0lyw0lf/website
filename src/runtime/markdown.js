@@ -10,7 +10,7 @@ import { replaceMatches } from "../util.js";
 
 const IMAGE_REGEX =
   /!\[(?<alt>[^\]]*)\]\(((<(?<quotedFilename>.*)>)|(?<filename>[^<>]*?))\s*(\"(?<title>.*)\")?\)/gm;
-const ALLOWED_SITES = new Set(["static.wolfgirl.dev"]);
+const ALLOWED_SITE_REGEX = /^https:\/\/static\.wolfgirl\.dev\//;
 
 /**
  * @param {RegExpMatchArray} match
@@ -19,15 +19,7 @@ const ALLOWED_SITES = new Set(["static.wolfgirl.dev"]);
 const shouldTransform = (match) => {
   const filename = match.groups.quotedFilename || match.groups.filename || "";
   if (!filename) return false;
-  /** @type {URL} */
-  let url;
-  try {
-    url = new URL(filename);
-  } catch {
-    return false;
-  }
-  if (!ALLOWED_SITES.has(url.hostname)) return false;
-
+  if (!ALLOWED_SITE_REGEX.test(filename)) return false;
   return true;
 };
 
@@ -37,8 +29,14 @@ const contents = await replaceMatches(
   async (match) => {
     if (!shouldTransform(match)) return match[0];
 
-    const url =
-      match.groups.quotedFilename || match.groups.filename || undefined;
+    let url = "";
+    if (match.groups.quotedFilename) {
+      url = encodeURI(match.groups.quotedFilename);
+    } else if (match.groups.filename) {
+      url = match.groups.filename;
+    } else {
+      throw new Error("match is missing filename");
+    }
     const alt = match.groups.alt || undefined;
     const title = match.groups.title || undefined;
     return await run_task("src/runtime/remoteImage.js", {
