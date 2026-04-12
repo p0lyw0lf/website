@@ -2,7 +2,7 @@ build:
 	../driver/target/release/driver ./BUILD.js
 clean:
 	rm -rf dist
-	rm -f .driver_cache.zst
+	rm -rf .driver
 trace:
 	RUST_LOG=query=trace ../driver/target/release/driver ./BUILD.js > trace.txt
 	nvim trace.txt

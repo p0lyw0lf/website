@@ -9,7 +9,7 @@ import {
 const PAGE_ROOT = "./src/pages/";
 const PUBLIC_ROOT = "./public/";
 
-// Tests if the page defines a dynamic routee
+// Tests if the page defines a dynamic route
 const dynamicRegex = /\[[a-zA-Z0-9_]+\]\.html\.js$/;
 
 /**

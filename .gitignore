@@ -2,5 +2,4 @@ static/
 node_modules/
 .direnv/
 dist/
-.driver_cache/
-.driver_cache.zst
+.driver/
