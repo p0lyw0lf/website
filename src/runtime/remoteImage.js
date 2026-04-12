@@ -1,6 +1,7 @@
 import {
   convert_image,
   get_url,
+  minify_html,
   parse_image,
   store,
   write_output,
@@ -54,14 +55,16 @@ const srcSet = resizedImages.map((resizedImage) => {
   return `${src} ${resizedImage.size().width}w`;
 });
 
-export default store(
-  html`<img
-    src="${primarySrc}"
-    width="${finalWidth}"
-    height="${finalHeight}"
-    ${!!alt && `alt=${JSON.stringify(alt)}`}
-    ${!!loading && `loading=${JSON.stringify(loading)}`}
-    ${!!title && `title=${JSON.stringify(title)}`}
-    ${srcSet.length > 0 && `srcset="${srcSet.join(", ")}"`}
-  />`.toString(),
+export default await minify_html(
+  store(
+    html`<img
+      src="${primarySrc}"
+      width="${finalWidth}"
+      height="${finalHeight}"
+      ${!!alt && `alt=${JSON.stringify(alt)}`}
+      ${!!loading && `loading=${JSON.stringify(loading)}`}
+      ${!!title && `title=${JSON.stringify(title)}`}
+      ${srcSet.length > 0 && `srcset="${srcSet.join(", ")}"`}
+    />`.toString(),
+  ),
 );

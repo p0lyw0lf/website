@@ -53,6 +53,7 @@ export default store(css`
 
     img {
       width: 100%;
+      height: auto;
     }
 
     pre {

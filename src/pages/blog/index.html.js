@@ -32,5 +32,5 @@ export default await Post({
         )}
     </ul>
   </p>
-  <p>You can find an archive of all past posts via browsing the list of <a href="/tags/">tags</a>.</p>
+  <p>An archive of past posts is available via <a href="/tags/">tags</a>.</p>
 `);
