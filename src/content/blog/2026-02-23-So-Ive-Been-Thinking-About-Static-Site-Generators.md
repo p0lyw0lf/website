@@ -1,7 +1,7 @@
 ---
-title: So I've Been Thinking About Static Site Generators
+title: "So I've Been Thinking About Static Site Generators"
 tags: ["programming"]
-description: My current one is _fine_, but the rebuilds are a bit too long for my tastes (>10s) so I'd like to change that.
+description: "My current one is _fine_, but the rebuilds are a bit too long for my tastes (>10s) so I'd like to change that."
 published: 1771858183
 mastodon: "https://wolfgirl.dev/blog/2026-02-23-so-ive-been-thinking-about-static-site-generators/"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mfjwtoioqk23"
