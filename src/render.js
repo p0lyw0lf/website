@@ -42,9 +42,7 @@ export const html = (strings, ...exprs) => {
     } else {
       const expr = exprs[(i - 1) / 2];
       output.push(asPrintable(expr));
-      if (expr !== undefined && expr !== null && Object.hasOwn(expr, "style")) {
-        style.push(expr.style);
-      }
+      style.push(asStyleable(expr));
     }
   }
   return Object.assign(output.join(""), {
@@ -95,4 +93,22 @@ const asPrintable = (value) => {
     return value.map(asPrintable).join("");
   }
   return String(value);
+};
+
+/**
+ * @param {unknown} value
+ * @returns {string}
+ */
+const asStyleable = (value) => {
+  if (value === undefined || value === null) {
+    return "";
+  }
+  if (Object.hasOwn(value, "style")) {
+    return value.style;
+  }
+  if (Array.isArray(value)) {
+    const styles = value.map(asStyleable);
+    return styles.join("");
+  }
+  return "";
 };
