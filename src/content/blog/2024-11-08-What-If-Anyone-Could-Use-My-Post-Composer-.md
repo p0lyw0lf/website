@@ -1,6 +1,6 @@
 ---
 title: "What If Anyone* Could Use My Post Composer?"
-description: 'A somewhat-common complaint I see on bsky/fedi is "gah, these darn character limits, if only i had somewhere to jot down longer posts, i...'
+description: "A somewhat-common complaint I see on bsky/fedi is \"gah, these darn character limits, if only i had somewhere to jot down longer posts...\""
 tags: ["programming"]
 published: 1731090148
 ---

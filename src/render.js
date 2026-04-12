@@ -1,0 +1,114 @@
+/**
+ * @callback WithStyle
+ * @param {string} css - The style to put in the <head> of the HTML
+ * @returns {HTML}
+ *
+ * @callback AsJSON
+ * @returns {HTML}
+ *
+ * @callback AsString
+ * @returns {string}
+ *
+ * @typedef {string} HTML
+ * @property {WithStyle} withStyle - Stores some CSS for retrieval later.
+ * @property {AsJSON} asJSON - Serializes the HTML part into a JSON-compatible string
+ * @property {AsString} asString - Returns just the string part of the HTML object. Can also be cast with String.
+ * @property {string} style - All the styles read so far from the interpolation/withStyle calls.
+ */
+
+/**
+ * Tag template function for convenience. Should probably be written in Rust instead but ah well
+ * I love self-hosted cores.
+ *
+ * USAGE:
+ * ```
+ * const x = html`foo${false}bar${undefined}baz${null}qux`;
+ * assert(x === "foobarbazqux");
+ * ```
+ *
+ * That is, any naively-falsey value will be removed entirely, except for the digit zero.
+ * Arrays will be automatically flattened.
+ *
+ * @param {Array.<string>} strings
+ * @param {...unknown} exprs
+ * @returns {HTML}
+ */
+export const html = (strings, ...exprs) => {
+  const output = [];
+  const style = [];
+  for (let i = 0; i / 2 < strings.length; i += 1) {
+    if (i % 2 === 0) {
+      output.push(strings[i / 2]);
+    } else {
+      const expr = exprs[(i - 1) / 2];
+      output.push(asPrintable(expr));
+      style.push(asStyleable(expr));
+    }
+  }
+  return Object.assign(output.join(""), {
+    style: style.join(""),
+    withStyle: function (moreStyle) {
+      this.style += moreStyle;
+      return this;
+    },
+    asJSON: function () {
+      const s = this.asString();
+      return JSON.stringify(s);
+    },
+    asString: function () {
+      return String(this);
+    },
+  });
+};
+
+/**
+ * Just like [html], but provides hints to the formatter that we're doing CSS now, and also doesn't support [WithStyle] anymore.
+ *
+ * @param {Array.<string>} strings
+ * @param {...unknown} exprs
+ * @returns {string}
+ */
+export const css = (strings, ...exprs) => {
+  const output = [];
+  for (let i = 0; i / 2 < strings.length; i += 1) {
+    if (i % 2 === 0) {
+      output.push(strings[i / 2]);
+    } else {
+      const expr = exprs[(i - 1) / 2];
+      output.push(asPrintable(expr));
+    }
+  }
+  return output.join("");
+};
+
+/**
+ * @param {unknown} value
+ * @returns {string}
+ */
+const asPrintable = (value) => {
+  if (value === false || value === undefined || value === null) {
+    return "";
+  }
+  if (Array.isArray(value)) {
+    return value.map(asPrintable).join("");
+  }
+  return String(value);
+};
+
+/**
+ * @param {unknown} value
+ * @returns {string}
+ */
+const asStyleable = (value) => {
+  if (value === undefined || value === null) {
+    return "";
+  }
+  if (Object.hasOwn(value, "style")) {
+    return value.style;
+  }
+  if (Array.isArray(value)) {
+    const styles = value.map(asStyleable);
+    return styles.join("");
+  }
+  return "";
+};

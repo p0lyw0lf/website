@@ -1,13 +1,5 @@
 /** @type {import("prettier").Config} */
 export default {
   htmlWhitespaceSensitivity: "strict",
-  plugins: ["prettier-plugin-astro", "prettier-plugin-organize-imports"],
-  overrides: [
-    {
-      files: "*.astro",
-      options: {
-        parser: "astro",
-      },
-    },
-  ],
+  plugins: ["prettier-plugin-organize-imports"],
 };
