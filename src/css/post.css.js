@@ -1,4 +1,4 @@
-import { store } from "driver";
+import { run_task, store } from "driver";
 import { css } from "../render.js";
 import {
   BREAKPOINT_DESKTOP,
@@ -24,20 +24,17 @@ export default store(css`
     display: flex;
     flex-direction: column;
     gap: 16px;
-
-    h2 {
-      margin-top: 0;
-    }
-
-    a {
-      color: var(--color-text-tertiary);
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+  }
+  header h2 {
+    margin-top: 0;
+  }
+  header a {
+    color: var(--color-text-tertiary);
+  }
+  header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   main {
@@ -46,19 +43,16 @@ export default store(css`
     line-height: 1.9em;
 
     padding: 0 16px;
-
-    a {
-      color: var(--color-text-primary-accent);
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-    }
-
-    pre {
-      line-height: normal;
-    }
+  }
+  main a {
+    color: var(--color-text-primary-accent);
+  }
+  main img {
+    width: 100%;
+    height: auto;
+  }
+  main pre {
+    line-height: normal;
   }
 
   @media (min-width: ${BREAKPOINT_IPHONE}) {
@@ -108,10 +102,15 @@ export default store(css`
     color: var(--color-text-secondary-accent);
   }
 
-  .astro-code code {
+  .syntax-highlighting {
+    overflow: auto;
+    padding: 16px;
+  }
+  .syntax-highlighting code {
     background-color: inherit;
     color: inherit;
   }
+  ${await run_task("src/css/syntax_highlighting_theme.css.js", null)}
 
   blockquote {
     margin-left: 0.2em;
@@ -119,11 +118,10 @@ export default store(css`
     border-left: 0.2em solid var(--color-text-secondary-accent);
     background-color: var(--color-background-secondary);
     color: var(--color-text-secondary);
-
-    code {
-      background-color: var(--color-background-primary);
-      color: var(--color-text-secondary-accent);
-    }
+  }
+  blockquote code {
+    background-color: var(--color-background-primary);
+    color: var(--color-text-secondary-accent);
   }
 
   /* Make it so that on mobile, when tables are too wide, they scroll horizontally */

@@ -14,11 +14,9 @@ export default store(css`
     margin-bottom: 0.5em;
   }
 
-  ul,
-  ol {
-    li {
-      margin-bottom: 0.5em;
-    }
+  ul li,
+  ol li {
+    margin-bottom: 0.5em;
   }
 
   header,

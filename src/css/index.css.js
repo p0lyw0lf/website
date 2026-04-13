@@ -4,7 +4,6 @@ import { css } from "../render.js";
 export default store(css`
   ${await run_task("src/css/page.css.js", null)}
 
-  /* comment */
   #pfp {
     margin: 0;
     margin-bottom: 2em;
@@ -16,10 +15,10 @@ export default store(css`
     align-items: center;
     gap: 0.75em;
     margin-bottom: 2em;
-    a {
-      font-size: 2em;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
+  }
+  .bignav a {
+    font-size: 2em;
+    font-weight: 600;
+    text-transform: uppercase;
   }
 `);
