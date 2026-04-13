@@ -17,7 +17,7 @@ const buildPage = async ({ frontmatter, body, slug }) => {
   const blueskyUrl = atprotoPostUrl(bluesky);
   const published = Temporal.Instant.fromEpochMilliseconds(
     frontmatter.published * 1000,
-  );
+  ).toZonedDateTimeISO("America/New_York");
   const url = toBlogUrl(slug);
 
   // TODO: other h-entry properties: https://microformats.org/wiki/h-entry#Core_Properties
@@ -33,11 +33,10 @@ const buildPage = async ({ frontmatter, body, slug }) => {
       <div class="info">
         <h1 class="p-name">${title}</h1>
         <span
-          >Published:
+          >Published
           <time class="dt-published" datetime="${published.toString()}"
-            >${published.toLocaleString("en-US", {
-              timeZone: "America/New_York",
-            })}</time
+            >on ${published.toPlainDate().toLocaleString()} at
+            ${published.toPlainTime().toLocaleString()}</time
           >
         </span>
       </div>

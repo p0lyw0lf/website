@@ -1,5 +1,6 @@
 import { run_task } from "driver";
 import { BREAKPOINT_DESKTOP } from "../../css/breakpoints.js";
+import { toShortISODate } from "../../data/date.js";
 import { toArtUrl } from "../../data/urls.js";
 import { css, html } from "../../render.js";
 
@@ -7,7 +8,7 @@ export const ArtImage = async ({ post, hidden }) => {
   const { src, alt, title, tags, published: rawPublished } = post.frontmatter;
   const url = toArtUrl(src);
   const published = Temporal.Instant.fromEpochMilliseconds(rawPublished * 1000);
-  const formattedPublished = published.toString();
+  const formattedPublished = toShortISODate(published);
 
   return html`
     <button class="show" popovertarget="${src}">
