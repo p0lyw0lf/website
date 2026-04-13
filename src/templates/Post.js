@@ -34,7 +34,7 @@ export const Post =
       extraHead: html`
         <link
           rel="alternate"
-          type="application/rss+xml"
+          type="application/atom+xml"
           title="${sectionTitle}"
           href="${`${SITE_URL}/${rssLink ?? `${homeLink}rss.xml`}`}"
         />
