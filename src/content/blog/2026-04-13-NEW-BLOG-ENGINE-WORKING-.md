@@ -13,5 +13,5 @@ Other types of rebuilds that change logic affecting all pages range from 200ms t
 
 In the process of getting things this fast, I had to think a lot about algorithms & data structures, which also forced me to learn a lot of new things. I have a few [draft posts](https://rc.wolfgirl.dev/drafts/) about that in the works, which, now that I've properly finished the coding, I will have no excuse but to work on instead. Keep an eye out for those I guess ¯\\\_(ツ)\_/¯
 
-[^rss]: You may have already noticed if you're using RSS; the feed went out briefly and has come back as an Atom feed instead.
+[^rss]: You may have already noticed if you're using RSS; the feed went out briefly and has come back as an Atom feed instead. EDIT: I realized the syntax highlighting was broken too; that should be fixed now, with a custom (very bad) colorscheme I made myself.
 [^improvements]: And that's before some other improvements I have in mind, like "don't spawn an absurd amount of Boa contexts" and "use a file watcher instead of hashing every input file every time".
