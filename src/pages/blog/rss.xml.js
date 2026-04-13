@@ -14,7 +14,6 @@ const lastUpdated = pages[0]
 const entries = await Promise.all(pages.map(async (page) => toFeedItem(page)));
 
 const feed = html`
-  <?xml version="1.0" encoding="utf-8" ?>
   <feed xmlns="http://www.w3.org/2005/Atom">
     <id>${site}</id>
     <title>PolyWolf's Blog</title>
@@ -27,7 +26,9 @@ const feed = html`
   </feed>
 `;
 
-export default store(feed.toString());
+export default store(
+  `<?xml version="1.0" encoding="utf-8"?>` + feed.toString(),
+);
 
 export async function GET() {
   const container = await AstroContainer.create();
