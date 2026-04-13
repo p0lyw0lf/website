@@ -55,7 +55,7 @@ const build = async (to_build) => {
     let pathname = to_build.slice(PAGE_ROOT.length, -3);
     if (pathname.endsWith(".html") && !pathname.endsWith("index.html")) {
       // Path should actually be a directory
-      pathname = pathname.slice(-".html".length);
+      pathname = pathname.slice(0, -".html".length);
       pathname = `${pathname}/index.html`;
     }
     let output = await run_task(to_build, pathname);
