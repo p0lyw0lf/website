@@ -22,7 +22,7 @@ const image = await parse_image(object);
 const resizedImages = widths?.length
   ? await Promise.all(
       widths
-        .filter((width) => width < image.size.width)
+        .filter((width) => width < image.size().width)
         .map(async (width) => {
           const resizedImage = await convert_image(image, {
             format: "webp",
