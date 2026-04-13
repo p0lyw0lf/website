@@ -3,6 +3,8 @@ title: "NEW BLOG ENGINE WORKING!!"
 description: "Finally!!! It\u0027s been a while since I started thinking about this, but I finally have things in a state where I can build my entire site u..."
 tags: ["blag"]
 published: 1776087156
+mastodon: "https://social.treehouse.systems/@PolyWolf/116397648449879712"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mjey4dlgyc2t"
 ---
 
 Finally!!! It's been a while since I [started thinking about this](https://wolfgirl.dev/blog/2026-02-23-so-ive-been-thinking-about-static-site-generators/), but I finally have things in a state where I can build my entire site using it. In fact, you're looking at its output right now :3[^rss] The best part? **Rebuilds for a single blog post changing content are 100ms baby** lesgooooooo[^improvements].
