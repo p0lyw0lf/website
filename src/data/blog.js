@@ -18,6 +18,11 @@ export const escapeXml = (unsafe) =>
     }
   });
 
+export const escapeBody = (body) => {
+  const escaped = body.replace("]]>", "]]&gt;");
+  return `<![CDATA[${escaped}]]>`;
+};
+
 /**
  * @param {import("./collections.js").File} file
  * @returns {Promise<string>}
@@ -38,7 +43,7 @@ export const toFeedItem = async ({ frontmatter, body, slug }) => {
       <published>${formattedPublished}</published>
       <updated>${formattedPublished}</updated>
       ${description && html`<summary>${escapeXml(description)}</summary>`}
-      <content type="html">${content}</content>
+      <content type="html">${escapeBody(content.toString())}</content>
       <author>
         <name>PolyWolf</name>
         <uri>https://wolf.girl.technology/</uri>
