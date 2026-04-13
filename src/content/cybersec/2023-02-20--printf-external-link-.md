@@ -1,5 +1,5 @@
 ---
-title: '"printf external link()"'
+title: "\"printf external link()\""
 repost_link: "https://twitter.com/netspooky/status/1627719779623501847"
 ---
 

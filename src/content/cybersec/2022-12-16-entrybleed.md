@@ -1,6 +1,6 @@
 ---
-title: Breaking KASLR under KPTI with Prefetch
-repost_link: https://www.willsroot.io/2022/12/entrybleed.html
+title: "Breaking KASLR under KPTI with Prefetch"
+repost_link: "https://www.willsroot.io/2022/12/entrybleed.html"
 ---
 
 Note: KASLR = Kernel Address Space Location Randomization  

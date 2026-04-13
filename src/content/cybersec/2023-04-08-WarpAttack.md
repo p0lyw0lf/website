@@ -1,6 +1,6 @@
 ---
-title: WarpAttack
-repost_link: https://nebelwelt.net/files/23Oakland3.pdf
+title: "WarpAttack"
+repost_link: "https://nebelwelt.net/files/23Oakland3.pdf"
 ---
 
 From https://twitter.com/gannimo/status/1644603044623949824 :

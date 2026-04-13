@@ -1,6 +1,6 @@
 ---
-title: \"Yeah I got a CVE :sunglasses:\"
-repost_link: https://github.com/pypa/virtualenv/issues/1207
+title: "\"Yeah I got a CVE :sunglasses:\""
+repost_link: "https://github.com/pypa/virtualenv/issues/1207"
 ---
 
 This is, quite possibly, the dumbest CVE ever assigned.

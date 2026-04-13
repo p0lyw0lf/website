@@ -1,6 +1,6 @@
 import { run_task } from "driver";
 import { STATIC_URL } from "../data/urls.js";
-import { html } from "../render.js";
+import { css, html } from "../render.js";
 
 /**
  * @typedef Props
@@ -22,5 +22,9 @@ export const HeaderPfp = async ({ src, alt }) => {
     loading: "eager",
     alt,
   });
-  return html`<a href="/art/">${remoteImage}</a>`;
+  return html`<a id="headerPfp" href="/art/">${remoteImage}</a>`.withStyle(css`
+    #headerPfp {
+      display: flex;
+    }
+  `);
 };

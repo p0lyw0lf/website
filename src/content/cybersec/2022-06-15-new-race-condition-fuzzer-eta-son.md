@@ -1,6 +1,6 @@
 ---
-title: New Race Condition Fuzzer ETA Son
-repost_link: https://twitter.com/nedwilliamson/status/1537134210766368768
+title: "New Race Condition Fuzzer ETA Son"
+repost_link: "https://twitter.com/nedwilliamson/status/1537134210766368768"
 ---
 
 From [@NedWilliamson](https://twitter.com/nedwilliamson):

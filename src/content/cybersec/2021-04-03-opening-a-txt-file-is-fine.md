@@ -1,6 +1,6 @@
 ---
-title: Opening a TXT file is fine, right?
-repost_link: https://www.paulosyibelo.com/2021/04/this-man-thought-opening-txt-file-is.html
+title: "Opening a TXT file is fine, right?"
+repost_link: "https://www.paulosyibelo.com/2021/04/this-man-thought-opening-txt-file-is.html"
 ---
 
 Turns out no, on MacOS you could've gotten pwned lmao

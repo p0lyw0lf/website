@@ -1,6 +1,6 @@
 ---
-title: OpenSSL Security Fixes
-repost_link: https://twitter.com/filosottile/status/1375087988598792193
+title: "OpenSSL Security Fixes"
+repost_link: "https://twitter.com/filosottile/status/1375087988598792193"
 ---
 
 By [@filosottile](https://twitter.com/filosottile) on twitter:

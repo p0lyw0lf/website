@@ -1,6 +1,6 @@
 ---
 title: "Windows: Investigating Filter Communication Ports"
-repost_link: https://windows-internals.com/investigating-filter-communication-ports/
+repost_link: "https://windows-internals.com/investigating-filter-communication-ports/"
 ---
 
 i'ma be honest: i see Windows kernel stuff, i read.  

@@ -1,6 +1,6 @@
 ---
-title: History of NSA Installing Backdoors on Juniper Routers
-repost_link: https://twitter.com/matthew_d_green/status/1433470109742518273
+title: "History of NSA Installing Backdoors on Juniper Routers"
+repost_link: "https://twitter.com/matthew_d_green/status/1433470109742518273"
 ---
 
 [@matthew_d_green](https://twitter.com/matthew_d_green):

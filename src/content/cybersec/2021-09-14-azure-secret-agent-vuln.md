@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Secret Agent Vulnerability
-repost_link: https://twitter.com/GossiTheDog/status/1437896101756030982
+title: "Microsoft Azure Secret Agent Vulnerability"
+repost_link: "https://twitter.com/GossiTheDog/status/1437896101756030982"
 ---
 
 [@GossiTheDog](https://twitter.com/GossiTheDog):
