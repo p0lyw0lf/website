@@ -8,7 +8,7 @@ import { Post } from "../../templates/Post.js";
 
 const getPages = async () => {
   return Object.values(await blog()).sort(
-    (a, b) => a.frontmatter.published - b.frontmatter.published,
+    (a, b) => b.frontmatter.published - a.frontmatter.published,
   );
 };
 

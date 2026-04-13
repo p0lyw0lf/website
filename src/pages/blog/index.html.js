@@ -16,20 +16,17 @@ export default await Post({
   <p>
     Some recent posts:
     <ul>
-      ${pages
-        .slice(-10)
-        .reverse()
-        .map(
-          (page) =>
-            html`<li
-              >${PostLink({
-                title: page.frontmatter.title,
-                published: page.frontmatter.published,
-                tags: page.frontmatter.tags,
-                slug: page.slug,
-              })}</li
-            >`,
-        )}
+      ${pages.slice(0, 10).map(
+        (page) =>
+          html`<li
+            >${PostLink({
+              title: page.frontmatter.title,
+              published: page.frontmatter.published,
+              tags: page.frontmatter.tags,
+              slug: page.slug,
+            })}</li
+          >`,
+      )}
     </ul>
   </p>
   <p>An archive of past posts is available via <a href="/tags/">tags</a>.</p>
