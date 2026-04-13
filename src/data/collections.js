@@ -25,7 +25,7 @@ export const glob =
     const filesWithSlug = filenames.flatMap((filename) => {
       const match = pattern.exec(filename);
       if (!match || !match[1]) return [];
-      const slug = match[1];
+      const slug = match[1].toLowerCase();
       return [[filename, slug]];
     });
     const output = {};
