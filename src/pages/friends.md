@@ -12,3 +12,5 @@ This list is incomplete! You can help by expanding it
 - [JeanHyde](https://thephd.dev) - master of the arcane arts (C standard committee procedures)
 - [Alice](https://welltypedwit.ch) - Functional programming influencer (real)
 - [Rykarn](https://rykarn.se) - Cohost refugee, originator of some of the best CSS Crimes
+- [Tends](https://tends.to) - Cool Car Enthusiant & fellow [Tran Girlismo](https://www.trangirlismo.com/) listener
+- [Thunderseethe](https://thunderseethe.dev) - Compiler sensei w/ an excellent tutorial series
