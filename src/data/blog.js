@@ -1,6 +1,6 @@
 import { run_task } from "driver";
 import { html } from "../render.js";
-import { toBlogUrl } from "./urls.js";
+import { SITE_URL, toBlogUrl } from "./urls.js";
 
 export const escapeXml = (unsafe) =>
   unsafe.replace(/[<>&'"]/g, (c) => {
@@ -32,14 +32,14 @@ export const toFeedItem = async ({ frontmatter, body, slug }) => {
   const formattedPublished = Temporal.Instant.fromEpochMilliseconds(
     published * 1000,
   ).toString();
-  const url = toBlogUrl(slug);
+  const url = SITE_URL + toBlogUrl(slug);
   const content = await run_task("src/runtime/markdown.js", body);
 
   return html`
     <entry>
       <title>${escapeXml(title)}</title>
       <link rel="alternate" href="${url}" />
-      <id>${slug}</id>
+      <id>${url}</id>
       <published>${formattedPublished}</published>
       <updated>${formattedPublished}</updated>
       ${description && html`<summary>${escapeXml(description)}</summary>`}
