@@ -4,7 +4,11 @@ import { html } from "../../render.js";
 import { Cybersec } from "../../templates/Cybersec.js";
 
 const getPages = async () => {
-  return Object.values(await cybersec());
+  return (
+    Object.values(await cybersec())
+      // Sorting by slug is like sorting by date, effectively
+      .sort((a, b) => b.slug.localeCompare(a.slug))
+  );
 };
 
 const buildPage = async ({ frontmatter, body, slug }) => {

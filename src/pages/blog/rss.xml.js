@@ -1,5 +1,5 @@
 import { run_task, store } from "driver";
-import { toFeedItem } from "../../data/blog.js";
+import { toBlogFeedEntry } from "../../data/rss.js";
 import { SITE_URL } from "../../data/urls.js";
 import { html } from "../../render.js";
 
@@ -11,7 +11,9 @@ const lastUpdated = pages[0]
       pages[0].frontmatter.published * 1000,
     )
   : Temporal.Now.instant();
-const entries = await Promise.all(pages.map(async (page) => toFeedItem(page)));
+const entries = await Promise.all(
+  pages.map(async (page) => toBlogFeedEntry(page)),
+);
 
 const feed = html`
   <feed xmlns="http://www.w3.org/2005/Atom">
@@ -29,18 +31,3 @@ const feed = html`
 export default store(
   `<?xml version="1.0" encoding="utf-8"?>` + feed.toString(),
 );
-
-export async function GET() {
-  const container = await AstroContainer.create();
-
-  const entries = await getBlogEntries();
-  const items = await Promise.all(entries.map(toFeedItem(container)));
-
-  return rss({
-    title: "PolyWolf's Blog",
-    description: "a blog written by PolyWolf",
-    site: new URL("/blog/", SITE_URL).toString(),
-    items,
-    customData: `<language>en-us</language>`,
-  });
-}

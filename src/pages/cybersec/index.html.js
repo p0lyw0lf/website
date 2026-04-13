@@ -4,8 +4,6 @@ import { html } from "../../render.js";
 import { Post } from "../../templates/Post.js";
 
 const posts = await run_task("src/pages/cybersec/[slug].html.js", null);
-// Sorting by slug is like sorting by date, effectively
-posts.sort((a, b) => b.slug.localeCompare(a.slug));
 
 export default await Post({
   sectionTitle: "PolyWolf on Security",
