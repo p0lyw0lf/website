@@ -187,7 +187,7 @@ All of this is also why we need hermetic (deterministic) builds. Red-Green & oth
 
 ## (3) I Want Fast Re-Builds When Logic Changes
 
-Even among other SSGs that do have caching (which the vast majority do not, mind you), they'll assume "most the time you'll be editing content, requiring a re-build when content changes is totally fine." But that assumption is bad, actually. Having quick iteration times when hacking on the logic of the site is super valuable & not something I will give up. It's fine if those builds a little slower than changing mere content, but it still shouldn't require a clean build of the entire site just to change the number of posts shown on the home page.
+Even among other SSGs that do have caching (which the vast majority do not, mind you), they'll assume "most the time you'll be editing content, requiring a full re-build when logic changes is totally fine." But that assumption is bad, actually. Having quick iteration times when hacking on the logic of the site is super valuable & not something I will give up. It's fine if those builds a little slower than changing mere content, but it still shouldn't require a clean build of the entire site just to change the number of posts shown on the home page.
 
 This might be tricky, however, because the previous two requirements _reeeeeeally_ want the build to be in a compiled language. But we'll get there. Just u watch.
 
