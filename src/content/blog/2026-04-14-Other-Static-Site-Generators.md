@@ -3,6 +3,8 @@ title: "Other Static Site Generators"
 description: "This sat in draft for way too long whoops To celebrate a \"working site\" milestone in my driver SSG project, I decided to take a look back..."
 tags: ["reviews"]
 published: 1776179767
+mastodon: "https://social.treehouse.systems/@PolyWolf/116403718143174248"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mjhoej3ras2r"
 ---
 
 ~~This sat in draft for way too long whoops~~
