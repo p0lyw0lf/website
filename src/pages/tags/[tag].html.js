@@ -18,7 +18,7 @@ const getTags = async () => {
 
   return [...byTag.entries()].map(([tag, pages]) => ({
     slug: tag,
-    pages: pages.reverse(),
+    pages,
   }));
 };
 
