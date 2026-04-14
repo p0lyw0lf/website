@@ -11,5 +11,6 @@ pkgs.mkShell {
     entr
     hyperfine
     just
+    live-server
   ];
 }
