@@ -36,7 +36,7 @@ export const Post =
           rel="alternate"
           type="application/atom+xml"
           title="${sectionTitle}"
-          href="${`${SITE_URL}/${rssLink ?? `${homeLink}rss.xml`}`}"
+          href="${SITE_URL + (rssLink ?? `${homeLink}rss.xml`)}"
         />
         ${extraHead}
       `.withStyle((await run_task("src/css/post.css.js", null)).toString()),
