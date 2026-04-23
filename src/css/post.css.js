@@ -159,4 +159,16 @@ export default store(css`
   th {
     padding: 4px 16px;
   }
+
+  .footnotes {
+    border-top: var(--color-border-primary) solid 1px;
+  }
+
+  .footnotes::before {
+    content: "Footnotes";
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 0.7em;
+  }
 `);
