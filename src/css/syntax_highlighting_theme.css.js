@@ -48,23 +48,26 @@ export default store(css`
     background: var(--b16-00);
   }
 
-  .comment,
-  .punctuation.comment {
+  .comment {
     color: var(--b16-03);
   }
 
   .punctuation,
-  .keyword.operator,
+  .operator,
   .syntax-highlighting {
     color: var(--b16-05);
   }
 
-  .constant,
-  .support.constant {
+  .property {
+    color: var(--b16-08);
+  }
+
+  .constant {
     color: var(--b16-09);
   }
 
-  .entity {
+  .constructor,
+  .type {
     color: var(--b16-0a);
   }
 
@@ -72,13 +75,11 @@ export default store(css`
     color: var(--b16-0b);
   }
 
-  .support,
-  .string.regexp {
+  .support {
     color: var(--b16-0c);
   }
 
-  .entity.function,
-  .variable.function {
+  .function {
     color: var(--b16-0d);
   }
 
