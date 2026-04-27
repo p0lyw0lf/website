@@ -3,6 +3,8 @@ title: "What Camera Do Tenichi \u0026 Honoka Use In Hima-Ten?"
 description: "In the (at time of writing) latest english chapter of the romance manga Hima-Ten, the main character Tenichi Iemori goes on a walking-aro..."
 tags: ["reviews", "manga"]
 published: 1777326560
+mastodon: "https://social.treehouse.systems/@PolyWolf/116478874855935217"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mkj2ft2h232n"
 ---
 
 In the (at time of writing) [latest english chapter of the romance manga Hima-Ten](https://www.viz.com/shonenjump/hima-ten-chapter-88/chapter/49865?action=read), the main character Tenichi Iemori goes on a walking-around date with his childhood crush Honoka Kanai. Honoka brings along her parents' DSLR and Tenichi uses that as a lens (heh) to think about how he views Honoka as a romantic partner, because recently he's realized feelings for another heroine, Himari Yoshino.
