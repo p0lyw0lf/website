@@ -7,6 +7,7 @@ export default store(css`
     --dim-font-regular: 1.25rem;
     --dim-font-large: 2rem;
     --dim-border: 1px;
+    --dim-border-thick: 4px;
   }
 
   @media (min-width: ${BREAKPOINT_IPAD}) {

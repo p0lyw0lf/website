@@ -36,6 +36,7 @@ export const ArtImage = async ({ post, hidden }) => {
       font-family: inherit;
       font-size: inherit;
     }
+
     .show {
       background: var(--color-background-secondary);
       border: var(--color-border-primary) solid var(--dim-border);
@@ -46,6 +47,7 @@ export const ArtImage = async ({ post, hidden }) => {
       row-gap: 8px;
       padding: 8px;
     }
+
     .tags {
       color: var(--color-text-secondary-accent);
     }
@@ -53,29 +55,31 @@ export const ArtImage = async ({ post, hidden }) => {
     dialog {
       background: var(--color-background-secondary);
       color: var(--color-text-secondary);
-      padding: 16px;
-      width: calc(100dvw - 32px);
+      width: 100dvw;
       height: 100dvh;
+      border: 0;
+      padding: 16px;
     }
 
     @media (min-width: ${BREAKPOINT_DESKTOP}) {
       dialog {
-        max-width: min(90dvw - 32px, 768px);
+        max-width: min(90dvw, 768px);
         max-height: 90dvh;
-        border: var(--color-text-secondary-accent) solid 2px;
+        border: var(--color-text-secondary-accent) solid var(--dim-border-thick);
       }
     }
+
     dialog > img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
+
     .hide {
       background: none;
       color: var(--color-text-secondary);
-      border: var(--color-text-secondary-accent) solid var(--dim-border);
+      border: var(--color-text-secondary-accent) solid var(--dim-border-thick);
       padding: 4px 8px;
-      margin-top: 8px;
     }
   `);
 };

@@ -45,7 +45,7 @@ const { width: finalWidth, height: finalHeight } = convertedImage.size();
 
 const primarySrc = toAssetUrl(convertedImage);
 write_output(
-  primarySrc.slice(1) /* slice off leading slash */,
+  primarySrc.slice(1) /* slice off the leading slash */,
   convertedImage.object(),
 );
 

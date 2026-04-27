@@ -96,6 +96,60 @@ export default store(css`
     }
   }
 
+  /* Images that can be clicked to show the full resolution */
+  /* TODO: composable stylesheet because this is also used in the art part? */
+  button.show {
+    font-family: inherit;
+    font-size: inherit;
+
+    padding: 0;
+    border: var(--color-border-primary) solid var(--dim-border-thick);
+    display: flex;
+  }
+
+  dialog {
+    background: var(--color-background-secondary);
+    color: var(--color-text-secondary);
+    width: 100dvw;
+    height: 100dvh;
+    border: 0;
+    padding: 16px;
+  }
+
+  @media (min-width: ${BREAKPOINT_DESKTOP}) {
+    dialog {
+      max-width: min(90dvw, 1124px);
+      max-height: 90dvh;
+      border: var(--color-text-secondary-accent) solid var(--dim-border-thick);
+    }
+  }
+
+  button.hide {
+    font-family: inherit;
+    font-size: inherit;
+
+    background: none;
+    color: var(--color-text-secondary);
+    border: var(--color-text-secondary-accent) solid var(--dim-border-thick);
+    padding: 4px 8px;
+  }
+
+  dialog figure {
+    width: 100%;
+    margin: 16px 0 0 0;
+  }
+
+  dialog figure img {
+    object-fit: contain;
+    border: var(--color-border-primary) solid var(--dim-border-thick);
+  }
+
+  /* Stop scrolling body when popover is shown */
+  body:has(:popover-open) {
+    overflow: hidden;
+  }
+
+  /* Code blocks */
   code {
     font-family: Consolas, monaco, monospace;
     background-color: var(--color-background-secondary);

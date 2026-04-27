@@ -5,6 +5,10 @@ export default store(css`
   ${await run_task("src/css/dims.css.js", null)}
   ${await run_task("src/css/semantic_colors.css.js", null)}
 
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
     background-color: var(--color-background-primary);

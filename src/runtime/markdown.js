@@ -1,4 +1,5 @@
-import { markdown_to_html, minify_html, run_task, store } from "driver";
+import { markdown_to_html, minify_html, store } from "driver";
+import { BlogImage } from "../components/blog/BlogImage.js";
 import { replaceMatches } from "../util.js";
 
 /**
@@ -39,12 +40,7 @@ const contents = await replaceMatches(
     }
     const alt = match.groups.alt || undefined;
     const title = match.groups.title || undefined;
-    return await run_task("src/runtime/remoteImage.js", {
-      url,
-      alt,
-      title,
-      widths: [384, 768, 1536],
-    });
+    return await BlogImage({ url, alt, title });
   },
 );
 
