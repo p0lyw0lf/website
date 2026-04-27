@@ -7,7 +7,7 @@ import {
   write_output,
 } from "driver";
 import { toAssetUrl } from "../data/urls.js";
-import { html } from "../render.js";
+import { attributes, html } from "../render.js";
 
 /**
  * Given a url, alt, and title text, converts the image to a safe version for inclusion later.
@@ -58,13 +58,15 @@ const srcSet = resizedImages.map((resizedImage) => {
 export default await minify_html(
   store(
     html`<img
-      src="${primarySrc}"
-      width="${finalWidth}"
-      height="${finalHeight}"
-      ${!!alt && `alt=${JSON.stringify(alt)}`}
-      ${!!loading && `loading=${JSON.stringify(loading)}`}
-      ${!!title && `title=${JSON.stringify(title)}`}
-      ${srcSet.length > 0 && `srcset="${srcSet.join(", ")}"`}
+      ${attributes({
+        height: finalHeight,
+        src: primarySrc,
+        width: finalWidth,
+        alt: alt || undefined,
+        loading: loading || undefined,
+        title: title || undefined,
+        srcSet: srcSet.length > 0 && srcSet.join(", "),
+      })}
     />`.toString(),
   ),
 );

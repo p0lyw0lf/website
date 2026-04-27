@@ -112,3 +112,29 @@ const asStyleable = (value) => {
   }
   return "";
 };
+
+/**
+ * Escapes a string so it's OK to put inside an HTML attribute.
+ *
+ * @param {string} s
+ * @returns {string}
+ */
+export const attribute = (s) => {
+  return `"${String(s).replaceAll('"', "&quot;")}"`;
+};
+
+/**
+ * Escapes an entire set of attributes. Purely for convenience.
+ *
+ * @param {Record<string, string>} o
+ * @returns {string}
+ */
+export const attributes = (o) => {
+  const attrs = [];
+  for (const [key, value] of Object.entries(o)) {
+    if (value !== false && value !== undefined && value !== null) {
+      attrs.push(`${key}=${attribute(value)}`);
+    }
+  }
+  return attrs.join(" ");
+};
