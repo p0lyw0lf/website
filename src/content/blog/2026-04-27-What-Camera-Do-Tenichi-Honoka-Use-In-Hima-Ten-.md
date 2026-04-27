@@ -27,9 +27,9 @@ Therefore, despite the inexact dimensions, hitting all the key details means we 
 
 | pg09                                                                                              | pg10                                                                                              |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| ![](https://static.wolfgirl.dev/polywolf/blog/019dcfe4-101c-777c-8ad1-d85ecf970ed8/IMG_3136.jpeg) | ![](https://static.wolfgirl.dev/polywolf/blog/019dcfe4-101c-777c-8ad1-d85ecf970ed8/IMG_3137.jpeg) |
+| ![Tenichi asks, "... You sure?" and Honoka responds, "Yeah." while Tenichi holds the camera, presumably talking about whether he can use it.](https://static.wolfgirl.dev/polywolf/blog/019dcfe4-101c-777c-8ad1-d85ecf970ed8/IMG_3136.jpeg) | ![Tenichi internally exclaims, "This is it!" while gasping at the camera, because he's got a good shot](https://static.wolfgirl.dev/polywolf/blog/019dcfe4-101c-777c-8ad1-d85ecf970ed8/IMG_3137.jpeg) |
 pg16
-![](https://static.wolfgirl.dev/polywolf/blog/019dcfe4-101c-777c-8ad1-d85ecf970ed8/IMG_3138.jpeg)
+![Honoka smiles, "...That's the best one I've taken!", showing Tenichi a picture she took of him](https://static.wolfgirl.dev/polywolf/blog/019dcfe4-101c-777c-8ad1-d85ecf970ed8/IMG_3138.jpeg)
 
 Fortunately, for the rest of the chapter, the mangaka realizes trying to draw a camera by hand is really hard/overly time-consuming, so they photobash it instead. This gives us a few more good clues into what the camera actually is.
 
