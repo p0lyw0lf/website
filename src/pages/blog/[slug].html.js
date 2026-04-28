@@ -15,9 +15,10 @@ const getPages = async () => {
 const buildPage = async ({ frontmatter, body, slug }) => {
   const { title, description, mastodon, bluesky, tags } = frontmatter;
   const blueskyUrl = atprotoPostUrl(bluesky);
-  const published = Temporal.Instant.fromEpochMilliseconds(
+  const epochPublished = Temporal.Instant.fromEpochMilliseconds(
     frontmatter.published * 1000,
-  ).toZonedDateTimeISO("America/New_York");
+  );
+  const published = epochPublished.toZonedDateTimeISO("America/New_York");
   const url = toBlogUrl(slug);
 
   // TODO: other h-entry properties: https://microformats.org/wiki/h-entry#Core_Properties
@@ -34,7 +35,7 @@ const buildPage = async ({ frontmatter, body, slug }) => {
         <h1 class="p-name">${title}</h1>
         <span
           >Published
-          <time class="dt-published" datetime="${published.toString()}"
+          <time class="dt-published" datetime="${epochPublished.toString()}"
             >on ${published.toPlainDate().toLocaleString()} at
             ${published.toPlainTime().toLocaleString()}</time
           >

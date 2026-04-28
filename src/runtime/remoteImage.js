@@ -63,9 +63,10 @@ export default await minify_html(
         src: primarySrc,
         width: finalWidth,
         alt: alt || undefined,
-        loading: loading || undefined,
+        loading: loading || "lazy",
         title: title || undefined,
         srcSet: srcSet.length > 0 && srcSet.join(", "),
+        sizes: srcSet.length > 0 && "auto",
       })}
     />`.toString(),
   ),
