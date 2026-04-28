@@ -1,22 +1,6 @@
-import { run_task } from "driver";
+import { markdown_to_html, minify_html } from "driver";
 import { html } from "../render.js";
 import { SITE_URL, toBlogUrl, toCybersecUrl } from "./urls.js";
-
-export const escapeXml = (unsafe) =>
-  unsafe.replace(/[<>&'"]/g, (c) => {
-    switch (c) {
-      case "<":
-        return "&lt;";
-      case ">":
-        return "&gt;";
-      case "&":
-        return "&amp;";
-      case "'":
-        return "&apos;";
-      case '"':
-        return "&quot;";
-    }
-  });
 
 export const escapeBody = (body) => {
   const escaped = body.replace("]]>", "]]&gt;");
@@ -33,16 +17,19 @@ export const toBlogFeedEntry = async ({ frontmatter, body, slug }) => {
     published * 1000,
   ).toString();
   const url = SITE_URL + toBlogUrl(slug);
-  const content = await run_task("src/runtime/markdown.js", body);
+
+  // TODO: If we ever decide to add markdown passes that _aren't_ transforming images, we'll need to
+  // add some parameters to our src/runtime/markdown.js task.
+  const content = await minify_html(await markdown_to_html(body));
 
   return html`
     <entry>
-      <title>${escapeXml(title)}</title>
+      <title>${escapeBody(title)}</title>
       <link rel="alternate" href="${url}" />
       <id>${url}</id>
       <published>${formattedPublished}</published>
       <updated>${formattedPublished}</updated>
-      ${description && html`<summary>${escapeXml(description)}</summary>`}
+      ${description && html`<summary>${escapeBody(description)}</summary>`}
       <content type="html">${escapeBody(content.toString())}</content>
       <author>
         <name>PolyWolf</name>
@@ -61,11 +48,11 @@ export const toCybersecFeedEntry = async ({ frontmatter, body, slug }) => {
   const date = Temporal.PlainDate.from(slug.slice(0, 10));
   const formattedPublished = date.toPlainDateTime("12:00:00").toString() + "Z";
   const url = SITE_URL + toCybersecUrl(slug);
-  const content = await run_task("src/runtime/markdown.js", body);
+  const content = await minify_html(await markdown_to_html(body));
 
   return html`
     <entry>
-      <title>${escapeXml(title)}</title>
+      <title>${escapeBody(title)}</title>
       <link rel="alternate" href="${url}" />
       <id>${url}</id>
       <published>${formattedPublished}</published>
