@@ -85,7 +85,7 @@ export default store(css`
       align-items: flex-start;
 
       padding: 32px;
-      width: 10rem;
+      width: 12rem;
     }
 
     main {
