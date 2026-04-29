@@ -1,11 +1,11 @@
-import { read_file, store } from "driver";
+import { store } from "driver";
 
 /**
- * Given a filename in ARG, parses it into `[frontmatter, body]`,
+ * Given a StoreObject in ARG, parses it into `[frontmatter, body]`,
  * where `frontmatter` is an object and `body` is a StoreObject.
  */
 
-const contents = (await read_file(ARG)).toString();
+const contents = ARG.toString();
 
 // Split file into frontmatter (where the props are) and the body
 const [, rawFrontmatter, ...bodyParts] = contents.split("---\n");
