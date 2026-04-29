@@ -17,12 +17,12 @@ const getTags = async () => {
   }
 
   return [...byTag.entries()].map(([tag, pages]) => ({
-    slug: tag,
+    tag,
     pages,
   }));
 };
 
-const buildTagPage = async ({ slug: tag, pages }) => {
+const buildTagPage = async ({ tag, pages }) => {
   const url = toTagUrl(tag);
   return await Post({
     pathname: url,

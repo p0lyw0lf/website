@@ -5,7 +5,7 @@ import { Post } from "../../templates/Post.js";
 
 const tags = await run_task("src/pages/tags/[tag].html.js", null);
 const sortedTags = tags.sort(
-  ({ slug: tagA, pages: pagesA }, { slug: tagB, pages: pagesB }) => {
+  ({ tag: tagA, pages: pagesA }, { tag: tagB, pages: pagesB }) => {
     const byNumPages = pagesB.length - pagesA.length;
     if (byNumPages) return byNumPages;
     const byTagName = tagA.localeCompare(tagB);
@@ -24,8 +24,7 @@ export default await Post({
   <h1>Tags</h1>
   <ul>
     ${sortedTags.map(
-      ({ slug: tag, pages }) =>
-        html`<li>${TagLink({ tag })} (${pages.length})</li>`,
+      ({ tag, pages }) => html`<li>${TagLink({ tag })} (${pages.length})</li>`,
     )}
   </ul>
 `);
