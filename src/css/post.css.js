@@ -105,6 +105,7 @@ export default store(css`
     padding: 0;
     border: var(--color-border-primary) solid var(--dim-border-thick);
     display: flex;
+    width: 100%;
   }
 
   dialog {
