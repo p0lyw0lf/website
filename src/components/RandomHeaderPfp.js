@@ -28,6 +28,10 @@ const propChoices = [
     src: "_2024-07-princess.png",
     alt: "PolyWolf holding a crown, sticking her tongue out",
   },
+  {
+    src: "_2026-04-crescent-square.png",
+    alt: "PolyWolf in a bucket hat",
+  },
 ];
 
 /**
