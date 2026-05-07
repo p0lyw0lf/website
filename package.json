@@ -4,7 +4,7 @@
   "description": "",
   "main": "BUILD.js",
   "scripts": {
-    "build": "../driver/target/release/driver_bin ./BUILD.js",
+    "build": "../driver/target/release/driver ./BUILD.js",
     "sync:static": "aws s3 sync ./static s3://static.wolfgirl.dev"
   },
   "repository": {

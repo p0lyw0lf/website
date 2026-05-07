@@ -5,6 +5,7 @@
 pkgs.mkShell {
   buildInputs = [ ];
   nativeBuildInputs = with pkgs; [
+    awscli2
     corepack
     nodejs
 
