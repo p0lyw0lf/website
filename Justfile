@@ -1,5 +1,5 @@
 build:
-	../driver/target/release/driver ./BUILD.js
+	../driver/target/release/driver run ./BUILD.js
 watch:
 	(echo BUILD.js && ls -d src/**/*) | entr just
 serve:
@@ -8,7 +8,7 @@ clean:
 	rm -rf dist
 	rm -r .driver/cache.zst
 trace:
-	RUST_LOG=query=trace ../driver/target/release/driver ./BUILD.js > trace.txt
+	RUST_LOG=query=trace ../driver/target/release/driver run ./BUILD.js > trace.txt
 	nvim trace.txt
 graph:
-	../driver/target/release/driver --print_graph
+	../driver/target/release/driver print-graph

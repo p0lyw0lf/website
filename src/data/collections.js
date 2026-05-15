@@ -33,7 +33,7 @@ export const glob =
       filesWithSlug.map(async ([filename, slug]) => {
         const file = await read_file(filename);
         const { frontmatter, body } = await run_task(
-          "./src/runtime/frontmatter.js",
+          "src/runtime/frontmatter.js",
           file,
         );
         output[filename] = { frontmatter: schema(frontmatter), body, slug };

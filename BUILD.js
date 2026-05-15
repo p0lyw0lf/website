@@ -94,9 +94,10 @@ const build = async (inputPath) => {
   }
 };
 
-if (ARG) {
+if (typeof ARG === "string") {
   await build(ARG);
 } else {
+  // Ignore command-line arguments passed as array
   await build(PAGE_ROOT);
   await build(PUBLIC_ROOT);
 }
