@@ -53,7 +53,7 @@ export const Post =
               <div>
                 <h2><a href="/drafts/">${sectionTitle}</a></h2>
                 <nav>
-                  <a href="?">Back</a>
+                  <a href="?preview=1">Preview</a>
                 </nav>
               </div>
             </header>

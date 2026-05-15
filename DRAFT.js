@@ -15,6 +15,8 @@ const { frontmatter, body } = await run_task(
   "src/runtime/frontmatter.js",
   input,
 );
+// Make it so we don't have to re-generate the body every time necessarily
+frontmatter.published = 0;
 const page = await run_task("src/pages/blog/[slug].html.js", {
   frontmatter,
   body,

@@ -96,6 +96,28 @@ export default store(css`
     }
   }
 
+  h1 a.anchor::before {
+    content: "#";
+  }
+  h2 a.anchor::before {
+    content: "##";
+  }
+  h3 a.anchor::before {
+    content: "###";
+  }
+  h4 a.anchor::before {
+    content: "####";
+  }
+  h5 a.anchor::before {
+    content: "#####";
+  }
+  h5 a.anchor::before {
+    content: "######";
+  }
+  a.anchor::before {
+    padding-right: 0.2em;
+  }
+
   /* Images that can be clicked to show the full resolution */
   /* TODO: composable stylesheet because this is also used in the art part? */
   button.show {
