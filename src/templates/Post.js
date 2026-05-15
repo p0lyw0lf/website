@@ -39,6 +39,12 @@ export const Post =
           title="${sectionTitle}"
           href="${SITE_URL + (rssLink ?? `${homeLink}rss.xml`)}"
         />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.46/dist/katex.min.css"
+          integrity="sha384-hW6ZmmePRD2f/9cuxGE6C9faGprtIBOme5OLUiEjtRKMTN67tY23ur9eAi21H8De"
+          crossorigin="anonymous"
+        />
         ${extraHead}
       `.withStyle((await run_task("src/css/post.css.js", null)).toString()),
       header: isDraft

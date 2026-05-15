@@ -168,13 +168,27 @@ export default store(css`
   ${await run_task("src/css/syntax_highlighting_theme.css.js", null)}
 
   blockquote {
-    margin-left: 0.2em;
+    margin-left: 0em;
     padding-left: 0.8em;
     border-left: 0.2em solid var(--color-text-secondary-accent);
     background-color: var(--color-background-secondary);
     color: var(--color-text-secondary);
   }
-  blockquote code {
+
+  /* Make details/summary look similar to blockquote when open */
+  details {
+    margin-left: 0em;
+    padding-left: 0.8em;
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-secondary);
+    border-left: 0.2em solid var(--color-background-secondary);
+  }
+  details[open] {
+    border-left-color: var(--color-text-secondary-accent);
+  }
+
+  blockquote code,
+  details code {
     background-color: var(--color-background-primary);
     color: var(--color-text-secondary-accent);
   }
@@ -213,6 +227,12 @@ export default store(css`
 
   th {
     padding: 4px 16px;
+  }
+
+  .katex:only-child {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
   }
 
   .footnotes {
