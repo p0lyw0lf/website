@@ -19,6 +19,7 @@ const page = await run_task("src/pages/blog/[slug].html.js", {
   frontmatter,
   body,
   slug: "1900-01-01-draft",
+  isDraft: true,
 });
 const output = await minify_html(page);
 

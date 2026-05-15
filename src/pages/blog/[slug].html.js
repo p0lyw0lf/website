@@ -12,7 +12,7 @@ const getPages = async () => {
   );
 };
 
-const buildPage = async ({ frontmatter, body, slug }) => {
+const buildPage = async ({ frontmatter, body, slug, isDraft }) => {
   const { title, description, mastodon, bluesky, tags } = frontmatter;
   const blueskyUrl = atprotoPostUrl(bluesky);
   const epochPublished = Temporal.Instant.fromEpochMilliseconds(
@@ -29,6 +29,7 @@ const buildPage = async ({ frontmatter, body, slug }) => {
     sectionTitle: "PolyWolf's Blog",
     title,
     description,
+    isDraft,
   })(
     html`
       <div class="info">
@@ -38,8 +39,8 @@ const buildPage = async ({ frontmatter, body, slug }) => {
           <time class="dt-published" datetime="${epochPublished.toString()}"
             >on ${published.toPlainDate().toLocaleString()} at
             ${published.toPlainTime().toLocaleString()}</time
-          >
-        </span>
+          ></span
+        >
       </div>
       <article class="e-content"
         >${await run_task("src/runtime/markdown.js", body)}</article

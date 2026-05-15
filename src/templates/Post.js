@@ -7,10 +7,11 @@ import { Base } from "./Base.js";
 /**
  * @typedef {import("./Base.js").Props} BaseProps
  *
- * @typedef {object} Props
+ * @typedef {BaseProps} Props
  * @property {string} sectionTitle
  * @property {string} homeLink
  * @property {string} [rssLink]
+ * @property {boolean} [isDraft]
  *
  * @typedef {object} Slots
  * @property {string} [extraHead]
@@ -27,7 +28,7 @@ import { Base } from "./Base.js";
  * @returns {Render}
  */
 export const Post =
-  ({ sectionTitle, homeLink, rssLink, ...props }) =>
+  ({ sectionTitle, homeLink, rssLink, isDraft, ...props }) =>
   async (slot, extraSlots = {}) => {
     const { extraHead, footer } = extraSlots;
     return Base(props)(slot, {
@@ -40,22 +41,33 @@ export const Post =
         />
         ${extraHead}
       `.withStyle((await run_task("src/css/post.css.js", null)).toString()),
-      header: html`
-        <header>
-          ${await RandomHeaderPfp()}
-          <div>
-            <h2><a href="${homeLink}">${sectionTitle}</a></h2>
-            <nav>
-              <a href="/">Home</a>
-              <a href="/about/">About</a>
-              <a href="/friends/">Friends</a>
-              <a href="/art/">Art</a>
-              <a href="/blog/">Blog</a>
-              <a href="/cybersec/">Cybersec</a>
-            </nav>
-          </div>
-        </header>
-      `,
+      header: isDraft
+        ? html`
+            <header>
+              <div>
+                <h2><a href="/drafts/">${sectionTitle}</a></h2>
+                <nav>
+                  <a href="?">Back</a>
+                </nav>
+              </div>
+            </header>
+          `
+        : html`
+            <header>
+              ${await RandomHeaderPfp()}
+              <div>
+                <h2><a href="${homeLink}">${sectionTitle}</a></h2>
+                <nav>
+                  <a href="/">Home</a>
+                  <a href="/about/">About</a>
+                  <a href="/friends/">Friends</a>
+                  <a href="/art/">Art</a>
+                  <a href="/blog/">Blog</a>
+                  <a href="/cybersec/">Cybersec</a>
+                </nav>
+              </div>
+            </header>
+          `,
       footer,
     });
   };
