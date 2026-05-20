@@ -62,7 +62,9 @@ export default store(css`
     color: var(--b16-08);
   }
 
-  .constant {
+  .constant,
+  .language-rust .label,
+  .language-rust .operator {
     color: var(--b16-09);
   }
 
