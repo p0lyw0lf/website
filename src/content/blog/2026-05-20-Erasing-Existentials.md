@@ -3,6 +3,8 @@ title: "Erasing Existentials"
 description: "I got nerd-sniped hard, so I wrote a blog post about how to type-erase existential quantifiers in Rust."
 tags: ["programming", "rust"]
 published: 1779284612
+mastodon: "https://social.treehouse.systems/@PolyWolf/116607197128783469"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mmbzxzva3l2a"
 ---
 
 Recently, I got nerd-sniped _hard_ by [a post made by](https://bsky.app/profile/welltypedwit.ch/post/3mlpwmdubds2i) [Alice (@welltypedwit.ch)](https://welltypedwit.ch/). In it, she asks:
