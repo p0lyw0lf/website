@@ -28,7 +28,7 @@ export const Base =
   ({ title, pathname, overrideTitle, description }) =>
   async (slot, extraSlots) => {
     const { extraHead, header, footer } = extraSlots ?? {};
-    const canonicalUrl = `${SITE_URL}/${pathname}`;
+    const canonicalUrl = `${SITE_URL}${pathname}`;
 
     const fullTitle = overrideTitle ?? `wolfgirl.dev - ${title}`;
 
