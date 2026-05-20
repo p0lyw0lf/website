@@ -1,7 +1,7 @@
 ---
 title: "Deriving `Functor` in Rust"
 description: "Wow it\u0027s been a hot minute! I kept meaning to write about this, but each time I sat down, I came up with a new idea that I just _had_ to..."
-tags: ["programming", "rust-lang"]
+tags: ["programming", "rust"]
 published: 1744645076
 mastodon: "https://social.treehouse.systems/@PolyWolf/114337060818526466"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lmrvj3n4us2t"

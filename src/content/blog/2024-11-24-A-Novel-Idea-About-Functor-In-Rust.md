@@ -1,7 +1,7 @@
 ---
 title: "A Novel Idea About `Functor` In Rust?"
 description: "I may have accidentally come up with a paper-worthy idea while just playing around with my silly compiler project"
-tags: ["programming", "pwcc", "rust-lang"]
+tags: ["programming", "pwcc", "rust"]
 published: 1732487056
 ---
 

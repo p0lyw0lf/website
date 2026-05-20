@@ -1,7 +1,7 @@
 ---
 title: "Swift *almost* does a really cool thing I want"
 description: "On my [toy compiler](https://wolfgirl.dev/blog/2024-10-17-work-on-my-toy-compiler-is-progressing-smoothly/), I have a lot of AST manipula..."
-tags: ["programming", "pwcc", "rust-lang", "swift-lang"]
+tags: ["programming", "pwcc", "rust", "swift-lang"]
 published: 1731504980
 ---
 

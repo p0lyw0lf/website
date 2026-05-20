@@ -1,7 +1,7 @@
 ---
 title: "One Neat Trick For Writing Large `macro_rules!`"
 description: "First, let\u0027s start with a related \"neat trick\" that lets you write _composable_ `macro_rules!`. Say you have a macro that generates struc..."
-tags: ["programming", "rust-lang", "pwcc"]
+tags: ["programming", "rust", "pwcc"]
 published: 1737163083
 mastodon: "https://social.treehouse.systems/@PolyWolf/113846719871374136"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3lfy5acsm5s2z"
