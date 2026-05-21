@@ -1,10 +1,10 @@
-import { run_task, store } from "driver";
+import { run_js, store } from "driver";
 import { toBlogFeedEntry } from "../../../data/rss.js";
 import { SITE_URL, toTagUrl } from "../../../data/urls.js";
 import { html } from "../../../render.js";
 
 const getTags = async () => {
-  return await run_task("src/pages/tags/[tag].html.js", null);
+  return await run_js("src/pages/tags/[tag].html.js", null);
 };
 
 export const buildTagFeed = async ({ tag, pages }) => {

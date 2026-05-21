@@ -1,4 +1,4 @@
-import { run_task } from "driver";
+import { run_js } from "driver";
 import { STATIC_URL } from "../data/urls.js";
 import { css, html } from "../render.js";
 
@@ -14,7 +14,7 @@ import { css, html } from "../render.js";
  * @returns {Promise<import("../render.js").HTML>}
  */
 export const HeaderPfp = async ({ src, alt }) => {
-  const remoteImage = await run_task("src/runtime/remoteImage.js", {
+  const remoteImage = await run_js("src/runtime/remoteImage.js", {
     url: `${STATIC_URL}/pfps/${src}`,
     width: 128,
     height: 128,

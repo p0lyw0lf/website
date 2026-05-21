@@ -1,4 +1,4 @@
-import { run_task, store } from "driver";
+import { run_js, store } from "driver";
 import { SITE_URL } from "../data/urls.js";
 import { html } from "../render.js";
 
@@ -81,7 +81,7 @@ export const Base =
 
           ${extraHead}
           <style>
-            ${await run_task("src/css/common.css.js", null)}
+            ${await run_js("src/css/common.css.js", null)}
             ${extraHead?.style}
             ${slot.style}
             ${header?.style}

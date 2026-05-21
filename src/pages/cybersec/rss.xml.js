@@ -1,11 +1,11 @@
-import { run_task, store } from "driver";
+import { run_js, store } from "driver";
 import { toCybersecFeedEntry } from "../../data/rss.js";
 import { SITE_URL } from "../../data/urls.js";
 import { html } from "../../render.js";
 
 const site = SITE_URL + "/cybersec/";
 
-const pages = await run_task("src/pages/cybersec/[slug].html.js", null);
+const pages = await run_js("src/pages/cybersec/[slug].html.js", null);
 const lastUpdated = pages[0]
   ? Temporal.PlainDate.from(pages[0].slug.slice(0, 10))
       .toPlainDateTime("12:00:00")

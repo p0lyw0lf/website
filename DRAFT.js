@@ -1,4 +1,4 @@
-import { minify_html, read_file, run_task, write_output } from "driver";
+import { minify_html, read_file, run_js, write_output } from "driver";
 
 if (!Array.isArray(ARG)) {
   throw new Error("unexpected: ARG is not an array");
@@ -11,13 +11,13 @@ if (typeof filename !== "string") {
 
 // Bare minimum pipeline adapted from ./BUILD.js
 const input = await read_file(`drafts/src/${filename}`);
-const { frontmatter, body } = await run_task(
+const { frontmatter, body } = await run_js(
   "src/runtime/frontmatter.js",
   input,
 );
 // Make it so we don't have to re-generate the body every time necessarily
 frontmatter.published = 0;
-const page = await run_task("src/pages/blog/[slug].html.js", {
+const page = await run_js("src/pages/blog/[slug].html.js", {
   frontmatter,
   body,
   slug: "1900-01-01-draft",

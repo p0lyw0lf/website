@@ -1,9 +1,9 @@
-import { run_task, store } from "driver";
+import { run_js, store } from "driver";
 import { css } from "../render.js";
 
 export default store(css`
-  ${await run_task("src/css/dims.css.js", null)}
-  ${await run_task("src/css/semantic_colors.css.js", null)}
+  ${await run_js("src/css/dims.css.js", null)}
+  ${await run_js("src/css/semantic_colors.css.js", null)}
 
   * {
     box-sizing: border-box;

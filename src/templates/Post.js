@@ -1,4 +1,4 @@
-import { run_task } from "driver";
+import { run_js } from "driver";
 import { RandomHeaderPfp } from "../components/RandomHeaderPfp.js";
 import { SITE_URL } from "../data/urls.js";
 import { html } from "../render.js";
@@ -46,7 +46,7 @@ export const Post =
           crossorigin="anonymous"
         />
         ${extraHead}
-      `.withStyle((await run_task("src/css/post.css.js", null)).toString()),
+      `.withStyle((await run_js("src/css/post.css.js", null)).toString()),
       header: isDraft
         ? html`
             <header>

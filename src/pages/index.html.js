@@ -1,4 +1,4 @@
-import { run_task } from "driver";
+import { run_js } from "driver";
 import { RandomLandingPfp } from "../components/RandomLandingPfp.js";
 import { html } from "../render.js";
 import { Base } from "../templates/Base.js";
@@ -30,7 +30,7 @@ export default await Base({
       Top header is a link that takes you to the previous page. "Blog" and
       "Cybersec" have a bit better styling on them, rest are pretty silly tho :P
     </p>
-  `.withStyle(await run_task("src/css/index.css.js", null)),
+  `.withStyle(await run_js("src/css/index.css.js", null)),
   {
     header: html`
       <header>

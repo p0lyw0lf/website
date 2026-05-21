@@ -1,7 +1,7 @@
-import { markdown_to_html, run_task } from "driver";
+import { markdown_to_html, run_js } from "driver";
 import { MarkdownPage } from "../templates/MarkdownPage.js";
 
-const { frontmatter, body } = await run_task(
+const { frontmatter, body } = await run_js(
   "./src/runtime/frontmatter.js",
   ARG,
 );

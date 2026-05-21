@@ -1,4 +1,4 @@
-import { run_task, store } from "driver";
+import { run_js, store } from "driver";
 import { css } from "../render.js";
 import {
   BREAKPOINT_DESKTOP,
@@ -187,7 +187,7 @@ export default store(css`
     background-color: inherit;
     color: inherit;
   }
-  ${await run_task("src/css/syntax_highlighting_theme.css.js", null)}
+  ${await run_js("src/css/syntax_highlighting_theme.css.js", null)}
 
   blockquote {
     margin-left: 0em;

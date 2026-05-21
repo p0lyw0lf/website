@@ -1,4 +1,4 @@
-import { run_task } from "driver";
+import { run_js } from "driver";
 import { toArtUrl } from "../data/urls.js";
 import { css, html } from "../render.js";
 
@@ -27,7 +27,7 @@ export const LandingPfp = async ({ src, dims, alt, title, desc }) => {
     ({ width: width, height: height } = dims);
   }
 
-  const remoteImage = await run_task("src/runtime/remoteImage.js", {
+  const remoteImage = await run_js("src/runtime/remoteImage.js", {
     url,
     alt,
     title,

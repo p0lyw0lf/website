@@ -1,11 +1,11 @@
-import { run_task, store } from "driver";
+import { run_js, store } from "driver";
 import { toBlogFeedEntry } from "../../data/rss.js";
 import { SITE_URL } from "../../data/urls.js";
 import { html } from "../../render.js";
 
 const site = SITE_URL + "/blog/";
 
-const pages = await run_task("src/pages/blog/[slug].html.js", null);
+const pages = await run_js("src/pages/blog/[slug].html.js", null);
 const lastUpdated = pages[0]
   ? Temporal.Instant.fromEpochMilliseconds(
       pages[0].frontmatter.published * 1000,

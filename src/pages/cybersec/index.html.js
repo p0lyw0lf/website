@@ -1,9 +1,9 @@
-import { run_task } from "driver";
+import { run_js } from "driver";
 import { CybersecLink } from "../../components/cybersec/CybersecLink.js";
 import { html } from "../../render.js";
 import { Post } from "../../templates/Post.js";
 
-const posts = await run_task("src/pages/cybersec/[slug].html.js", null);
+const posts = await run_js("src/pages/cybersec/[slug].html.js", null);
 
 export default await Post({
   sectionTitle: "PolyWolf on Security",

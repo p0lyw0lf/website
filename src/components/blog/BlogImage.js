@@ -1,4 +1,4 @@
-import { minify_html, run_task, store } from "driver";
+import { minify_html, run_js, store } from "driver";
 import { attributes, html } from "../../render.js";
 
 /**
@@ -9,7 +9,7 @@ import { attributes, html } from "../../render.js";
  */
 
 export const BlogImage = async ({ url, alt, title }) => {
-  const img = await run_task("src/runtime/remoteImage.js", {
+  const img = await run_js("src/runtime/remoteImage.js", {
     url,
     alt,
     title,

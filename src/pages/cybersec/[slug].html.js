@@ -1,4 +1,4 @@
-import { run_task } from "driver";
+import { run_js } from "driver";
 import { cybersec } from "../../content/config.js";
 import { html } from "../../render.js";
 import { Cybersec } from "../../templates/Cybersec.js";
@@ -15,7 +15,7 @@ const buildPage = async ({ frontmatter, body, slug }) => {
   const { title, repost_link } = frontmatter;
   return await Cybersec({ slug, title, repost_link, date: slug.slice(0, 10) })(
     html`<article class="e-content"
-      >${await run_task("src/runtime/markdown.js", body)}</article
+      >${await run_js("src/runtime/markdown.js", body)}</article
     >`,
   );
 };

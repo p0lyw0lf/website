@@ -1,4 +1,4 @@
-import { run_task } from "driver";
+import { run_js } from "driver";
 import { ArtImage } from "../components/art/ArtImage.js";
 import { art } from "../content/config.js";
 import { css, html } from "../render.js";
@@ -32,7 +32,7 @@ export default await Base({
       >.
     </p>
   `.withStyle(css`
-    ${await run_task("src/css/page.css.js", null)}
+    ${await run_js("src/css/page.css.js", null)}
 
     main {
       max-width: none;

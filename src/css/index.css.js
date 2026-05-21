@@ -1,8 +1,8 @@
-import { run_task, store } from "driver";
+import { run_js, store } from "driver";
 import { css } from "../render.js";
 
 export default store(css`
-  ${await run_task("src/css/page.css.js", null)}
+  ${await run_js("src/css/page.css.js", null)}
 
   #pfp {
     margin: 0;

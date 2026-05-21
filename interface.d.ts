@@ -19,6 +19,10 @@ declare module "driver" {
    * Required to interface with the other methods that transform values.
    */
   function store(value: string): StoreObject;
+  /**
+   * Converts a string to a slug, using the same logic as Tera's `slugify` filter.
+   */
+  function slugify(value: string): string;
 
   ////////// 2 //////////
   // NOTE: All paths are relative to the PROJECT ROOT, where the driver binary is run!!
@@ -72,18 +76,27 @@ declare module "driver" {
     | number
     | string
     | StoreObject
-    | StoreImage
     | Arg[]
     | { [key in string]?: Arg };
   /**
-   * Run a given file. The file will have the global variable `ARG` populated with
+   * Run a given Javascript file. The file will have the global variable `ARG` populated with
    * whatever you pass in, if anything. If the same filename/argument combination is run multiple
    * times, later results will be cached from the first run.
    *
    * NOTE: just like `read_file()` and `list_directory()`, the `filename` argument is relative to
    * the project root.
    */
-  function run_task(filename: string, arg: Arg): Promise<Arg>;
+  function run_js(filename: string, arg: Arg): Promise<Arg>;
+
+  /**
+   * Run a given Tera file with the given context.
+   *
+   * NOTE: just like `run_js()`, the `filename` argument is relative to the project root.
+   */
+  function run_tera(
+    filename: string,
+    arg: { [key in string]?: Arg },
+  ): Promise<Arg>;
 
   /**
    * Writes an object from the store to a path relative to the build directory.

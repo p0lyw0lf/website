@@ -1,4 +1,4 @@
-import { run_task } from "driver";
+import { run_js } from "driver";
 import { BREAKPOINT_DESKTOP } from "../../css/breakpoints.js";
 import { toShortISODate } from "../../data/date.js";
 import { toArtUrl } from "../../data/urls.js";
@@ -15,7 +15,7 @@ export const ArtImage = async ({ post, hidden }) => {
       <p>${formattedPublished}</p>
       ${hidden
         ? html`<p>${alt}</p>`
-        : await run_task("src/runtime/remoteImage.js", {
+        : await run_js("src/runtime/remoteImage.js", {
             url,
             alt,
             title,
@@ -28,7 +28,7 @@ export const ArtImage = async ({ post, hidden }) => {
       <button class="hide" popovertarget="${src}" popovertargetaction="hide"
         >← Back</button
       >
-      ${await run_task("src/runtime/artMarkdown.js", post.body)}
+      ${await run_js("src/runtime/artMarkdown.js", post.body)}
       <img src="${url}" alt="${alt}" title="${title}" />
     </dialog>
   `.withStyle(css`

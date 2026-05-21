@@ -1,4 +1,4 @@
-import { run_task } from "driver";
+import { run_js } from "driver";
 import { TagLink } from "../../components/blog/TagLink.js";
 import { blog } from "../../content/config.js";
 import { BREAKPOINT_IPAD } from "../../css/breakpoints.js";
@@ -43,7 +43,7 @@ const buildPage = async ({ frontmatter, body, slug, isDraft }) => {
         >
       </div>
       <article class="e-content"
-        >${await run_task("src/runtime/markdown.js", body)}</article
+        >${await run_js("src/runtime/markdown.js", body)}</article
       >
       <div class="tags">${tags.map((tag) => TagLink({ tag }))}</div>
       ${(mastodon || blueskyUrl) &&

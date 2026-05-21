@@ -3,7 +3,7 @@ import {
   list_directory,
   minify_html,
   read_file,
-  run_task,
+  run_js,
   write_output,
 } from "driver";
 const PAGE_ROOT = "./src/pages/";
@@ -43,13 +43,13 @@ const build = async (inputPath) => {
     await Promise.all(
       entries.map(async (entry) => {
         if (file_type(entry) === "dir") {
-          await run_task("BUILD.js", entry);
+          await run_js("BUILD.js", entry);
         } else if (
           entry.startsWith(PUBLIC_ROOT) ||
           entry.endsWith(".js") ||
           entry.endsWith(".md")
         ) {
-          await run_task("BUILD.js", entry);
+          await run_js("BUILD.js", entry);
         }
       }),
     );
@@ -61,11 +61,11 @@ const build = async (inputPath) => {
   } else if ((match = dynamicRegex.exec(inputPath))) {
     const replacement = match[1];
     // First, run the file without any arguments to collect the data it wants to run on
-    const pages = await run_task(inputPath, null);
+    const pages = await run_js(inputPath, null);
     // Then, run the file again for each page it wants to create
     await Promise.all(
       pages.map(async (page) => {
-        let output = await run_task(inputPath, page);
+        let output = await run_js(inputPath, page);
         if (inputPath.endsWith(".html.js")) {
           output = await minify_html(output);
         }
@@ -79,7 +79,7 @@ const build = async (inputPath) => {
     );
   } else if (inputPath.endsWith(".js")) {
     const outputPath = inputPathToOutputPath(inputPath);
-    let output = await run_task(inputPath, outputPath);
+    let output = await run_js(inputPath, outputPath);
     if (inputPath.endsWith(".html.js")) {
       output = await minify_html(output);
     }
@@ -88,7 +88,7 @@ const build = async (inputPath) => {
     const outputPath = inputPathToOutputPath(inputPath);
     // Render the file as markdown
     const input = await read_file(inputPath);
-    let output = await run_task("src/build/md.js", input);
+    let output = await run_js("src/build/md.js", input);
     output = await minify_html(output);
     write_output(outputPath, output);
   }

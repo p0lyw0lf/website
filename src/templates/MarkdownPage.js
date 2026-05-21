@@ -1,4 +1,4 @@
-import { run_task } from "driver";
+import { run_js } from "driver";
 import { html } from "../render.js";
 import { Base } from "./Base.js";
 
@@ -21,7 +21,7 @@ export const MarkdownPage =
   async (slot) => {
     return await Base({ title, description })(
       html`${slot}`.withStyle(
-        (await run_task("src/css/page.css.js", null)).toString(),
+        (await run_js("src/css/page.css.js", null)).toString(),
       ),
     );
   };
