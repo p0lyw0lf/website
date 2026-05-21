@@ -1,4 +1,5 @@
 ---
+template: MarkdownPage.js
 title: "Links"
 description: "PolyWolf's curated collection of Links from around the internet"
 ---

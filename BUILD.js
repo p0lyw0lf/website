@@ -1,96 +1,67 @@
 import {
   file_type,
   list_directory,
-  minify_html,
   read_file,
   run_js,
   write_output,
 } from "driver";
-const PAGE_ROOT = "./src/pages/";
-const PUBLIC_ROOT = "./public/";
-
-// Tests if the page defines a dynamic route
-const dynamicRegex = /\[([a-zA-Z0-9_]+)\].*\.js$/;
-
-const inputPathToOutputPath = (inputPath) => {
-  let outputPath;
-  if (inputPath.endsWith(".js")) {
-    // Execute the file to build (assuming it's javascript)
-    outputPath = inputPath.slice(PAGE_ROOT.length, -3);
-    if (outputPath.endsWith(".html") && !outputPath.endsWith("index.html")) {
-      // Path should actually be a directory
-      outputPath = outputPath.slice(0, -".html".length);
-      outputPath = `${outputPath}/index.html`;
-    }
-  } else if (inputPath.endsWith(".md")) {
-    // Render the file as markdown
-    outputPath = `${inputPath.slice(PAGE_ROOT.length, -3)}/index.html`;
-  } else {
-    throw new Error(`not an input path: ${inputPath}`);
-  }
-
-  return outputPath;
-};
+import {
+  BUILD_EXTS,
+  inputPathToOutputPath,
+  PAGE_ROOT,
+  PUBLIC_ROOT,
+} from "./build/config.js";
+import { basename } from "./src/path.js";
 
 /**
  * @param {string} inputPath
  * @returns {Promise<void>}
  */
 const build = async (inputPath) => {
-  let match;
+  const isPublic = inputPath.startsWith(PUBLIC_ROOT);
+
+  if (isPublic) {
+    if (file_type(inputPath) === "dir") {
+      const entries = await list_directory(inputPath);
+      await Promise.all(
+        entries.map(async (entry) => {
+          await run_js("BUILD.js", entry);
+        }),
+      );
+    } else {
+      // Copy file to output
+      const outputPath = inputPath.slice(PUBLIC_ROOT.length);
+      const output = await read_file(inputPath);
+      write_output(outputPath, output);
+    }
+    return;
+  }
+
   if (file_type(inputPath) === "dir") {
     const entries = await list_directory(inputPath);
+    const subBuild = entries.find((entry) => entry.endsWith("BUILD.js"));
+    if (subBuild) {
+      await run_js(subBuild, null);
+      return;
+    }
+
     await Promise.all(
       entries.map(async (entry) => {
+        // Don't build anything starting with _
+        if (basename(entry).startsWith("_")) return;
+
         if (file_type(entry) === "dir") {
           await run_js("BUILD.js", entry);
         } else if (
-          entry.startsWith(PUBLIC_ROOT) ||
-          entry.endsWith(".js") ||
-          entry.endsWith(".md")
+          Object.keys(BUILD_EXTS).some((ext) => entry.endsWith(`.${ext}`))
         ) {
           await run_js("BUILD.js", entry);
         }
       }),
     );
-  } else if (inputPath.startsWith(PUBLIC_ROOT)) {
-    // Copy file to output
-    const outputPath = inputPath.slice(PUBLIC_ROOT.length);
-    const output = await read_file(inputPath);
-    write_output(outputPath, output);
-  } else if ((match = dynamicRegex.exec(inputPath))) {
-    const replacement = match[1];
-    // First, run the file without any arguments to collect the data it wants to run on
-    const pages = await run_js(inputPath, null);
-    // Then, run the file again for each page it wants to create
-    await Promise.all(
-      pages.map(async (page) => {
-        let output = await run_js(inputPath, page);
-        if (inputPath.endsWith(".html.js")) {
-          output = await minify_html(output);
-        }
-        const actualInputPath = inputPath.replaceAll(
-          `[${replacement}]`,
-          page[replacement],
-        );
-        const outputPath = inputPathToOutputPath(actualInputPath);
-        write_output(outputPath, output);
-      }),
-    );
-  } else if (inputPath.endsWith(".js")) {
-    const outputPath = inputPathToOutputPath(inputPath);
-    let output = await run_js(inputPath, outputPath);
-    if (inputPath.endsWith(".html.js")) {
-      output = await minify_html(output);
-    }
-    write_output(outputPath, output);
-  } else if (inputPath.endsWith(".md")) {
-    const outputPath = inputPathToOutputPath(inputPath);
-    // Render the file as markdown
-    const input = await read_file(inputPath);
-    let output = await run_js("src/build/md.js", input);
-    output = await minify_html(output);
-    write_output(outputPath, output);
+  } else {
+    const { outputPath, builder } = inputPathToOutputPath(inputPath);
+    await run_js(`./build/${builder}.js`, { inputPath, outputPath });
   }
 };
 
@@ -98,6 +69,5 @@ if (typeof ARG === "string") {
   await build(ARG);
 } else {
   // Ignore command-line arguments passed as array
-  await build(PAGE_ROOT);
-  await build(PUBLIC_ROOT);
+  await Promise.all([build(PAGE_ROOT), build(PUBLIC_ROOT)]);
 }

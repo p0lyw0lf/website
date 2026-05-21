@@ -1,7 +1,7 @@
 import { run_js } from "driver";
+import { Cybersec } from "../../components/cybersec/Cybersec.js";
 import { cybersec } from "../../content/config.js";
 import { html } from "../../render.js";
-import { Cybersec } from "../../templates/Cybersec.js";
 
 const getPages = async () => {
   return (

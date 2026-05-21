@@ -1,8 +1,8 @@
 import { run_js } from "driver";
 import { ArtImage } from "../components/art/ArtImage.js";
+import { Base } from "../components/Base.js";
 import { art } from "../content/config.js";
 import { css, html } from "../render.js";
-import { Base } from "../templates/Base.js";
 
 const artPosts = await art();
 const sortedArt = Object.values(artPosts).sort(

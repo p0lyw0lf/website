@@ -1,6 +1,6 @@
-import { toCybersecUrl } from "../data/urls.js";
-import { html } from "../render.js";
-import { Post } from "./Post.js";
+import { toCybersecUrl } from "../../data/urls.js";
+import { html } from "../../render.js";
+import { Post } from "../blog/Post.js";
 
 /**
  * @typedef {object} Props

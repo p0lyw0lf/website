@@ -1,8 +1,8 @@
 import { read_file, run_js } from "driver";
+import { Post } from "../../components/blog/Post.js";
 import { PostLink } from "../../components/blog/PostLink.js";
 import { SITE_URL } from "../../data/urls.js";
 import { css, html } from "../../render.js";
-import { Post } from "../../templates/Post.js";
 
 const pages = await run_js("src/pages/blog/[slug].html.js", null);
 const rssLink = `${SITE_URL}/blog/rss.xml`;

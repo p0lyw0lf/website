@@ -1,7 +1,7 @@
 import { run_js } from "driver";
+import { Post } from "../../components/blog/Post.js";
 import { CybersecLink } from "../../components/cybersec/CybersecLink.js";
 import { html } from "../../render.js";
-import { Post } from "../../templates/Post.js";
 
 const posts = await run_js("src/pages/cybersec/[slug].html.js", null);
 

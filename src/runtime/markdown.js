@@ -1,5 +1,7 @@
 import { markdown_to_html, minify_html, store } from "driver";
+import { ALLOWED_REMOTE_REGEX, VIDEO_EXTENSIONS } from "../../build/config.js";
 import { BlogImage } from "../components/blog/BlogImage.js";
+import { html } from "../render.js";
 import { replaceMatches } from "../util.js";
 
 /**
@@ -7,41 +9,64 @@ import { replaceMatches } from "../util.js";
  * that we need to have happen.
  *
  * Specifically, transform all remote images matching a regex to be local, minified ones.
+ *
+ * ARG: StoreObject
  */
 
 const IMAGE_REGEX =
   /!\[(?<alt>[^\]]*)\]\(((<(?<quotedFilename>.*)>)|(?<filename>[^<>]*?))\s*(\"(?<title>.*)\")?\)/gm;
-const ALLOWED_SITE_REGEX = /^https:\/\/static\.wolfgirl\.dev\//;
+const REMOTE_REGEX = /^https?:\/\//;
 
 /**
  * @param {RegExpMatchArray} match
- * @returns {boolean} - Should we transform this image match?
+ * @returns {Promise<
+ *    { type: "remoteImage", url: string } |
+ *    { type: "video", url: string } |
+ *    undefined
+ *  >} - If we want to transform this source, the StoreObject to transform.
  */
-const shouldTransform = (match) => {
+const fetchSource = async (match) => {
   const filename = match.groups.quotedFilename || match.groups.filename || "";
-  if (!filename) return false;
-  if (!ALLOWED_SITE_REGEX.test(filename)) return false;
-  return true;
+  if (!filename) {
+    return undefined;
+  }
+
+  let url = filename;
+  if (REMOTE_REGEX.test(filename)) {
+    if (match.groups.quotedFilename) {
+      url = encodeURI(url);
+    }
+  }
+
+  if (VIDEO_EXTENSIONS.some((extension) => filename.endsWith(extension))) {
+    return { type: "video", url };
+  }
+
+  if (ALLOWED_REMOTE_REGEX.test(filename)) {
+    return { type: "remoteImage", url };
+  }
+
+  // Don't transform other images
+  return undefined;
 };
 
-const contents = await replaceMatches(
-  IMAGE_REGEX,
-  ARG.toString(),
-  async (match) => {
-    if (!shouldTransform(match)) return match[0];
+const input = ARG.toString();
+const output = await replaceMatches(IMAGE_REGEX, input, async (match) => {
+  let src = await fetchSource(match);
+  let url;
+  switch (src?.type) {
+    case "video":
+      return html`<video src="${src.url}" controls></video>`;
+    case "remoteImage":
+      url = src.url;
+      break;
+    default:
+      return match[0];
+  }
 
-    let url = "";
-    if (match.groups.quotedFilename) {
-      url = encodeURI(match.groups.quotedFilename);
-    } else if (match.groups.filename) {
-      url = match.groups.filename;
-    } else {
-      throw new Error("match is missing filename");
-    }
-    const alt = match.groups.alt || undefined;
-    const title = match.groups.title || undefined;
-    return await BlogImage({ url, alt, title });
-  },
-);
+  const alt = match.groups.alt || undefined;
+  const title = match.groups.title || undefined;
+  return await BlogImage({ url, alt, title });
+});
 
-export default await minify_html(await markdown_to_html(store(contents)));
+export default await minify_html(await markdown_to_html(store(output)));

@@ -1,4 +1,5 @@
 ---
+template: MarkdownPage.js
 title: "Friends"
 description: "A small list of all other personal websites I know from people I trust"
 ---

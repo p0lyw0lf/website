@@ -1,10 +1,10 @@
 import { run_js } from "driver";
+import { Post } from "../../components/blog/Post.js";
 import { TagLink } from "../../components/blog/TagLink.js";
 import { blog } from "../../content/config.js";
 import { BREAKPOINT_IPAD } from "../../css/breakpoints.js";
 import { atprotoPostUrl, toBlogUrl } from "../../data/urls.js";
 import { css, html } from "../../render.js";
-import { Post } from "../../templates/Post.js";
 
 const getPages = async () => {
   return Object.values(await blog()).sort(

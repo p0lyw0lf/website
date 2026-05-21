@@ -1,4 +1,5 @@
 ---
+template: MarkdownPage.js
 title: "Projects"
 description: "A list of PolyWolf's past (and maybe current?) programming projects"
 ---

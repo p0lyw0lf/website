@@ -1,8 +1,8 @@
 import { read_file, run_js } from "driver";
+import { Post } from "../../components/blog/Post.js";
 import { PostLink } from "../../components/blog/PostLink.js";
 import { toTagUrl } from "../../data/urls.js";
 import { css, html } from "../../render.js";
-import { Post } from "../../templates/Post.js";
 
 const getTags = async () => {
   const pages = await run_js("src/pages/blog/[slug].html.js", null);

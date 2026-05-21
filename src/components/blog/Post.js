@@ -1,11 +1,11 @@
 import { run_js } from "driver";
-import { RandomHeaderPfp } from "../components/RandomHeaderPfp.js";
-import { SITE_URL } from "../data/urls.js";
-import { html } from "../render.js";
-import { Base } from "./Base.js";
+import { SITE_URL } from "../../data/urls.js";
+import { html } from "../../render.js";
+import { Base } from "../Base.js";
+import { RandomHeaderPfp } from "../RandomHeaderPfp.js";
 
 /**
- * @typedef {import("./Base.js").Props} BaseProps
+ * @typedef {import("../Base.js").Props} BaseProps
  *
  * @typedef {BaseProps} Props
  * @property {string} sectionTitle
