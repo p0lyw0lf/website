@@ -1,4 +1,4 @@
-import { slugifyPath, splitext } from "../src/path.js";
+import { splitext } from "../src/path.js";
 
 /** A folder that will be built to generate all the pages in the site. */
 export const PAGE_ROOT = "./src/pages/";
@@ -30,9 +30,7 @@ export const BUILD_EXTS = {
  * @returns {{ outputPath: string; builder: string }} - `builder` MUST correspond with a file in the `./build` directory.
  */
 export const inputPathToOutputPath = (inputPath) => {
-  let [outputPath, fullExt] = splitext(
-    slugifyPath(inputPath.slice(PAGE_ROOT.length)),
-  );
+  let [outputPath, fullExt] = splitext(inputPath.slice(PAGE_ROOT.length));
 
   const data = BUILD_EXTS[fullExt];
   if (!data) {
