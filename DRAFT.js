@@ -10,10 +10,9 @@ if (typeof filename !== "string") {
 }
 
 // Bare minimum pipeline adapted from ./BUILD.js
-const input = await read_file(`drafts/src/${filename}`);
 const { frontmatter, body } = await run_js(
   "src/runtime/frontmatter.js",
-  input,
+  `drafts/src/${filename}`,
 );
 // Make it so we don't have to re-generate the body every time necessarily
 frontmatter.published = 0;
