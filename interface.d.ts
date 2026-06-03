@@ -60,6 +60,21 @@ declare module "driver" {
 
   /** Parses an object into an image. Throws if the underlying object is not an image. */
   function parse_image(image: StoreObject): Promise<StoreImage>;
+
+  type EncoderOptions = {
+    quality?: number;
+    effort?: number;
+    strip_metadata?: boolean;
+  };
+  type ResizeMethod = 
+    | "lanczos3"
+    | "lanczos2"
+    | "bicubic" 
+    | "bspline" 
+    | "hermite" 
+    | "sinc"    
+    | "bilinear";
+
   /** Converts an image into a different size/format. */
   function convert_image(
     image: StoreImage,
@@ -67,6 +82,8 @@ declare module "driver" {
       format?: ImageFormat;
       size?: ImageSize;
       fit?: "fill" | "contain" | "cover";
+      encoder_options?: EncoderOptions;
+      resize_method?: ResizeMethod;
     },
   ): Promise<StoreImage>;
 
@@ -78,6 +95,7 @@ declare module "driver" {
     | StoreObject
     | Arg[]
     | { [key in string]?: Arg };
+
   /**
    * Run a given Javascript file. The file will have the global variable `ARG` populated with
    * whatever you pass in, if anything. If the same filename/argument combination is run multiple
@@ -98,7 +116,7 @@ declare module "driver" {
     arg: { [key in string]?: Arg },
   ): Promise<Arg>;
 
-  /**
+/**
    * Writes an object from the store to a path relative to the build directory.
    */
   function write_output(pathname: string, content: StoreObject): void;
