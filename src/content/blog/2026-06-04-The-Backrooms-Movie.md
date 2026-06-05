@@ -3,6 +3,8 @@ title: "The Backrooms Movie"
 description: "Yeah ok that was really really good, lived up to the hype and then some. I read another review before this that said something along the ..."
 tags: ["reviews"]
 published: 1780630994
+mastodon: "https://social.treehouse.systems/@PolyWolf/116695433242987323"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mnj7v6f7j223"
 ---
 
 Yeah ok that was really really good, lived up to the hype and then some. I read another review before this that said something along the lines of:
