@@ -7,8 +7,8 @@ mastodon: "https://social.treehouse.systems/@PolyWolf/115848285075494970"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mbqz6rxhs22l"
 ---
 
-+ [ ] New Job
-+ [ ] Update Wardrobe (for real this time)
++ [x] New Job
++ [x] Update Wardrobe (for real this time)
 + [ ] Get on injections + prog
 
 ---
