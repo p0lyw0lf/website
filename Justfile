@@ -1,9 +1,7 @@
 build:
 	../driver/target/release/driver run ./BUILD.js
-watch:
-	(echo BUILD.js && ls -d src/**/*) | entr just
 serve:
-	live-server --host 127.0.0.1 --port 8000 dist
+	../driver/target/release/driver serve --host 127.0.0.1 --port 8000 ./SERVE.js
 clean:
 	rm -rf dist
 	rm -r .driver/cache.zst
