@@ -96,23 +96,24 @@ export default store(css`
     }
   }
 
+  /* I don't use <h1> in article bodies, but let's include this rule anyways just in case */
   h1 a.anchor::before {
     content: "#";
   }
   h2 a.anchor::before {
-    content: "##";
+    content: "#";
   }
   h3 a.anchor::before {
-    content: "###";
+    content: "##";
   }
   h4 a.anchor::before {
+    content: "###";
+  }
+  h5 a.anchor::before {
     content: "####";
   }
   h5 a.anchor::before {
     content: "#####";
-  }
-  h5 a.anchor::before {
-    content: "######";
   }
   a.anchor::before {
     padding-right: 0.2em;
@@ -189,30 +190,37 @@ export default store(css`
   }
   ${await run_js("src/css/syntax_highlighting_theme.css.js", null)}
 
-  blockquote {
-    margin-left: 0em;
+  /* Make details/summary look similar to blockquote */
+  blockquote, details {
+    margin: 1em 0;
     padding-left: 0.8em;
-    border-left: 0.2em solid var(--color-text-secondary-accent);
+    padding-right: 0.5em;
     background-color: var(--color-background-secondary);
     color: var(--color-text-secondary);
+    border-left: 0.2em solid;
   }
 
-  /* Make details/summary look similar to blockquote when open */
   details {
-    margin-left: 0em;
-    padding-left: 0.8em;
-    background-color: var(--color-background-secondary);
-    color: var(--color-text-secondary);
-    border-left: 0.2em solid var(--color-background-secondary);
+    border-left-color: var(--color-background-secondary);
   }
-  details[open] {
+
+  blockquote, details[open] {
     border-left-color: var(--color-text-secondary-accent);
   }
 
+  /* inline code on a different-colored background should look different. */
   blockquote code,
   details code {
     background-color: var(--color-background-primary);
     color: var(--color-text-secondary-accent);
+  }
+
+  /* reduce margins for lists at the top-level of the quoted elements */
+  blockquote > ul,
+  blockquote > ol,
+  details > ul,
+  details > ol {
+    margin-left: -0.8em;
   }
 
   /* Make it so that on mobile, when tables are too wide, they scroll horizontally */
