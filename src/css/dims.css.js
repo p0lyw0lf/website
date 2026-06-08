@@ -4,7 +4,7 @@ import { BREAKPOINT_DESKTOP, BREAKPOINT_IPAD } from "./breakpoints.js";
 
 export default store(css`
   :root {
-    --dim-font-regular: 1.25rem;
+    --dim-font-regular: 1.1875rem;
     --dim-font-large: 2rem;
     --dim-border: 1px;
     --dim-border-thick: 4px;
