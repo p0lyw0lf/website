@@ -15,3 +15,5 @@ This list is incomplete! You can help by expanding it
 - [Rykarn](https://rykarn.se) - Cohost refugee, originator of some of the best CSS Crimes
 - [Tends](https://tends.to) - Cool Car Enthusiant & fellow [Tran Girlismo](https://www.trangirlismo.com/) listener
 - [Thunderseethe](https://thunderseethe.dev) - Compiler sensei w/ an excellent tutorial series
+- [Waffle](https://blog.ihatereality.space/) - it rust kbity :3
+- [Marv](https://temporarytm.com/) - very good at Mahjong & lots of assorted PL

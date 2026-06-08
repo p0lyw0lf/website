@@ -8,27 +8,21 @@ description: "PolyWolf's curated collection of Links from around the internet"
 
 In order of decreasing activity:
 
-- [Cohost](https://cohost.org/PolyWolf) (RIP eggbug... you will be missed)
+- ~~[Cohost](https://cohost.org/PolyWolf)~~ (RIP eggbug... you will be missed)
 - [Mastodon](https://social.treehouse.systems/@PolyWolf)
 - [Bluesky](https://bsky.app/profile/wolf.girl.technology)
 - [GitHub](https://github.com/p0lyw0lf)
-- [Twitter](https://twitter.com/p0lyw0lf)
 - [DeviantArt](https://deviantart.com/p0lyw0lf)
 - [Twitch](https://twitch.tv/p0lyw0lf)
+- ~~[Twitter](https://twitter.com/p0lyw0lf)~~ (Rest In Piss twitter... you will **not** be missed)
 
 You can get my attention on any of these, but messages via Signal (polywolf.2580) or 📧 to p0lyw0lf⚛️protonmail.com is preferred. I also have a Discord but get 2 know me first ok?
 
 ## Other Links
 
-### Blogs I Enjoy
+I have a list of [friends](/friends/) whose blogs I enjoy, as well as a [blogroll](/blogroll/).
 
-- [j.b. crawford's](https://computer.rip/)
-- [fasterthanli.me's](https://fasterthanli.me/)
-- [John Reghr's](https://blog.regehr.org/)
-
-Check out [Friends](/friends/) for my friends' blogs :)
-
-### Websites I Enjoy
+### Other Websites I Enjoy
 
 - [ndless.me](http://ndless.me/) + [Hackspire](https://hackspire.org/index.php?title=Main_Page), hacking stuff for my calculator in highschool was awesome
 - [This random webhost](https://owo.codes/) who happens to be behind 'wolfgirl.party', which was a big inspiration for making this website finally

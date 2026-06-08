@@ -17,8 +17,10 @@ export default await Base({
       <a href="blog/">Blog</a>
       <a href="cybersec/">Cybersec</a>
       <a href="links/">Links</a>
+      <a href="about/">About</a>
       <a href="projects/">Projects</a>
       <a href="friends/">Friends</a>
+      <a href="blogroll/">Blogroll</a>
     </nav>
     <p>
       Hi! I'm a wolfgirl and software engineer. This is my website! Mobile-first
