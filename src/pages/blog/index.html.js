@@ -10,7 +10,8 @@ const rssLink = `${SITE_URL}/blog/rss.xml`;
 export default await Post({
   pathname: "/blog/",
   sectionTitle: "PolyWolf's Blog",
-  homeLink: "/blog/",
+  homeLink: "/",
+  rssLink,
   title: "Blog",
   description: "The homepage for my blog",
 })(

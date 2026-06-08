@@ -8,8 +8,10 @@ const posts = await run_js("src/pages/cybersec/[slug].html.js", null);
 const rssLink = `${SITE_URL}/cybersec/rss.xml`;
 
 export default await Post({
+  pathname: "/cybersec/",
   sectionTitle: "PolyWolf on Security",
-  homeLink: "/cybersec/",
+  homeLink: "/",
+  rssLink,
   title: "Cybersecurity",
   description:
     'A list of links that PolyWolf has curated to be "cool" and under the vauge collection of having to do with computer security',

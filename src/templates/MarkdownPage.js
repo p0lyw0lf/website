@@ -3,7 +3,11 @@ import { Base } from "../components/Base.js";
 import { Header } from "../components/Header.js";
 import { css, html } from "../render.js";
 
-const { body, frontmatter } = ARG;
+const { body, frontmatter, outputPath } = ARG;
+let pathname = "/" + outputPath;
+if (pathname.endsWith("index.html")) {
+  pathname = pathname.slice(0, -"index.html".length);
+}
 const slot = html`
   <div class="info">
     <h1 class="p-name">${frontmatter.title}</h1>
@@ -13,6 +17,6 @@ const slot = html`
   ${await run_js("src/css/MarkdownPage.css.js")}
   ${frontmatter.extraCss ? await run_js(`src/css/${frontmatter.extraCss}`) : ""}
 `);
-export default await Base(frontmatter)(slot, {
+export default await Base({ ...frontmatter, pathname })(slot, {
   header: await Header({ sectionTitle: "PolyWolf's Website", homeLink: "/" }),
 });

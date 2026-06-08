@@ -1,6 +1,6 @@
 import { run_js, store } from "driver";
 import { SITE_URL } from "../data/urls.js";
-import { html } from "../render.js";
+import { attributes, html } from "../render.js";
 
 /**
  * @typedef {object} Props
@@ -42,12 +42,16 @@ export const Base =
 
           <title>${fullTitle}</title>
           ${description &&
-          html`<meta name="description" content="${description}" />`}
+          html`<meta
+            ${attributes({ name: "description", content: description })}
+          />`}
 
           <meta property="og:title" content="${title ?? "PolyWolf"}" />
           <meta property="og:site_name" content="wolfgirl.dev" />
           ${description &&
-          html`<meta property="og:description" content="${description}" />`}
+          html`<meta
+            ${attributes({ property: "og:description", content: description })}
+          />`}
           <meta property="og:url" content="${canonicalUrl}" />
           <!-- TODO: automatic "og:image" property. Right now it just always uses the favicon which is not ideal. !-->
           <meta
