@@ -13,26 +13,18 @@ export default await Base({
   html`
     ${await RandomLandingPfp()}
     <nav class="bignav">
+      <a href="links/">Links</a>
       <a href="art/">Art</a>
       <a href="blog/">Blog</a>
       <a href="cybersec/">Cybersec</a>
-      <a href="links/">Links</a>
-      <a href="about/">About</a>
       <a href="projects/">Projects</a>
-      <a href="friends/">Friends</a>
-      <a href="blogroll/">Blogroll</a>
     </nav>
     <p>
       Hi! I'm a wolfgirl and software engineer. This is my website! Mobile-first
-      design because i use my phone all the time! Monospace font everywhere
-      because i like it! Inconsistent capitalization because it's fun!
+      design because i use my phone all the time! System font everywhere because
+      i like it! Inconsistent capitalization because it's fun!
     </p>
-    <h2>Navigation</h2>
-    <p>
-      Top header is a link that takes you to the previous page. "Blog" and
-      "Cybersec" have a bit better styling on them, rest are pretty silly tho :P
-    </p>
-  `.withStyle(await run_js("src/css/index.css.js", null)),
+  `.withStyle(await run_js("src/css/Index.css.js")),
   {
     header: html`
       <header>

@@ -28,7 +28,7 @@ export const Cybersec =
       homeLink: "/cybersec/",
       title,
     })(html`
-      <h1> ${title} </h1>
+      <h1>${title}</h1>
       <p
         >Posted on ${date}: <a href="${repost_link}">${repost_link}</a>
         ${slot}

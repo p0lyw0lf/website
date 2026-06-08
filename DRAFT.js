@@ -1,4 +1,4 @@
-import { minify_html, read_file, run_js, write_output } from "driver";
+import { minify_html, run_js, write_output } from "driver";
 
 if (!Array.isArray(ARG)) {
   throw new Error("unexpected: ARG is not an array");

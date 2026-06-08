@@ -1,99 +1,16 @@
 import { run_js, store } from "driver";
 import { css } from "../render.js";
-import {
-  BREAKPOINT_DESKTOP,
-  BREAKPOINT_IPAD,
-  BREAKPOINT_IPHONE,
-} from "./breakpoints.js";
+import { BREAKPOINT_DESKTOP } from "./breakpoints.js";
 
 export default store(css`
-  body {
-    font-family: "Arial Nova", "Helvetica Neue", Arial, Helvetica, sans-serif;
-    background-color: var(--color-background-secondary);
-    color: var(--color-text-secondary);
+  ${await run_js("./src/css/MarkdownPage.css.js", null)}
 
-    display: flex;
-    flex-direction: column;
-  }
-
-  header {
-    background-color: var(--color-background-tertiary);
-    color: var(--color-text-tertiary);
-
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  header h2 {
-    margin-top: 0;
-  }
-  header a {
-    color: var(--color-text-tertiary);
-  }
-  header nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  main {
-    background-color: var(--color-background-primary);
-    color: var(--color-text-primary);
-    line-height: 1.9em;
-
-    padding: 0 16px;
-  }
-  main a {
-    color: var(--color-text-primary-accent);
-  }
   main img {
     width: 100%;
     height: auto;
   }
   main pre {
     line-height: normal;
-  }
-
-  @media (min-width: ${BREAKPOINT_IPHONE}) {
-    header {
-      flex-direction: row;
-      align-items: flex-end;
-    }
-  }
-
-  @media (min-width: ${BREAKPOINT_IPAD}) {
-    header {
-      padding: 16px 32px;
-    }
-
-    main {
-      margin: 0 32px;
-      border: solid var(--dim-border) var(--color-border-primary);
-    }
-  }
-
-  @media (min-width: ${BREAKPOINT_DESKTOP}) {
-    body {
-      flex-direction: row;
-      min-height: 100vh;
-      min-height: 100dvh;
-    }
-
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-
-      padding: 32px;
-      width: 12rem;
-    }
-
-    main {
-      margin: 32px 48px;
-      align-self: flex-start;
-      flex-grow: 1;
-      max-width: 50rem;
-    }
   }
 
   /* I don't use <h1> in article bodies, but let's include this rule anyways just in case */
@@ -188,7 +105,7 @@ export default store(css`
     background-color: inherit;
     color: inherit;
   }
-  ${await run_js("src/css/syntax_highlighting_theme.css.js", null)}
+  ${await run_js("src/css/syntaxHighlightingTheme.css.js", null)}
 
   /* Make details/summary look similar to blockquote */
   blockquote, details {
@@ -204,7 +121,8 @@ export default store(css`
     border-left-color: var(--color-background-secondary);
   }
 
-  blockquote, details[open] {
+  blockquote,
+  details[open] {
     border-left-color: var(--color-text-secondary-accent);
   }
 

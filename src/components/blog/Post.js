@@ -2,7 +2,7 @@ import { run_js } from "driver";
 import { SITE_URL } from "../../data/urls.js";
 import { html } from "../../render.js";
 import { Base } from "../Base.js";
-import { RandomHeaderPfp } from "../RandomHeaderPfp.js";
+import { Header } from "../Header.js";
 
 /**
  * @typedef {import("../Base.js").Props} BaseProps
@@ -46,7 +46,7 @@ export const Post =
           crossorigin="anonymous"
         />
         ${extraHead}
-      `.withStyle((await run_js("src/css/post.css.js", null)).toString()),
+      `.withStyle(await run_js("src/css/Post.css.js")),
       header: isDraft
         ? html`
             <header>
@@ -58,22 +58,7 @@ export const Post =
               </div>
             </header>
           `
-        : html`
-            <header>
-              ${await RandomHeaderPfp()}
-              <div>
-                <h2><a href="${homeLink}">${sectionTitle}</a></h2>
-                <nav>
-                  <a href="/">Home</a>
-                  <a href="/about/">About</a>
-                  <a href="/friends/">Friends</a>
-                  <a href="/art/">Art</a>
-                  <a href="/blog/">Blog</a>
-                  <a href="/cybersec/">Cybersec</a>
-                </nav>
-              </div>
-            </header>
-          `,
+        : await Header({ sectionTitle, homeLink }),
       footer,
     });
   };

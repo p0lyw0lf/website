@@ -15,6 +15,10 @@ export default await Post({
   description: "The homepage for my blog",
 })(
   html`
+<div class="info">
+  <h1 class="p-name">Blog</h1>
+</div>
+<article class="e-content">
   <p>I have a blog! There may be many blogs like it, but this one is mine!</p>
   <p>
     Some recent posts:
@@ -38,6 +42,7 @@ export default await Post({
   >full-text RSS feed
   ${await read_file("public/rss.svg")}</a
   ></p>
+</article>
 `.withStyle(css`
     #rss svg {
       height: 1em;

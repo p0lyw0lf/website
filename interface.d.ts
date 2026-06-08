@@ -66,13 +66,13 @@ declare module "driver" {
     effort?: number;
     strip_metadata?: boolean;
   };
-  type ResizeMethod = 
+  type ResizeMethod =
     | "lanczos3"
     | "lanczos2"
-    | "bicubic" 
-    | "bspline" 
-    | "hermite" 
-    | "sinc"    
+    | "bicubic"
+    | "bspline"
+    | "hermite"
+    | "sinc"
     | "bilinear";
 
   /** Converts an image into a different size/format. */
@@ -116,7 +116,7 @@ declare module "driver" {
     arg: { [key in string]?: Arg },
   ): Promise<Arg>;
 
-/**
+  /**
    * Writes an object from the store to a path relative to the build directory.
    */
   function write_output(pathname: string, content: StoreObject): void;

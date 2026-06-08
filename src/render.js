@@ -48,7 +48,7 @@ export const html = (strings, ...exprs) => {
   return Object.assign(output.join(""), {
     style: style.join(""),
     withStyle: function (moreStyle) {
-      this.style += moreStyle;
+      this.style += moreStyle.toString();
       return this;
     },
     asJSON: function () {

@@ -2,7 +2,7 @@ import { run_js } from "driver";
 import { ArtImage } from "../components/art/ArtImage.js";
 import { Base } from "../components/Base.js";
 import { art } from "../content/config.js";
-import { css, html } from "../render.js";
+import { html } from "../render.js";
 
 const artPosts = await art();
 const sortedArt = Object.values(artPosts).sort(
@@ -31,18 +31,5 @@ export default await Base({
         >my deviantart gallery</a
       >.
     </p>
-  `.withStyle(css`
-    ${await run_js("src/css/page.css.js", null)}
-
-    main {
-      max-width: none;
-      padding: 16px 48px;
-      align-items: stretch;
-    }
-
-    .grid {
-      display: grid;
-      grid: auto-flow / repeat(auto-fit, minmax(calc(256px + 16px + 2px), 1fr));
-    }
-  `),
+  `.withStyle(await run_js("./src/css/Art.css.js")),
 );

@@ -3,7 +3,7 @@ import { css } from "../render.js";
 
 export default store(css`
   ${await run_js("src/css/dims.css.js", null)}
-  ${await run_js("src/css/semantic_colors.css.js", null)}
+  ${await run_js("src/css/semanticColors.css.js", null)}
 
   * {
     box-sizing: border-box;

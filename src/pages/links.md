@@ -22,7 +22,7 @@ You can get my attention on any of these, but messages via Signal (polywolf.2580
 
 I have a list of [friends](/friends/) whose blogs I enjoy, as well as a [blogroll](/blogroll/).
 
-### Other Websites I Enjoy
+### Websites I Enjoy
 
 - [ndless.me](http://ndless.me/) + [Hackspire](https://hackspire.org/index.php?title=Main_Page), hacking stuff for my calculator in highschool was awesome
 - [This random webhost](https://owo.codes/) who happens to be behind 'wolfgirl.party', which was a big inspiration for making this website finally

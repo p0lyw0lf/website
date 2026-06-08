@@ -2,7 +2,7 @@ import { run_js, store } from "driver";
 import { css } from "../render.js";
 
 export default store(css`
-  ${await run_js("src/css/palette_colors.css.js", null)}
+  ${await run_js("src/css/paletteColors.css.js", null)}
 
   /* Dark theme by default */
   :root {

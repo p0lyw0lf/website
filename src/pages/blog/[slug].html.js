@@ -2,9 +2,8 @@ import { run_js } from "driver";
 import { Post } from "../../components/blog/Post.js";
 import { TagLink } from "../../components/blog/TagLink.js";
 import { blog } from "../../content/config.js";
-import { BREAKPOINT_IPAD } from "../../css/breakpoints.js";
 import { atprotoPostUrl, toBlogUrl } from "../../data/urls.js";
-import { css, html } from "../../render.js";
+import { html } from "../../render.js";
 
 const getPages = async () => {
   return Object.values(await blog()).sort(
@@ -53,58 +52,7 @@ const buildPage = async ({ frontmatter, body, slug, isDraft }) => {
           ${blueskyUrl && html`<a href="${blueskyUrl}">Comment on Bluesky</a>`}
         </div>
       `}
-    `.withStyle(css`
-      main {
-        padding: 0 !important;
-      }
-
-      .info,
-      .tags {
-        background-color: var(--color-background-secondary);
-        color: var(--color-text-secondary);
-
-        padding: 16px;
-
-        border-top: solid var(--dim-border) var(--color-border-primary);
-        border-bottom: solid var(--dim-border) var(--color-border-primary);
-      }
-
-      .tags:not(:last-child) {
-        border-bottom: none;
-      }
-
-      .comments {
-        padding: 16px;
-
-        border-top: solid var(--dim-border) var(--color-border-primary);
-        border-bottom: solid var(--dim-border) var(--color-border-primary);
-      }
-
-      .info h1 {
-        margin: 0 0 8px;
-      }
-
-      article {
-        padding: 0 16px;
-      }
-
-      .tags,
-      .comments {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      @media (min-width: ${BREAKPOINT_IPAD}) {
-        .info {
-          border-top: none;
-        }
-        .tags,
-        .comments {
-          border-bottom: none;
-        }
-      }
-    `),
+    `.withStyle(await run_js("./src/css/Blog.css.js")),
   );
 };
 

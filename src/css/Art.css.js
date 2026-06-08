@@ -27,22 +27,19 @@ export default store(css`
     align-items: center;
   }
 
-  main {
-    max-width: 40rem;
-    padding: 16px;
-    margin: auto;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--color-text-secondary-accent);
-  }
-
   a {
     color: var(--color-text-primary-accent);
+  }
+
+  main {
+    max-width: none;
+    padding: 16px 48px;
+    margin: auto;
+    align-items: stretch;
+  }
+
+  .grid {
+    display: grid;
+    grid: auto-flow / repeat(auto-fit, minmax(calc(256px + 16px + 2px), 1fr));
   }
 `);
