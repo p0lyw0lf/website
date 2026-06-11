@@ -10,3 +10,5 @@ trace:
 	nvim trace.txt
 graph:
 	../driver/target/release/driver print-graph
+linkcheck:
+	lychee --root-dir $(pwd)/dist dist/**/*.html

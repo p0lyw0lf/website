@@ -13,5 +13,6 @@ pkgs.mkShell {
     hyperfine
     just
     live-server
+    lychee
   ];
 }

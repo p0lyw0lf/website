@@ -53,7 +53,9 @@ export const Base =
             ${attributes({ property: "og:description", content: description })}
           />`}
           <meta property="og:url" content="${canonicalUrl}" />
-          <!-- TODO: automatic "og:image" property. Right now it just always uses the favicon which is not ideal. !-->
+          ${
+            /* TODO: automatic "og:image" property. Right now it just always uses the favicon which is not ideal. */ ""
+          }
           <meta
             property="og:image"
             content="${`${SITE_URL}/apple-touch-icon.png`}"

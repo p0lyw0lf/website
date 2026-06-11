@@ -5,7 +5,7 @@ import { SITE_URL } from "../../data/urls.js";
 import { css, html } from "../../render.js";
 
 const posts = await run_js("src/pages/cybersec/[slug].html.js", null);
-const rssLink = `${SITE_URL}/cybersec/rss.xml`;
+const rssLink = `/cybersec/rss.xml`;
 
 export default await Post({
   pathname: "/cybersec/",
@@ -31,7 +31,7 @@ export default await Post({
         mirrors activity in the channel to this page, a
         <a href="https://infosec.exchange/@PolyWolf">Mastodon account</a>, &amp;
         an
-        <a href="${rssLink}" id="rss"
+        <a href="${SITE_URL}${rssLink}" id="rss"
           >RSS feed ${await read_file("public/rss.svg")}</a
         >
       </p>
