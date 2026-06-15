@@ -3,6 +3,8 @@ title: "Hal Formula: What Camera Does Daisuke Mitsuoka Use?"
 description: "This weekend, as usual, I found myself reading thru all of Shonen Jump. And yet again, there is another manga with photobased cameras in ..."
 tags: ["reviews", "manga"]
 published: 1781481623
+mastodon: "https://social.treehouse.systems/@PolyWolf/116751180118454925"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3moby3w5ghl23"
 ---
 
 This weekend, as usual, I found myself reading thru all of Shonen Jump. And yet again, there is another manga with photobased cameras in it, so I just had to find out which one they used.
