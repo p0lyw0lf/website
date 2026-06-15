@@ -1,5 +1,5 @@
 ---
-title: "What Camera Do Tenichi \u0026 Honoka Use In Hima-Ten?"
+title: "Hima-Ten: What Camera Do Tenichi \u0026 Honoka Use?"
 description: "In the (at time of writing) latest english chapter of the romance manga Hima-Ten, the main character Tenichi Iemori goes on a walking-aro..."
 tags: ["reviews", "manga"]
 published: 1777326560
