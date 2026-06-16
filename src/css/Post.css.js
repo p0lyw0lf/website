@@ -36,6 +36,18 @@ export default store(css`
     padding-right: 0.2em;
   }
 
+  /* Make footnote styles a little better */
+  sup.footnote-ref {
+    vertical-align: top;
+  }
+  sup.footnote-ref a::before {
+    content: "[";
+    margin-left: 0.125em;
+  }
+  sup.footnote-ref a::after {
+    content: "]";
+  }
+
   /* Images that can be clicked to show the full resolution */
   /* TODO: composable stylesheet because this is also used in the art part? */
   button.show {
