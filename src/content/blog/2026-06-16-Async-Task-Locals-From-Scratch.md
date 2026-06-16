@@ -3,6 +3,8 @@ title: "Async Task Locals From Scratch"
 description: "Some literate programming on a small crate I\u0027ve written"
 tags: ["programming", "rust"]
 published: 1781615380
+mastodon: "https://social.treehouse.systems/@PolyWolf/116759946217556966"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mofuobpicl23"
 ---
 
 To make a long story short, let's assume we have the following constraints, ignoring where exactly these constraints come from:
