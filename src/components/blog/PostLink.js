@@ -1,6 +1,6 @@
 import { toShortISODate } from "../../data/date.js";
 import { toBlogUrl } from "../../data/urls.js";
-import { css, html } from "../../render.js";
+import { css, html, inline_markdown } from "../../render.js";
 import { TagLink } from "./TagLink.js";
 
 /**
@@ -11,7 +11,12 @@ import { TagLink } from "./TagLink.js";
  * @property {string} slug
  */
 
-export const PostLink = ({ title, published: propsPublished, tags, slug }) => {
+export const PostLink = async ({
+  title,
+  published: propsPublished,
+  tags,
+  slug,
+}) => {
   const url = toBlogUrl(slug);
   const published = Temporal.Instant.fromEpochMilliseconds(
     propsPublished * 1000,
@@ -19,7 +24,8 @@ export const PostLink = ({ title, published: propsPublished, tags, slug }) => {
   const formattedPublished = toShortISODate(published);
 
   return html`
-    ${formattedPublished}: <a href="${url}">${title}</a>
+    ${formattedPublished}:
+    <a href="${url}">${await inline_markdown(title)}</a>
     ${tags.length > 0 &&
     html`<small>${tags.map((tag) => `${TagLink({ tag })} `)}</small>`}
   `.withStyle(css`

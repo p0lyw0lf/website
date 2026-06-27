@@ -27,6 +27,12 @@ export const toBlogUrl = (slug) => `/blog/${slug}/`;
 export const toTagUrl = (tag) => `/tags/${tag}/`;
 
 /**
+ * @param {string | number} year
+ * @returns {string}
+ */
+export const toArchiveUrl = (year) => `/blog/archives/${year}/`;
+
+/**
  * @param {string} slug
  * @returns {string}
  */

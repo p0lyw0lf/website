@@ -21,10 +21,19 @@ export default await Post({
   description:
     "A list of all tags on my site, which lead you to blog posts tagged with those tags!",
 })(html`
-  <h1>Tags</h1>
-  <ul>
-    ${sortedTags.map(
-      ({ tag, pages }) => html`<li>${TagLink({ tag })} (${pages.length})</li>`,
-    )}
-  </ul>
+<div class="info">
+  <h1 class="p-name">Tags</h1>
+</div>
+<article class="e-content">
+  <p>Here are all my posts, organized by tag! The (number) represents how many posts are in that tag.</p>
+  <p>You can also explore the list of posts by <a href="/blog/archives/">year</a>.</p>
+  <p>
+    <ul>
+      ${sortedTags.map(
+        ({ tag, pages }) =>
+          html`<li>${TagLink({ tag })} (${pages.length})</li>`,
+      )}
+    </ul>
+  </p>
+</article>
 `);

@@ -3,7 +3,7 @@ import { Post } from "../../components/blog/Post.js";
 import { TagLink } from "../../components/blog/TagLink.js";
 import { blog } from "../../content/config.js";
 import { atprotoPostUrl, toBlogUrl } from "../../data/urls.js";
-import { html } from "../../render.js";
+import { html, inline_markdown } from "../../render.js";
 
 const getPages = async () => {
   return Object.values(await blog()).sort(
@@ -32,7 +32,7 @@ const buildPage = async ({ frontmatter, body, slug, isDraft }) => {
   })(
     html`
       <div class="info">
-        <h1 class="p-name">${title}</h1>
+        <h1 class="p-name">${await inline_markdown(title)}</h1>
         <span
           >Published
           <time class="dt-published" datetime="${epochPublished.toString()}"

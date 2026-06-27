@@ -24,20 +24,22 @@ export default await Post({
   <p>
     Some recent posts:
     <ul>
-      ${pages.slice(0, 10).map(
-        (page) =>
-          html`<li
-            >${PostLink({
-              title: page.frontmatter.title,
-              published: page.frontmatter.published,
-              tags: page.frontmatter.tags,
-              slug: page.slug,
-            })}</li
-          >`,
+      ${await Promise.all(
+        pages.slice(0, 10).map(
+          async (page) =>
+            html`<li
+              >${await PostLink({
+                title: page.frontmatter.title,
+                published: page.frontmatter.published,
+                tags: page.frontmatter.tags,
+                slug: page.slug,
+              })}</li
+            >`,
+        ),
       )}
     </ul>
   </p>
-  <p>An archive of past posts is available via <a href="/tags/">tags</a>, or in the <a
+  <p>You can explore past posts by <a href="/tags/">tag</a>, by <a href="/blog/archives/">year</a>, or in the <a
     href="${SITE_URL}${rssLink}"
     id="rss"
   >full-text RSS feed

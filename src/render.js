@@ -1,3 +1,5 @@
+import { markdown_to_html, store } from "driver";
+
 /**
  * @callback WithStyle
  * @param {string} css - The style to put in the <head> of the HTML
@@ -137,4 +139,17 @@ export const attributes = (o) => {
     }
   }
   return attrs.join(" ");
+};
+
+/**
+ * Renders a string as "inline markdown", that is, without the outer `<p></p>` tags.
+ *
+ * Intended only for single-line strings that will be used in title pages.
+ * @param {string} input
+ * @returns {Promise<string>}
+ */
+export const inline_markdown = async (input) => {
+  const output = await markdown_to_html(store(input));
+  // Strip leading <p> (3) and trailing </p> (4)
+  return output.toString().trim().slice(3, -4);
 };

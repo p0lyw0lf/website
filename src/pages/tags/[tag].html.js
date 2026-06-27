@@ -34,22 +34,26 @@ const buildTagPage = async ({ tag, pages }) => {
     description: `All my blog posts tagged with #${tag}`,
   })(
     html`
-      <span style="display: inline-flex; align-items: center; gap: 1rem;">
+      <div class="info">
         <h1>#${tag}</h1>
-        <a href="/tags/">All Tags</a>
-        <a href="${rssLink}" id="rss">${await read_file("public/rss.svg")}</a>
-      </span>
+        <span style="display: inline-flex; align-items: center; gap: 1rem;">
+          <a href="/tags/">All Tags</a>
+          <a href="${rssLink}" id="rss">${await read_file("public/rss.svg")}</a>
+        </span>
+      </div>
       <ul>
-        ${pages.map(
-          (page) =>
-            html`<li
-              >${PostLink({
-                title: page.frontmatter.title,
-                published: page.frontmatter.published,
-                tags: page.frontmatter.tags,
-                slug: page.slug,
-              })}</li
-            >`,
+        ${await Promise.all(
+          pages.map(
+            async (page) =>
+              html`<li
+                >${await PostLink({
+                  title: page.frontmatter.title,
+                  published: page.frontmatter.published,
+                  tags: page.frontmatter.tags,
+                  slug: page.slug,
+                })}</li
+              >`,
+          ),
         )}
       </ul>
     `.withStyle(css`
