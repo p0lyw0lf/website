@@ -26,6 +26,9 @@ export default await Base({
     </p>
   `.withStyle(await run_js("src/css/Index.css.js")),
   {
+    extraHead: html`
+      <link rel="me" href="https://social.treehouse.systems/@PolyWolf" />
+    `,
     header: html`
       <header>
         <h1>
