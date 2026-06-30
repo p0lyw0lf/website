@@ -38,7 +38,9 @@ const buildTagPage = async ({ tag, pages }) => {
         <h1>#${tag}</h1>
         <span style="display: inline-flex; align-items: center; gap: 1rem;">
           <a href="/tags/">All Tags</a>
-          <a href="${rssLink}" id="rss">${await read_file("public/rss.svg")}</a>
+          <a href="${rssLink}" id="rss"
+            >${await read_file("public/svg/rss.svg")}</a
+          >
         </span>
       </div>
       <ul>

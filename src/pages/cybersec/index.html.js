@@ -32,7 +32,7 @@ export default await Post({
         <a href="https://infosec.exchange/@PolyWolf">Mastodon account</a>, &amp;
         an
         <a href="${SITE_URL}${rssLink}" id="rss"
-          >RSS feed ${await read_file("public/rss.svg")}</a
+          >RSS feed ${await read_file("public/svg/rss.svg")}</a
         >
       </p>
       <ul>

@@ -43,7 +43,7 @@ export default await Post({
     href="${SITE_URL}${rssLink}"
     id="rss"
   >full-text RSS feed
-  ${await read_file("public/rss.svg")}</a
+  ${await read_file("public/svg/rss.svg")}</a
   ></p>
 </article>
 `.withStyle(css`
