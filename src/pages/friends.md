@@ -17,3 +17,5 @@ This list is incomplete! You can help by expanding it
 - [Thunderseethe](https://thunderseethe.dev) - Compiler sensei w/ an excellent tutorial series
 - [Waffle](https://blog.ihatereality.space/) - it rust kbity :3
 - [Marv](https://temporarytm.com/) - very good at Mahjong & lots of assorted PL
+
+See also my [button wall](/buttonwall/) & [blogroll](/blogroll/).
