@@ -3,6 +3,8 @@ title: "Blogroll \u0026 Button Wall \u0026 Small Redesign"
 description: "informative post to mark a couple milestones"
 tags: ["blag"]
 published: 1782865303
+mastodon: "https://social.treehouse.systems/@PolyWolf/116841861025620517"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mpkaqt27bs2f"
 ---
 
 I've been hacking away on my website here 'n there, and just wanted to highlight a few changes I'm proud of :)
