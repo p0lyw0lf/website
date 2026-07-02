@@ -5,16 +5,14 @@ export default store(css`
   .buttonwall {
     display: grid;
     grid: none / repeat(auto-fit, calc(88px + 4px));
-    grid-auto-flow: column;
     gap: 4px;
   }
 
-  .buttonwall > img {
+  .buttonwall img {
     box-sizing: content-box;
     width: 88px;
     height: 31px;
-    border: solid 2px;
-    border-color: lightgray darkgray darkgray lightgray;
+    image-rendering: pixelated;
   }
 
   .buttonwall.large {
