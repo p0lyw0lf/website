@@ -47,7 +47,7 @@ reading these will fill your mind with abundant knowledge & enrich your soul
 - <https://herecomesthemoon.net/posts/>
 - <https://nickb.dev/>
 - <https://jnkr.tech/>
-- <https://kibty.town/blog>
+- <https://eva.ac/blog>
 - <https://maurycyz.com/>
 - <https://xnacly.me/>
 - <https://computer.rip/>
