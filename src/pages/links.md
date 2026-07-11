@@ -11,6 +11,8 @@ In order of decreasing activity:
 - ~~[Cohost](https://cohost.org/PolyWolf)~~ (RIP eggbug... you will be missed)
 - [Mastodon](https://social.treehouse.systems/@PolyWolf)
 - [Bluesky](https://bsky.app/profile/wolf.girl.technology)
+- [lobste.rs](https://lobste.rs/~polywolf)
+- [Sourcehut](https://sr.ht/~polywolf/)
 - [GitHub](https://github.com/p0lyw0lf)
 - [DeviantArt](https://deviantart.com/p0lyw0lf)
 - [Twitch](https://twitch.tv/p0lyw0lf)
