@@ -211,7 +211,7 @@ just like we drew it up :)
 
 In this post, I've shown a complete(!!) way of writing Task-Locals in Rust, using only the stdlib, that covers the "multiple Tasks on one Thread" case (via swapping from stack to Thread-Local), as well as the "single Task on multiple Threads" case; [`std::thread::LocalKey`](https://doc.rust-lang.org/std/thread/struct.LocalKey.html) stands for "how we access the current Thread's TLS", so the resulting `Scoped` future can, in fact, be sent to other threads, where it will simply use the TLS of whatever Thread it starts running on.
 
-The source code in this post is directly copied from [part of a larger collection of crates I'm making](https://github.com/p0lyw0lf/driver/blob/725e822d8302ecf1af290aab9582c357c56f9e2a/packages/async-task-local/src/lib.rs), and while I might eventually consider publishing it to crates.io, it's small enough to vendor in any project if you really want it.
+The source code in this post is directly copied from [part of a larger collection of crates I'm making](https://git.sr.ht/~polywolf/driver/blob/725e822d8302ecf1af290aab9582c357c56f9e2a/packages/async-task-local/src/lib.rs), and while I might eventually consider publishing it to crates.io, it's small enough to vendor in any project if you really want it.
 
 Anyways that's all, hope you enjoyed & maybe even learned something! Until next time!!
 

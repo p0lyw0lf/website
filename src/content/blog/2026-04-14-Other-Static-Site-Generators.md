@@ -9,7 +9,7 @@ bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mjhoej3ras2r
 
 ~~This sat in draft for way too long whoops~~
 
-To celebrate a "working site" milestone in my [driver](https://github.com/p0lyw0lf/driver) SSG project, I decided to take a look back at my [Static Site Generators post](https://wolfgirl.dev/blog/2026-02-23-so-ive-been-thinking-about-static-site-generators/). It got a lot of traffic at the time!! Thank you again to everyone who read & commented on it, y'all made my week <3
+To celebrate a "working site" milestone in my [driver](https://git.sr.ht/~polywolf/driver) SSG project, I decided to take a look back at my [Static Site Generators post](https://wolfgirl.dev/blog/2026-02-23-so-ive-been-thinking-about-static-site-generators/). It got a lot of traffic at the time!! Thank you again to everyone who read & commented on it, y'all made my week <3
 
 As one might have expected, talking about SSGs online had a "360 noscope nerdsnipe headshot" effect, so across multiple platforms I have amassed a grand collection of Static Site Generators, based on peoples' mentions/recommendations, to gaze upon at our leisure. Sure it's not as grand a collection as [Awesome Static Generators](https://myles.github.io/awesome-static-generators/) ("all 148 of them!") or [Jamstack](https://jamstack.org/generators/) ("all 377 of them!") or [staticsitegenerators.net](https://staticsitegenerators.net/) ("all 484 of them!"), but I think it's impressive nonetheless.
 

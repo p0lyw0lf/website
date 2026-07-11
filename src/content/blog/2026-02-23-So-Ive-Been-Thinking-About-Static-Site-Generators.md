@@ -220,7 +220,7 @@ So, we've eliminated "just use templates", and also "just use a compiled languag
 
 This will probably result in the speed tradeoff I am most satisfied with. Probably. "Doing the incremental steps" & "transforming the files" are still best done in a compiled language, because those are a thorny bit of programming with plenty of opportunity to be slow. The remaining logic can use that incrementality and be written in a scripting language to support faster on-the-fly changes. Separating the "build driver" from the "logic" is what other fast SSGs do after all, we're just making each a bit more powerful ;) 
 
-## My Vehicle Of Choice: [Rust Binary + Javascript Interpreter](https://github.com/p0lyw0lf/driver)
+## My Vehicle Of Choice: [Rust Binary + Javascript Interpreter](https://git.sr.ht/~polywolf/driver)
 
 Based on everything above, I think you can see how we landed here: it's a hobby project, so I really really want to write Rust, and Javascript is a fine choice because:
 
