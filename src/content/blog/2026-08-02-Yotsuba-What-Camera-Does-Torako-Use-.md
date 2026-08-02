@@ -3,6 +3,8 @@ title: "Yotsuba\u0026!: What Camera Does \u864e\u5b50 (Torako) Use?"
 description: "I will do one of these for every manga camera I see, this is a promise."
 tags: ["reviews", "manga"]
 published: 1785687461
+mastodon: "https://social.treehouse.systems/@PolyWolf/117026814069202365"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3ms4f3q2iks2o"
 ---
 
 The first time we see it, the badge is partially obscured, but just from the boot shape we can be pretty sure it's a Nikon:
