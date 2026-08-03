@@ -32,7 +32,9 @@ declare module "driver" {
   function list_directory(dirname: string): Promise<string[]>;
   /** Returns the type of a local file. For use in determining how to operate on the entries of
    * `list_directory()`. */
-  function file_type(name: string): "file" | "dir" | "symlink" | "unknown";
+  function file_type(name: string): Promise<"file" | "dir" | "symlink" | "unknown">;
+  /** Returns the last modified time for the given file/directory */
+  function mtime(name: string): Promise<number>;
 
   ////////// 3 //////////
   /** Given a URL, gets its contents. Cached according to remote headers. */
@@ -66,13 +68,13 @@ declare module "driver" {
     effort?: number;
     strip_metadata?: boolean;
   };
-  type ResizeMethod =
+  type ResizeMethod = 
     | "lanczos3"
     | "lanczos2"
-    | "bicubic"
-    | "bspline"
-    | "hermite"
-    | "sinc"
+    | "bicubic" 
+    | "bspline" 
+    | "hermite" 
+    | "sinc"    
     | "bilinear";
 
   /** Converts an image into a different size/format. */
@@ -116,7 +118,7 @@ declare module "driver" {
     arg: { [key in string]?: Arg },
   ): Promise<Arg>;
 
-  /**
+/**
    * Writes an object from the store to a path relative to the build directory.
    */
   function write_output(pathname: string, content: StoreObject): void;

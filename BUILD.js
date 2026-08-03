@@ -18,10 +18,11 @@ import { basename } from "./src/path.js";
  * @returns {Promise<void>}
  */
 const build = async (inputPath) => {
+  const type = await file_type(inputPath);
   const isPublic = inputPath.startsWith(PUBLIC_ROOT);
 
   if (isPublic) {
-    if (file_type(inputPath) === "dir") {
+    if (type === "dir") {
       const entries = await list_directory(inputPath);
       await Promise.all(
         entries.map(async (entry) => {
@@ -37,7 +38,7 @@ const build = async (inputPath) => {
     return;
   }
 
-  if (file_type(inputPath) === "dir") {
+  if (type === "dir") {
     const entries = await list_directory(inputPath);
     const subBuild = entries.find((entry) => entry.endsWith("BUILD.js"));
     if (subBuild) {
@@ -50,7 +51,7 @@ const build = async (inputPath) => {
         // Don't build anything starting with _
         if (basename(entry).startsWith("_")) return;
 
-        if (file_type(entry) === "dir") {
+        if ((await file_type(entry)) === "dir") {
           await run_js("BUILD.js", entry);
         } else if (
           Object.keys(BUILD_EXTS).some((ext) => entry.endsWith(`.${ext}`))
