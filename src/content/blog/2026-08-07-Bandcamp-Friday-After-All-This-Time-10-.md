@@ -3,6 +3,8 @@ title: "Bandcamp Friday? After All This Time!! (#10)"
 description: "It\u0027s not too late to buy some of the hottest tunes of the season!"
 tags: ["reviews", "music"]
 published: 1786148465
+mastodon: "https://social.treehouse.systems/@PolyWolf/117057026435999789"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3msjsgpt6wc2o"
 ---
 
 Whoa!! It's been a while since I've done this, and I've amassed quite a collection of albums/EPs that I need to buy. Honestly might be good to limit myself to just albums, if I also talked abou all the singles I liked this would just become a music blog lol. (and I am not good at writing about music so we won't go there)
