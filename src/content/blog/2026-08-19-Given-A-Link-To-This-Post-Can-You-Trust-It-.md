@@ -3,6 +3,8 @@ title: "Given A Link To This Post, Can You Trust It?"
 description: "A simple threat model that provides insight into how complex the internet is"
 tags: ["cybersec"]
 published: 1787159187
+mastodon: "https://social.treehouse.systems/@PolyWolf/117123267224308054"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mth7rkdcuc2p"
 ---
 
 Let's say I give you a link to post of mine that had, say, some PGP keys. You trust me completely that this is the correct link for what I wanted to share. Later, you open the link in your web browser. What other things must you trust in order to conclude my keys made it to you unaltered?
