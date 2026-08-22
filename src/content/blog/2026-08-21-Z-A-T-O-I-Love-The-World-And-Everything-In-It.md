@@ -3,6 +3,8 @@ title: "Z.A.T.O. // I Love The World And Everything In It"
 description: "i really really liked this VN"
 tags: ["reviews", "vn"]
 published: 1787360581
+mastodon: "https://social.treehouse.systems/@PolyWolf/117136463619614695"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mtn3cl3qo22p"
 ---
 
 [Z.A.T.O // I Love The World And Everything In It](https://store.steampowered.com/app/4122860/ZATO__I_Love_the_World_and_Everything_In_It/) is really good & also free and you should play it instantly.
