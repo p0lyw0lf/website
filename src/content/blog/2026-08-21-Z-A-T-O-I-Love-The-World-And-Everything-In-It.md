@@ -11,7 +11,7 @@ bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mtn3cl3qo22p
 
 Now I know what ur thinking: "buh I already watched [Serial Experiments Lain](https://en.wikipedia.org/wiki/Serial_Experiments_Lain)", "but I already played [Echo Project](https://echoproject.itch.io/echo)". u silly billykins that means you'll like this one too. In case you also haven't seen those: good! More things to watch after this one! But onto Z.A.T.O...
 
-Nominally, it is a simple linear VN with light yuri themes & light psychological horror themes. In practice, its core thesis his me so hard I will probably use it as a reference point for how I think about the world going forward. I'll see how much I can explain without spoilers:
+Nominally, it is a simple linear VN with light yuri themes & light psychological horror themes. In practice, its core thesis hits me so hard I will probably use it as a reference point for how I think about the world going forward. I'll see how much I can explain without spoilers:
 
 Despite what some other steam reviewers will say, it is _not_ "metafiction" or anything like that. It's also not a metaphor for anything. Events are strictly literal, taking place in a closed system, and _how this affects the characters_ is the interesting part. It is absolutely existential, making you question the nature of fate & what it means to be human. In the long run, like "heat death of the universe" long, Everything is doomed anyways, so let's enjoy this aberration while it lasts.
 
