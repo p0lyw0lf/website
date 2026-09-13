@@ -7,7 +7,7 @@ mastodon: "https://social.treehouse.systems/@PolyWolf/114834846060561058"
 bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3ltoxe3fjvc2y"
 ---
 
-https://suricrasia.online/blog/bridge-to-equalia/
+<https://suricrasia.online/blog/bridge-to-equalia/>
 
 > Maggie, a security researcher moonlighting as a internet sleuth, uses her unique set of skills to investigate a case of online vandalism.
 > 
