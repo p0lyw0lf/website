@@ -1,6 +1,6 @@
 ---
 title: "Rechost: I Found Evidence Of My House Spinning"
-description: "https://suricrasia.online/unfiction/spinning/ This is the latest piece of \"unfiction\" from Blacke Mori. I reviewed its previous work Brid..."
+description: "https://suricrasia.online/unfiction/spinning/ This is the latest piece of \"unfiction\" from Blackle Mori. I reviewed its previous work Brid..."
 tags: ["rechost"]
 published: 1789321057
 mastodon: "https://social.treehouse.systems/@PolyWolf/117264945429471536"
@@ -11,7 +11,7 @@ bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mvg55dq3742e
 
 ---
 
-This is the latest piece of "unfiction" from Blacke Mori. I reviewed its previous work [Bridge to eQualia](https://wolfgirl.dev/blog/2025-07-11-rechost-fiction-bridge-to-equalia/) last year, and as much as I liked that one, gotta say I like this one even more. Beautifully executed "unfiction", blurring the lines between a story that didn't happen, and a story that absolutely did happen and is still happening. Gets at the core of what it's like to be transgender online at this moment in 2026. Please read it.
+This is the latest piece of "unfiction" from Blackle Mori. I reviewed its previous work [Bridge to eQualia](https://wolfgirl.dev/blog/2025-07-11-rechost-fiction-bridge-to-equalia/) last year, and as much as I liked that one, gotta say I like this one even more. Beautifully executed "unfiction", blurring the lines between a story that didn't happen, and a story that absolutely did happen and is still happening. Gets at the core of what it's like to be transgender online at this moment in 2026. Please read it.
 
 <details><summary>Spoilers follow:</summary>
 
