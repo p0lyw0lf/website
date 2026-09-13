@@ -3,6 +3,8 @@ title: "Rechost: I Found Evidence Of My House Spinning"
 description: "https://suricrasia.online/unfiction/spinning/ This is the latest piece of \"unfiction\" from Blacke Mori. I reviewed its previous work Brid..."
 tags: ["rechost"]
 published: 1789321057
+mastodon: "https://social.treehouse.systems/@PolyWolf/117264945429471536"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mvg55dq3742e"
 ---
 
 <https://suricrasia.online/unfiction/spinning/>
