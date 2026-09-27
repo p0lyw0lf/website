@@ -18,7 +18,7 @@ It's mostly been small things:
 But there's a few bigger ones too:
 
 + [blogroll](/blogroll/)
-+ [button wall](/buttonwall/)
++ ~~button wall (/buttonwall/)~~ EDIT: this is now part of the [friends](/friends/) page.
 + by-year [archives](/blog/archives/)
 
 Of these, I am quite proud of the buttons I made for the button wall. However, it currently doesn't have anyone else's buttons. If you have your own 88x31 button, please message me! I'd love to expand my social web even further :3

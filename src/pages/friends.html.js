@@ -3,7 +3,56 @@ import { Base } from "../components/Base.js";
 import { Header } from "../components/Header.js";
 import { css, html } from "../render.js";
 
-/** buttons[n][0]: The URL to link to, minus the https://. SHOULD be in sorted order.
+/** @type{Array<{ name: string; link: string; desc: string }>} */
+const friends = [
+  { name: "Ruby", link: "https://ruby.gay", desc: "a nerrrrrrrrd :3" },
+  {
+    name: "Gabriella",
+    link: "https://www.haskellforall.com",
+    desc: "Haskell & open source legend & fellow wolf!",
+  },
+  {
+    name: "JeanHyde",
+    link: "https://thephd.dev",
+    desc: "master of the arcane arts (C standard committee procedures)",
+  },
+  {
+    name: "Alice",
+    link: "https://welltypedwit.ch",
+    desc: "Functional programming influencer (real)",
+  },
+  {
+    name: "Rykarn",
+    link: "https://rykarn.se",
+    desc: "Cohost refugee, originator of some of the best CSS Crimes",
+  },
+  {
+    name: "Tends",
+    link: "https://tends.to",
+    desc: 'Cool Car Enthusiant & fellow <a href="https://www.trangirlismo.com/">Tran Girlismo</a> listener',
+  },
+  {
+    name: "Thunderseethe",
+    link: "https://thunderseethe.dev",
+    desc: "Compiler sensei w/ an excellent tutorial series",
+  },
+  {
+    name: "Waffle",
+    link: "https://blog.ihatereality.space/",
+    desc: "it rust kbity :3",
+  },
+  {
+    name: "Marv",
+    link: "https://temporarytm.com/",
+    desc: "very good at Mahjong & lots of assorted PL",
+  },
+];
+
+const Friend = ({ name, link, desc }) =>
+  html`<li><a href="${link}">${name}</a> - ${desc}</li>`;
+
+/**
+ * buttons[n][0]: The URL to link to, minus the https://. SHOULD be in sorted order.
  * buttons[n][1]: If starting with a ".": The suffix to add to the URL to get the button filename. Otherwise, the full button filename.
  */
 const buttons = [
@@ -35,7 +84,20 @@ const Button = ([url, suffix]) => {
 };
 
 const content = html`
-  <h2>Others' Buttons</h2>
+  <p>
+    All these ppl are wayy cooler than me :blobsweat:<br>
+    This list is incomplete! You can help by expanding it
+  </p>
+  <p>
+    <ul>
+      ${friends.map(Friend)}
+    </ul>
+  </p>
+
+  <h2>Buttons</h2>
+  <p>
+    These are people whom I look up to & have a cool button, but am not necessarily close with. See also my <a href="/blogroll/">blogroll</a>.
+  </p>
   <p>
     <div class="buttonwall">
       ${buttons.map(Button)}
@@ -93,44 +155,6 @@ const content = html`
     </div>
   </p>
 
-  <p
-    >In addition to the standard 88x31 sizes, I also have all my buttons at 10x
-    resolution, manually upscaled so they look crisper in case you want to have
-    them to be big:</p
-  >
-
-  <p><div class="buttonwall large">
-    <img
-      src="https://static.wolfgirl.dev/buttonwall/polywolf-88x31-1-big.png"
-      alt="PolyWolf Serpinski Triangle"
-    />
-    <img
-      src="https://static.wolfgirl.dev/buttonwall/polywolf-88x31-2-big.png"
-      alt="PolyWolf Random Triangles"
-    />
-    <img
-      src="https://static.wolfgirl.dev/buttonwall/polywolf-88x31-3-big.png"
-      alt="PolyWolf Organized Triangles"
-    />
-  </div></p>
-
-  <p>There's a random variant of that too:</p>
-
-  <p>
-    <div class="buttonwall large">
-    <img src="https://wolfgirl.dev/button-big.png" />
-    </div>
-  </p>
-
-  <p>
-    <div class="copy">
-    <input
-      type="text"
-      value='<a href="https://wolfgirl.dev"><img src="https://wolfgirl.dev/button-big.png" style="image-rendering: pixelated" /></a>'
-      readonly
-    />
-    </div>
-  </p>
 
   <script>
     const checkSvg =
@@ -197,11 +221,12 @@ const content = html`
   ${await run_js(`src/css/ButtonWall.css.js`)}
 `);
 
-const title = "88x31 Button Wall";
+const title = "Friends";
 export default await Base({
-  pathname: "/buttonwall/",
+  pathname: "/friends/",
   title,
-  description: "A collection of 88x31 buttons!!",
+  description:
+    "A small list of all other personal websites I know from people I trust. Also 88x31 buttons!!",
 })(
   html`<div class="info"><h1 class="p-name">${title}</h1></div>
     <article class="e-content">${content}</article> `,
