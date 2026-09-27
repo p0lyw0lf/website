@@ -1,5 +1,9 @@
 build:
 	../driver/target/release/driver run ./BUILD.js
+watch:
+	../driver/target/release/driver watch ./BUILD.js
+serve:
+	live-server dist -p 8001
 clean:
 	../driver/target/release/driver clean --db --dist
 trace:

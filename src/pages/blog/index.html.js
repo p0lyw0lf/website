@@ -44,7 +44,7 @@ export default await Post({
     id="rss"
   >full-text RSS feed
   ${await read_file("public/svg/rss.svg")}</a
-  ></p>
+  >. Or just read my <a href="/popular/">most popular</a> posts if ur busy.</p>
 </article>
 `.withStyle(css`
     #rss svg {

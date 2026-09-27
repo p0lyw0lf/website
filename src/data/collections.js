@@ -18,13 +18,13 @@ import { list_directory, run_js } from "driver";
  * @param {Props} props
  * @returns {Loader}
  */
-export const glob =
-  ({ pattern, base, schema }) =>
-  async () => {
+export const glob = ({ pattern, base, schema }) => ({
+  all: async () => {
     const filenames = await list_directory(base);
     const filesWithSlug = filenames.flatMap((filename) => {
       const match = pattern.exec(filename);
       if (!match || !match[1]) return [];
+      // TODO: this should probably be `slugify`, but I can't change it now...
       const slug = match[1].toLowerCase();
       return [[filename, slug]];
     });
@@ -39,4 +39,18 @@ export const glob =
       }),
     );
     return output;
-  };
+  },
+  single: async (file) => {
+    // TODO: unify this with the above better
+    const filename = `${base}/${file}`;
+    const match = pattern.exec(filename);
+    if (!match || !match[1]) return;
+    const slug = match[1].toLowerCase();
+
+    const { frontmatter, body } = await run_js(
+      "src/runtime/frontmatter.js",
+      filename,
+    );
+    return { frontmatter: schema(frontmatter), body, slug };
+  },
+});

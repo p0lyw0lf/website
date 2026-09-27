@@ -4,7 +4,7 @@ import { Base } from "../components/Base.js";
 import { art } from "../content/config.js";
 import { html } from "../render.js";
 
-const artPosts = await art();
+const artPosts = await art.all();
 const sortedArt = Object.values(artPosts).sort(
   (a, b) => b.frontmatter.published - a.frontmatter.published,
 );

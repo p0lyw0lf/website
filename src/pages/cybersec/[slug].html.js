@@ -5,7 +5,7 @@ import { html } from "../../render.js";
 
 const getPages = async () => {
   return (
-    Object.values(await cybersec())
+    Object.values(await cybersec.all())
       // Sorting by slug is like sorting by date, effectively
       .sort((a, b) => b.slug.localeCompare(a.slug))
   );

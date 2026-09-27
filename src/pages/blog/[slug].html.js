@@ -6,7 +6,7 @@ import { atprotoPostUrl, toBlogUrl } from "../../data/urls.js";
 import { html, inline_markdown } from "../../render.js";
 
 const getPages = async () => {
-  return Object.values(await blog()).sort(
+  return Object.values(await blog.all()).sort(
     (a, b) => b.frontmatter.published - a.frontmatter.published,
   );
 };

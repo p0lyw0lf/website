@@ -27,9 +27,11 @@ export const PostLink = async ({
     ${formattedPublished}:
     <a href="${url}">${await inline_markdown(title)}</a>
     ${tags.length > 0 &&
-    html`<small>${tags.map((tag) => `${TagLink({ tag })} `)}</small>`}
+    html`<small class="tags"
+      >${tags.map((tag) => `${TagLink({ tag })} `)}</small
+    >`}
   `.withStyle(css`
-    small a {
+    small.tags a {
       color: var(--color-text-secondary-accent);
     }
   `);
