@@ -3,6 +3,8 @@ title: "Pining for Arc Downcasting in Rust"
 description: "In the course of writing my build driver, I came across a bit of an unusual problem, for which I made a bit of an usual solution. I think..."
 tags: ["programming", "rust"]
 published: 1790695917
+mastodon: "https://social.treehouse.systems/@PolyWolf/117355048785641127"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3mwo5llv3xk2d"
 ---
 
 In the course of writing my [build driver](https://git.sr.ht/~polywolf/driver), I came across a bit of an unusual problem, for which I made a bit of an usual solution. I think the solution is interesting and would like to talk about it, but to understand anything we must first understand the problem at hand.
