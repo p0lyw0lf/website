@@ -193,6 +193,7 @@ export default store(css`
     display: inline-block;
     width: 100%;
     text-align: center;
+    overflow-x: auto;
   }
 
   .footnotes {
