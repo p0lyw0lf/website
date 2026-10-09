@@ -291,7 +291,7 @@ Comparing this to the example in the docs:
 `Deref` is simple like before, just with a pointer instead of a reference:
 
 ```rust
-impl<V, T> Deref for PinRef<V, T> {
+impl<V, T + 'static> Deref for PinRef<V, T + 'static> {
     type Target = T;
     fn deref(&self) -> &Self::Target {
         // SAFETY: by construction and pin guarantees, the pointer is still valid.
@@ -327,7 +327,7 @@ $$
 \end{gathered}
 $$
 
-How we should interpret this is: If we can go from a `&T` to a `&U` for an _arbitrary_ lifetime `'a`, that means `*U` is a fixed offset from `*T`[^arbitrary]. So, because `ptr` has a fixed address (it was derived from the pinned `val`), so will the output of `f`. Other pin guarantees like "`val` will always remain valid at that address while it's pinned" help too.
+How we should interpret this is: Because `f` _must_ work for any lifetime, we can choose the lifetime of the input and get a guarantee the output will have the same lifetime. So, we can choose "whatever the lifetime of `val` ends up being after we pass ownership", looking into the future in a way normal references cannot. Other pin guarantees like "`val` will always remain valid at that address while it's pinned" help too. (Thanks to [~T6 on lobste.rs](https://lobste.rs/c/tbg0kj) for helping clarify this!)
 
 If I were a real type theorist, I would have pulled out some sort of commutative diagram and drawn a bunch of arrows, or perhaps even written down some inference rules, but alas, I cannot even abstract over monads... Anyways this argument works for what we originally wanted too:
 
@@ -373,10 +373,14 @@ fn main() {
 
 All that remains in our original example is to replace all the plain `Arc<JSON>` with `Pin<Arc<MustPin<JSON>>>` (wow what a mouthful), make a `Clone` implementation, account for `?Sized` types, etc. etc. This post is long enough as it is so I've omitted that, but if you want, you can find the full details in my [repository](https://git.sr.ht/~polywolf/driver/tree/cb9ee31e272f24311981a41f979d82f31f39f61f/item/packages/pin-downcast/src/pin_ref.rs). I might release this as a standalone crate if I feel like it, but this might still be riddled with UB I missed so maybe not (:
 
-Anyways!! Hope you learned something, until next time~
+Also, as to be expected, this isn't nearly the first time someone has tried to do something like this. Previous work includes:
+* [`yoke`](https://docs.rs/yoke/latest/yoke/), a classic crate implementing everything I want here and more. Has a fairly similar `val` + `ptr` core, depends on a third-party [`StableDeref`](https://docs.rs/stable_deref_trait/latest/stable_deref_trait/trait.StableDeref.html) trait made before `Pin` was a thing.
+* [`mappable-rc`](https://docs.rs/mappable-rc/latest/mappable_rc/), a slightly more production-ready than what I've proposed. It depends on the defined stability of [`Arc::as_ptr`](https://doc.rust-lang.org/std/sync/struct.Arc.html#method.as_ptr) instead of `Pin`.
+* Rust's [field projections goal](https://github.com/rust-lang/goals/issues/390), which would enable [`PinRef::project`]-style APIs for `Arc`, but maybe not the `filter_project` or `try_project` ones? Unclear, anyways likely not coming for a couple more years still.
+
+Anyways!! Hope you learned something, thanks for reading, until next time~
 
 [^problems]: In increasing order of badness: too much string typing, no error handling, concurrent requests can race and end up doing extra work. Probably others I'm missing too. The solution to that last one is simultaneously very interesting & very boring, [read the code yourself if you want](https://git.sr.ht/~polywolf/driver/tree/3e0e9250a6657f9e5ed977ecdd08f3550e06f68b/item/packages/driver-db/src/database.rs#L150-270).
 [^built-in]: I'm only covering options from the Rust standard library for simplicity, but garbage-collected pointers from [`dumpster`](https://crates.io/crates/dumpster) or arena pointers from [`slotmap`](https://crates.io/crates/slotmap) can also be good ideas.
 [^why-not-arc]: You might be thinking, "why not `struct Ref<V, T> { val: Arc<V>, ptr: &'static T}`?" and unfortunately a refutation is much more complex, and this example is more illustrative of why we need `Pin` later. Suffice to say, even though `Arc` on its own gives address stability in practice, Rust's type system doesn't enforce that it will[^other-idea].
 [^other-idea]: I previously thought `struct PinRef<V, T> { val: Pin<Arc<V>>, ptr: &'static T }` was enough, but turns out that's entirely insufficient due to the presence of `Unpin`.
-[^arbitrary]: "Arbitrary" is key here. Means we can't do `fn project<'a, U>(self, f: impl FnOnce(&'a T) -> &'a U) -> PinRef<V, U>`, because `'a` is bound too early, which would allow us to choose a smaller lifetime, letting us project things w/ interior mutability, which is bad. Wish I could formalize this better but I've thought about it really really hard and haven't been able to come up with a counterexample to my main function so I hope no one else will either.
