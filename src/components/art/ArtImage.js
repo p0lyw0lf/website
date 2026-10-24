@@ -1,9 +1,18 @@
 import { run_js } from "driver";
+import { toShortISODate } from "../../../lib/data/date.js";
+import { css, html } from "../../../lib/html.js";
 import { BREAKPOINT_DESKTOP } from "../../css/breakpoints.js";
-import { toShortISODate } from "../../data/date.js";
-import { toArtUrl } from "../../data/urls.js";
-import { css, html } from "../../render.js";
+import { toArtUrl } from "../../urls.js";
 
+/**
+ * @typedef {ReturnType<typeof import("../../content/config.js").artSchema>} ArtSchema
+ *
+ * @typedef {object} Props
+ * @property {import("../../../lib/runtime/types").Page<ArtSchema>} post
+ * @property {boolean=} hidden
+ */
+
+/** @param {Props} props */
 export const ArtImage = async ({ post, hidden }) => {
   const { src, alt, title, tags, published: rawPublished } = post.frontmatter;
   const url = toArtUrl(src);
@@ -13,15 +22,17 @@ export const ArtImage = async ({ post, hidden }) => {
   return html`
     <button class="show" popovertarget="${src}">
       <p>${formattedPublished}</p>
-      ${hidden
-        ? html`<p>${alt}</p>`
-        : await run_js("src/runtime/remoteImage.js", {
-            url,
-            alt,
-            title,
-            width: 256,
-            height: 256,
-          })}
+      ${
+        hidden
+          ? html`<p>${alt}</p>`
+          : await run_js("src/runtime/remoteImage.js", {
+              url,
+              alt,
+              title,
+              width: 256,
+              height: 256,
+            })
+      }
       <p class="tags">${tags.map((tag) => html`<span>#${tag}</span> `)}</p>
     </button>
     <dialog popover id="${src}">

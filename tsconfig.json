@@ -1,0 +1,30 @@
+{
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "lib": [
+      "ESNext"
+    ],
+    "target": "esnext",
+    "paths": {
+      "driver": [
+        "./global.d.ts"
+      ]
+    },
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true
+  },
+  "include": [
+    "BUILD.js",
+    "CONFIG.js",
+    "global.d.ts",
+    "lib/**/*.js",
+    "lib/**/*.d.ts",
+    "src/**/*.js",
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -7,7 +7,10 @@ export interface PartialPage {
   body: StoreObject;
 }
 
-export interface Page extends PartialPage {
+export interface Page<
+  F extends Record<string, any> = Record<string, any>,
+> extends PartialPage {
+  frontmatter: F;
   outputPath: string;
   // Specified if the page is part of a collection
   slug?: string;
