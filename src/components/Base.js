@@ -1,8 +1,10 @@
 import { run_js, store } from "driver";
-import { SITE_URL } from "../data/urls.js";
-import { attributes, html } from "../render.js";
+import { SITE_URL } from "../../CONFIG.js";
+import { attributes, html } from "../../lib/html.js";
 
 /**
+ * @typedef {import("../../lib/html_types").HTML} HTML
+ *
  * @typedef {object} Props
  * @property {string} title
  * @property {string} pathname
@@ -10,12 +12,12 @@ import { attributes, html } from "../render.js";
  * @property {string} [description]
  *
  * @typedef {object} Slots
- * @property {string} [extraHead]
- * @property {string} [header]
- * @property {string} [footer]
+ * @property {HTML} [extraHead]
+ * @property {HTML} [header]
+ * @property {HTML} [footer]
  *
  * @callback Render
- * @param {string} mainSlot
+ * @param {HTML} mainSlot
  * @param {Slots} [extraSlots]
  * @returns {Promise<import("driver").StoreObject>}
  */
@@ -41,17 +43,21 @@ export const Base =
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
           <title>${fullTitle}</title>
-          ${description &&
-          html`<meta
-            ${attributes({ name: "description", content: description })}
-          />`}
+          ${
+            description &&
+            html`<meta
+              ${attributes({ name: "description", content: description })}
+            />`
+          }
 
           <meta property="og:title" content="${title ?? "PolyWolf"}" />
           <meta property="og:site_name" content="wolfgirl.dev" />
-          ${description &&
-          html`<meta
-            ${attributes({ property: "og:description", content: description })}
-          />`}
+          ${
+            description &&
+            html`<meta
+              ${attributes({ property: "og:description", content: description })}
+            />`
+          }
           <meta property="og:url" content="${canonicalUrl}" />
           ${
             /* TODO: automatic "og:image" property. Right now it just always uses the favicon which is not ideal. */ ""
@@ -100,10 +106,12 @@ export const Base =
           </style>
         </head>
         <body>
-          ${header ||
-          html`<header>
-            <h1><a href="/">${title || "idk"}</a></h1>
-          </header>`}
+          ${
+            header ||
+            html`<header>
+              <h1><a href="/">${title || "idk"}</a></h1>
+            </header>`
+          }
           <main>${slot}</main>
           ${footer}
         </body>

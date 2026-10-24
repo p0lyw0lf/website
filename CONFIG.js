@@ -43,6 +43,17 @@ export const VIDEO_EXTENSIONS = [".mp4", ".mkv", ".mov", ".webm"];
 export const AUDIO_EXTENSIONS = [".mp3", ".wav", ".flac", ".m4a"];
 
 /**
+ * MODIFY: When running `markdownToHtml`, what component
+ * should we use for media? Provide a javascript filename
+ * relative to the project root for this.
+ */
+export const MEDIA_COMPONENTS = {
+  Audio: "lib/components/Audio.js",
+  Image: "src/components/BlogImage.js",
+  Video: "lib/components/Video.js",
+};
+
+/**
  * MODIFY: In galleries, this will be used as a prefix for audio/video
  * filenames to show as a thumbnail on the page of collected items.
  *
