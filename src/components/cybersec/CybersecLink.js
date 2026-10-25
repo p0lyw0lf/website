@@ -1,5 +1,5 @@
 import { html } from "../../../lib/html.js";
-import { toCybersecUrl } from "../../data/urls.js";
+import { toCybersecUrl } from "../../urls.js";
 
 /**
  * @typedef {object} Props

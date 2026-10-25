@@ -1,6 +1,6 @@
 import { run_js } from "driver";
 import { css, html } from "../../lib/html.js";
-import { STATIC_URL } from "../data/urls.js";
+import { STATIC_URL } from "../urls.js";
 
 /**
  * @typedef Props
