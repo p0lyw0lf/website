@@ -12,8 +12,6 @@ export interface Page<
 > extends PartialPage {
   frontmatter: F;
   outputPath: string;
-  // Specified if the page is part of a collection
-  slug?: string;
   // Specified if the page is an index page
   children?: Page[];
 }

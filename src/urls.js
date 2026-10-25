@@ -32,7 +32,7 @@ export const toCybersecUrl = (slug) => `/cybersec/${slug}/`;
 
 const atprotoPostRegex = /at:\/\/(.*)\/app\.bsky\.feed\.post\/(.*)/;
 /**
- * @param {string=} atprotoUrl
+ * @param {string | null | undefined} atprotoUrl
  * @returns {string=}
  */
 export const atprotoPostUrl = (atprotoUrl) => {

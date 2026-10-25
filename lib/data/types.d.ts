@@ -3,10 +3,15 @@ import type { Page } from "../runtime/types";
 /** Validates that a value is of a given type. Throws if it's not. */
 export type Validator<T> = (value: unknown) => T;
 
+export interface PageWithSlug<F> extends Page<F> {
+  slug: string;
+  isDraft?: boolean;
+}
+
 export type SingleLoader<Schema> = (
   file: string,
-) => Promise<Page<Schema> | undefined>;
-export type MultiLoader<Schema> = () => Promise<Record<string, Page<Schema>>>;
+) => Promise<PageWithSlug<Schema> | undefined>;
+export type MultiLoader<Schema> = () => Promise<Array<PageWithSlug<Schema>>>;
 
 export interface Collection<Schema> {
   base: string;

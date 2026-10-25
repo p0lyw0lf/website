@@ -12,7 +12,7 @@ import { Header } from "../Header.js";
  * @property {string} sectionTitle
  * @property {string} homeLink
  * @property {string} [rssLink]
- * @property {boolean} [isDraft]
+ * @property {boolean=} [isDraft]
  *
  * @typedef {object} Slots
  * @property {HTML=} [extraHead]
