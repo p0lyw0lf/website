@@ -1,8 +1,8 @@
-import { run_js } from "driver";
 import { html } from "../../lib/html.js";
 import { ArtImage } from "../components/art/ArtImage.js";
 import { Base } from "../components/Base.js";
 import { art } from "../content/config.js";
+import ArtCss from "../css/Art.css.js";
 
 const artPosts = await art.all();
 const sortedArt = Object.values(artPosts).sort(
@@ -31,5 +31,5 @@ export default await Base({
         >my deviantart gallery</a
       >.
     </p>
-  `.withStyle(await run_js("./src/css/Art.css.js")),
+  `.withStyle(ArtCss),
 );

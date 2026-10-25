@@ -56,13 +56,10 @@ export type ResizeMethod =
   | "Triangle"
   | "Welch";
 
-export interface PartialConvertOpts {
+export interface ConvertOpts {
   format?: ImageFormat;
   encoderOptions?: EncoderOptions;
-  resizeMethod?: ResizeMethod;
-}
-
-export interface ConvertOpts extends PartialConvertOpts {
   size?: ImageSize;
   fit?: ImageFit;
+  resizeMethod?: ResizeMethod;
 }

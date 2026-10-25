@@ -1,4 +1,5 @@
-import { run_js } from "driver";
+import { get_url } from "driver";
+import { Image } from "../../lib/components/index.js";
 import { css, html } from "../../lib/html.js";
 import { toArtUrl } from "../urls.js";
 
@@ -21,37 +22,40 @@ import { toArtUrl } from "../urls.js";
  */
 export const LandingPfp = async ({ src, dims, alt, title, desc }) => {
   const url = toArtUrl(src);
-  let width = 256;
-  let height = 256;
-  if (dims) {
-    ({ width: width, height: height } = dims);
-  }
+  let size = dims ?? { width: 256, height: 256 };
 
-  const remoteImage = await run_js("src/runtime/remoteImage.js", {
+  const img = await Image({
+    src: await get_url(url),
     url,
     alt,
     title,
     loading: "eager",
-    width,
-    height,
+    defaultOpts: {
+      format: "jpeg",
+      encoderOptions: { quality: 90 },
+      size,
+      fit: "contain",
+      resizeMethod: "Lanczos",
+    },
+    otherOpts: [],
   });
 
   return html`
-    <figure>
+    <figure class="landingPfp">
       <div>
-        <a href="/about/">${remoteImage}</a>
+        <a href="/about/">${img}</a>
       </div>
       <figcaption>${desc}</figcaption>
     </figure>
   `.withStyle(css`
-    figure {
+    figure.landingPfp {
       width: 100%;
       margin: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    figure div {
+    figure.landingPfp div {
       display: flex;
       flex-direction: row;
       align-items: center;

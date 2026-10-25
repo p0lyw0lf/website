@@ -1,4 +1,5 @@
-import { run_js } from "driver";
+import { get_url } from "driver";
+import { Image } from "../../../lib/components/index.js";
 import { toShortISODate } from "../../../lib/data/date.js";
 import { css, html } from "../../../lib/html.js";
 import { BREAKPOINT_DESKTOP } from "../../css/breakpoints.js";
@@ -26,12 +27,19 @@ export const ArtImage = async ({ post, hidden }) => {
       ${
         hidden
           ? html`<p>${alt}</p>`
-          : await run_js("src/runtime/remoteImage.js", {
+          : await Image({
+              src: await get_url(url),
               url,
               alt,
               title,
-              width: 256,
-              height: 256,
+              defaultOpts: {
+                format: "jpeg",
+                encoderOptions: { quality: 90 },
+                size: { width: 256, height: 256 },
+                fit: "contain",
+                resizeMethod: "Lanczos",
+              },
+              otherOpts: [],
             })
       }
       <p class="tags">${tags.map((tag) => html`<span>#${tag}</span> `)}</p>

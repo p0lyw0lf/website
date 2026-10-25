@@ -1,7 +1,8 @@
 import { run_js, store } from "driver";
+import { SITE_URL } from "../../../../CONFIG.js";
 import { html } from "../../../../lib/html.js";
 import { toBlogFeedEntry } from "../../../rss.js";
-import { SITE_URL, toTagUrl } from "../../../urls.js";
+import { toTagUrl } from "../../../urls.js";
 
 const getTags = async () => {
   return await run_js("src/pages/tags/[tag].html.js", null);

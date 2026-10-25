@@ -1,7 +1,7 @@
-import { run_js } from "driver";
 import { html } from "../../lib/html.js";
 import { Base } from "../components/Base.js";
 import { RandomLandingPfp } from "../components/RandomLandingPfp.js";
+import IndexCss from "../css/Index.css.js";
 
 export default await Base({
   title: "Home",
@@ -24,7 +24,7 @@ export default await Base({
       design because i use my phone all the time! System font everywhere because
       i like it! Inconsistent capitalization because it's fun!
     </p>
-  `.withStyle(await run_js("src/css/Index.css.js")),
+  `.withStyle(IndexCss),
   {
     extraHead: html`
       <link rel="me" href="https://social.treehouse.systems/@PolyWolf" />

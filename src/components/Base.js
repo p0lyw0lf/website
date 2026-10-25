@@ -1,6 +1,7 @@
-import { run_js, store } from "driver";
+import { store } from "driver";
 import { SITE_URL } from "../../CONFIG.js";
 import { attributes, html } from "../../lib/html.js";
+import commonCss from "../css/common.css.js";
 
 /**
  * @typedef {import("../../lib/html_types").HTML} HTML
@@ -98,7 +99,7 @@ export const Base =
 
           ${extraHead}
           <style>
-            ${await run_js("src/css/common.css.js", null)}
+            ${commonCss}
             ${extraHead?.style}
             ${slot.style}
             ${header?.style}

@@ -1,9 +1,9 @@
-import { run_js } from "driver";
 import { html } from "../../lib/html.js";
 import { Base } from "../components/Base.js";
 import { PostLink } from "../components/blog/PostLink.js";
 import { Header } from "../components/Header.js";
 import { blog } from "../content/config.js";
+import MarkdownPageCss from "../css/MarkdownPage.css.js";
 
 /** MUST be a file present inside `src/content/blog` ending with `.md` */
 const posts = [
@@ -42,7 +42,7 @@ const content = html`
   <p>
     <ul>${postLinks.map((link) => html`<li>${link}</li>`)}</ul>
   </p>
-`.withStyle(await run_js("src/css/MarkdownPage.css.js"));
+`.withStyle(MarkdownPageCss);
 
 // fobar
 print(content.style);

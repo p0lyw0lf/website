@@ -1,9 +1,17 @@
-import { run_js } from "driver";
 import { css, html } from "../../lib/html.js";
 import { Base } from "../components/Base.js";
 import { Header } from "../components/Header.js";
+import ButtonWallCss from "../css/ButtonWall.css.js";
+import MarkdownPageCss from "../css/MarkdownPage.css.js";
 
-/** @type{Array<{ name: string; link: string; desc: string }>} */
+/**
+ * @typedef {object} Friend
+ * @property {string} name
+ * @property {string} link
+ * @property {string} desc
+ */
+
+/** @type{Array<Friend>} */
 const friends = [
   { name: "Ruby", link: "https://ruby.gay", desc: "a nerrrrrrrrd :3" },
   {
@@ -48,12 +56,15 @@ const friends = [
   },
 ];
 
+/** @param {Friend} friend */
 const Friend = ({ name, link, desc }) =>
   html`<li><a href="${link}">${name}</a> - ${desc}</li>`;
 
 /**
  * buttons[n][0]: The URL to link to, minus the https://. SHOULD be in sorted order.
  * buttons[n][1]: If starting with a ".": The suffix to add to the URL to get the button filename. Otherwise, the full button filename.
+ *
+ * @type {Array<[string, string]>}
  */
 const buttons = [
   ["blog.aurahack.ca", ".gif"],
@@ -78,6 +89,7 @@ const buttons = [
   ["www.youtube.com/watch?v=FtutLA63Cp8", "bad-apple.gif"],
 ];
 
+/** @param {[string, string]} button */
 const Button = ([url, suffix]) => {
   const image = `https://static.wolfgirl.dev/buttonwall/${suffix.startsWith(".") ? url + suffix : suffix}`;
   return html`<a href="https://${url}"><img src="${image}" alt="${url}" /></a>`;
@@ -217,8 +229,8 @@ const content = html`
     }
   </script>
 `.withStyle(css`
-  ${await run_js("src/css/MarkdownPage.css.js")}
-  ${await run_js(`src/css/ButtonWall.css.js`)}
+  ${MarkdownPageCss}
+  ${ButtonWallCss}
 `);
 
 const title = "Friends";

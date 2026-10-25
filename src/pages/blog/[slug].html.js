@@ -1,8 +1,9 @@
-import { run_js } from "driver";
 import { html } from "../../../lib/html.js";
+import { markdownToHtml } from "../../../lib/runtime/index.js";
 import { Post } from "../../components/blog/Post.js";
 import { TagLink } from "../../components/blog/TagLink.js";
 import { blog } from "../../content/config.js";
+import BlogCss from "../../css/Blog.css.js";
 import { inlineMarkdown } from "../../runtime/index.js";
 import { atprotoPostUrl, toBlogUrl } from "../../urls.js";
 
@@ -42,9 +43,7 @@ const buildPage = async ({ frontmatter, body, slug, isDraft }) => {
           ></span
         >
       </div>
-      <article class="e-content"
-        >${await run_js("src/runtime/markdown.js", body)}</article
-      >
+      <article class="e-content">${await markdownToHtml(body)}</article>
       <div class="tags">${tags.map((tag) => TagLink({ tag }))}</div>
       ${
         (mastodon || blueskyUrl) &&
@@ -55,7 +54,7 @@ const buildPage = async ({ frontmatter, body, slug, isDraft }) => {
           </div>
         `
       }
-    `.withStyle(await run_js("./src/css/Blog.css.js")),
+    `.withStyle(BlogCss),
   );
 };
 

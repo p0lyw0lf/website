@@ -3,19 +3,24 @@ import { html } from "../../lib/html.js";
 import { minifyHtml } from "../../lib/runtime/index.js";
 
 /**
+ * @template InnerProps
  * @callback Component
- * @param {object} props
+ * @param {InnerProps} props
  * @returns {Promise<import("../../lib/html_types").HTML>}
- *
+ */
+
+/**
+ * @template InnerProps
  * @typedef Props
  * @type {object}
- * @property {Component} Component
- * @property {Array.<object>} propChoices
+ * @property {Component<InnerProps>} Component
+ * @property {Array<InnerProps>} propChoices
  * @property {string} id
  */
 
 /**
- * @param {Props} props
+ * @template InnerProps
+ * @param {Props<InnerProps>} props
  * @returns {Promise<import("../../lib/html_types").HTML>}
  */
 export const RandomChoice = async ({ Component, propChoices, id }) => {
