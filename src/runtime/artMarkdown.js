@@ -3,6 +3,10 @@ import { html } from "../../lib/html.js";
 import { replaceMatches } from "../../lib/regex.js";
 import { plainMarkdownToHtml } from "../../lib/runtime/index.js";
 
+/** @typedef {import("driver").StoreObject} Props */
+/** @type {Props} */
+const input = ARG;
+
 const LINK_REGEX =
   /<(?<tag>\w+)\s+(handle|username)="(?<handle>[\w\.]+)"\s+\/>/gm;
 
@@ -23,12 +27,16 @@ const tagTransforms = {
     html`<a href="https://twitter.com/${username}">@${username}</a>`,
 };
 
-const body = await replaceMatches(LINK_REGEX, ARG.toString(), async (match) => {
-  const tag = match.groups?.["tag"] || "";
-  const handle = match.groups?.["handle"] || "";
-  const transform = tagTransforms[tag];
-  if (!handle || !transform) return match[0];
-  return transform(handle);
-});
+const body = await replaceMatches(
+  LINK_REGEX,
+  input.toString(),
+  async (match) => {
+    const tag = match.groups?.["tag"] || "";
+    const handle = match.groups?.["handle"] || "";
+    const transform = tagTransforms[tag];
+    if (!handle || !transform) return match[0];
+    return transform(handle).toString();
+  },
+);
 
 export default await plainMarkdownToHtml(store(body));

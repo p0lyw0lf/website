@@ -1,9 +1,9 @@
 import { run_js } from "driver";
+import { html } from "../../lib/html.js";
 import { Base } from "../components/Base.js";
 import { PostLink } from "../components/blog/PostLink.js";
 import { Header } from "../components/Header.js";
 import { blog } from "../content/config.js";
-import { html } from "../render.js";
 
 /** MUST be a file present inside `src/content/blog` ending with `.md` */
 const posts = [

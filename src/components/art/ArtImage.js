@@ -2,10 +2,11 @@ import { run_js } from "driver";
 import { toShortISODate } from "../../../lib/data/date.js";
 import { css, html } from "../../../lib/html.js";
 import { BREAKPOINT_DESKTOP } from "../../css/breakpoints.js";
+import { artMarkdown } from "../../runtime/index.js";
 import { toArtUrl } from "../../urls.js";
 
 /**
- * @typedef {ReturnType<typeof import("../../content/config.js").artSchema>} ArtSchema
+ * @typedef {ReturnType<typeof import("../../content/config.js").art.schema>} ArtSchema
  *
  * @typedef {object} Props
  * @property {import("../../../lib/runtime/types").Page<ArtSchema>} post
@@ -39,7 +40,7 @@ export const ArtImage = async ({ post, hidden }) => {
       <button class="hide" popovertarget="${src}" popovertargetaction="hide"
         >← Back</button
       >
-      ${await run_js("src/runtime/artMarkdown.js", post.body)}
+      ${await artMarkdown(post.body)}
       <img src="${url}" alt="${alt}" title="${title}" />
     </dialog>
   `.withStyle(css`

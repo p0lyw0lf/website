@@ -1,7 +1,7 @@
 import { run_js } from "driver";
+import { html } from "../../../lib/html.js";
 import { Cybersec } from "../../components/cybersec/Cybersec.js";
 import { cybersec } from "../../content/config.js";
-import { html } from "../../render.js";
 
 const getPages = async () => {
   return (
