@@ -1,25 +1,26 @@
-import { run_js } from "driver";
 import { SITE_URL } from "../../../CONFIG.js";
 import { html } from "../../../lib/html.js";
+import PostCss from "../../css/Post.css.js";
 import { Base } from "../Base.js";
 import { Header } from "../Header.js";
 
 /**
  * @typedef {import("../Base.js").Props} BaseProps
+ * @typedef {import("../../../lib/html_types").HTML} HTML
  *
- * @typedef {BaseProps} Props
+ * @typedef {object} Props
  * @property {string} sectionTitle
  * @property {string} homeLink
  * @property {string} [rssLink]
  * @property {boolean} [isDraft]
  *
  * @typedef {object} Slots
- * @property {string} [extraHead]
- * @property {string} [footer]
+ * @property {HTML=} [extraHead]
+ * @property {HTML=} [footer]
  *
  * @callback Render
- * @param {string} mainSlot
- * @param {Slots} [extraSlots]
+ * @param {HTML} mainSlot
+ * @param {Slots=} [extraSlots]
  * @returns {Promise<import("driver").StoreObject>}
  */
 
@@ -29,9 +30,9 @@ import { Header } from "../Header.js";
  */
 export const Post =
   ({ sectionTitle, homeLink, rssLink, isDraft, ...props }) =>
-  async (slot, extraSlots = {}) => {
+  async (mainSlot, extraSlots = {}) => {
     const { extraHead, footer } = extraSlots;
-    return Base(props)(slot, {
+    return Base(props)(mainSlot, {
       extraHead: html`
         <link
           rel="alternate"
@@ -46,7 +47,7 @@ export const Post =
           crossorigin="anonymous"
         />
         ${extraHead}
-      `.withStyle(await run_js("src/css/Post.css.js")),
+      `.withStyle(PostCss),
       header: isDraft
         ? html`
             <header>

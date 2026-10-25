@@ -1,4 +1,4 @@
-import { html } from "../render.js";
+import { html } from "../../lib/html.js";
 import { RandomHeaderPfp } from "./RandomHeaderPfp.js";
 
 /**
@@ -9,7 +9,7 @@ import { RandomHeaderPfp } from "./RandomHeaderPfp.js";
 
 /**
  * @param {Props} props
- * @returns {Promise<import("driver").StoreObject>}
+ * @returns {Promise<import("../../lib/html_types").HTML>}
  */
 export const Header = async ({ sectionTitle, homeLink }) => html`
   <header>

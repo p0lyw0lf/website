@@ -12,13 +12,13 @@ import { attributes, html } from "../../lib/html.js";
  * @property {string} [description]
  *
  * @typedef {object} Slots
- * @property {HTML} [extraHead]
- * @property {HTML} [header]
- * @property {HTML} [footer]
+ * @property {HTML=} [extraHead]
+ * @property {HTML=} [header]
+ * @property {HTML=} [footer]
  *
  * @callback Render
  * @param {HTML} mainSlot
- * @param {Slots} [extraSlots]
+ * @param {Slots=} [extraSlots]
  * @returns {Promise<import("driver").StoreObject>}
  */
 

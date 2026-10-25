@@ -1,5 +1,5 @@
-import { toCybersecUrl } from "../../data/urls.js";
-import { html } from "../../render.js";
+import { html } from "../../../lib/html.js";
+import { toCybersecUrl } from "../../urls.js";
 import { Post } from "../blog/Post.js";
 
 /**

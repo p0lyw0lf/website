@@ -1,6 +1,7 @@
-import { toShortISODate } from "../../data/date.js";
-import { toBlogUrl } from "../../data/urls.js";
-import { css, html, inline_markdown } from "../../render.js";
+import { toShortISODate } from "../../../lib/data/date.js";
+import { css, html } from "../../../lib/html.js";
+import { inlineMarkdown } from "../../runtime/index.js";
+import { toBlogUrl } from "../../urls.js";
 import { TagLink } from "./TagLink.js";
 
 /**
@@ -11,6 +12,10 @@ import { TagLink } from "./TagLink.js";
  * @property {string} slug
  */
 
+/**
+ * @param {Props} props
+ * @returns {Promise<import("../../../lib/html_types").HTML>}
+ */
 export const PostLink = async ({
   title,
   published: propsPublished,
@@ -25,11 +30,13 @@ export const PostLink = async ({
 
   return html`
     ${formattedPublished}:
-    <a href="${url}">${await inline_markdown(title)}</a>
-    ${tags.length > 0 &&
-    html`<small class="tags"
-      >${tags.map((tag) => `${TagLink({ tag })} `)}</small
-    >`}
+    <a href="${url}">${await inlineMarkdown(title)}</a>
+    ${
+      tags.length > 0 &&
+      html`<small class="tags"
+        >${tags.map((tag) => `${TagLink({ tag })} `)}</small
+      >`
+    }
   `.withStyle(css`
     small.tags a {
       color: var(--color-text-secondary-accent);
