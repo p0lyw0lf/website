@@ -1,7 +1,7 @@
 import { markdown_to_html, run_js } from "driver";
+import { css, html } from "../../lib/html.js";
 import { Base } from "../components/Base.js";
 import { Header } from "../components/Header.js";
-import { css, html } from "../render.js";
 
 const { body, frontmatter, outputPath } = ARG;
 let pathname = "/" + outputPath;

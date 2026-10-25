@@ -1,6 +1,6 @@
 import { run_js } from "driver";
+import { css, html } from "../../lib/html.js";
 import { STATIC_URL } from "../data/urls.js";
-import { css, html } from "../render.js";
 
 /**
  * @typedef Props
@@ -11,7 +11,7 @@ import { css, html } from "../render.js";
 
 /**
  * @param {Props} props
- * @returns {Promise<import("../render.js").HTML>}
+ * @returns {Promise<import("../../lib/html_types").HTML>}
  */
 export const HeaderPfp = async ({ src, alt }) => {
   const remoteImage = await run_js("src/runtime/remoteImage.js", {

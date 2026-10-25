@@ -1,5 +1,5 @@
+import { html } from "../../../lib/html.js";
 import { toCybersecUrl } from "../../data/urls.js";
-import { html } from "../../render.js";
 
 /**
  * @typedef {object} Props
@@ -10,7 +10,7 @@ import { html } from "../../render.js";
 
 /**
  * @param {Props} props
- * @returns {import("../../render.js").HTML}
+ * @returns {import("../../../lib/html_types").HTML}
  */
 export const CybersecLink = ({ slug, title, repost_link }) => html`
   ${slug.slice(0, 10)}: <a href="${toCybersecUrl(slug)}">${title}</a> (<a

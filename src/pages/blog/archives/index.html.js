@@ -1,7 +1,7 @@
 import { run_js } from "driver";
+import { css, html } from "../../../../lib/html.js";
 import { Post } from "../../../components/blog/Post.js";
 import { toArchiveUrl } from "../../../data/urls.js";
-import { css, html } from "../../../render.js";
 
 const pagesByYear = await run_js(
   "src/pages/blog/archives/[year].html.js",

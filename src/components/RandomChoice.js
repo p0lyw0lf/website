@@ -1,10 +1,10 @@
 import { minify_html, store } from "driver";
-import { html } from "../render.js";
+import { html } from "../../lib/html.js";
 
 /**
  * @callback Component
  * @param {object} props
- * @returns {Promise<import("../render.js").HTML>}
+ * @returns {Promise<import("../../lib/html_types").HTML>}
  *
  * @typedef Props
  * @type {object}
@@ -15,7 +15,7 @@ import { html } from "../render.js";
 
 /**
  * @param {Props} props
- * @returns {Promise<import("../render.js").HTML>}
+ * @returns {Promise<import("../../lib/html_types").HTML>}
  */
 export const RandomChoice = async ({ Component, propChoices, id }) => {
   const htmlChoices = await Promise.all(

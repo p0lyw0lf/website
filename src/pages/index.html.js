@@ -1,7 +1,7 @@
 import { run_js } from "driver";
+import { html } from "../../lib/html.js";
 import { Base } from "../components/Base.js";
 import { RandomLandingPfp } from "../components/RandomLandingPfp.js";
-import { html } from "../render.js";
 
 export default await Base({
   title: "Home",

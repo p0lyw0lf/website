@@ -35,7 +35,7 @@ const propChoices = [
 ];
 
 /**
- * @returns {Promise<import("../render.js").HTML>}
+ * @returns {Promise<import("../../lib/html_types").HTML>}
  */
 export const RandomHeaderPfp = async () => {
   return await RandomChoice({ Component: HeaderPfp, propChoices, id: "pfp" });

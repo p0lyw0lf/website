@@ -1,8 +1,8 @@
 import { run_js } from "driver";
+import { html } from "../../../../lib/html.js";
 import { Post } from "../../../components/blog/Post.js";
 import { PostLink } from "../../../components/blog/PostLink.js";
 import { toArchiveUrl } from "../../../data/urls.js";
-import { html } from "../../../render.js";
 
 const getYear = (page) => {
   const epochPublished = Temporal.Instant.fromEpochMilliseconds(

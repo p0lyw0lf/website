@@ -1,6 +1,6 @@
 import { run_js } from "driver";
+import { css, html } from "../../lib/html.js";
 import { toArtUrl } from "../data/urls.js";
-import { css, html } from "../render.js";
 
 /**
  * @typedef {object} Dims
@@ -17,7 +17,7 @@ import { css, html } from "../render.js";
 
 /**
  * @param {Props} props
- * @returns {Promise<import("../render.js").HTML>}
+ * @returns {Promise<import("../../lib/html_types").HTML>}
  */
 export const LandingPfp = async ({ src, dims, alt, title, desc }) => {
   const url = toArtUrl(src);

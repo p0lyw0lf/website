@@ -1,7 +1,7 @@
 import { run_js } from "driver";
+import { css, html } from "../../lib/html.js";
 import { Base } from "../components/Base.js";
 import { Header } from "../components/Header.js";
-import { css, html } from "../render.js";
 
 /** @type{Array<{ name: string; link: string; desc: string }>} */
 const friends = [

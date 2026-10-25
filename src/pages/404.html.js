@@ -1,5 +1,5 @@
 import { minify_html, store } from "driver";
-import { html } from "../render.js";
+import { html } from "../../lib/html.js";
 
 // Hand-minify instead of applying template b/c it will save us a lot on outbound traffic
 export default await minify_html(

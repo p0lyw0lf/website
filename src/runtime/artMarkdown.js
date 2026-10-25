@@ -17,7 +17,7 @@ const LINK_REGEX =
  * Specifically, transform all link elements to be the appropriate link types.
  */
 
-/** @type {Record<string, (username: string) => import("../../lib/html.js").HTML>} */
+/** @type {Record<string, (username: string) => import("../../lib/html_types").HTML>} */
 const tagTransforms = {
   BskyLink: (username) =>
     html`<a href="https://bsky.app/profile/${username}">@${username}</a>`,

@@ -1,7 +1,7 @@
 import { run_js } from "driver";
+import { html } from "../../../lib/html.js";
 import { Post } from "../../components/blog/Post.js";
 import { TagLink } from "../../components/blog/TagLink.js";
-import { html } from "../../render.js";
 
 const tags = await run_js("src/pages/tags/[tag].html.js", null);
 const sortedTags = tags.sort(

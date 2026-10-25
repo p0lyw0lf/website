@@ -26,7 +26,7 @@ const pfps = [
 ];
 
 /**
- * @returns {Promise<import("../render.js").HTML>}
+ * @returns {Promise<import("../../lib/html_types").HTML>}
  */
 export const RandomLandingPfp = async () => {
   return await RandomChoice({
