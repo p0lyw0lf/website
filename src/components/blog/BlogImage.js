@@ -2,6 +2,7 @@ import { store } from "driver";
 import { Image } from "../../../lib/components/index.js";
 import { attributes, html } from "../../../lib/html.js";
 import { parseImage } from "../../../lib/runtime/image/index.js";
+import { minifyHtml } from "../../../lib/runtime/index.js";
 
 /**
  * @typedef {import("../../../lib/runtime/image/types").ConvertOpts} ConvertOpts
@@ -18,16 +19,24 @@ const { src, url, alt, title } = ARG;
 
 const image = await parseImage(src);
 
+/** @type {[number, ...number[]]} */
+const widths = [1536, 768, 384];
+
 /** @type {ConvertOpts} */
 const defaultOpts = {
-  format: "jxl",
-  encoderOptions: { quality: 92, stripMetadata: true },
+  format: "jpeg",
+  encoderOptions: { quality: 85, stripMetadata: true },
+  size: { width: widths[0], height: 1 },
+  fit: "cover",
+  resizeMethod: "Lanczos",
 };
+
 /** @type {ConvertOpts[]} */
-const otherOpts = [384, 768, 1536]
+const otherOpts = widths
   .filter((width) => width < image.size.width)
   .map((width) => ({
-    ...defaultOpts,
+    format: "jxl",
+    encoderOptions: { quality: 85, stripMetadata: true },
     size: { width, height: 1 },
     fit: "cover",
     resizeMethod: "Lanczos",
@@ -47,17 +56,19 @@ const id = url;
 
 // NOTE: the CSS for this _needs_ to be stored out-of-line, because the markdown eventually gets
 // passed beyond the serialization boundary. I should fix this...
-export default store(
-  html`
-    <button class="show" popovertarget="${id}">${img}</button>
-    <dialog popover id="${id}">
-      <button class="hide" popovertarget="${id}" popovertargetaction="hide"
-        >← Back</button
-      >
-      <figure>
-        <img ${attributes({ src: url, alt, title })} />
-        ${!!alt && html`<figcaption>${alt}</figcaption>`}
-      </figure>
-    </dialog>
-  `.toString(),
+export default await minifyHtml(
+  store(
+    html`
+      <button class="show" popovertarget="${id}">${img}</button>
+      <dialog popover id="${id}">
+        <button class="hide" popovertarget="${id}" popovertargetaction="hide"
+          >← Back</button
+        >
+        <figure>
+          <img ${attributes({ src: url, alt, title, loading: "lazy" })} />
+          ${!!alt && html`<figcaption>${alt}</figcaption>`}
+        </figure>
+      </dialog>
+    `.toString(),
+  ),
 );

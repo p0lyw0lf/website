@@ -41,8 +41,9 @@ export const HeaderPfp = async ({ src, alt }) => {
     #headerPfp {
       display: flex;
     }
-    #headerPfp picture img {
+    #headerPfp img {
       width: 128px;
+      height: auto;
     }
   `);
 };
