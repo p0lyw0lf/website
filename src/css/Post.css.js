@@ -1,9 +1,10 @@
-import { run_js, store } from "driver";
-import { css } from "../render.js";
+import { css } from "../../lib/html.js";
 import { BREAKPOINT_DESKTOP } from "./breakpoints.js";
+import MarkdownPageCss from "./MarkdownPage.css.js";
+import syntaxHighlightingThemeCss from "./syntaxHighlightingTheme.css.js";
 
-export default store(css`
-  ${await run_js("./src/css/MarkdownPage.css.js", null)}
+export default css`
+  ${MarkdownPageCss}
 
   main img {
     width: 100%;
@@ -117,7 +118,7 @@ export default store(css`
     background-color: inherit;
     color: inherit;
   }
-  ${await run_js("src/css/syntaxHighlightingTheme.css.js", null)}
+  ${syntaxHighlightingThemeCss}
 
   /* Make details/summary look similar to blockquote */
   blockquote, details {
@@ -207,4 +208,4 @@ export default store(css`
     font-weight: bold;
     margin-top: 0.7em;
   }
-`);
+`;

@@ -1,8 +1,7 @@
-import { store } from "driver";
-import { css } from "../render.js";
+import { css } from "../../lib/html.js";
 import { BREAKPOINT_IPAD } from "./breakpoints.js";
 
-export default store(css`
+export default css`
   .info h1 {
     margin: 8px 0;
   }
@@ -41,4 +40,4 @@ export default store(css`
       border-bottom: none;
     }
   }
-`);
+`;

@@ -1,8 +1,7 @@
-import { store } from "driver";
-import { css } from "../render.js";
+import { css } from "../../lib/html.js";
 import { BREAKPOINT_DESKTOP } from "./breakpoints.js";
 
-export default store(css`
+export default css`
   body {
     font-family: "Arial Nova", "Helvetica Neue", Arial, Helvetica, sans-serif;
     background-color: var(--color-background-secondary);
@@ -69,4 +68,4 @@ export default store(css`
   footer {
     margin: 1em;
   }
-`);
+`;

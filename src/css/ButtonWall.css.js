@@ -1,7 +1,6 @@
-import { store } from "driver";
-import { css } from "../render.js";
+import { css } from "../../lib/html.js";
 
-export default store(css`
+export default css`
   .buttonwall {
     display: grid;
     grid: none / repeat(auto-fit, calc(88px + 4px));
@@ -65,4 +64,4 @@ export default store(css`
     width: 1.5em;
     height: 1.5em;
   }
-`);
+`;

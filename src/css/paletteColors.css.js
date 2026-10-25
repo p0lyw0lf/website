@@ -1,7 +1,6 @@
-import { store } from "driver";
-import { css } from "../render.js";
+import { css } from "../../lib/html";
 
-export default store(css`
+export default css`
   :root {
     /* Original: --color-cherry: rgb(131, 37, 79); */
     --color-cherry: rgb(124, 12, 63);
@@ -19,4 +18,4 @@ export default store(css`
     --color-off-black: rgb(25, 25, 25);
     --color-black: rgb(0, 0, 0);
   }
-`);
+`;

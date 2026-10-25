@@ -1,8 +1,8 @@
-import { run_js, store } from "driver";
-import { css } from "../render.js";
+import { css } from "../../lib/html.js";
+import paletteColorsCss from "./paletteColors.css.js";
 
-export default store(css`
-  ${await run_js("src/css/paletteColors.css.js", null)}
+export default css`
+  ${paletteColorsCss}
 
   /* Dark theme by default */
   :root {
@@ -40,4 +40,4 @@ export default store(css`
       --color-border-primary: var(--color-light-gray);
     }
   }
-`);
+`;

@@ -1,7 +1,6 @@
-import { store } from "driver";
-import { css } from "../render.js";
+import { css } from "../../lib/html.js";
 
-export default store(css`
+export default css`
   /* "Eggbug Dark" base16 theme */
   :root {
     --b16-00: var(--color-off-black);
@@ -93,4 +92,4 @@ export default store(css`
   .invalid {
     color: var(--b16-0f);
   }
-`);
+`;

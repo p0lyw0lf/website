@@ -1,8 +1,7 @@
-import { store } from "driver";
-import { css } from "../render.js";
+import { css } from "../../lib/html.js";
 
-export default store(css`
+export default css`
   main h2 {
     text-align: center;
   }
-`);
+`;

@@ -1,7 +1,6 @@
-import { store } from "driver";
-import { css } from "../render.js";
+import { css } from "../../lib/html.js";
 
-export default store(css`
+export default css`
   body {
     font-family: Consolas, monaco, monospace;
     background-color: var(--color-background-secondary);
@@ -42,4 +41,4 @@ export default store(css`
     display: grid;
     grid: auto-flow / repeat(auto-fit, minmax(calc(256px + 16px + 2px), 1fr));
   }
-`);
+`;
