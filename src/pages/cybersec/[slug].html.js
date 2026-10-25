@@ -1,5 +1,5 @@
-import { run_js } from "driver";
 import { html } from "../../../lib/html.js";
+import { markdownToHtml } from "../../../lib/runtime/index.js";
 import { Cybersec } from "../../components/cybersec/Cybersec.js";
 import { cybersec } from "../../content/config.js";
 
@@ -21,9 +21,7 @@ const list = async () => {
 const build = async ({ frontmatter, body, slug }) => {
   const { title, repost_link } = frontmatter;
   return await Cybersec({ slug, title, repost_link, date: slug.slice(0, 10) })(
-    html`<article class="e-content"
-      >${await run_js("src/runtime/markdown.js", body)}</article
-    >`,
+    html`<article class="e-content">${await markdownToHtml(body)}</article>`,
   );
 };
 

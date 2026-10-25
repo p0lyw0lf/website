@@ -1,7 +1,6 @@
-import { SITE_URL } from "../CONFIG.js";
 import { html } from "../lib/html.js";
-import { markdownToHtml, minifyHtml } from "../lib/runtime/index.js";
-import { toBlogUrl, toCybersecUrl } from "./urls.js";
+import { minifyHtml, plainMarkdownToHtml } from "../lib/runtime/index.js";
+import { FULL_SITE_URL, toBlogUrl, toCybersecUrl } from "./urls.js";
 
 /**
  * @param {string} body
@@ -22,11 +21,10 @@ export const toBlogFeedEntry = async ({ frontmatter, body, slug }) => {
   const formattedPublished = Temporal.Instant.fromEpochMilliseconds(
     published * 1000,
   ).toString();
-  const url = SITE_URL + toBlogUrl(slug);
+  const url = FULL_SITE_URL + toBlogUrl(slug);
 
-  // TODO: If we ever decide to add markdown passes that _aren't_ transforming images, we'll need to
-  // add some parameters to our src/runtime/markdown.js task.
-  const content = await minifyHtml(await markdownToHtml(body));
+  // TODO: I need to add some parameters to lib/runtime/markdown.js to better control this I think.
+  const content = await minifyHtml(await plainMarkdownToHtml(body));
 
   return html`
     <entry>
@@ -54,8 +52,8 @@ export const toCybersecFeedEntry = async ({ frontmatter, body, slug }) => {
   const { title, repost_link } = frontmatter;
   const date = Temporal.PlainDate.from(slug.slice(0, 10));
   const formattedPublished = date.toPlainDateTime("12:00:00").toString() + "Z";
-  const url = SITE_URL + toCybersecUrl(slug);
-  const content = await minifyHtml(await markdownToHtml(body));
+  const url = FULL_SITE_URL + toCybersecUrl(slug);
+  const content = await minifyHtml(await plainMarkdownToHtml(body));
 
   return html`
     <entry>

@@ -1,10 +1,10 @@
 import { store } from "driver";
-import { SITE_URL } from "../../../CONFIG.js";
 import { html } from "../../../lib/html.js";
 import { listCybersecPages } from "../../content/config.js";
 import { toCybersecFeedEntry } from "../../rss.js";
+import { FULL_SITE_URL } from "../../urls.js";
 
-const site = SITE_URL + "/cybersec/";
+const site = FULL_SITE_URL + "/cybersec/";
 
 const pages = await listCybersecPages();
 const lastUpdated = pages[0]

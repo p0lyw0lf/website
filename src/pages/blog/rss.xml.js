@@ -1,10 +1,10 @@
 import { store } from "driver";
-import { SITE_URL } from "../../../CONFIG.js";
 import { html } from "../../../lib/html.js";
 import { listBlogPages } from "../../content/config.js";
 import { toBlogFeedEntry } from "../../rss.js";
+import { FULL_SITE_URL } from "../../urls.js";
 
-const site = SITE_URL + "/blog/";
+const site = FULL_SITE_URL + "/blog/";
 
 const pages = await listBlogPages();
 const lastUpdated = pages[0]

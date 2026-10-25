@@ -1,4 +1,4 @@
-import { css } from "../../lib/html";
+import { css } from "../../lib/html.js";
 
 export default css`
   :root {

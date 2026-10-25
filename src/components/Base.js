@@ -2,6 +2,7 @@ import { store } from "driver";
 import { SITE_URL } from "../../CONFIG.js";
 import { attributes, html } from "../../lib/html.js";
 import commonCss from "../css/common.css.js";
+import { FULL_SITE_URL } from "../urls.js";
 
 /**
  * @typedef {import("../../lib/html_types").HTML} HTML
@@ -31,7 +32,7 @@ export const Base =
   ({ title, pathname, overrideTitle, description }) =>
   async (slot, extraSlots) => {
     const { extraHead, header, footer } = extraSlots ?? {};
-    const canonicalUrl = `${SITE_URL}${pathname}`;
+    const canonicalUrl = `${FULL_SITE_URL}${pathname}`;
 
     const fullTitle = overrideTitle ?? `wolfgirl.dev - ${title}`;
 

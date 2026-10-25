@@ -1,9 +1,8 @@
 import { store } from "driver";
-import { SITE_URL } from "../../../../CONFIG.js";
 import { html } from "../../../../lib/html.js";
 import { listBlogPagesByTag } from "../../../content/config.js";
 import { toBlogFeedEntry } from "../../../rss.js";
-import { toTagUrl } from "../../../urls.js";
+import { FULL_SITE_URL, toTagUrl } from "../../../urls.js";
 
 /**
  * @typedef {import("../[tag].html.js").Props} Props
@@ -14,7 +13,7 @@ import { toTagUrl } from "../../../urls.js";
  * @returns {Promise<import("driver").StoreObject>}
  */
 const build = async ({ tag, pages }) => {
-  const site = SITE_URL + "/blog/";
+  const site = FULL_SITE_URL + "/blog/";
 
   const lastUpdated = pages[0]
     ? Temporal.Instant.fromEpochMilliseconds(

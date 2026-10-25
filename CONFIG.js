@@ -3,8 +3,12 @@ import { splitext } from "./lib/path.js";
 /**
  * MODIFY: replace this with the subfolder under your domain this site will
  * live in, **not including a trailing slash**.
+ *
+ * e.x.:
+ * + if the output will be at https://wolfgirl.dev, then SITE_URL = ""
+ * + if the output will be at https://foobar.com/baz, then SITE_URL = "/baz"
  */
-export const SITE_URL = "https://wolfgirl.dev";
+export const SITE_URL = "";
 
 /** MODIFY: A folder that will be built to generate all the pages in the site. MUST contain a trailing slash.
  *
@@ -45,7 +49,7 @@ export const AUDIO_EXTENSIONS = [".mp3", ".wav", ".flac", ".m4a"];
  */
 export const MEDIA_COMPONENTS = {
   Audio: "lib/components/Audio.js",
-  Image: "src/components/BlogImage.js",
+  Image: "src/components/blog/BlogImage.js",
   Video: "lib/components/Video.js",
 };
 
