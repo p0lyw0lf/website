@@ -1,6 +1,6 @@
 import { run_js } from "driver";
-import { SITE_URL } from "../../data/urls.js";
-import { html } from "../../render.js";
+import { SITE_URL } from "../../../CONFIG.js";
+import { html } from "../../../lib/html.js";
 import { Base } from "../Base.js";
 import { Header } from "../Header.js";
 

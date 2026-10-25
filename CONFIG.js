@@ -1,14 +1,10 @@
-import { slugifyPath, splitext } from "./lib/path.js";
+import { splitext } from "./lib/path.js";
 
 /**
  * MODIFY: replace this with the subfolder under your domain this site will
  * live in, **not including a trailing slash**.
- *
- * e.x.:
- * + if the output will be at https://wolfgirl.dev, then SITE_URL = ""
- * + if the output will be at https://foobar.com/baz, then SITE_URL = "/baz"
  */
-export const SITE_URL = "";
+export const SITE_URL = "https://wolfgirl.dev";
 
 /** MODIFY: A folder that will be built to generate all the pages in the site. MUST contain a trailing slash.
  *
@@ -85,9 +81,7 @@ export const ALLOWED_REMOTE_REGEX = /^https:\/\/static\.wolfgirl\.dev\//;
  *
  * @type{Array<[RegExp, string]>}
  */
-export const EXTERNAL_REPLACEMENTS = [
-  [/^(.*image-with-spaces\.png)$/, "https://wolfgirl.dev/apple-touch-icon.png"],
-];
+export const EXTERNAL_REPLACEMENTS = [];
 
 /**
  * @typedef {object} BuildProps
@@ -105,9 +99,10 @@ export const BUILD_EXTS = {
  * @returns {{ outputPath: string; ext: string, build: boolean }} - if `build` is true, `ext` MUST correspond with a file in the `./build` directory.
  */
 export const inputPathToOutputPath = (inputPath) => {
-  let [outputPath, ext] = splitext(
-    slugifyPath(inputPath.slice(PAGE_ROOT.length)),
-  );
+  // let [outputPath, ext] = splitext(
+  //   slugifyPath(inputPath.slice(PAGE_ROOT.length)),
+  // );
+  let [outputPath, ext] = splitext(inputPath.slice(PAGE_ROOT.length));
 
   const builder = BUILD_EXTS[ext];
   if (builder?.alwaysHTML) {

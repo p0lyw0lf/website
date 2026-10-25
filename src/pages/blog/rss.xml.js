@@ -1,7 +1,7 @@
 import { run_js, store } from "driver";
-import { toBlogFeedEntry } from "../../data/rss.js";
-import { SITE_URL } from "../../data/urls.js";
-import { html } from "../../render.js";
+import { SITE_URL } from "../../../CONFIG.js";
+import { html } from "../../../lib/html.js";
+import { toBlogFeedEntry } from "../../rss.js";
 
 const site = SITE_URL + "/blog/";
 
