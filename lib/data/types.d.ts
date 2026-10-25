@@ -4,6 +4,7 @@ import type { Page } from "../runtime/types";
 export type Validator<T> = (value: unknown) => T;
 
 export interface PageWithSlug<F> extends Page<F> {
+  outputPath?: never;
   slug: string;
   isDraft?: boolean;
 }

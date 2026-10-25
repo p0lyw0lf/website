@@ -17,9 +17,7 @@ export default await Base({
 })(
   html`
     <p>Click on each image for more info!</p>
-    <div class="grid">
-      ${await Promise.all(sortedArt.map(async (post) => ArtImage({ post })))}
-    </div>
+    <div class="grid">${await Promise.all(sortedArt.map(ArtImage))}</div>
     <p>
       ...and I don't really want to show any earlier ones since the reference
       has changed a lot, and I was <em>much</em> worse at art too :P. If you do

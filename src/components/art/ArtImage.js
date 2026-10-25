@@ -6,16 +6,8 @@ import { BREAKPOINT_DESKTOP } from "../../css/breakpoints.js";
 import { artMarkdown } from "../../runtime/index.js";
 import { toArtUrl } from "../../urls.js";
 
-/**
- * @typedef {ReturnType<typeof import("../../content/config.js").art.schema>} ArtSchema
- *
- * @typedef {object} Props
- * @property {import("../../../lib/runtime/types").Page<ArtSchema>} post
- * @property {boolean=} hidden
- */
-
-/** @param {Props} props */
-export const ArtImage = async ({ post, hidden }) => {
+/** @param {import("../../content/types").ArtPage} post */
+export const ArtImage = async (post) => {
   const { src, alt, title, tags, published: rawPublished } = post.frontmatter;
   const url = toArtUrl(src);
   const published = Temporal.Instant.fromEpochMilliseconds(rawPublished * 1000);
@@ -24,24 +16,20 @@ export const ArtImage = async ({ post, hidden }) => {
   return html`
     <button class="show" popovertarget="${src}">
       <p>${formattedPublished}</p>
-      ${
-        hidden
-          ? html`<p>${alt}</p>`
-          : await Image({
-              src: await get_url(url),
-              url,
-              alt,
-              title,
-              defaultOpts: {
-                format: "jpeg",
-                encoderOptions: { quality: 90 },
-                size: { width: 256, height: 256 },
-                fit: "contain",
-                resizeMethod: "Lanczos",
-              },
-              otherOpts: [],
-            })
-      }
+      ${await Image({
+        src: await get_url(url),
+        url,
+        alt,
+        title,
+        defaultOpts: {
+          format: "jpeg",
+          encoderOptions: { quality: 90 },
+          size: { width: 256, height: 256 },
+          fit: "contain",
+          resizeMethod: "Lanczos",
+        },
+        otherOpts: [],
+      })}
       <p class="tags">${tags.map((tag) => html`<span>#${tag}</span> `)}</p>
     </button>
     <dialog popover id="${src}">

@@ -1,9 +1,16 @@
-import { run_js } from "driver";
 import { html } from "../../../../lib/html.js";
 import { Post } from "../../../components/blog/Post.js";
 import { PostLink } from "../../../components/blog/PostLink.js";
+import { listBlogPages } from "../../../content/config.js";
 import { toArchiveUrl } from "../../../urls.js";
 
+/**
+ * @typedef {import("../../../content/types").BlogPage} BlogPage
+ */
+/**
+ * @param {BlogPage} page
+ * @returns {number}
+ */
 const getYear = (page) => {
   const epochPublished = Temporal.Instant.fromEpochMilliseconds(
     page.frontmatter.published * 1000,
@@ -12,9 +19,16 @@ const getYear = (page) => {
   return published.year;
 };
 
-const getArchivePages = async () => {
-  const pages = await run_js("./src/pages/blog/[slug].html.js", null);
+/**
+ * @typedef {object} Props
+ * @property {number} year
+ * @property {BlogPage[]} pages
+ */
+/** @returns {Promise<Props[]>} */
+const list = async () => {
+  const pages = await listBlogPages();
 
+  /** @type {Map<number, BlogPage[]>} */
   const byYear = new Map();
   for (const page of pages) {
     const year = getYear(page);
@@ -27,7 +41,11 @@ const getArchivePages = async () => {
 
 const rssLink = "/blog/rss.xml";
 
-const buildArchivePage = async ({ year, pages }) => {
+/**
+ * @param {Props} props
+ * @returns {Promise<import("driver").StoreObject>}
+ */
+const build = async ({ year, pages }) => {
   const url = toArchiveUrl(year);
   const title = `Archive ${year}`;
   return await Post({
@@ -60,4 +78,6 @@ const buildArchivePage = async ({ year, pages }) => {
   `);
 };
 
-export default ARG ? await buildArchivePage(ARG) : await getArchivePages();
+/** @type {Props | null} */
+const page = ARG;
+export default page ? await build(page) : await list();
