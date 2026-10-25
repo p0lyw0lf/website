@@ -1,9 +1,9 @@
-import { run_js } from "driver";
 import { html } from "../../../lib/html.js";
 import { Post } from "../../components/blog/Post.js";
 import { TagLink } from "../../components/blog/TagLink.js";
+import { listBlogPagesByTag } from "../../content/config.js";
 
-const tags = await run_js("src/pages/tags/[tag].html.js", null);
+const tags = await listBlogPagesByTag();
 const sortedTags = tags.sort(
   ({ tag: tagA, pages: pagesA }, { tag: tagB, pages: pagesB }) => {
     const byNumPages = pagesB.length - pagesA.length;

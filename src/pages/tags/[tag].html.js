@@ -1,11 +1,21 @@
-import { read_file, run_js } from "driver";
+import { read_file } from "driver";
 import { css, html } from "../../../lib/html.js";
 import { Post } from "../../components/blog/Post.js";
 import { PostLink } from "../../components/blog/PostLink.js";
+import { listBlogPages } from "../../content/config.js";
 import { toTagUrl } from "../../urls.js";
 
-const getTags = async () => {
-  const pages = await run_js("src/pages/blog/[slug].html.js", null);
+/**
+ * @typedef {import("../../content/types").BlogPage} BlogPage
+ *
+ * @typedef {object} Props
+ * @property {string} tag
+ * @property {BlogPage[]} pages
+ */
+
+/** @returns {Promise<Props[]>} */
+const list = async () => {
+  const pages = await listBlogPages();
 
   const byTag = new Map();
   for (const page of pages) {
@@ -22,7 +32,11 @@ const getTags = async () => {
   }));
 };
 
-const buildTagPage = async ({ tag, pages }) => {
+/**
+ * @param {Props} props
+ * @returns {Promise<import("driver").StoreObject>}
+ */
+const build = async ({ tag, pages }) => {
   const url = toTagUrl(tag);
   const rssLink = `/tags/${tag}/rss.xml`;
   return await Post({
@@ -69,4 +83,6 @@ const buildTagPage = async ({ tag, pages }) => {
   );
 };
 
-export default ARG ? await buildTagPage(ARG) : await getTags();
+/** @type {Props | null} */
+const page = ARG;
+export default page ? await build(page) : await list();

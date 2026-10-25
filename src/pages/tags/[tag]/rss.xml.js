@@ -1,14 +1,19 @@
-import { run_js, store } from "driver";
+import { store } from "driver";
 import { SITE_URL } from "../../../../CONFIG.js";
 import { html } from "../../../../lib/html.js";
+import { listBlogPagesByTag } from "../../../content/config.js";
 import { toBlogFeedEntry } from "../../../rss.js";
 import { toTagUrl } from "../../../urls.js";
 
-const getTags = async () => {
-  return await run_js("src/pages/tags/[tag].html.js", null);
-};
+/**
+ * @typedef {import("../[tag].html.js").Props} Props
+ */
 
-export const buildTagFeed = async ({ tag, pages }) => {
+/**
+ * @param {Props} props
+ * @returns {Promise<import("driver").StoreObject>}
+ */
+const build = async ({ tag, pages }) => {
   const site = SITE_URL + "/blog/";
 
   const lastUpdated = pages[0]
@@ -38,4 +43,6 @@ export const buildTagFeed = async ({ tag, pages }) => {
   return store(`<?xml version="1.0" encoding="utf-8"?>` + feed.toString());
 };
 
-export default ARG ? await buildTagFeed(ARG) : await getTags();
+/** @type {Props | null} */
+const page = ARG;
+export default page ? await build(page) : await listBlogPagesByTag();

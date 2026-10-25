@@ -1,10 +1,11 @@
-import { read_file, run_js } from "driver";
+import { read_file } from "driver";
 import { SITE_URL } from "../../../CONFIG.js";
 import { css, html } from "../../../lib/html.js";
 import { Post } from "../../components/blog/Post.js";
 import { CybersecLink } from "../../components/cybersec/CybersecLink.js";
+import { listCybersecPages } from "../../content/config.js";
 
-const posts = await run_js("src/pages/cybersec/[slug].html.js", null);
+const posts = await listCybersecPages();
 const rssLink = `/cybersec/rss.xml`;
 
 export default await Post({

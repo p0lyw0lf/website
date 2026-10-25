@@ -32,6 +32,16 @@ export const listBlogPages = () =>
     run_js("src/pages/blog/[slug].html.js", null)
   );
 
+export const listBlogPagesByTag = () =>
+  /** @type {Promise<Array<import("../pages/tags/[tag].html.js").Props>>} */ (
+    run_js("src/pages/tags/[tag].html.js", null)
+  );
+
+export const listBlogPagesByYear = () =>
+  /** @type {Promise<Array<import("../pages/blog/archives/[year].html.js").Props>>} */ (
+    run_js("src/pages/blog/archives/[year].html.js", null)
+  );
+
 export const cybersec = glob({
   pattern: /\/([^_][^\/]*)\.md$/,
   base: "src/content/cybersec",
@@ -40,3 +50,8 @@ export const cybersec = glob({
     repost_link: z.string(),
   }),
 });
+
+export const listCybersecPages = () =>
+  /** @type {Promise<Array<import("../pages/cybersec/[slug].html.js").Props>>} */ (
+    run_js("src/pages/cybersec/[slug].html.js", null)
+  );

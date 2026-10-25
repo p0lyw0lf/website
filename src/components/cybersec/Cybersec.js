@@ -10,7 +10,7 @@ import { Post } from "../blog/Post.js";
  * @property {string} date
  *
  * @callback Render
- * @param {string} slot
+ * @param {import("../../../lib/html_types").HTML} slot
  * @returns {Promise<import("driver").StoreObject>}
  */
 

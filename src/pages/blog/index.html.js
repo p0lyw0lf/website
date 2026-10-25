@@ -1,10 +1,11 @@
-import { read_file, run_js } from "driver";
+import { read_file } from "driver";
 import { SITE_URL } from "../../../CONFIG.js";
 import { css, html } from "../../../lib/html.js";
 import { Post } from "../../components/blog/Post.js";
 import { PostLink } from "../../components/blog/PostLink.js";
+import { listBlogPages } from "../../content/config.js";
 
-const pages = await run_js("src/pages/blog/[slug].html.js", null);
+const pages = await listBlogPages();
 const rssLink = `/blog/rss.xml`;
 
 export default await Post({

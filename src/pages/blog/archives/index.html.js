@@ -1,12 +1,9 @@
-import { run_js } from "driver";
 import { css, html } from "../../../../lib/html.js";
 import { Post } from "../../../components/blog/Post.js";
+import { listBlogPagesByYear } from "../../../content/config.js";
 import { toArchiveUrl } from "../../../urls.js";
 
-const pagesByYear = await run_js(
-  "src/pages/blog/archives/[year].html.js",
-  null,
-);
+const pagesByYear = await listBlogPagesByYear();
 const rssLink = `/blog/rss.xml`;
 
 export default await Post({

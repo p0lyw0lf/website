@@ -21,8 +21,9 @@ const posts = [
 ];
 
 const postLinks = await Promise.all(
-  posts.map(async (post) => {
-    const page = await blog.single(post);
+  posts.map(async (filename) => {
+    const page = await blog.single(filename);
+    if (!page) throw new Error(`missing page ${filename}`);
     return await PostLink({
       title: page.frontmatter.title,
       published: page.frontmatter.published,
@@ -43,9 +44,6 @@ const content = html`
     <ul>${postLinks.map((link) => html`<li>${link}</li>`)}</ul>
   </p>
 `.withStyle(MarkdownPageCss);
-
-// fobar
-print(content.style);
 
 const title = "Popular Posts";
 export default await Base({
