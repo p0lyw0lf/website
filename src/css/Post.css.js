@@ -30,11 +30,11 @@ export default css`
   h5 a.anchor::before {
     content: "####";
   }
-  h5 a.anchor::before {
+  h6 a.anchor::before {
     content: "#####";
   }
   a.anchor::before {
-    padding-right: 0.2em;
+    padding-left: 0.2em;
   }
 
   /* Make footnote styles a little better */
@@ -156,7 +156,7 @@ export default css`
 
   /* Make it so that on mobile, when tables are too wide, they scroll horizontally */
   .table-wrapper {
-    overflow: scroll;
+    overflow: auto;
   }
 
   /* Basic table styling. Put a border around the outside, and have no borders on the inside. */

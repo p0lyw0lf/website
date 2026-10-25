@@ -20,20 +20,24 @@ const { src, url, alt, title } = ARG;
 const image = await parseImage(src);
 
 /** @type {[number, ...number[]]} */
-const widths = [1536, 768, 384];
+const widths = [384, 768, 1536];
 
 /** @type {ConvertOpts} */
 const defaultOpts = {
   format: "jpeg",
   encoderOptions: { quality: 85, stripMetadata: true },
-  size: { width: widths[0], height: 1 },
+  size: {
+    width:
+      widths.reverse().find((width) => width <= image.size.width) ?? widths[0],
+    height: 1,
+  },
   fit: "cover",
   resizeMethod: "Lanczos",
 };
 
 /** @type {ConvertOpts[]} */
 const otherOpts = widths
-  .filter((width) => width < image.size.width)
+  .filter((width) => width <= image.size.width)
   .map((width) => ({
     format: "jxl",
     encoderOptions: { quality: 85, stripMetadata: true },
