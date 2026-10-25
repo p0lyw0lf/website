@@ -1,8 +1,9 @@
-import { minify_html, store } from "driver";
+import { store } from "driver";
 import { html } from "../../lib/html.js";
+import { minifyHtml } from "../../lib/runtime/index.js";
 
 // Hand-minify instead of applying template b/c it will save us a lot on outbound traffic
-export default await minify_html(
+export default await minifyHtml(
   store(
     html`
       <!doctype html>

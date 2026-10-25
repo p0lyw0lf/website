@@ -1,4 +1,5 @@
-import { minify_html, run_js, write_output } from "driver";
+import { run_js, write_output } from "driver";
+import { minifyHtml } from "./lib/runtime/index.js";
 
 if (!Array.isArray(ARG)) {
   throw new Error("unexpected: ARG is not an array");
@@ -22,6 +23,6 @@ const page = await run_js("src/pages/blog/[slug].html.js", {
   slug: "1900-01-01-draft",
   isDraft: true,
 });
-const output = await minify_html(page);
+const output = await minifyHtml(page);
 
 write_output(`${filename}.html`, output);

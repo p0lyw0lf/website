@@ -1,5 +1,6 @@
-import { minify_html, store } from "driver";
+import { store } from "driver";
 import { html } from "../../lib/html.js";
+import { minifyHtml } from "../../lib/runtime/index.js";
 
 /**
  * @callback Component
@@ -35,7 +36,7 @@ export const RandomChoice = async ({ Component, propChoices, id }) => {
         ${(
           await Promise.all(
             htmlChoices.map(async (html) => {
-              const minified = await minify_html(store(html.toString()));
+              const minified = await minifyHtml(store(html.toString()));
               return JSON.stringify(minified.toString());
             }),
           )
