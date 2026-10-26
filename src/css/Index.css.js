@@ -34,7 +34,7 @@ export default css`
   main {
     background-color: var(--color-background-primary);
     color: var(--color-text-primary);
-    line-height: 1.9em;
+    line-height: 1.8em;
 
     padding: 0 16px;
   }

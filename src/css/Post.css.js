@@ -130,6 +130,17 @@ export default css`
     border-left: 0.2em solid;
   }
 
+  blockquote > :first-child,
+  details > :first-child {
+    padding-top: 0.5em;
+  }
+
+  blockquote > :last-child,
+  details > summary:first-child,
+  details > :last-child {
+    padding-bottom: 0.5em;
+  }
+
   details {
     border-left-color: var(--color-background-secondary);
   }

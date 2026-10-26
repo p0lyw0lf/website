@@ -39,7 +39,7 @@ export default css`
   main {
     background-color: var(--color-background-primary);
     color: var(--color-text-primary);
-    line-height: 1.9em;
+    line-height: 1.8em;
   }
   main a {
     color: var(--color-text-primary-accent);
