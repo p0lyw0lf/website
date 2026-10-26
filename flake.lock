@@ -12,11 +12,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1792632859,
-        "narHash": "sha256-uHHMP4DxfjxKcHoTxsvfIHGJBTqbaoHmkpSUtEBPPos=",
+        "lastModified": 1792978033,
+        "narHash": "sha256-qKPQr8wyg039qgZ38UFOTjRKaarWJWVHLSXTUzcTioA=",
         "ref": "refs/heads/main",
-        "rev": "8b6396478fbba0fdf2b495d1bb0b90600db2c2ae",
-        "revCount": 291,
+        "rev": "c16f26eb518ff7c41c2a66a09bbf0f53844105b3",
+        "revCount": 292,
         "type": "git",
         "url": "https://git.sr.ht/~polywolf/driver"
       },
