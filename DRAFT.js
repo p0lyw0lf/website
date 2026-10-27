@@ -12,7 +12,7 @@ if (typeof filename !== "string") {
 
 // Bare minimum pipeline adapted from ./BUILD.js
 const { frontmatter, body } = await run_js(
-  "src/runtime/frontmatter.js",
+  "lib/runtime/frontmatter.js",
   `drafts/src/${filename}`,
 );
 // Make it so we don't have to re-generate the body every time necessarily
