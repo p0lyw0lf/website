@@ -3,6 +3,8 @@ title: "Blog Engine Revamped"
 description: "There have been some updates to my blog engine, so i better write about them"
 tags: ["blag"]
 published: 1793129615
+mastodon: "https://social.treehouse.systems/@PolyWolf/117514544184399914"
+bluesky: "at://did:plc:bmuca5i6atczdbccgzeqwcl4/app.bsky.feed.post/3myuy5phyr22k"
 ---
 
 Whoa! A whole month no posts!! I made a lot of lazy media review drafts, but never got around to finishing any, might dump them all at once sometime later.
