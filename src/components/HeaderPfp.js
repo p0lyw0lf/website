@@ -22,7 +22,7 @@ export const HeaderPfp = async ({ src, alt }) => {
    * @returns {import("../../lib/runtime/image/types").ConvertOpts}
    */
   const opts = (dim) => ({
-    format: "jpeg",
+    format: "webp",
     encoderOptions: { quality: 80 },
     size: { width: dim, height: dim },
     fit: "contain",
