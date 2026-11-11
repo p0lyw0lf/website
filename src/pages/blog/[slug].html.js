@@ -7,7 +7,7 @@ import BlogCss from "../../css/Blog.css.js";
 import { inlineMarkdown } from "../../runtime/index.js";
 import { atprotoPostUrl, toBlogUrl } from "../../urls.js";
 
-/** @typedef {import("../../content/types.js").BlogPage} Props */
+/** @typedef {import("../../content/types").BlogPage} Props */
 
 /** @returns {Promise<Props[]>} */
 const list = async () => {
