@@ -17,7 +17,7 @@ export const toBlogUrl = (slug) => `/blog/${slug}/`;
  * @param {string} slug
  * @returns {string}
  */
-export const toBlogOgImageUrl = (slug) => `/blog/opengraph/${slug}.png`;
+export const toBlogOgImageUrl = (slug) => `/_assets/opengraph/blog/${slug}.png`;
 
 /**
  * @param {string} tag
@@ -36,6 +36,13 @@ export const toArchiveUrl = (year) => `/blog/archives/${year}/`;
  * @returns {string}
  */
 export const toCybersecUrl = (slug) => `/cybersec/${slug}/`;
+
+/**
+ * @param {string} slug
+ * @returns {string}
+ */
+export const toCybersecOgImageUrl = (slug) =>
+  `/_assets/opengraph/cybersec/${slug}.png`;
 
 const atprotoPostRegex = /at:\/\/(.*)\/app\.bsky\.feed\.post\/(.*)/;
 /**

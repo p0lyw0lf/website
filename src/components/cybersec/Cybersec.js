@@ -9,8 +9,12 @@ import { Post } from "../blog/Post.js";
  * @property {string} repost_link
  * @property {string} date
  *
+ * @typedef {object} Slots
+ * @property {import("../../../lib/html_types").HTML=} [extraHead]
+ *
  * @callback Render
  * @param {import("../../../lib/html_types").HTML} slot
+ * @param {Slots=} [extraSlots]
  * @returns {Promise<import("driver").StoreObject>}
  */
 
@@ -20,18 +24,21 @@ import { Post } from "../blog/Post.js";
  */
 export const Cybersec =
   ({ slug, title, repost_link, date }) =>
-  async (slot) => {
+  async (slot, extraSlots = {}) => {
     const url = toCybersecUrl(slug);
     return await Post({
       pathname: url,
       sectionTitle: "PolyWolf on Security",
       homeLink: "/cybersec/",
       title,
-    })(html`
-      <h1>${title}</h1>
-      <p
-        >Posted on ${date}: <a href="${repost_link}">${repost_link}</a>
-        ${slot}
-      </p>
-    `);
+    })(
+      html`
+        <h1>${title}</h1>
+        <p
+          >Posted on ${date}: <a href="${repost_link}">${repost_link}</a>
+          ${slot}
+        </p>
+      `,
+      extraSlots,
+    );
   };

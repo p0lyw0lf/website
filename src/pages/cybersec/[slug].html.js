@@ -2,6 +2,8 @@ import { html } from "../../../lib/html.js";
 import { markdownToHtml } from "../../../lib/runtime/index.js";
 import { Cybersec } from "../../components/cybersec/Cybersec.js";
 import { cybersec } from "../../content/config.js";
+import { generateOpengraphPng, ogMeta } from "../../runtime/opengraph/index.js";
+import { toCybersecOgImageUrl } from "../../urls.js";
 
 /**
  * @typedef {import("../../content/types").CybersecPage} Props
@@ -20,8 +22,15 @@ const list = async () => {
  */
 const build = async ({ frontmatter, body, slug }) => {
   const { title, repost_link } = frontmatter;
+
   return await Cybersec({ slug, title, repost_link, date: slug.slice(0, 10) })(
     html`<article class="e-content">${await markdownToHtml(body)}</article>`,
+    {
+      extraHead: ogMeta(
+        await generateOpengraphPng({ title, tags: ["cybersec"] }),
+        toCybersecOgImageUrl(slug),
+      ),
+    },
   );
 };
 
