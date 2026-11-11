@@ -5,7 +5,7 @@ import { TagLink } from "../../components/blog/TagLink.js";
 import { blog } from "../../content/config.js";
 import BlogCss from "../../css/Blog.css.js";
 import { inlineMarkdown } from "../../runtime/index.js";
-import { atprotoPostUrl, toBlogUrl } from "../../urls.js";
+import { atprotoPostUrl, toBlogOgImageUrl, toBlogUrl } from "../../urls.js";
 
 /** @typedef {import("../../content/types").BlogPage} Props */
 
@@ -63,6 +63,15 @@ const build = async ({ frontmatter, body, slug, isDraft }) => {
         `
       }
     `.withStyle(BlogCss),
+    {
+      extraHead: html`
+        <meta property="og:image" content="${toBlogOgImageUrl(slug)}" />
+        <!-- TODO: these are hardcoded, would be nice to not... -->
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      `,
+    },
   );
 };
 

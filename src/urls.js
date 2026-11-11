@@ -14,6 +14,12 @@ export const toArtUrl = (src) => `${STATIC_URL}/art/${src}`;
 export const toBlogUrl = (slug) => `/blog/${slug}/`;
 
 /**
+ * @param {string} slug
+ * @returns {string}
+ */
+export const toBlogOgImageUrl = (slug) => `/blog/opengraph/${slug}.png`;
+
+/**
  * @param {string} tag
  * @returns {string}
  */

@@ -1,31 +1,14 @@
 {
   stdenvNoCC,
 
-  anonymous-pro-fonts,
-  b612,
-  fira-mono,
-  ibm-plex,
-  intel-one-mono,
-  inter,
-  jost,
   montserrat,
-  redhat-official-fonts,
 }:
 let
   fonts = [
-    anonymous-pro-fonts
-    b612
-    fira-mono
-    ibm-plex
-    intel-one-mono
-    inter
-    jost
     montserrat
-    redhat-official-fonts
   ];
   installFont = pkg: ''
-    install -m444 -Dt $out ${pkg}/share/fonts/opentype/*
-    install -m444 -Dt $out ${pkg}/share/fonts/truetype/*
+    install -m444 -Dt $out ${pkg}/share/fonts/*/*.{ttf,otf}
   '';
 in
 
