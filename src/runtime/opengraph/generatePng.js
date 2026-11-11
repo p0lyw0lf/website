@@ -19,7 +19,7 @@ const png = await run_command(
     "--format",
     "png",
     "--ppi",
-    "144",
+    "72",
     "--input",
     `title=${title}`,
     "--input",
