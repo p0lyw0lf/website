@@ -62,12 +62,13 @@ export const Base =
           }
           <meta property="og:url" content="${canonicalUrl}" />
           ${
-            /* TODO: automatic "og:image" property. Right now it just always uses the favicon which is not ideal. */ ""
+            extraHead?.asString().includes("og:image")
+              ? ""
+              : html`<meta
+                  property="og:image"
+                  content="${`${SITE_URL}/apple-touch-icon.png`}"
+                />`
           }
-          <meta
-            property="og:image"
-            content="${`${SITE_URL}/apple-touch-icon.png`}"
-          />
 
           <link rel="canonical" href="${canonicalUrl}" />
 
