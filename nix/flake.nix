@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     driver = {
       url = "git+https://git.sr.ht/~polywolf/driver";
@@ -19,10 +19,7 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ driver.overlays.default ];
-        };
+        pkgs = nixpkgs.legacyPackages.${system}.extend driver.overlays.default;
       in
       {
         devShells.default = pkgs.callPackage ./devshell.nix { };
